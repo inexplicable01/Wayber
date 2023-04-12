@@ -19,6 +19,7 @@ import DashboardNFT from "../pages/DashboardNFT";
 
 //Chat
 import Chat from "../pages/Chat";
+// import ChatWindow from "../pages/ChatBot/ChatWindow"
 // import Calendar from "../pages/Calendar";
 
 // Project
@@ -232,14 +233,15 @@ import ApiKey from '../pages/APIKey/index'
 // Landing Index
 import OnePage from "../pages/Landing/OnePage";
 // import NFTLanding from "../pages/Landing/NFTLanding";
-import Dorsin from "../pages/Landing/Dorsin"
-import JobLanding from '../pages/Landing/Job'
+// import Dorsin from "../pages/Landing/Dorsin"
+// import JobLanding from '../pages/Landing/Job'
 
 // User Profile
 import UserProfile from "../pages/Authentication/user-profile";
 
 import FileManager from "../pages/FileManager";
 import ToDoList from "../pages/ToDo";
+import ChatWindow from "../pages/ChatBot/ChatWindow";
 
 const authProtectedRoutes = [
   { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
@@ -268,6 +270,7 @@ const authProtectedRoutes = [
 
   //Chat
   { path: "/apps-chat", component: <Chat /> },
+  { path: "/apps-chatwindow", component: <ChatWindow /> },
 
   //EMail
   // { path: "/apps-mailbox", component: <MailInbox /> },

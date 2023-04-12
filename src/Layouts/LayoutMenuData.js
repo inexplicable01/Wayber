@@ -314,6 +314,12 @@ const Navdata = () => {
                         { id: 2, label: "Task Details", link: "/apps-tasks-details", parentId: "apps", },
                     ]
                 },
+                {
+                    id: "chatbot",
+                    label: "ChatBot",
+                    link: "/apps-chatwindow",
+                    parentId: "apps",
+                },
                 // {
                 //     id: "appscrm",
                 //     label: "CRM",
