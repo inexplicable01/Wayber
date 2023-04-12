@@ -13,18 +13,18 @@ import DashboardNFT from "../pages/DashboardNFT";
 
 //Calendar
 // Email box
-import MailInbox from "../pages/EmailInbox";
-import BasicAction from "../pages/Email/EmailTemplates/BasicAction";
-import EcommerceAction from "../pages/Email/EmailTemplates/EcommerceAction";
+// import MailInbox from "../pages/EmailInbox";
+// import BasicAction from "../pages/Email/EmailTemplates/BasicAction";
+// import EcommerceAction from "../pages/Email/EmailTemplates/EcommerceAction";
 
 //Chat
 import Chat from "../pages/Chat";
-import Calendar from "../pages/Calendar";
+// import Calendar from "../pages/Calendar";
 
 // Project
-import ProjectList from "../pages/Projects/ProjectList";
-import ProjectOverview from "../pages/Projects/ProjectOverview";
-import CreateProject from "../pages/Projects/CreateProject";
+// import ProjectList from "../pages/Projects/ProjectList";
+// import ProjectOverview from "../pages/Projects/ProjectOverview";
+// import CreateProject from "../pages/Projects/CreateProject";
 
 //Task
 import TaskDetails from "../pages/Tasks/TaskDetails";
@@ -54,16 +54,16 @@ import ListView from '../pages/SupportTickets/ListView';
 import TicketsDetails from '../pages/SupportTickets/TicketsDetails';
 
 // //Ecommerce Pages
-import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index";
-import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail";
-import EcommerceAddProduct from "../pages/Ecommerce/EcommerceProducts/EcommerceAddProduct";
-import EcommerceOrders from "../pages/Ecommerce/EcommerceOrders/index";
-import EcommerceOrderDetail from "../pages/Ecommerce/EcommerceOrders/EcommerceOrderDetail";
-import EcommerceCustomers from "../pages/Ecommerce/EcommerceCustomers/index";
-import EcommerceCart from "../pages/Ecommerce/EcommerceCart";
-import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout";
-import EcommerceSellers from "../pages/Ecommerce/EcommerceSellers/index";
-import EcommerceSellerDetail from "../pages/Ecommerce/EcommerceSellers/EcommerceSellerDetail";
+// import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index";
+// import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail";
+// import EcommerceAddProduct from "../pages/Ecommerce/EcommerceProducts/EcommerceAddProduct";
+// import EcommerceOrders from "../pages/Ecommerce/EcommerceOrders/index";
+// import EcommerceOrderDetail from "../pages/Ecommerce/EcommerceOrders/EcommerceOrderDetail";
+// import EcommerceCustomers from "../pages/Ecommerce/EcommerceCustomers/index";
+// import EcommerceCart from "../pages/Ecommerce/EcommerceCart";
+// import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout";
+// import EcommerceSellers from "../pages/Ecommerce/EcommerceSellers/index";
+// import EcommerceSellerDetail from "../pages/Ecommerce/EcommerceSellers/EcommerceSellerDetail";
 
 // NFT Marketplace Pages
 // import Marketplace from "../pages/NFTMarketplace/Marketplace";
@@ -143,7 +143,7 @@ import LineAwesomeIcons from "../pages/Icons/LineAwesomeIcons/LineAwesomeIcons";
 import CryptoIcons from "../pages/Icons/CryptoIcons/CryptoIcons";
 
 //Maps
-import GoogleMaps from "../pages/Maps/GoogleMaps/GoogleMaps";
+// import GoogleMaps from "../pages/Maps/GoogleMaps/GoogleMaps";
 import VectorMaps from "../pages/Maps/VectorMaps/VectorMaps";
 import LeafletMaps from "../pages/Maps/LeafletMaps/LeafletMaps";
 
@@ -195,25 +195,25 @@ import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 
 //Charts
-import LineCharts from "../pages/Charts/ApexCharts/LineCharts";
-import AreaCharts from "../pages/Charts/ApexCharts/AreaCharts";
-import ColumnCharts from "../pages/Charts/ApexCharts/ColumnCharts";
-import BarCharts from "../pages/Charts/ApexCharts/BarCharts";
-import MixedCharts from "../pages/Charts/ApexCharts/MixedCharts";
-import TimelineCharts from "../pages/Charts/ApexCharts/TimelineCharts";
-import CandlestickChart from "../pages/Charts/ApexCharts/CandlestickChart";
-import BoxplotCharts from "../pages/Charts/ApexCharts/BoxplotCharts";
-import BubbleChart from "../pages/Charts/ApexCharts/BubbleChart";
-import ScatterCharts from "../pages/Charts/ApexCharts/ScatterCharts";
-import HeatmapCharts from "../pages/Charts/ApexCharts/HeatmapCharts";
-import TreemapCharts from "../pages/Charts/ApexCharts/TreemapCharts";
-import PieCharts from "../pages/Charts/ApexCharts/PieCharts";
-import RadialbarCharts from "../pages/Charts/ApexCharts/RadialbarCharts";
-import RadarCharts from "../pages/Charts/ApexCharts/RadarCharts";
-import PolarCharts from "../pages/Charts/ApexCharts/PolarCharts";
+// import LineCharts from "../pages/Charts/ApexCharts/LineCharts";
+// import AreaCharts from "../pages/Charts/ApexCharts/AreaCharts";
+// import ColumnCharts from "../pages/Charts/ApexCharts/ColumnCharts";
+// import BarCharts from "../pages/Charts/ApexCharts/BarCharts";
+// import MixedCharts from "../pages/Charts/ApexCharts/MixedCharts";
+// import TimelineCharts from "../pages/Charts/ApexCharts/TimelineCharts";
+// import CandlestickChart from "../pages/Charts/ApexCharts/CandlestickChart";
+// import BoxplotCharts from "../pages/Charts/ApexCharts/BoxplotCharts";
+// import BubbleChart from "../pages/Charts/ApexCharts/BubbleChart";
+// import ScatterCharts from "../pages/Charts/ApexCharts/ScatterCharts";
+// import HeatmapCharts from "../pages/Charts/ApexCharts/HeatmapCharts";
+// import TreemapCharts from "../pages/Charts/ApexCharts/TreemapCharts";
+// import PieCharts from "../pages/Charts/ApexCharts/PieCharts";
+// import RadialbarCharts from "../pages/Charts/ApexCharts/RadialbarCharts";
+// import RadarCharts from "../pages/Charts/ApexCharts/RadarCharts";
+// import PolarCharts from "../pages/Charts/ApexCharts/PolarCharts";
 
-import ChartsJs from "../pages/Charts/ChartsJs/index";
-import Echarts from "../pages/Charts/ECharts/index";
+// import ChartsJs from "../pages/Charts/ChartsJs/index";
+// import Echarts from "../pages/Charts/ECharts/index";
 
 //Job pages
 import Statistics from "../pages/Jobs/Statistics";
@@ -250,17 +250,17 @@ const authProtectedRoutes = [
   { path: "/dashboard-projects", component: <DashboardProject /> },
   { path: "/dashboard-nft", component: <DashboardNFT /> },
   { path: "/dashboard-job", component: <DashboardJobs /> },
-  { path: "/apps-calendar", component: <Calendar /> },
-  { path: "/apps-ecommerce-products", component: <EcommerceProducts /> },
-  { path: "/apps-ecommerce-product-details", component: <EcommerceProductDetail /> },
-  { path: "/apps-ecommerce-add-product", component: <EcommerceAddProduct /> },
-  { path: "/apps-ecommerce-orders", component: <EcommerceOrders /> },
-  { path: "/apps-ecommerce-order-details", component: <EcommerceOrderDetail /> },
-  { path: "/apps-ecommerce-customers", component: <EcommerceCustomers /> },
-  { path: "/apps-ecommerce-cart", component: <EcommerceCart /> },
-  { path: "/apps-ecommerce-checkout", component: <EcommerceCheckout /> },
-  { path: "/apps-ecommerce-sellers", component: <EcommerceSellers /> },
-  { path: "/apps-ecommerce-seller-details", component: <EcommerceSellerDetail /> },
+  // { path: "/apps-calendar", component: <Calendar /> },
+  // { path: "/apps-ecommerce-products", component: <EcommerceProducts /> },
+  // { path: "/apps-ecommerce-product-details", component: <EcommerceProductDetail /> },
+  // { path: "/apps-ecommerce-add-product", component: <EcommerceAddProduct /> },
+  // { path: "/apps-ecommerce-orders", component: <EcommerceOrders /> },
+  // { path: "/apps-ecommerce-order-details", component: <EcommerceOrderDetail /> },
+  // { path: "/apps-ecommerce-customers", component: <EcommerceCustomers /> },
+  // { path: "/apps-ecommerce-cart", component: <EcommerceCart /> },
+  // { path: "/apps-ecommerce-checkout", component: <EcommerceCheckout /> },
+  // { path: "/apps-ecommerce-sellers", component: <EcommerceSellers /> },
+  // { path: "/apps-ecommerce-seller-details", component: <EcommerceSellerDetail /> },
 
   { path: "/apps-file-manager", component: <FileManager /> },
   { path: "/apps-todo", component: <ToDoList /> },
@@ -270,14 +270,14 @@ const authProtectedRoutes = [
   { path: "/apps-chat", component: <Chat /> },
 
   //EMail
-  { path: "/apps-mailbox", component: <MailInbox /> },
-  { path: "/apps-email-basic", component: <BasicAction /> },
-  { path: "/apps-email-ecommerce", component: <EcommerceAction /> },
+  // { path: "/apps-mailbox", component: <MailInbox /> },
+  // { path: "/apps-email-basic", component: <BasicAction /> },
+  // { path: "/apps-email-ecommerce", component: <EcommerceAction /> },
 
   //Projects
-  { path: "/apps-projects-list", component: <ProjectList /> },
-  { path: "/apps-projects-overview", component: <ProjectOverview /> },
-  { path: "/apps-projects-create", component: <CreateProject /> },
+  // { path: "/apps-projects-list", component: <ProjectList /> },
+  // { path: "/apps-projects-overview", component: <ProjectOverview /> },
+  // { path: "/apps-projects-create", component: <CreateProject /> },
 
   //Task
   { path: "/apps-tasks-list-view", component: <TaskList /> },
@@ -406,7 +406,7 @@ const authProtectedRoutes = [
   { path: "/icons-crypto", component: <CryptoIcons /> },
 
   //Maps
-  { path: "/maps-google", component: <GoogleMaps /> },
+  // { path: "/maps-google", component: <GoogleMaps /> },
   { path: "/maps-vector", component: <VectorMaps /> },
   { path: "/maps-leaflet", component: <LeafletMaps /> },
 
