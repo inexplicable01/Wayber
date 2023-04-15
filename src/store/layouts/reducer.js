@@ -29,12 +29,12 @@ import {
 } from "../../Components/constants/layout";
 
 const INIT_STATE = {
-  layoutType: layoutTypes.TWOCOLUMN,
+  layoutType: layoutTypes.SEMIBOX,
   leftSidebarType: leftSidebarTypes.DARK,
   layoutModeType: layoutModeTypes.LIGHTMODE,
   layoutWidthType: layoutWidthTypes.FLUID,
   layoutPositionType: layoutPositionTypes.FIXED,
-  topbarThemeType: topbarThemeTypes.LIGHT,
+  topbarThemeType: topbarThemeTypes.DARK,
   leftsidbarSizeType: leftsidbarSizeTypes.DEFAULT,
   leftSidebarViewType: leftSidebarViewTypes.DEFAULT,
   leftSidebarImageType: leftSidebarImageTypes.NONE,

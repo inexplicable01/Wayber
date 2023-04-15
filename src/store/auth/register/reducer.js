@@ -9,12 +9,11 @@ const initialState = {
   registrationError: null,
   message: null,
   loading: false,
-  user: null,
   success: false,
   error: false
 };
 
-const Account = (state = initialState, action) => {
+const Registration = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_USER:
       state = {
@@ -27,7 +26,6 @@ const Account = (state = initialState, action) => {
       state = {
         ...state,
         loading: false,
-        user: action.payload,
         success: true,
         registrationError: null,
 
@@ -36,7 +34,6 @@ const Account = (state = initialState, action) => {
     case REGISTER_USER_FAILED:
       state = {
         ...state,
-        user: null,
         loading: false,
         registrationError: action.payload,
         error: true
@@ -56,4 +53,4 @@ const Account = (state = initialState, action) => {
   return state;
 };
 
-export default Account;
+export default Registration;

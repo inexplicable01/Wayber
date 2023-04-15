@@ -46,11 +46,13 @@ const Home = () => {
                             <div className="text-center mt-lg-5 pt-5">
                                 <h1 className="display-6 fw-semibold mb-3 lh-base">Buy/Sell Real Estate with <span
                                     className="text-success">EstateFlow</span></h1>
-                                <p className="lead text-muted lh-base">Velzon is a fully responsive, multipurpose and premium Bootstrap 5 Admin & Dashboard Template built in multiple frameworks.</p>
+                                <p className="lead text-muted lh-base">We empower people to buy and sell properties without Real Estate Agents. </p>
+                                <p className="lead text-muted lh-base">Control the Process and Save $tens of thousands$.</p>
+
 
                                 <div className="d-flex gap-2 justify-content-center mt-4">
                                     <Link to="/register" className="btn btn-primary">Get Started <i className="ri-arrow-right-line align-middle ms-1"></i></Link>
-                                    <Link to="/pages-pricing" className="btn btn-danger">View Plans <i className="ri-eye-line align-middle ms-1"></i></Link>
+                                    {/*<Link to="/pages-pricing" className="btn btn-danger">View Plans <i className="ri-eye-line align-middle ms-1"></i></Link>*/}
                                 </div>
                             </div>
 

@@ -3,8 +3,11 @@ import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 // Login Redux States
 import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN } from "./actionTypes";
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
-
+import { setProfile } from "../profile/actions";
 //Include Both Helper File with needed methods
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 import { getFirebaseBackend } from "../../../helpers/firebase_helper";
 import {
   postFakeLogin,
@@ -18,7 +21,7 @@ function* loginUser({ payload: { user, history } }) {
   try {
 
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      console.log('okay')
+      // console.log('okay')
       const response = yield call(
         fireBaseBackend.loginUser,
         user.email,
@@ -26,11 +29,16 @@ function* loginUser({ payload: { user, history } }) {
       );
 
       if (response) {
-         console.log('some')
+        console.log(response.uid + "got to here.")
+        const userProfile = yield call(fireBaseBackend.getUserProfile, response.uid)
+        console.log(userProfile + "userProfile.")
+        yield put(setProfile({...userProfile, email: user.email}));
+
+        console.log('some')
         yield put(loginSuccess(response));
         history('/dashboard')
       } else {
-        console.log('caughterror?')
+        // console.log('caughterror?')
         yield put(apiError(response));
       }
     } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {

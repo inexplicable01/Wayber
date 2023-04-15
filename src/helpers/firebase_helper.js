@@ -22,21 +22,28 @@ class FirebaseAuthBackend {
   /**
    * Registers the user with given details
    */
-  registerUser = (email, password) => {
-    return new Promise((resolve, reject) => {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(
-          user => {
-            resolve(firebase.auth().currentUser);
-          },
-          error => {
-            reject(this._handleError(error));
-          }
-        );
-    });
-  };
+ registerUser = (email, password, additionalInfo) => {
+  return new Promise((resolve, reject) => {
+    // Create user with email and password
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(result => {
+        // Get uid from the created user
+        const uid = result.user.uid;
+
+        // Save additional information in Firestore
+        firebase.firestore().collection('users').doc(uid).set(additionalInfo)
+          .then(() => {
+            resolve({ success: true, user: additionalInfo });
+          })
+          .catch(error => {
+            reject({ success: false, error: error.message });
+          });
+      })
+      .catch(error => {
+        reject({ success: false, error: error.message });
+      });
+  });
+};
 
   /**
    * Registers the user with given details
@@ -56,6 +63,45 @@ class FirebaseAuthBackend {
         );
     });
   };
+
+    getUserProfile = uid => {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection('users')
+        .doc(uid)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            resolve(doc.data());
+          } else {
+            reject(new Error('User profile not found'));
+          }
+        })
+        .catch(error => {
+          console.log('whats wrong' + error)
+          reject(error);
+        });
+    });
+  };
+
+      updateUserProfile = (uid, updatedProfile) => {
+    return new Promise((resolve, reject) => {
+      firebase
+        .firestore()
+        .collection('users')
+        .doc(uid)
+        .update(updatedProfile)
+        .then(() => {
+          resolve({ success: true });
+        })
+        .catch(error => {
+          reject({ success: false, error: error.message });
+        });
+    });
+  };
+
+
 
   /**
    * Login user with given details
@@ -140,6 +186,21 @@ class FirebaseAuthBackend {
       }
     });
   };
+
+  onAuthStateChanged = (onUserChanged) => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        sessionStorage.setItem("authUser", JSON.stringify(user));
+        onUserChanged(user);
+      } else {
+        sessionStorage.removeItem("authUser");
+        onUserChanged(null);
+      }
+    });
+    return unsubscribe;
+  };
+
+  // ..
 
   addNewUserToFirestore = (user) => {
     const collection = firebase.firestore().collection("users");

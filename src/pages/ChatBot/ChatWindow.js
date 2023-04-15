@@ -83,7 +83,7 @@ const ChatWindow = () => {
   };
 
   return (
-    <div>
+    <div className="page-content">
       <h2>Chat Window</h2>
       <div className="chat-container">
         {conversation.map((msg, index) => (

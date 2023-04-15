@@ -9,7 +9,7 @@ import DashboardJobs from '../pages/DashboardJob'
 
 import DashboardCrypto from "../pages/DashboardCrypto";
 import DashboardProject from "../pages/DashboardProject";
-import DashboardNFT from "../pages/DashboardNFT";
+// import DashboardNFT from "../pages/DashboardNFT";
 
 //Calendar
 // Email box
@@ -40,10 +40,10 @@ import TaskList from "../pages/Tasks/TaskList";
 // import KYCVerification from '../pages/Crypto/KYCVerification';
 
 //Crm Pages
-import CrmCompanies from "../pages/Crm/CrmCompanies";
-import CrmContacts from "../pages/Crm/CrmContacts";
-import CrmDeals from "../pages/Crm/CrmDeals/index";
-import CrmLeads from "../pages/Crm/CrmLeads/index";
+// import CrmCompanies from "../pages/Crm/CrmCompanies";
+// import CrmContacts from "../pages/Crm/CrmContacts";
+// import CrmDeals from "../pages/Crm/CrmDeals/index";
+// import CrmLeads from "../pages/Crm/CrmLeads/index";
 
 //Invoices
 // import InvoiceList from "../pages/Invoices/InvoiceList";
@@ -248,9 +248,9 @@ const authProtectedRoutes = [
   { path: "/dashboard-crm", component: <DashboardCrm /> },
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
-  { path: "/dashboard-crypto", component: <DashboardCrypto /> },
+  // { path: "/dashboard-crypto", component: <DashboardCrypto /> },
   { path: "/dashboard-projects", component: <DashboardProject /> },
-  { path: "/dashboard-nft", component: <DashboardNFT /> },
+  // { path: "/dashboard-nft", component: <DashboardNFT /> },
   { path: "/dashboard-job", component: <DashboardJobs /> },
   // { path: "/apps-calendar", component: <Calendar /> },
   // { path: "/apps-ecommerce-products", component: <EcommerceProducts /> },
@@ -287,10 +287,10 @@ const authProtectedRoutes = [
   { path: "/apps-tasks-details", component: <TaskDetails /> },
 
   //Crm
-  { path: "/apps-crm-contacts", component: <CrmContacts /> },
-  { path: "/apps-crm-companies", component: <CrmCompanies /> },
-  { path: "/apps-crm-deals", component: <CrmDeals /> },
-  { path: "/apps-crm-leads", component: <CrmLeads /> },
+  // { path: "/apps-crm-contacts", component: <CrmContacts /> },
+  // { path: "/apps-crm-companies", component: <CrmCompanies /> },
+  // { path: "/apps-crm-deals", component: <CrmDeals /> },
+  // { path: "/apps-crm-leads", component: <CrmLeads /> },
 
   //Invoices
   // { path: "/apps-invoices-list", component: <InvoiceList /> },

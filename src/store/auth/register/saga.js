@@ -10,6 +10,7 @@ import {
   postFakeRegister,
   postJwtRegister,
 } from "../../../helpers/fakebackend_helper";
+import {setProfile} from "../profile/actions";
 
 // initialize relavant method of both Auth
 const fireBaseBackend = getFirebaseBackend();
@@ -18,23 +19,34 @@ const fireBaseBackend = getFirebaseBackend();
 function* registerUser({ payload: { user } }) {
   try {
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
+      console.log('saga reached')
+      const { email, password, ...additionalInfo } = user;
+
+      //This register both creates the auth account and the document at the same time
+      //Probably safer to break them into two.
+      //Ignore for now.
       const response = yield call(
         fireBaseBackend.registerUser,
-        user.email,
-        user.password
+        email,
+        password,
+          additionalInfo
       );
-      yield put(registerUserSuccessful(response));
-    } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
-      const response = yield call(postJwtRegister, "/post-jwt-register", user);
-      yield put(registerUserSuccessful(response));
-    } else if (process.env.REACT_APP_API_URL) {
-      const response = yield call(postFakeRegister, user);
-      if (response.message === "success") {
-        yield put(registerUserSuccessful(response));
-      } else {
-        yield put(registerUserFailed(response));
-      }
+
+      yield put(setProfile({...additionalInfo, email: email}));
+      yield put(registerUserSuccessful());
     }
+
+    // else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
+    //   const response = yield call(postJwtRegister, "/post-jwt-register", user);
+    //   yield put(registerUserSuccessful(response));
+    // } else if (process.env.REACT_APP_API_URL) {
+    //   const response = yield call(postFakeRegister, user);
+    //   if (response.message === "success") {
+    //     yield put(registerUserSuccessful(response));
+    //   } else {
+    //     yield put(registerUserFailed(response));
+    //   }
+    // }
   } catch (error) {
     yield put(registerUserFailed(error));
   }
@@ -44,8 +56,8 @@ export function* watchUserRegister() {
   yield takeEvery(REGISTER_USER, registerUser);
 }
 
-function* accountSaga() {
+function* registerSaga() {
   yield all([fork(watchUserRegister)]);
 }
 
-export default accountSaga;
+export default registerSaga;

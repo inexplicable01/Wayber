@@ -6,6 +6,7 @@ import {
 } from "./actionTypes"
 
 export const registerUser = user => {
+  console.log('action reached')
   return {
     type: REGISTER_USER,
     payload: { user },

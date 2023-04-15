@@ -35,9 +35,9 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
     const toogleMenuBtn = () => {
         var windowSize = document.documentElement.clientWidth;
         dispatch(changeSidebarVisibility("show"));
-        if (windowSize > 767)
-            document.querySelector(".hamburger-icon").classList.toggle('open');
-        //For collapse horizontal menu
+        // if (windowSize > 767)
+        //     document.querySelector(".hamburger-icon").classList.toggle('open');
+        // //For collapse horizontal menu
         if (document.documentElement.getAttribute('data-layout') === "horizontal") {
             document.body.classList.contains("menu") ? document.body.classList.remove("menu") : document.body.classList.add("menu");
         }
@@ -86,17 +86,17 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                                 </Link>
                             </div>
 
-                            <button
-                                onClick={toogleMenuBtn}
-                                type="button"
-                                className="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"
-                                id="topnav-hamburger-icon">
-                                <span className="hamburger-icon">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </span>
-                            </button>
+                            {/*<button*/}
+                            {/*    onClick={toogleMenuBtn}*/}
+                            {/*    type="button"*/}
+                            {/*    className="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"*/}
+                            {/*    id="topnav-hamburger-icon">*/}
+                            {/*    <span className="hamburger-icon">*/}
+                            {/*        <span></span>*/}
+                            {/*        <span></span>*/}
+                            {/*        <span></span>*/}
+                            {/*    </span>*/}
+                            {/*</button>*/}
 
 
                             <SearchOption />
@@ -126,19 +126,19 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                             <LanguageDropdown />
 
                             {/* WebAppsDropdown */}
-                            <WebAppsDropdown />
+                            {/*<WebAppsDropdown />*/}
 
                             {/* MyCartDropdwon */}
-                            <MyCartDropdown />
+                            {/*<MyCartDropdown />*/}
 
                             {/* FullScreenDropdown */}
-                            <FullScreenDropdown />
+                            {/*<FullScreenDropdown />*/}
 
                             {/* Dark/Light Mode set */}
-                            <LightDark
-                                layoutMode={layoutModeType}
-                                onChangeLayoutMode={onChangeLayoutMode}
-                            />
+                            {/*<LightDark*/}
+                            {/*    layoutMode={layoutModeType}*/}
+                            {/*    onChangeLayoutMode={onChangeLayoutMode}*/}
+                            {/*/>*/}
 
                             {/* NotificationDropdown */}
                             <NotificationDropdown />

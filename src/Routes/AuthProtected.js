@@ -9,21 +9,25 @@ import { logoutUser } from "../store/actions";
 
 const AuthProtected = (props) => {
   const dispatch = useDispatch();
-  const { userProfile, loading, token } = useProfile();
+  const { userProfile, authChecked  } = useProfile();
   useEffect(() => {
-    if (userProfile && !loading && token) {
-      setAuthorization(token);
-    } else if (!userProfile && loading && !token) {
+    // if (userProfile && !loading) {
+    //   setAuthorization(token);
+    // } else
+    console.log('activated' + userProfile)
+    if (!userProfile && authChecked ) {
       dispatch(logoutUser());
     }
-  }, [token, userProfile, loading, dispatch]);
+  }, [ userProfile, authChecked , dispatch]);
 
   /*
     Navigate is un-auth access protected routes via url
     */
 
-  if (!userProfile && loading && !token) {
+  if (!userProfile && authChecked ) {
+    console.log('WHY', userProfile)
     return (
+
       <Navigate to={{ pathname: "/landing", state: { from: props.location } }} />
     );
   }

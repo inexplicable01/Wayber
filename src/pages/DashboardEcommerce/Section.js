@@ -1,8 +1,11 @@
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import Flatpickr from "react-flatpickr";
+import {useSelector} from "react-redux";
 
 const Section = (props) => {
+
+    const user = useSelector(state=>state.Profile.user)
 
     return (
         <React.Fragment>
@@ -10,7 +13,7 @@ const Section = (props) => {
                 <Col xs={12}>
                     <div className="d-flex align-items-lg-center flex-lg-row flex-column">
                         <div className="flex-grow-1">
-                            <h4 className="fs-16 mb-1">Good Morning, Anna!</h4>
+                            <h4 className="fs-16 mb-1">Good Morning, {user.first_name}!</h4>
                             <p className="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
                         <div className="mt-3 mt-lg-0">
@@ -33,7 +36,7 @@ const Section = (props) => {
                                         <button type="button" className="btn btn-soft-success"><i className="ri-add-circle-line align-middle me-1"></i> Add Product</button>
                                     </div>
                                     <div className="col-auto">
-                                    <button type="button" className="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn" onClick={props.rightClickBtn} ><i className="ri-pulse-line"></i></button>
+                                    {/*<button type="button" className="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn" onClick={props.rightClickBtn} ><i className="ri-pulse-line"></i></button>*/}
                                     </div>
                                 </Row>
                             </form>

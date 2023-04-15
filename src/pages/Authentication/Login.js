@@ -28,7 +28,7 @@ import withRouter from '../../Components/Common/withRouter';
 const Login = (props) => {
     const dispatch = useDispatch();
     const { user, errorMsg, loading, error } = useSelector(state => ({
-        user: state.Account.user,
+        user: state.Profile.user,
         errorMsg: state.Login.errorMsg,
         loading: state.Login.loading,
         error: state.Login.error,
@@ -39,10 +39,10 @@ const Login = (props) => {
     const [passwordShow, setPasswordShow] = useState(false);
 
     useEffect(() => {
-        if (user && user) {
+        if (user) {
             setUserLogin({
-                email: user.user.email,
-                password: user.user.confirm_password
+                email: user.email,
+                password: user.confirm_password
             });
         }
     }, [user]);
@@ -60,6 +60,7 @@ const Login = (props) => {
             password: Yup.string().required("Please Enter Your Password"),
         }),
         onSubmit: (values) => {
+            console.log(values)
             dispatch(loginUser(values, props.router.navigate));
         }
     });
@@ -132,7 +133,7 @@ const Login = (props) => {
                                             <h5 className="text-primary">Welcome Back !</h5>
                                             <p className="text-muted">Sign in to continue to Velzon.</p>
                                         </div>
-                                        {console.log('error:'+errorMsg)}
+                                        {/*{console.log('error:'+errorMsg)}*/}
                                         {errorMsg && errorMsg ? (<Alert color="danger"> {errorMsg} </Alert>) : null}
                                         <div className="p-2 mt-4">
                                             <Form

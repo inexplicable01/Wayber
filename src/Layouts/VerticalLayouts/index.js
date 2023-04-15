@@ -34,11 +34,11 @@ const VerticalLayout = (props) => {
             if (document.documentElement.getAttribute("data-layout") === "semibox") {
                 document.documentElement.setAttribute("data-sidebar-size", leftsidbarSizeType);
             }
-            if ((sidebarVisibilitytype === "show" || layoutType === "vertical" || layoutType === "twocolumn") && document.querySelector(".hamburger-icon")) {
-                document.querySelector(".hamburger-icon").classList.remove("open");
-            } else {
-                document.querySelector(".hamburger-icon").classList.add("open");
-            }
+            // if ((sidebarVisibilitytype === "show" || layoutType === "vertical" || layoutType === "twocolumn") && document.querySelector(".hamburger-icon")) {
+            //     document.querySelector(".hamburger-icon").classList.remove("open");
+            // } else {
+            //     document.querySelector(".hamburger-icon").classList.add("open");
+            // }
 
         } else if (windowSize < 1025 && windowSize > 767) {
             document.body.classList.remove("twocolumn-panel");
@@ -48,19 +48,19 @@ const VerticalLayout = (props) => {
             if (document.documentElement.getAttribute("data-layout") === "semibox") {
                 document.documentElement.setAttribute("data-sidebar-size", "sm");
             }
-            if (document.querySelector(".hamburger-icon")) {
-                document.querySelector(".hamburger-icon").classList.add("open");
-            }
+            // if (document.querySelector(".hamburger-icon")) {
+            //     document.querySelector(".hamburger-icon").classList.add("open");
+            // }
         } else if (windowSize <= 767) {
             document.body.classList.remove("vertical-sidebar-enable");
             if (document.documentElement.getAttribute("data-layout") !== "horizontal") {
                 document.documentElement.setAttribute("data-sidebar-size", "lg");
             }
-            if (document.querySelector(".hamburger-icon")) {
-                document.querySelector(".hamburger-icon").classList.add("open");
-            }
+            // if (document.querySelector(".hamburger-icon")) {
+            //     document.querySelector(".hamburger-icon").classList.add("open");
+            // }
         }
-    }, [leftsidbarSizeType, sidebarVisibilitytype, layoutType]);
+    }, [leftsidbarSizeType]);
   
       useEffect(() => {
         window.addEventListener("resize", resizeSidebarMenu, true);
