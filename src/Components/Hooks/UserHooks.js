@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getLoggedinUser } from "../../helpers/api_helper";
 import { getFirebaseBackend } from "../../helpers/firebase_helper";
+import {useSelector} from "react-redux";
 
 // const useProfile = () => {
 //   const userProfileSession = getLoggedinUser();
@@ -28,6 +29,7 @@ import { getFirebaseBackend } from "../../helpers/firebase_helper";
 const useProfile = () => {
   const [authChecked , setAuthChecked ] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
+  const usersignedIn = useSelector(state=>state.Profile.usersignedIn)
   // const [userProfile]
 
   useEffect(() => {

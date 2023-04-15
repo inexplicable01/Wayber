@@ -150,18 +150,18 @@ const Navdata = () => {
                 updateIconSidebar(e);
             },
             subItems: [
-                {
-                    id: "analytics",
-                    label: "Analytics",
-                    link: "/dashboard-analytics",
-                    parentId: "dashboard",
-                },
-                {
-                    id: "crm",
-                    label: "CRM",
-                    link: "/dashboard-crm",
-                    parentId: "dashboard",
-                },
+                // {
+                //     id: "analytics",
+                //     label: "Analytics",
+                //     link: "/dashboard-analytics",
+                //     parentId: "dashboard",
+                // },
+                // {
+                //     id: "crm",
+                //     label: "CRM",
+                //     link: "/dashboard-crm",
+                //     parentId: "dashboard",
+                // },
                 // {
                 //     id: "ecommerce",
                 //     label: "Ecommerce",
@@ -174,12 +174,12 @@ const Navdata = () => {
                 //     link: "/dashboard-crypto",
                 //     parentId: "dashboard",
                 // },
-                {
-                    id: "projects",
-                    label: "Projects",
-                    link: "/dashboard-projects",
-                    parentId: "dashboard",
-                },
+                // {
+                //     id: "projects",
+                //     label: "Projects",
+                //     link: "/dashboard-projects",
+                //     parentId: "dashboard",
+                // },
                 // {
                 //     id: "nft",
                 //     label: "NFT",

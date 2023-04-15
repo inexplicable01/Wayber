@@ -2,7 +2,8 @@ import { PROFILE_ERROR,
   PROFILE_SUCCESS,
   EDIT_PROFILE,
   RESET_PROFILE_FLAG,
-    SET_PROFILE
+    SET_PROFILE,
+    RESET_USER
 } from "./actionTypes"
 
 export const editProfile = user => {
@@ -38,3 +39,9 @@ export const setProfile = user => {
     payload: user,
   };
 };
+
+// export const resetProfile = () => {
+//   return {
+//     type: RESET_USER,
+//   };
+// };

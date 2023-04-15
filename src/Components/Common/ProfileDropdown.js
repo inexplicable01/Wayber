@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
-import { useSelector } from 'react-redux';
-
+import { useSelector , useDispatch } from 'react-redux';
+import {useNavigate} from "react-router-dom";
+import {logoutUser} from  "../../store/actions";
 //import images
 import avatar1 from "../../assets/images/users/avatar-1.jpg";
 
 const ProfileDropdown = () => {
 
+    const dispatch = useDispatch();
     const { user } = useSelector(state => ({
         user: state.Profile.user,
     }));
+const navigate = useNavigate();
 
     // const [email, setUserEmail] = useState();
 
@@ -21,7 +24,14 @@ const ProfileDropdown = () => {
     //         );
     //     }
     // }, [email, user]);
+    const handleLogout = () => {
+        // Dispatch the logout action
+        dispatch(logoutUser());
 
+        // Redirect to the login page or any other page you'd like after logout
+        // window.location.href = process.env.PUBLIC_URL + "/login";
+        navigate('/landing')
+    };
     //Dropdown Toggle
     const [isProfileDropdown, setIsProfileDropdown] = useState(false);
     const toggleProfileDropdown = () => {
@@ -64,9 +74,10 @@ const ProfileDropdown = () => {
                                 className="align-middle">Settings</span></DropdownItem>
                     <DropdownItem href={process.env.PUBLIC_URL + "/auth-lockscreen-basic"}><i
                         className="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span className="align-middle">Lock screen</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/logout"}><i
-                        className="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                            className="align-middle" data-key="t-logout">Logout</span></DropdownItem>
+                    <DropdownItem onClick={handleLogout}>
+                        <i className="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+                        <span className="align-middle" data-key="t-logout">Logout</span>
+                    </DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         </React.Fragment>

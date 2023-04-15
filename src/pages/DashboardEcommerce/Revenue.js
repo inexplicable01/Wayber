@@ -19,12 +19,12 @@ const Revenue = () => {
   }, [revenueData]);
 
   const onChangeChartPeriod = pType => {
-    dispatch(getRevenueChartsData(pType));
+    // dispatch(getRevenueChartsData(pType));
   };
 
-  useEffect(() => {
-    dispatch(getRevenueChartsData("all"));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   // dispatch(getRevenueChartsData("all"));
+  // }, [dispatch]);
   return (
     <React.Fragment>
       <Card>

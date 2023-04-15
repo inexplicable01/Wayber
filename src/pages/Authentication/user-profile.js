@@ -40,26 +40,26 @@ const UserProfile = () => {
         error: state.Profile.error
     }));
 
-    useEffect(() => {
-        if (sessionStorage.getItem("authUser")) {
-            const obj = JSON.parse(sessionStorage.getItem("authUser"));
-
-            if (!isEmpty(user)) {
-                console.log(obj)
-                obj.data = user;
-                sessionStorage.removeItem("authUser");
-                sessionStorage.setItem("authUser", JSON.stringify(obj));
-            }
-
-            setUserName(obj.data.first_name);
-            setemail(obj.data.email);
-            setidx(obj.data._id || "1");
-
-            setTimeout(() => {
-                dispatch(resetProfileFlag());
-            }, 3000);
-        }
-    }, [dispatch, user]);
+    // useEffect(() => {
+    //     if (sessionStorage.getItem("authUser")) {
+    //         const obj = JSON.parse(sessionStorage.getItem("authUser"));
+    //
+    //         if (!isEmpty(user)) {
+    //             console.log(obj)
+    //             obj.data = user;
+    //             sessionStorage.removeItem("authUser");
+    //             sessionStorage.setItem("authUser", JSON.stringify(obj));
+    //         }
+    //
+    //         setUserName(obj.data.first_name);
+    //         setemail(obj.data.email);
+    //         setidx(obj.data._id || "1");
+    //
+    //         setTimeout(() => {
+    //             dispatch(resetProfileFlag());
+    //         }, 3000);
+    //     }
+    // }, [dispatch, user]);
 
 
     const validation = useFormik({

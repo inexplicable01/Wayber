@@ -1,9 +1,6 @@
 import {PROFILE_ERROR, PROFILE_SUCCESS, EDIT_PROFILE, RESET_PROFILE_FLAG, SET_PROFILE} from "./actionTypes";
 
-const initialState = {
-  error: "",
-  success: "",
-  user: {
+const dummyuser = {
     email:'',
     confirm_password:'',
     first_name:'FIRSTNAME',
@@ -15,6 +12,25 @@ const initialState = {
     budget:500000,
     role: 'Buyer',
   }
+
+  const resetuser = {
+    email:'',
+    confirm_password:'',
+    first_name:'',
+    last_name:'',
+    age: null,
+    current_address:'',
+    phone_number: null,
+    property_type: '',
+    budget:null,
+    role: '',
+  }
+
+const initialState = {
+  error: "",
+  success: "",
+  usersignedIn: false,
+  user: resetuser
 };
 
 const profile = (state = initialState, action) => {
@@ -37,13 +53,13 @@ const profile = (state = initialState, action) => {
       break;
     case RESET_PROFILE_FLAG:
       state = {
-        ...state,
-        success: null
+        ...initialState,
       };
       break;
     case SET_PROFILE:
       state = {
         ...state,
+        // usersignedIn: true,
         user: {...state.user,
           ...action.payload},
       };

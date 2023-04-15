@@ -1,9 +1,9 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
 
 // Login Redux States
-import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN } from "./actionTypes";
+import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN} from "./actionTypes";
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
-import { setProfile } from "../profile/actions";
+import {setProfile, resetProfileFlag} from "../profile/actions";
 //Include Both Helper File with needed methods
 import firebase from "firebase/app";
 import "firebase/firestore";
@@ -76,9 +76,10 @@ function* loginUser({ payload: { user, history } }) {
 
 function* logoutUser() {
   try {
-    sessionStorage.removeItem("authUser");
+    // sessionStorage.removeItem("authUser");
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       const response = yield call(fireBaseBackend.logout);
+      yield put(resetProfileFlag())
       yield put(logoutUserSuccess(LOGOUT_USER, response));
     } else {
       yield put(logoutUserSuccess(LOGOUT_USER, true));

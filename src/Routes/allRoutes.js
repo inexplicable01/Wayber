@@ -244,14 +244,14 @@ import ToDoList from "../pages/ToDo";
 import ChatWindow from "../pages/ChatBot/ChatWindow";
 
 const authProtectedRoutes = [
-  { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
-  { path: "/dashboard-crm", component: <DashboardCrm /> },
+  // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
+  // { path: "/dashboard-crm", component: <DashboardCrm /> },
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
   // { path: "/dashboard-crypto", component: <DashboardCrypto /> },
-  { path: "/dashboard-projects", component: <DashboardProject /> },
-  // { path: "/dashboard-nft", component: <DashboardNFT /> },
-  { path: "/dashboard-job", component: <DashboardJobs /> },
+  // { path: "/dashboard-projects", component: <DashboardProject /> },
+  // // { path: "/dashboard-nft", component: <DashboardNFT /> },
+  // { path: "/dashboard-job", component: <DashboardJobs /> },
   // { path: "/apps-calendar", component: <Calendar /> },
   // { path: "/apps-ecommerce-products", component: <EcommerceProducts /> },
   // { path: "/apps-ecommerce-product-details", component: <EcommerceProductDetail /> },
@@ -264,8 +264,8 @@ const authProtectedRoutes = [
   // { path: "/apps-ecommerce-sellers", component: <EcommerceSellers /> },
   // { path: "/apps-ecommerce-seller-details", component: <EcommerceSellerDetail /> },
 
-  { path: "/apps-file-manager", component: <FileManager /> },
-  { path: "/apps-todo", component: <ToDoList /> },
+  // { path: "/apps-file-manager", component: <FileManager /> },
+  // { path: "/apps-todo", component: <ToDoList /> },
 
 
   //Chat
