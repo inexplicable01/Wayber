@@ -49,7 +49,7 @@ import {
 } from "../../store/actions";
 
 const Calender = () => {
-  document.title = "Calendar | Velzon - React Admin & Dashboard Template";
+  document.title = "Calendar | Velzon - " + process.env.APPNAME_TITLE;
 
   const dispatch = useDispatch();
   const [event, setEvent] = useState({});

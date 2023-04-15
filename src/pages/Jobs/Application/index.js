@@ -36,7 +36,7 @@ import {
 } from "./ApplicationCol";
 import MultiUser from "../../../assets/images/users/multi-user.jpg";
 const Application = () => {
-  document.title = "Application | Velzon - React Admin & Dashboard Template";
+  document.title = "Application | Velzon - " + process.env.APPNAME_TITLE;
 
   const option = [
     {

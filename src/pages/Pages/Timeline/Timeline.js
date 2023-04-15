@@ -28,7 +28,7 @@ import small9 from "../../../assets/images/small/img-9.jpg";
 
 
 const Timeline = () => {
-  document.title="Timeline | Velzon - React Admin & Dashboard Template";
+  document.title="Timeline | Velzon - " + process.env.APPNAME_TITLE;
     
     SwiperCore.use([FreeMode, Navigation, Thumbs]);
   const [thumbsSwiper] = useState(null);

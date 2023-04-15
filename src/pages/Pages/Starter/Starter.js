@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'reactstrap';
 import BreadCrumb from '../../../Components/Common/BreadCrumb';
 
 const Starter = () => {
-  document.title="Starter | Velzon - React Admin & Dashboard Template";
+  document.title="Starter | Velzon - " + process.env.APPNAME_TITLE;
 
   return (
     <React.Fragment>      

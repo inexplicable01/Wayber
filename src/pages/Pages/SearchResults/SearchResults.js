@@ -23,7 +23,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay } from "swiper";
 
 const SearchResults = () => {
-  document.title="Search Results | Velzon - React Admin & Dashboard Template";
+  document.title="Search Results | Velzon - " + process.env.APPNAME_TITLE;
 
     SwiperCore.use([Autoplay]);
 

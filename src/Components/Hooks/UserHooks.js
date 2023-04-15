@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { getLoggedinUser } from "../../helpers/api_helper";
+// import { getLoggedinUser } from "../../helpers/api_helper";
 import { getFirebaseBackend } from "../../helpers/firebase_helper";
-import {useSelector} from "react-redux";
-
+import {useSelector, useDispatch } from "react-redux";
+import { setProfile, resetProfileFlag } from "../../store/actions";
 // const useProfile = () => {
 //   const userProfileSession = getLoggedinUser();
 //   var token =
@@ -28,8 +28,9 @@ import {useSelector} from "react-redux";
 
 const useProfile = () => {
   const [authChecked , setAuthChecked ] = useState(false);
-  const [userProfile, setUserProfile] = useState(null);
-  const usersignedIn = useSelector(state=>state.Profile.usersignedIn)
+  // const [userProfile, setUserProfile] = useState(null);
+  const userProfile = useSelector((state) => state.Profile.user);
+  const dispatch = useDispatch();
   // const [userProfile]
 
   useEffect(() => {
@@ -41,12 +42,12 @@ const useProfile = () => {
         console.log("authUser:", authUser);
         firebaseBackend.getUserProfile(authUser.uid).then((userProfile) => {
           console.log("Fetched user profile:", userProfile); // Log fetched user profile
-          setUserProfile({ ...authUser, ...userProfile });
+          dispatch(setProfile({ ...authUser, ...userProfile }));
           setAuthChecked(true);
         });
       } else {
         console.log("No authUser"); // Log when there's no authUser
-        setUserProfile(null);
+        dispatch(resetProfileFlag());
         setAuthChecked(true);
       }
     });

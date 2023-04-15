@@ -7,7 +7,7 @@ import logoDark from "../../assets/images/logo-dark.png";
 import logoLight from "../../assets/images/logo-light.png";
 
 const InvoiceDetails = () => {
-  document.title = "Invoice Details | Velzon - React Admin & Dashboard Template";
+  document.title = "Invoice Details | Velzon - " + process.env.APPNAME_TITLE;
   //Print the Invoice
   const printInvoice = () => {
     window.print();

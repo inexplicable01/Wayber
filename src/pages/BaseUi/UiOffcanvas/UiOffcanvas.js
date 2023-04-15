@@ -28,7 +28,7 @@ import img11 from "../../../assets/images/small/img-11.jpg";
 import img12 from "../../../assets/images/small/img-12.jpg";
 
 const UiOffcanvas = () => {
-    document.title = "Offcanvas | Velzon - React Admin & Dashboard Template";
+    document.title = "Offcanvas | Velzon - " + process.env.APPNAME_TITLE;
 
     const [open, setOpen] = useState(false);
     const [isTop, setIsTop] = useState(false);

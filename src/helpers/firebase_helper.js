@@ -187,18 +187,16 @@ class FirebaseAuthBackend {
     });
   };
 
-  onAuthStateChanged = (onUserChanged) => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        sessionStorage.setItem("authUser", JSON.stringify(user));
-        onUserChanged(user);
-      } else {
-        sessionStorage.removeItem("authUser");
-        onUserChanged(null);
-      }
-    });
-    return unsubscribe;
-  };
+onAuthStateChanged = (onUserChanged) => {
+  const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      onUserChanged(user);
+    } else {
+      onUserChanged(null);
+    }
+  });
+  return unsubscribe;
+};
 
   // ..
 

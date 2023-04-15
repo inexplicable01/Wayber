@@ -36,7 +36,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const InvoiceList = () => {
-  document.title = "Invoice List  | Velzon - React Admin & Dashboard Template";
+  document.title = "Invoice List  | Velzon - " + process.env.APPNAME_TITLE;
 
   const dispatch = useDispatch();
 

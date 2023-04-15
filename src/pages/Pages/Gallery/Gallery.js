@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { gallery } from '../../../common/data';
 
 const Gallery = () => {
-  document.title = "Gallery | Velzon - React Admin & Dashboard Template";
+  document.title = "Gallery | Velzon - " + process.env.APPNAME_TITLE;
 
   const [displayCategory, setCategory] = useState("All");
 

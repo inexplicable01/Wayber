@@ -30,7 +30,7 @@ const initialState = {
   error: "",
   success: "",
   usersignedIn: false,
-  user: resetuser
+  user: null,
 };
 
 const profile = (state = initialState, action) => {

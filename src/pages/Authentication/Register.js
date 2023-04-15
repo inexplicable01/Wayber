@@ -76,17 +76,17 @@ const Register = () => {
     }));
 
     const generateRandomValues = () => {
-  const firstNames = ["John", "Jane", "Michael", "Sarah", "David", "Emily", "Chris", "Emma"];
-  const lastNames = ["Smith", "Johnson", "Brown", "Jones", "Taylor", "Williams", "Miller", "Davis"];
+        const firstNames = ["John", "Jane", "Michael", "Sarah", "David", "Emily", "Chris", "Emma"];
+        const lastNames = ["Smith", "Johnson", "Brown", "Jones", "Taylor", "Williams", "Miller", "Davis"];
 
-  const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-  const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-  const randomEmail = `${randomFirstName}.${randomLastName}${Math.floor(Math.random() * 100)}@example.com`;
- const randomPhoneNumber = `555${Math.floor(1000000 + Math.random() * 9000000)}`;
-    validation.setFieldValue("first_name", randomFirstName);
-  validation.setFieldValue("last_name", randomLastName);
-  validation.setFieldValue("email", randomEmail);
-  validation.setFieldValue('age', Math.floor(Math.random() * 100) + 1);
+        const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+        const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+        const randomEmail = `${randomFirstName}.${randomLastName}${Math.floor(Math.random() * 100)}@example.com`;
+        const randomPhoneNumber = `555${Math.floor(1000000 + Math.random() * 9000000)}`;
+        validation.setFieldValue("first_name", randomFirstName);
+        validation.setFieldValue("last_name", randomLastName);
+        validation.setFieldValue("email", randomEmail);
+        validation.setFieldValue('age', Math.floor(Math.random() * 100) + 1);
         validation.setFieldValue('current_address', Math.random().toString(36).substring(2, 11));
         validation.setFieldValue('phone_number', randomPhoneNumber);
 
@@ -122,7 +122,7 @@ const Register = () => {
 
     }, [dispatch, success, error, history]);
 
-    document.title = "Basic SignUp | Velzon - React Admin & Dashboard Template";
+    document.title = "SignUp | " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

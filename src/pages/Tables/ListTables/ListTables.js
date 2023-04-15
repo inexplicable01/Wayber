@@ -15,7 +15,7 @@ import avatar4 from "../../../assets/images/users/avatar-4.jpg";
 import avatar5 from "../../../assets/images/users/avatar-5.jpg";
 
 const ListTables = () => {
-    document.title="Listjs | Velzon - React Admin & Dashboard Template";
+    document.title="Listjs | Velzon - " + process.env.APPNAME_TITLE;
 
     const [modal_list, setmodal_list] = useState(false);
     function tog_list() {

@@ -15,7 +15,7 @@ import {
 } from "./BarCharts";
 
 const BarCharts = () => {
-    document.title="Bar Charts | Velzon - React Admin & Dashboard Template";
+    document.title="Bar Charts | Velzon - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">         

@@ -13,7 +13,7 @@ const Section = (props) => {
                 <Col xs={12}>
                     <div className="d-flex align-items-lg-center flex-lg-row flex-column">
                         <div className="flex-grow-1">
-                            <h4 className="fs-16 mb-1">Good Morning, {user.first_name}!</h4>
+                            <h4 className="fs-16 mb-1">Good Morning, {user ? `${user.first_name} ${user.last_name}` : 'Guest'}!</h4>
                             <p className="text-muted mb-0">Here's what's happening with your store today.</p>
                         </div>
                         <div className="mt-3 mt-lg-0">
