@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import NavbarPage from "./Navbar_Page";
+import NavbarPageWithRouter from "./Navbar_Page";
 import Section from './section';
 import Service from "./service";
 import AboutUs from "./AboutUs";
@@ -14,7 +14,8 @@ import Blog from "./Blog"
 import Contact from "./Contact";
 import Social from "./Social";
 import Footer from "./footer";
-
+import '../../../../src/assets/css/style.css';
+import '../../../../src/assets/css/pe-icon-7-stroke.css';
 class Index extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +39,7 @@ class Index extends Component {
             <React.Fragment>
 
                 {/* Importing Navbar */}
-                <NavbarPage navItems={this.state.navItems} navClass={this.state.navClass} />
+                <NavbarPageWithRouter navItems={this.state.navItems} navClass={this.state.navClass} />
 
                 {/* section */}
                 <Section/>
@@ -51,7 +52,7 @@ class Index extends Component {
 
 
                 {/* website description */}
-                <WebsiteDesc/>
+                {/*<WebsiteDesc/>*/}
 
                 {/* pricing */}
                 <Pricing/>
@@ -60,7 +61,7 @@ class Index extends Component {
                 <Team/>
 
                 {/* process */}
-                <Process/>
+                {/*<Process/>*/}
 
                 {/* testimonial */}
                 <Testimonials/>
@@ -75,10 +76,10 @@ class Index extends Component {
                 <Contact/>
 
                 {/* social */}
-                <Social />
+                {/*<Social />*/}
 
-                {/* footer */}
-                <Footer/>
+                {/*/!* footer *!/*/}
+                {/*<Footer/>*/}
             </React.Fragment>
         );
     }

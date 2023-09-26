@@ -83,7 +83,7 @@ p {
 }
 
 .bg-overlay {
-  background: linear-gradient(to right, #512da8, #711e72);
+  background: linear-gradient(to right, #58caea, #7084c7);
   opacity: 0.9;
   position: absolute;
   height: 100%;
@@ -1431,6 +1431,7 @@ iframe {
 .home-title {
   font-size: 46px;
   line-height: 64px;
+   color: white; /* This sets the font color to black */
 }
 
 .display-table-cell {
@@ -1725,6 +1726,7 @@ iframe {
 .services-box:hover i {
   color: #ffffff !important;
   transition: all 0.3s ease-in-out;
+  background-color: #00e6e6;
 }
 
 .bg-web-desc {

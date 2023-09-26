@@ -133,3 +133,22 @@
 .waves-block {
   display: block;
 }
+
+
+.waves-shape {
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wave-one {
+  background-size: 50% 100px;
+}
+
+.wave-anim .wave-one {
+  animation: move-wave 3s;
+  -webkit-animation: move-wave 3s;
+  animation-delay: 1s;
+}

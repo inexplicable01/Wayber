@@ -9,131 +9,27 @@ import DashboardJobs from '../pages/DashboardJob'
 
 import DashboardCrypto from "../pages/DashboardCrypto";
 import DashboardProject from "../pages/DashboardProject";
+
+import ListingPage from "../pages/Maps/ListingPage"
 // import DashboardNFT from "../pages/DashboardNFT";
 
-//Calendar
-// Email box
-// import MailInbox from "../pages/EmailInbox";
-// import BasicAction from "../pages/Email/EmailTemplates/BasicAction";
-// import EcommerceAction from "../pages/Email/EmailTemplates/EcommerceAction";
 
 //Chat
 import Chat from "../pages/Chat";
-// import ChatWindow from "../pages/ChatBot/ChatWindow"
-// import Calendar from "../pages/Calendar";
-
-// Project
-// import ProjectList from "../pages/Projects/ProjectList";
-// import ProjectOverview from "../pages/Projects/ProjectOverview";
-// import CreateProject from "../pages/Projects/CreateProject";
 
 //Task
 import TaskDetails from "../pages/Tasks/TaskDetails";
 import TaskList from "../pages/Tasks/TaskList";
 
-// //Transactions
-// import Transactions from '../pages/Crypto/Transactions';
-// import BuySell from '../pages/Crypto/BuySell';
-// import CryproOrder from '../pages/Crypto/CryptoOrder';
-// import MyWallet from '../pages/Crypto/MyWallet';
-// import ICOList from '../pages/Crypto/ICOList';
-// import KYCVerification from '../pages/Crypto/KYCVerification';
-
-//Crm Pages
-// import CrmCompanies from "../pages/Crm/CrmCompanies";
-// import CrmContacts from "../pages/Crm/CrmContacts";
-// import CrmDeals from "../pages/Crm/CrmDeals/index";
-// import CrmLeads from "../pages/Crm/CrmLeads/index";
-
-//Invoices
-// import InvoiceList from "../pages/Invoices/InvoiceList";
-// import InvoiceCreate from "../pages/Invoices/InvoiceCreate";
-// import InvoiceDetails from "../pages/Invoices/InvoiceDetails";
 
 // Support Tickets
 import ListView from '../pages/SupportTickets/ListView';
 import TicketsDetails from '../pages/SupportTickets/TicketsDetails';
 
-// //Ecommerce Pages
-// import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index";
-// import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail";
-// import EcommerceAddProduct from "../pages/Ecommerce/EcommerceProducts/EcommerceAddProduct";
-// import EcommerceOrders from "../pages/Ecommerce/EcommerceOrders/index";
-// import EcommerceOrderDetail from "../pages/Ecommerce/EcommerceOrders/EcommerceOrderDetail";
-// import EcommerceCustomers from "../pages/Ecommerce/EcommerceCustomers/index";
-// import EcommerceCart from "../pages/Ecommerce/EcommerceCart";
-// import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout";
-// import EcommerceSellers from "../pages/Ecommerce/EcommerceSellers/index";
-// import EcommerceSellerDetail from "../pages/Ecommerce/EcommerceSellers/EcommerceSellerDetail";
-
-// NFT Marketplace Pages
-// import Marketplace from "../pages/NFTMarketplace/Marketplace";
-// import Collections from "../pages/NFTMarketplace/Collections";
-// import CreateNFT from "../pages/NFTMarketplace/CreateNFT";
-// import Creators from "../pages/NFTMarketplace/Creators";
-// import ExploreNow from "../pages/NFTMarketplace/ExploreNow";
-// import ItemDetails from "../pages/NFTMarketplace/Itemdetails";
-// import LiveAuction from "../pages/NFTMarketplace/LiveAuction";
-// import Ranking from "../pages/NFTMarketplace/Ranking";
-// import WalletConnect from "../pages/NFTMarketplace/WalletConnect";
-//
-// // Base Ui
-// import UiAlerts from "../pages/BaseUi/UiAlerts/UiAlerts";
-// import UiBadges from "../pages/BaseUi/UiBadges/UiBadges";
-// import UiButtons from "../pages/BaseUi/UiButtons/UiButtons";
-// import UiColors from "../pages/BaseUi/UiColors/UiColors";
-// import UiCards from "../pages/BaseUi/UiCards/UiCards";
-// import UiCarousel from "../pages/BaseUi/UiCarousel/UiCarousel";
-// import UiDropdowns from "../pages/BaseUi/UiDropdowns/UiDropdowns";
-// import UiGrid from "../pages/BaseUi/UiGrid/UiGrid";
-// import UiImages from "../pages/BaseUi/UiImages/UiImages";
-// import UiTabs from "../pages/BaseUi/UiTabs/UiTabs";
-// import UiAccordions from "../pages/BaseUi/UiAccordion&Collapse/UiAccordion&Collapse";
-// import UiModals from "../pages/BaseUi/UiModals/UiModals";
-// import UiOffcanvas from "../pages/BaseUi/UiOffcanvas/UiOffcanvas";
-// import UiPlaceholders from "../pages/BaseUi/UiPlaceholders/UiPlaceholders";
-// import UiProgress from "../pages/BaseUi/UiProgress/UiProgress";
-// import UiNotifications from "../pages/BaseUi/UiNotifications/UiNotifications";
-// import UiMediaobject from "../pages/BaseUi/UiMediaobject/UiMediaobject";
-// import UiEmbedVideo from "../pages/BaseUi/UiEmbedVideo/UiEmbedVideo";
-// import UiTypography from "../pages/BaseUi/UiTypography/UiTypography";
-// import UiList from "../pages/BaseUi/UiLists/UiLists";
-// import UiGeneral from "../pages/BaseUi/UiGeneral/UiGeneral";
-// import UiRibbons from "../pages/BaseUi/UiRibbons/UiRibbons";
-// import UiUtilities from "../pages/BaseUi/UiUtilities/UiUtilities";
-//
-// // Advance Ui
-// import UiNestableList from "../pages/AdvanceUi/UiNestableList/UiNestableList";
-// import UiScrollbar from "../pages/AdvanceUi/UiScrollbar/UiScrollbar";
-// import UiAnimation from "../pages/AdvanceUi/UiAnimation/UiAnimation";
-// import UiTour from "../pages/AdvanceUi/UiTour/UiTour";
-// import UiSwiperSlider from "../pages/AdvanceUi/UiSwiperSlider/UiSwiperSlider";
-// import UiRatings from "../pages/AdvanceUi/UiRatings/UiRatings";
-// import UiHighlight from "../pages/AdvanceUi/UiHighlight/UiHighlight";
 
 // Widgets
 import Widgets from '../pages/Widgets/Index';
 
-//Forms
-// import BasicElements from "../pages/Forms/BasicElements/BasicElements";
-// import FormSelect from "../pages/Forms/FormSelect/FormSelect";
-// import FormEditor from "../pages/Forms/FormEditor/FormEditor";
-// import CheckBoxAndRadio from "../pages/Forms/CheckboxAndRadio/CheckBoxAndRadio";
-// import Masks from "../pages/Forms/Masks/Masks";
-// import FileUpload from "../pages/Forms/FileUpload/FileUpload";
-// import FormPickers from "../pages/Forms/FormPickers/FormPickers";
-// import FormRangeSlider from "../pages/Forms/FormRangeSlider/FormRangeSlider";
-// import Formlayouts from "../pages/Forms/FormLayouts/Formlayouts";
-// import FormValidation from "../pages/Forms/FormValidation/FormValidation";
-// import FormWizard from "../pages/Forms/FormWizard/FormWizard";
-// import FormAdvanced from "../pages/Forms/FormAdvanced/FormAdvanced";
-// import Select2 from "../pages/Forms/Select2/Select2";
-//
-// //Tables
-// import BasicTables from '../pages/Tables/BasicTables/BasicTables';
-// import GridTables from '../pages/Tables/GridTables/GridTables';
-// import ListTables from '../pages/Tables/ListTables/ListTables';
-// import DataTables from "../pages/Tables/DataTables/DataTables";
 
 //Icon pages
 import RemixIcons from "../pages/Icons/RemixIcons/RemixIcons";
@@ -195,6 +91,164 @@ import ForgetPasswordPage from "../pages/Authentication/ForgetPassword";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 
+
+
+//Job pages
+import Statistics from "../pages/Jobs/Statistics";
+import JobList from "../pages/Jobs/JobList/List";
+import JobGrid from "../pages/Jobs/JobList/Grid";
+import JobOverview from "../pages/Jobs/JobList/Overview";
+import CandidateList from "../pages/Jobs/CandidateList/ListView";
+import CandidateGrid from "../pages/Jobs/CandidateList/GridView";
+import NewJobs from "../pages/Jobs/NewJob";
+import JobCategories from "../pages/Jobs/JobCategories";
+import Application from "../pages/Jobs/Application";
+import CompaniesList from "../pages/Jobs/CompaniesList";
+
+import ApiKey from '../pages/APIKey/index'
+
+// Landing Index
+import OnePage from "../pages/Landing/OnePage";
+// import NFTLanding from "../pages/Landing/NFTLanding";
+import Dorsin from "../pages/Landing/Dorsin"
+// import JobLanding from '../pages/Landing/Job'
+
+// User Profile
+import UserProfile from "../pages/Authentication/user-profile";
+
+import FileManager from "../pages/FileManager";
+import ToDoList from "../pages/ToDo";
+import ChatWindow from "../pages/ChatBot/ChatWindow";
+
+const authProtectedRoutes = [
+  // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
+  // { path: "/dashboard-crm", component: <DashboardCrm /> },
+  { path: "/dashboard", component: <DashboardEcommerce /> },
+  { path: "/index", component: <DashboardEcommerce /> },
+
+
+  //Chat
+  { path: "/apps-chat", component: <Chat /> },
+  { path: "/apps-chatwindow", component: <ChatWindow /> },
+
+
+
+  //Task
+  { path: "/apps-tasks-list-view", component: <TaskList /> },
+  { path: "/apps-tasks-details", component: <TaskDetails /> },
+
+
+
+  //Supports Tickets
+  { path: "/apps-tickets-list", component: <ListView /> },
+  { path: "/apps-tickets-details", component: <TicketsDetails /> },
+
+
+
+  // Widgets
+  { path: "/widgets", component: <Widgets /> },
+
+
+
+  //Icons
+  { path: "/icons-remix", component: <RemixIcons /> },
+  { path: "/icons-boxicons", component: <BoxIcons /> },
+  { path: "/icons-materialdesign", component: <MaterialDesign /> },
+  { path: "/icons-feather", component: <FeatherIcons /> },
+  { path: "/icons-lineawesome", component: <LineAwesomeIcons /> },
+  { path: "/icons-crypto", component: <CryptoIcons /> },
+
+  //Maps
+  // { path: "/maps-google", component: <GoogleMaps /> },
+  { path: "/maps-vector", component: <VectorMaps /> },
+  { path: "/maps-leaflet", component: <LeafletMaps /> },
+
+  //Pages
+  { path: "/pages-starter", component: <ListingPage /> },
+  { path: "/pages-profile", component: <SimplePage /> },
+  { path: "/pages-profile-settings", component: <Settings /> },
+  { path: "/pages-team", component: <Team /> },
+  { path: "/pages-timeline", component: <Timeline /> },
+  { path: "/pages-faqs", component: <Faqs /> },
+  { path: "/pages-gallery", component: <Gallery /> },
+  { path: "/pages-pricing", component: <Pricing /> },
+  { path: "/pages-sitemap", component: <SiteMap /> },
+  { path: "/pages-search-results", component: <SearchResults /> },
+  { path: "/pages-privecy-policy", component: <PrivecyPolicy /> },
+  { path: "/pages-terms-condition", component: <TermsCondition /> },
+
+  //User Profile
+  { path: "/profile", component: <UserProfile /> },
+
+  // this route should be at the end of all other routes
+  // eslint-disable-next-line react/display-name
+
+  { path: "*", component: <Navigate to="/dashboard" /> },
+
+  //Job pages
+  { path: "/apps-job-statistics", component: <Statistics /> },
+  { path: "/apps-job-lists", component: <JobList /> },
+  { path: "/apps-job-grid-lists", component: <JobGrid /> },
+  { path: "/apps-job-details", component: <JobOverview /> },
+  { path: "/apps-job-candidate-lists", component: <CandidateList /> },
+  { path: "/apps-job-candidate-grid", component: <CandidateGrid /> },
+  { path: "/apps-job-application", component: <Application /> },
+  { path: "/apps-job-new", component: <NewJobs /> },
+  { path: "/apps-job-companies-lists", component: <CompaniesList /> },
+  { path: "/apps-job-categories", component: <JobCategories /> },
+
+  //APIkey
+  { path: "/apps-api-key", component: <ApiKey /> },
+
+];
+
+const publicRoutes = [
+  // Authentication Page
+  {
+    path: "/",
+    exact: true,
+    component: <Navigate to="/landing" />,
+  },
+  { path: "/logout", component: <Logout /> },
+  { path: "/login", component: <Login /> },
+  { path: "/forgot-password", component: <ForgetPasswordPage /> },
+  { path: "/register", component: <Register /> },
+
+  //AuthenticationInner pages
+  { path: "/auth-signin-basic", component: <BasicSignIn /> },
+  { path: "/auth-signin-cover", component: <CoverSignIn /> },
+  { path: "/auth-signup-basic", component: <BasicSignUp /> },
+  { path: "/auth-signup-cover", component: <CoverSignUp /> },
+  { path: "/auth-pass-reset-basic", component: <BasicPasswReset /> },
+  { path: "/auth-pass-reset-cover", component: <CoverPasswReset /> },
+  { path: "/auth-lockscreen-basic", component: <BasicLockScreen /> },
+  { path: "/auth-lockscreen-cover", component: <CoverLockScreen /> },
+  { path: "/auth-logout-basic", component: <BasicLogout /> },
+  { path: "/auth-logout-cover", component: <CoverLogout /> },
+  { path: "/auth-success-msg-basic", component: <BasicSuccessMsg /> },
+  { path: "/auth-success-msg-cover", component: <CoverSuccessMsg /> },
+  { path: "/auth-twostep-basic", component: <BasicTwosVerify /> },
+  { path: "/auth-twostep-cover", component: <CoverTwosVerify /> },
+  { path: "/auth-404-basic", component: <Basic404 /> },
+  { path: "/auth-404-cover", component: <Cover404 /> },
+  { path: "/auth-404-alt", component: <Alt404 /> },
+  { path: "/auth-500", component: <Error500 /> },
+  { path: "/pages-maintenance", component: <Maintenance /> },
+  { path: "/pages-coming-soon", component: <ComingSoon /> },
+
+  { path: "/landing", component: <Dorsin /> },
+  // { path: "/landingtest", component: <Dorsin /> },
+  // { path: "/nft-landing", component: <NFTLanding /> },
+  // { path: "/job-landing", component: <OnePage /> },
+
+  { path: "/auth-pass-change-basic", component: <BasicPasswCreate /> },
+  { path: "/auth-pass-change-cover", component: <CoverPasswCreate /> },
+  { path: "/auth-offline", component: <Offlinepage /> },
+
+];
+
+export { authProtectedRoutes, publicRoutes };
+
 //Charts
 // import LineCharts from "../pages/Charts/ApexCharts/LineCharts";
 // import AreaCharts from "../pages/Charts/ApexCharts/AreaCharts";
@@ -216,38 +270,133 @@ import Register from "../pages/Authentication/Register";
 // import ChartsJs from "../pages/Charts/ChartsJs/index";
 // import Echarts from "../pages/Charts/ECharts/index";
 
-//Job pages
-import Statistics from "../pages/Jobs/Statistics";
-import JobList from "../pages/Jobs/JobList/List";
-import JobGrid from "../pages/Jobs/JobList/Grid";
-import JobOverview from "../pages/Jobs/JobList/Overview";
-import CandidateList from "../pages/Jobs/CandidateList/ListView";
-import CandidateGrid from "../pages/Jobs/CandidateList/GridView";
-import NewJobs from "../pages/Jobs/NewJob";
-import JobCategories from "../pages/Jobs/JobCategories";
-import Application from "../pages/Jobs/Application";
-import CompaniesList from "../pages/Jobs/CompaniesList";
+//Forms
+// import BasicElements from "../pages/Forms/BasicElements/BasicElements";
+// import FormSelect from "../pages/Forms/FormSelect/FormSelect";
+// import FormEditor from "../pages/Forms/FormEditor/FormEditor";
+// import CheckBoxAndRadio from "../pages/Forms/CheckboxAndRadio/CheckBoxAndRadio";
+// import Masks from "../pages/Forms/Masks/Masks";
+// import FileUpload from "../pages/Forms/FileUpload/FileUpload";
+// import FormPickers from "../pages/Forms/FormPickers/FormPickers";
+// import FormRangeSlider from "../pages/Forms/FormRangeSlider/FormRangeSlider";
+// import Formlayouts from "../pages/Forms/FormLayouts/Formlayouts";
+// import FormValidation from "../pages/Forms/FormValidation/FormValidation";
+// import FormWizard from "../pages/Forms/FormWizard/FormWizard";
+// import FormAdvanced from "../pages/Forms/FormAdvanced/FormAdvanced";
+// import Select2 from "../pages/Forms/Select2/Select2";
+//
+// //Tables
+// import BasicTables from '../pages/Tables/BasicTables/BasicTables';
+// import GridTables from '../pages/Tables/GridTables/GridTables';
+// import ListTables from '../pages/Tables/ListTables/ListTables';
+// import DataTables from "../pages/Tables/DataTables/DataTables";
+// //Ecommerce Pages
+// import EcommerceProducts from "../pages/Ecommerce/EcommerceProducts/index";
+// import EcommerceProductDetail from "../pages/Ecommerce/EcommerceProducts/EcommerceProductDetail";
+// import EcommerceAddProduct from "../pages/Ecommerce/EcommerceProducts/EcommerceAddProduct";
+// import EcommerceOrders from "../pages/Ecommerce/EcommerceOrders/index";
+// import EcommerceOrderDetail from "../pages/Ecommerce/EcommerceOrders/EcommerceOrderDetail";
+// import EcommerceCustomers from "../pages/Ecommerce/EcommerceCustomers/index";
+// import EcommerceCart from "../pages/Ecommerce/EcommerceCart";
+// import EcommerceCheckout from "../pages/Ecommerce/EcommerceCheckout";
+// import EcommerceSellers from "../pages/Ecommerce/EcommerceSellers/index";
+// import EcommerceSellerDetail from "../pages/Ecommerce/EcommerceSellers/EcommerceSellerDetail";
 
-import ApiKey from '../pages/APIKey/index'
+// NFT Marketplace Pages
+// import Marketplace from "../pages/NFTMarketplace/Marketplace";
+// import Collections from "../pages/NFTMarketplace/Collections";
+// import CreateNFT from "../pages/NFTMarketplace/CreateNFT";
+// import Creators from "../pages/NFTMarketplace/Creators";
+// import ExploreNow from "../pages/NFTMarketplace/ExploreNow";
+// import ItemDetails from "../pages/NFTMarketplace/Itemdetails";
+// import LiveAuction from "../pages/NFTMarketplace/LiveAuction";
+// import Ranking from "../pages/NFTMarketplace/Ranking";
+// import WalletConnect from "../pages/NFTMarketplace/WalletConnect";
+//
+// // Base Ui
+// import UiAlerts from "../pages/BaseUi/UiAlerts/UiAlerts";
+// import UiBadges from "../pages/BaseUi/UiBadges/UiBadges";
+// import UiButtons from "../pages/BaseUi/UiButtons/UiButtons";
+// import UiColors from "../pages/BaseUi/UiColors/UiColors";
+// import UiCards from "../pages/BaseUi/UiCards/UiCards";
+// import UiCarousel from "../pages/BaseUi/UiCarousel/UiCarousel";
+// import UiDropdowns from "../pages/BaseUi/UiDropdowns/UiDropdowns";
+// import UiGrid from "../pages/BaseUi/UiGrid/UiGrid";
+// import UiImages from "../pages/BaseUi/UiImages/UiImages";
+// import UiTabs from "../pages/BaseUi/UiTabs/UiTabs";
+// import UiAccordions from "../pages/BaseUi/UiAccordion&Collapse/UiAccordion&Collapse";
+// import UiModals from "../pages/BaseUi/UiModals/UiModals";
+// import UiOffcanvas from "../pages/BaseUi/UiOffcanvas/UiOffcanvas";
+// import UiPlaceholders from "../pages/BaseUi/UiPlaceholders/UiPlaceholders";
+// import UiProgress from "../pages/BaseUi/UiProgress/UiProgress";
+// import UiNotifications from "../pages/BaseUi/UiNotifications/UiNotifications";
+// import UiMediaobject from "../pages/BaseUi/UiMediaobject/UiMediaobject";
+// import UiEmbedVideo from "../pages/BaseUi/UiEmbedVideo/UiEmbedVideo";
+// import UiTypography from "../pages/BaseUi/UiTypography/UiTypography";
+// import UiList from "../pages/BaseUi/UiLists/UiLists";
+// import UiGeneral from "../pages/BaseUi/UiGeneral/UiGeneral";
+// import UiRibbons from "../pages/BaseUi/UiRibbons/UiRibbons";
+// import UiUtilities from "../pages/BaseUi/UiUtilities/UiUtilities";
+//
+// // Advance Ui
+// import UiNestableList from "../pages/AdvanceUi/UiNestableList/UiNestableList";
+// import UiScrollbar from "../pages/AdvanceUi/UiScrollbar/UiScrollbar";
+// import UiAnimation from "../pages/AdvanceUi/UiAnimation/UiAnimation";
+// import UiTour from "../pages/AdvanceUi/UiTour/UiTour";
+// import UiSwiperSlider from "../pages/AdvanceUi/UiSwiperSlider/UiSwiperSlider";
+// import UiRatings from "../pages/AdvanceUi/UiRatings/UiRatings";
+// import UiHighlight from "../pages/AdvanceUi/UiHighlight/UiHighlight";
+// //Transactions
+// import Transactions from '../pages/Crypto/Transactions';
+// import BuySell from '../pages/Crypto/BuySell';
+// import CryproOrder from '../pages/Crypto/CryptoOrder';
+// import MyWallet from '../pages/Crypto/MyWallet';
+// import ICOList from '../pages/Crypto/ICOList';
+// import KYCVerification from '../pages/Crypto/KYCVerification';
 
-// Landing Index
-import OnePage from "../pages/Landing/OnePage";
-// import NFTLanding from "../pages/Landing/NFTLanding";
-// import Dorsin from "../pages/Landing/Dorsin"
-// import JobLanding from '../pages/Landing/Job'
+//Crm Pages
+// import CrmCompanies from "../pages/Crm/CrmCompanies";
+// import CrmContacts from "../pages/Crm/CrmContacts";
+// import CrmDeals from "../pages/Crm/CrmDeals/index";
+// import CrmLeads from "../pages/Crm/CrmLeads/index";
 
-// User Profile
-import UserProfile from "../pages/Authentication/user-profile";
+//Invoices
+// import InvoiceList from "../pages/Invoices/InvoiceList";
+// import InvoiceCreate from "../pages/Invoices/InvoiceCreate";
+// import InvoiceDetails from "../pages/Invoices/InvoiceDetails";
+// import ChatWindow from "../pages/ChatBot/ChatWindow"
+// import Calendar from "../pages/Calendar";
 
-import FileManager from "../pages/FileManager";
-import ToDoList from "../pages/ToDo";
-import ChatWindow from "../pages/ChatBot/ChatWindow";
+// Project
+// import ProjectList from "../pages/Projects/ProjectList";
+// import ProjectOverview from "../pages/Projects/ProjectOverview";
+// import CreateProject from "../pages/Projects/CreateProject";
+//Calendar
+// Email box
+// import MailInbox from "../pages/EmailInbox";
+// import BasicAction from "../pages/Email/EmailTemplates/BasicAction";
+// import EcommerceAction from "../pages/Email/EmailTemplates/EcommerceAction";
+  // Forms
+  // { path: "/forms-elements", component: <BasicElements /> },
+  // { path: "/forms-select", component: <FormSelect /> },
+  // { path: "/forms-editors", component: <FormEditor /> },
+  // { path: "/forms-checkboxes-radios", component: <CheckBoxAndRadio /> },
+  // { path: "/forms-masks", component: <Masks /> },
+  // { path: "/forms-file-uploads", component: <FileUpload /> },
+  // { path: "/forms-pickers", component: <FormPickers /> },
+  // { path: "/forms-range-sliders", component: <FormRangeSlider /> },
+  // { path: "/forms-layouts", component: <Formlayouts /> },
+  // { path: "/forms-validation", component: <FormValidation /> },
+  // { path: "/forms-wizard", component: <FormWizard /> },
+  // { path: "/forms-advanced", component: <FormAdvanced /> },
+  // { path: "/forms-select2", component: <Select2 /> },
 
-const authProtectedRoutes = [
-  // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
-  // { path: "/dashboard-crm", component: <DashboardCrm /> },
-  { path: "/dashboard", component: <DashboardEcommerce /> },
-  { path: "/index", component: <DashboardEcommerce /> },
+  //Tables
+  // { path: "/tables-basic", component: <BasicTables /> },
+  // { path: "/tables-gridjs", component: <GridTables /> },
+  // { path: "/tables-listjs", component: <ListTables /> },
+  // { path: "/tables-datatables", component: <DataTables /> },
+
   // { path: "/dashboard-crypto", component: <DashboardCrypto /> },
   // { path: "/dashboard-projects", component: <DashboardProject /> },
   // // { path: "/dashboard-nft", component: <DashboardNFT /> },
@@ -266,12 +415,6 @@ const authProtectedRoutes = [
 
   // { path: "/apps-file-manager", component: <FileManager /> },
   // { path: "/apps-todo", component: <ToDoList /> },
-
-
-  //Chat
-  { path: "/apps-chat", component: <Chat /> },
-  { path: "/apps-chatwindow", component: <ChatWindow /> },
-
   //EMail
   // { path: "/apps-mailbox", component: <MailInbox /> },
   // { path: "/apps-email-basic", component: <BasicAction /> },
@@ -281,11 +424,6 @@ const authProtectedRoutes = [
   // { path: "/apps-projects-list", component: <ProjectList /> },
   // { path: "/apps-projects-overview", component: <ProjectOverview /> },
   // { path: "/apps-projects-create", component: <CreateProject /> },
-
-  //Task
-  { path: "/apps-tasks-list-view", component: <TaskList /> },
-  { path: "/apps-tasks-details", component: <TaskDetails /> },
-
   //Crm
   // { path: "/apps-crm-contacts", component: <CrmContacts /> },
   // { path: "/apps-crm-companies", component: <CrmCompanies /> },
@@ -297,11 +435,7 @@ const authProtectedRoutes = [
   // { path: "/apps-invoices-details", component: <InvoiceDetails /> },
   // { path: "/apps-invoices-create", component: <InvoiceCreate /> },
 
-  //Supports Tickets
-  { path: "/apps-tickets-list", component: <ListView /> },
-  { path: "/apps-tickets-details", component: <TicketsDetails /> },
-
-  //transactions
+      //transactions
   // { path: "/apps-crypto-transactions", component: <Transactions /> },
   // { path: "/apps-crypto-buy-sell", component: <BuySell /> },
   // { path: "/apps-crypto-orders", component: <CryproOrder /> },
@@ -375,126 +509,3 @@ const authProtectedRoutes = [
   // { path: "/advance-ui-swiper", component: <UiSwiperSlider /> },
   // { path: "/advance-ui-ratings", component: <UiRatings /> },
   // { path: "/advance-ui-highlight", component: <UiHighlight /> },
-
-  // Widgets
-  { path: "/widgets", component: <Widgets /> },
-
-  // Forms
-  // { path: "/forms-elements", component: <BasicElements /> },
-  // { path: "/forms-select", component: <FormSelect /> },
-  // { path: "/forms-editors", component: <FormEditor /> },
-  // { path: "/forms-checkboxes-radios", component: <CheckBoxAndRadio /> },
-  // { path: "/forms-masks", component: <Masks /> },
-  // { path: "/forms-file-uploads", component: <FileUpload /> },
-  // { path: "/forms-pickers", component: <FormPickers /> },
-  // { path: "/forms-range-sliders", component: <FormRangeSlider /> },
-  // { path: "/forms-layouts", component: <Formlayouts /> },
-  // { path: "/forms-validation", component: <FormValidation /> },
-  // { path: "/forms-wizard", component: <FormWizard /> },
-  // { path: "/forms-advanced", component: <FormAdvanced /> },
-  // { path: "/forms-select2", component: <Select2 /> },
-
-  //Tables
-  // { path: "/tables-basic", component: <BasicTables /> },
-  // { path: "/tables-gridjs", component: <GridTables /> },
-  // { path: "/tables-listjs", component: <ListTables /> },
-  // { path: "/tables-datatables", component: <DataTables /> },
-
-  //Icons
-  { path: "/icons-remix", component: <RemixIcons /> },
-  { path: "/icons-boxicons", component: <BoxIcons /> },
-  { path: "/icons-materialdesign", component: <MaterialDesign /> },
-  { path: "/icons-feather", component: <FeatherIcons /> },
-  { path: "/icons-lineawesome", component: <LineAwesomeIcons /> },
-  { path: "/icons-crypto", component: <CryptoIcons /> },
-
-  //Maps
-  // { path: "/maps-google", component: <GoogleMaps /> },
-  { path: "/maps-vector", component: <VectorMaps /> },
-  { path: "/maps-leaflet", component: <LeafletMaps /> },
-
-  //Pages
-  { path: "/pages-starter", component: <Starter /> },
-  { path: "/pages-profile", component: <SimplePage /> },
-  { path: "/pages-profile-settings", component: <Settings /> },
-  { path: "/pages-team", component: <Team /> },
-  { path: "/pages-timeline", component: <Timeline /> },
-  { path: "/pages-faqs", component: <Faqs /> },
-  { path: "/pages-gallery", component: <Gallery /> },
-  { path: "/pages-pricing", component: <Pricing /> },
-  { path: "/pages-sitemap", component: <SiteMap /> },
-  { path: "/pages-search-results", component: <SearchResults /> },
-  { path: "/pages-privecy-policy", component: <PrivecyPolicy /> },
-  { path: "/pages-terms-condition", component: <TermsCondition /> },
-
-  //User Profile
-  { path: "/profile", component: <UserProfile /> },
-
-  // this route should be at the end of all other routes
-  // eslint-disable-next-line react/display-name
-  {
-    path: "/",
-    exact: true,
-    component: <Navigate to="/dashboard" />,
-  },
-  { path: "*", component: <Navigate to="/dashboard" /> },
-
-  //Job pages
-  { path: "/apps-job-statistics", component: <Statistics /> },
-  { path: "/apps-job-lists", component: <JobList /> },
-  { path: "/apps-job-grid-lists", component: <JobGrid /> },
-  { path: "/apps-job-details", component: <JobOverview /> },
-  { path: "/apps-job-candidate-lists", component: <CandidateList /> },
-  { path: "/apps-job-candidate-grid", component: <CandidateGrid /> },
-  { path: "/apps-job-application", component: <Application /> },
-  { path: "/apps-job-new", component: <NewJobs /> },
-  { path: "/apps-job-companies-lists", component: <CompaniesList /> },
-  { path: "/apps-job-categories", component: <JobCategories /> },
-
-  //APIkey
-  { path: "/apps-api-key", component: <ApiKey /> },
-
-];
-
-const publicRoutes = [
-  // Authentication Page
-
-  { path: "/logout", component: <Logout /> },
-  { path: "/login", component: <Login /> },
-  { path: "/forgot-password", component: <ForgetPasswordPage /> },
-  { path: "/register", component: <Register /> },
-
-  //AuthenticationInner pages
-  { path: "/auth-signin-basic", component: <BasicSignIn /> },
-  { path: "/auth-signin-cover", component: <CoverSignIn /> },
-  { path: "/auth-signup-basic", component: <BasicSignUp /> },
-  { path: "/auth-signup-cover", component: <CoverSignUp /> },
-  { path: "/auth-pass-reset-basic", component: <BasicPasswReset /> },
-  { path: "/auth-pass-reset-cover", component: <CoverPasswReset /> },
-  { path: "/auth-lockscreen-basic", component: <BasicLockScreen /> },
-  { path: "/auth-lockscreen-cover", component: <CoverLockScreen /> },
-  { path: "/auth-logout-basic", component: <BasicLogout /> },
-  { path: "/auth-logout-cover", component: <CoverLogout /> },
-  { path: "/auth-success-msg-basic", component: <BasicSuccessMsg /> },
-  { path: "/auth-success-msg-cover", component: <CoverSuccessMsg /> },
-  { path: "/auth-twostep-basic", component: <BasicTwosVerify /> },
-  { path: "/auth-twostep-cover", component: <CoverTwosVerify /> },
-  { path: "/auth-404-basic", component: <Basic404 /> },
-  { path: "/auth-404-cover", component: <Cover404 /> },
-  { path: "/auth-404-alt", component: <Alt404 /> },
-  { path: "/auth-500", component: <Error500 /> },
-  { path: "/pages-maintenance", component: <Maintenance /> },
-  { path: "/pages-coming-soon", component: <ComingSoon /> },
-
-  { path: "/landing", component: <OnePage /> },
-  // { path: "/landingtest", component: <Dorsin /> },
-  // { path: "/nft-landing", component: <NFTLanding /> },
-  // { path: "/job-landing", component: <JobLanding /> },
-
-  { path: "/auth-pass-change-basic", component: <BasicPasswCreate /> },
-  { path: "/auth-pass-change-cover", component: <CoverPasswCreate /> },
-  { path: "/auth-offline", component: <Offlinepage /> },
-
-];
-
-export { authProtectedRoutes, publicRoutes };

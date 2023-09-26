@@ -1,10 +1,22 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
 .chat-container {
-    max-height: 300px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
 
   .user-message {
     color: #000;
@@ -29,9 +41,49 @@
     clear: both;
     float: right;
   }
-  .loading-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 8px 0;
-  }
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 8px 0;
+  clear: both;
+}
+
+  .user-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px); /* Adjust the height according to the space taken by the header */
+}
+
+.chat-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.input-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+input[type="text"] {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 5px;
+}
+
+button {
+  width: fit-content;
+  margin-left: 10px;
+}

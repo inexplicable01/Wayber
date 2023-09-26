@@ -1,9 +1,13 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {Container, Row, Col} from "reactstrap";
-
+// import '../../../../src/assets/css/waves.css';
+// import '../../../../src/assets/css/style.css';
 //Importing Modal
 import ModalSection from "./ModalSection";
+import wave1 from '../../../../src/assets/images/wave-shape/wave1.png';
+import wave2 from '../../../../src/assets/images/wave-shape/wave2.png';
+import wave3 from '../../../../src/assets/images/wave-shape/wave3.png';
 
 class Section extends Component {
     constructor() {
@@ -29,8 +33,8 @@ class Section extends Component {
                 <section
                     className="section bg-home home-half"
                     id="home"
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/bg-home.jpg)` }}
-
+                    // style={{backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/bg-home.jpg)`}}
+                    data-image-src="images/bg-home.jpg"
                 >
                     <div className="bg-overlay"></div>
                     <div className="display-table">
@@ -42,10 +46,10 @@ class Section extends Component {
                                         className="col-lg-8 offset-lg-2 text-white text-center"
                                     >
                                         <h1 className="home-title">
-                                            We help startups launch their products
+                                            Better Way to Buy And Sell Homes
                                         </h1>
                                         <p className="pt-3 home-desc">
-                                            Etiam sed.Interdum consequat proin vestibulum class at.
+                                            Use Friendly Professional Real Estate Tools
                                         </p>
                                         <p className="play-shadow mt-4">
                                             <Link
@@ -66,15 +70,18 @@ class Section extends Component {
                             <div
                                 className="wave wave-one"
                                 style={{
-                                    backgroundImage: `url(assets/images/wave-shape/wave1.png)`,
+                                    backgroundImage: `url(${wave1})`,
                                 }}
                             ></div>
+{/*<div style={{ backgroundColor: 'black', width: '100%', height: '100%' }}></div>*/}
+
+
                         </div>
                         <div className="waves-shape shape-two">
                             <div
                                 className="wave wave-two"
                                 style={{
-                                    backgroundImage: `url(assets/images/wave-shape/wave2.png)`,
+                                    backgroundImage: `url(${wave2})`,
                                 }}
                             ></div>
                         </div>
@@ -82,7 +89,7 @@ class Section extends Component {
                             <div
                                 className="wave wave-three"
                                 style={{
-                                    backgroundImage: `url(assets/images/wave-shape/wave3.png)`,
+                                    backgroundImage: `url(${wave3})`,
                                 }}
                             ></div>
                         </div>

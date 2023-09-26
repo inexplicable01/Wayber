@@ -16,8 +16,9 @@ class WebsiteDesc extends Component {
                   But nothing the copy said could convince her and so it didn’t
                   take long until a few insidious Copy Writers ambushed her.
                 </p>
+
                 <Link
-                  to="#"
+                  to="/register"
                   className="btn btn-white mt-4 waves-effect waves-light mb-5"
                 >
                   View Plan & Pricing

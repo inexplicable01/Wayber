@@ -16,9 +16,13 @@ class PricingBox extends Component {
               }
             >
               <h4 className="text-uppercase">{pricing.title}</h4>
-              <h1>${pricing.price}0</h1>
+              <h1>${pricing.upfrontprice}</h1>
               <h6 className="text-uppercase text-muted">
-                Billing Per {pricing.duration}
+                One time
+              </h6>
+              <h1>${pricing.closingprice}</h1>
+              <h6 className="text-uppercase text-muted">
+                At Closing
               </h6>
               <div className="pricing-border"></div>
               <div className="plan-features mt-4">
@@ -31,7 +35,7 @@ class PricingBox extends Component {
                 <p><b className="text-primary">No</b> Hidden Fees</p>
               </div>
               <Link
-                to="#"
+                to="/login"
                 className="btn btn-primary waves-effect waves-light mt-4"
               >
                 Join Now

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import withRouter from '../Components/Common/withRouter';
-
+import { Outlet } from "react-router-dom";
 //redux
 import { useSelector } from "react-redux";
 
@@ -23,7 +23,8 @@ const NonAuthLayout = ({ children }) => {
     }, [layoutModeType]);
     return (
         <div>
-            {children}
+            {/* other layout components, header, etc. */}
+            {children} {/* This renders the child routes */}
         </div>
     );
 };

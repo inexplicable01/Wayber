@@ -8,8 +8,23 @@ import BreadCrumb from '../../../Components/Common/BreadCrumb';
 
 
 const VectorMaps = () => {
-  document.title="Vector Maps | Velzon - " + process.env.APPNAME_TITLE;
-
+  document.title="How to Buy a Home Step by Step | Velzon - " + process.env.APPNAME_TITLE;
+  const steps = [
+    'Research and prepare',
+    'Arrange financing',
+    'Develop a list of criteria',
+    'Search for properties',
+    'Attend open houses and schedule private viewings',
+    'Conduct due diligence',
+    'Make an offer',
+    'Negotiate',
+    'Hire a real estate attorney',
+    'Schedule a home inspection',
+    'Obtain homeowners insurance',
+    'Finalize financing',
+    'Conduct a final walkthrough',
+    'Close the deal',
+  ];
     return (
         <React.Fragment>
             <div className="page-content">
@@ -23,13 +38,14 @@ const VectorMaps = () => {
                                     <h4 className="card-title mb-0">Markers</h4>
                                 </CardHeader>
                                 <CardBody>
-                                    <div id="world-map-line-markers" data-colors='["--vz-light"]' style={{ "height": "420px", position: "relative" }}>
-                                        <Vector
-                                            value="world_mill"
-                                            width="500"
-                                            color="rgb(212, 218, 221)"
-                                        />
-                                    </div>
+    <div className="home-buying-process">
+      <h2>Home Buying Process Without an Agent</h2>
+      <ol>
+        {steps.map((step, index) => (
+          <li key={index}>{step}</li>
+        ))}
+      </ol>
+    </div>
 
                                 </CardBody>
                             </Card>
