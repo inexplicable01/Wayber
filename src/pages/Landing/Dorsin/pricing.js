@@ -19,37 +19,45 @@ class Pricing extends Component {
           duration: "MONTH",
           features: [
             { title: "MLS Listing", value: "6 pics" },
-            { title: "", value: "50MB" },
-            { title: "Video", value: "No" },
-            { title: "Showings", value: "No", isLeft: true },
+            { title: "Virtual Staging", value: "6 pics" },
+            { title: "Showings/Open Houses", value: "Yes" },
+            { title: "Lockbox", value: "Yes" },
+            { title: "Exclusive Agency", value: "No" },
+            { title: "Showings", value: "Yes", isLeft: true },
             // { title: "Hidden Fees", value: "No" },
           ],
         },
         {
           title: "DELUXE",
-          upfrontprice: 19.90,
-          closingprice: 19.90,
+          upfrontprice: 700.00,
+          closingprice: 1800.00,
           duration: "MONTH",
           isActive: true,
           features: [
-            { title: "MLS Listing", value: "15 pics" },
-            { title: "Onlinespace", value: "500MB" },
-            { title: "Support", value: "Yes" },
-            { title: "Domain", value: "10", isLeft: true },
-            { title: "Exclusive Agency", value: "No" },
+            { title: "MLS Listing", value: "Unlimited", isLeft: true },
+              { title: "Professional Pictures", value: "Yes" },
+               { title: "Professional Video", value: "No" },
+            { title: "Virtual Staging", value: "6 pics" },
+              { title: "Lockbox", value: "Yes" },
+            { title: "Showings/Open Houses", value: "Yes" },
+
+            { title: "Exclusive Agency", value: "Yes" },
           ],
         },
         {
           title: "ULTIMATE",
-          upfrontprice: 19.90,
-          closingprice: 19.90,
+          upfrontprice: 1100.00,
+          closingprice: 3900.00,
           duration: "MONTH",
           features: [
-            { title: "Bandwidth", value: "100GB" },
-            { title: "Onlinespace", value: "2 GB" },
-            { title: "Support", value: "Yes" },
-            { title: "Domain", value: "Unlimited", isLeft: true },
-            // { title: "Hidden Fees", value: "No" },
+            { title: "MLS Listing", value: "Unlimited" , isLeft: true },
+              { title: "Professional Pictures", value: "Yes" },
+               { title: "Professional Video", value: "Yes" },
+
+            { title: "Virtual Staging", value: "Yes" },
+            { title: "Lockbox", value: "Yes" },
+             { title: "Showings/Open Houses", value: "Yes" },
+            { title: "Exclusive Agency", value: "Yes" },
           ],
         },
       ],
@@ -63,8 +71,8 @@ class Pricing extends Component {
           <Container>
             {/* section title */}
             <SectionTitle
-              title="Our Pricing"
-              desc="Call to action pricing table is really crucial to your for your business website. Make your bids stand-out with amazing options."
+              title="Our Pricing - Low Flat Fee Service!"
+              desc="Our pricing is structured so that you can get top notch listing service at paying a small upfront fee. The rest of the fee will be paid at closing."
             />
 
             <Row className="mt-5">

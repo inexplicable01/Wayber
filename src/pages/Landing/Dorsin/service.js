@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Container, Row } from "reactstrap";
+import { Container, Row , Col} from "reactstrap";
 
 //Import Section Title
 import SectionTitle from "./section-title";
 import ServiceBox from "./services-box";
-
+import image2 from "./../../../assets/images/estate flow-04.jpg";
+import image3 from "./../../../assets/images/estate flow-01.jpg";
 class Process extends Component {
   constructor(props) {
     super(props);
@@ -12,14 +13,14 @@ class Process extends Component {
       services1: [
         {
           icon: "pe-7s-smile",
-          title: "One Stop Shop",
+          title: "Convenient",
           desc: "All the Home Buying Tools and Knowledge you need in one place.",
         },
         {
           icon: "pe-7s-diamond",
-          title: "Save Money",
+          title: "Safe and Secure",
           desc:
-            "Credibly brand standards compliant users without extensible services. Anibh euismod tincidunt ut laoreet.",
+            "Credibly brand standards compliant users without extensible services. ",
         },
         {
           icon: "pe-7s-piggy",
@@ -62,10 +63,27 @@ class Process extends Component {
               desc="We help Buyer, Sellers, Agents connect in highly efficient manner in Real Estate Transactions."
             />
 
-            <Row className="mt-4">
-              {/* services box */}
-              <ServiceBox services={this.state.services1} />
-            </Row>
+            {/*<Row className="mt-4">*/}
+            {/*  /!* services box *!/*/}
+            {/*  <ServiceBox services={this.state.services1} />*/}
+            {/*</Row>*/}
+{/*// Inside Process component's render method:*/}
+
+<Row className="mt-4">
+  {this.state.services1.map((service, key) => (
+    <React.Fragment key={key}>
+      {/* Service Box */}
+      <Col lg={4} className="d-flex flex-column justify-content-center">
+        <ServiceBox service={service} />
+      </Col>
+
+      {/* Image */}
+      <Col lg={8} className="d-flex justify-content-center align-items-center">
+        <img src={image2} alt='blah' style={{ width: '100%', maxHeight: '66vh' }} />
+      </Col>
+    </React.Fragment>
+  ))}
+</Row>
 
             {/*<Row className="mt-4">*/}
             {/*  /!* service box *!/*/}

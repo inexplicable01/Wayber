@@ -18,7 +18,7 @@ class PricingBox extends Component {
               <h4 className="text-uppercase">{pricing.title}</h4>
               <h1>${pricing.upfrontprice}</h1>
               <h6 className="text-uppercase text-muted">
-                One time
+                Up Front
               </h6>
               <h1>${pricing.closingprice}</h1>
               <h6 className="text-uppercase text-muted">
@@ -38,7 +38,7 @@ class PricingBox extends Component {
                 to="/login"
                 className="btn btn-primary waves-effect waves-light mt-4"
               >
-                Join Now
+                Learn More
               </Link>
             </div>
           </Col>

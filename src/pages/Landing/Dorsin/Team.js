@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row } from "reactstrap";
-
+import waichakpic from '../../../assets/images/team/waichakluk.png'
+import mo from '../../../assets/images/team/Mo.jpg'
 //Import Section Title
 import SectionTitle from "./section-title";
 import TeamBox from "./TeamBox";
@@ -11,24 +12,14 @@ class Clients extends Component {
     this.state = {
       teams: [
         {
-          image: "assets/images/team/img-1.jpg",
-          title: "Frank Johnson",
+          image: waichakpic,
+          title: "Waichak Luk",
           desc: "CEO",
         },
         {
-          image: "assets/images/team/img-2.jpg",
-          title: "Elaine Stclair",
-          desc: "DESIGNER",
-        },
-        {
-          image: "assets/images/team/img-3.jpg",
-          title: "Wanda Arthur",
-          desc: "DEVELOPER",
-        },
-        {
-          image: "assets/images/team/img-4.jpg",
-          title: "Joshua Stemple",
-          desc: "MANAGER",
+          image: mo,
+          title: "Mohamed Abuzaid",
+          desc: "CMO",
         },
       ],
     };

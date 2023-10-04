@@ -26,6 +26,8 @@ class Section extends Component {
     closeModal = () => {
         this.setState({isOpen: false})
     };
+                   // {/*"C:\Users\waich\velzon\React\Saga\modern\src\assets\images\prettyhomes\pexels-binyamin-mellish-106399.jpg"*/}
+                   //
 
     render() {
         return (
@@ -34,8 +36,8 @@ class Section extends Component {
                     className="section bg-home home-half"
                     id="home"
                     // style={{backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/bg-home.jpg)`}}
-                    data-image-src="images/bg-home.jpg"
-                >
+                    // data-image-src="images/prettyhomes/pexels-binyamin-mellish-106399.jpg"
+     >
                     <div className="bg-overlay"></div>
                     <div className="display-table">
                         <div className="display-table-cell">

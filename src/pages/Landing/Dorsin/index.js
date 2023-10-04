@@ -47,32 +47,32 @@ class Index extends Component {
                 {/* services */}
                 <Service  sectionClass="pt-5"/>
 
-                {/* about us */}
-                <AboutUs/>
+                {/*/!* about us *!/*/}
+                {/*<AboutUs/>*/}
 
 
                 {/* website description */}
                 {/*<WebsiteDesc/>*/}
 
                 {/* pricing */}
-                <Pricing/>
+                <Pricing sectionClass="pt-5"/>
 
-                {/* team */}
-                <Team/>
 
-                {/* process */}
+
+                {/* process*/}
                 {/*<Process/>*/}
 
-                {/* testimonial */}
-                <Testimonials/>
+                 {/*testimonial*/}
+                {/*<Testimonials/>*/}
 
                 {/* get started */}
-                <GetStart/>
+                {/*<GetStart/>*/}
 
                 {/* blog */}
                 <Blog/>
 
-                {/* contact */}
+                {/*/!* contact *!/*/}
+                 <Team/>
                 <Contact/>
 
                 {/* social */}

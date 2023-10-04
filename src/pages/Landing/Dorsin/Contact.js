@@ -18,7 +18,7 @@ class Features extends Component {
             {/* section title */}
             <SectionTitle
               title="GET IN TOUCH"
-              desc="We thrive when coming up with innovative ideas but also understand that a smart concept should be supported with faucibus sapien odio measurable results."
+              desc="We are an open book.   We wish to help home buyers and sellers make real estate easy."
             />
 
             <Row>
@@ -28,22 +28,15 @@ class Features extends Component {
                     <span className="h5">Office Address 1:</span>
                     <br />{" "}
                     <span className="text-muted d-block mt-2">
-                      4461 Cedar Street Moro, AR 72368
+                      4461 Cedar Street Moro, WA 98105
                     </span>
                   </p>
-                  <p className="mt-4">
-                    <span className="h5">Office Address 2:</span>
-                    <br />{" "}
-                    <span className="text-muted d-block mt-2">
-                      2467 Swick Hill Street <br />
-                      New Orleans, LA 70171
-                    </span>
-                  </p>
+
                   <p className="mt-4">
                     <span className="h5">Working Hours:</span>
                     <br />{" "}
                     <span className="text-muted d-block mt-2">
-                      9:00AM To 6:00PM
+                      24 Hrs
                     </span>
                   </p>
                 </div>
