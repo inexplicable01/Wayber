@@ -28,7 +28,7 @@ import * as Yup from "yup";
 
 //redux
 import { useDispatch } from "react-redux";
-import { addNewInvoice as onAddNewInvoice, updateInvoice as onUpdateInvoice } from "../../../store/invoice/action";
+import { addNewInvoice as onAddNewInvoice, updateInvoice as onUpdateInvoice } from "../../../store/storage/invoice/action";
 
 const InvoiceCreate = () => {
   const dispatch = useDispatch();

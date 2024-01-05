@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 //Import Icons
 import FeatherIcon from "feather-icons-react";
 
-import { getUserDeviceChartsData } from "../../../store/dashboardAnalytics/action";
+import { getUserDeviceChartsData } from "../../../store/storage/dashboardAnalytics/action";
 
 import { UsersByDeviceCharts } from './DashboardAnalyticsCharts';
 

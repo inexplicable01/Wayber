@@ -40,7 +40,7 @@ import {
   addNewOrder as onAddNewOrder,
   updateOrder as onUpdateOrder,
   deleteOrder as onDeleteOrder,
-} from "../../../../store/ecommerce/action";
+} from "../../../../store/storage/ecommerce/action";
 
 import Loader from "../../../../Components/Common/Loader";
 import { toast, ToastContainer } from 'react-toastify';

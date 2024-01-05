@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import CountUp from "react-countup";
 import { useSelector, useDispatch } from "react-redux";
 import { ProjectsOverviewCharts } from './DashboardProjectCharts';
-import { getProjectChartsData } from '../../../store/dashboardProject/action';
+import { getProjectChartsData } from '../../../store/storage/dashboardProject/action';
 
 const ProjectsOverview = () => {
     const dispatch = useDispatch();

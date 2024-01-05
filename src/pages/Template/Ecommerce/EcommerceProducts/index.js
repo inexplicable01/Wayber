@@ -29,7 +29,7 @@ import { Rating, Published, Price } from "./EcommerceProductCol";
 import { productsData } from "../../../../common/data";
 
 //Import actions
-import { getProducts as onGetProducts, deleteProducts } from "../../../../store/ecommerce/action";
+import { getProducts as onGetProducts, deleteProducts } from "../../../../store/storage/ecommerce/action";
 import { isEmpty } from "lodash";
 import Select from "react-select";
 

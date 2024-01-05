@@ -20,7 +20,7 @@ import Img2 from "../../../../assets/images/companies/img-2.png";
 import ReviewSlider from "../../../../Components/Common/ReviewSlider";
 import TableContainer from "../../../../Components/Common/TableContainer";
 //Import actions
-import { getProducts as onGetProducts } from "../../../../store/ecommerce/action";
+import { getProducts as onGetProducts } from "../../../../store/storage/ecommerce/action";
 
 import {
   Rating,

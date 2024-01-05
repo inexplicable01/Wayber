@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader, Col, Row } from "reactstrap";
 import { RevenueCharts } from "./DashboardEcommerceCharts";
 import CountUp from "react-countup";
 import { useSelector, useDispatch } from "react-redux";
-import { getRevenueChartsData } from "../../store/dashboardEcommerce/action";
+import { getRevenueChartsData } from "../../store/storage/dashboardEcommerce/action";
 
 const Revenue = () => {
   const dispatch = useDispatch();

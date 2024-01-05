@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@pdftron/webviewer": "^10.6.0",
     "aos": "^2.3.4",
     "axios": "^0.26.0",
     "axios-mock-adapter": "^1.20.0",
@@ -75,7 +76,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\""
+    "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
+    "postinstall": "node copy-webviewer-files.js"
   },
   "babelOptions": {
     "presets": [
