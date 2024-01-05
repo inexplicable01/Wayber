@@ -21,6 +21,7 @@ import {Link, useNavigate} from "react-router-dom";
 //import images 
 import logoLight from "../../assets/images/logo-light.png";
 import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
+import {TRUE} from "node-sass";
 
 const Register = () => {
     const history = useNavigate();
@@ -69,6 +70,7 @@ const Register = () => {
         }
     });
 
+
     const {error, registrationError, success} = useSelector(state => ({
         registrationError: state.Registration.registrationError,
         success: state.Registration.success,
@@ -107,9 +109,10 @@ const Register = () => {
         dispatch(apiError(""));
     }, [dispatch]);
 
+    // const regenreate = TRUE
     useEffect(() => {
         generateRandomValues();
-    }, []);
+    }, );
 
     useEffect(() => {
         if (success) {

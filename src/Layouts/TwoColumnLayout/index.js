@@ -9,7 +9,7 @@ import withRouter from '../../Components/Common/withRouter';
 import { withTranslation } from "react-i18next";
 
 // Import Data
-import navdata from "../LayoutMenuData";
+import navdata from "../../Routes/LayoutMenuData";
 
 //SimpleBar
 import SimpleBar from "simplebar-react";

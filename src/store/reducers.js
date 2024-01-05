@@ -10,63 +10,63 @@ import ForgetPassword from "./auth/forgetpwd/reducer";
 import Profile from "./auth/profile/reducer";
 
 //Calendar
-import Calendar from "./calendar/reducer";
+// import Calendar from "./BackUp/calendar/reducer";
 //Chat
-import chat from "./chat/reducer";
+// import chat from "./BackUp/chat/reducer";
 //Ecommerce
-import Ecommerce from "./ecommerce/reducer";
+// import Ecommerce from "./BackUp/ecommerce/reducer";
 
 //Project
-import Projects from "./projects/reducer";
+// import Projects from "./BackUp/projects/reducer";
 
 // Tasks
-import Tasks from "./tasks/reducer";
+// import Tasks from "./BackUp/tasks/reducer";
 //Form advanced
-import changeNumber from "./formAdvanced/reducer";
+// import changeNumber from "./BackUp/formAdvanced/reducer";
 
 //Crypto
-import Crypto from "./crypto/reducer";
+// import Crypto from "./BackUp/crypto/reducer";
 
 //TicketsList
-import Tickets from "./tickets/reducer";
+// import Tickets from "./BackUp/tickets/reducer";
 //Crm
-import Crm from "./crm/reducer";
+// import Crm from "./BackUp/crm/reducer";
 
 //Invoice
-import Invoice from "./invoice/reducer";
+// import Invoice from "./BackUp/invoice/reducer";
 
 //Mailbox
-import Mailbox from "./mailbox/reducer";
+// import Mailbox from "./BackUp/mai/lbox/reducer";
 
 // Dashboard Analytics
-import DashboardAnalytics from "./dashboardAnalytics/reducer";
+// import DashboardAnalytics from "./BackU/p/dashboardAnalytics/reducer";
 
 // Dashboard CRM
-import DashboardCRM from "./dashboardCRM/reducer";
+// import DashboardCRM from "./BackUp/dashboardCRM/reducer";
 
 // Dashboard Ecommerce
-import DashboardEcommerce from "./dashboardEcommerce/reducer";
+// import DashboardEcommerce from "./BackUp/dashboardEcommerce/reducer";
 
 // Dashboard Cryto
-import DashboardCrypto from "./dashboardCrypto/reducer";
+// import DashboardCrypto from "./BackUp/dashboardCrypto/reducer";
 
 // Dashboard Cryto
-import DashboardProject from "./dashboardProject/reducer";
+// import DashboardProject from "./BackUp/dashboardProject/reducer";
 
 // Dashboard NFT
-import DashboardNFT from "./dashboardNFT/reducer";
+// import DashboardNFT from "./BackUp/dashboardNFT/reducer";
 
 // Pages > Team
-import Team from "./team/reducer";
+// import Team from "./BackUp/team/reducer";
 
 // File Manager
 import FileManager from "./fileManager/reducer"
 
 // To do
-import Todos from "./todos/reducer"
+// import Todos from "./BackUp/todos/reducer"
 
 // Job
-import Jobs from './job/reducer'
+// import Jobs from './BackUp/job/reducer'
 
 //API Key
 import APIKey from "./apikey/reducer";
@@ -78,27 +78,27 @@ const rootReducer = combineReducers({
     Registration,
     ForgetPassword,
     Profile,
-    Calendar,
-    chat,
-    Projects,
-    Ecommerce,
-    Tasks,
-    changeNumber,
-    Crypto,
-    Tickets,
-    Crm,
-    Invoice,
-    Mailbox,
-    DashboardAnalytics,
-    DashboardCRM,
-    DashboardEcommerce,
-    DashboardCrypto,
-    DashboardProject,
-    DashboardNFT,
-    Team,
+    // Calendar,
+    // chat,
+    // Projects,
+    // Ecommerce,
+    // Tasks,
+    // changeNumber,
+    // Crypto,
+    // Tickets,
+    // Crm,
+    // Invoice,
+    // Mailbox,
+    // DashboardAnalytics,
+    // DashboardCRM,
+    // DashboardEcommerce,
+    // DashboardCrypto,
+    // DashboardProject,
+    // DashboardNFT,
+    // Team,
     FileManager,
-    Todos,
-    Jobs,
+    // Todos,
+    // Jobs,
     APIKey
 });
 

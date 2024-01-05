@@ -2,47 +2,12 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 //Dashboard
-import DashboardAnalytics from "../pages/DashboardAnalytics";
-import DashboardCrm from "../pages/DashboardCrm";
-import DashboardEcommerce from "../pages/DashboardEcommerce";
-import DashboardJobs from '../pages/DashboardJob'
-
-import DashboardCrypto from "../pages/DashboardCrypto";
-import DashboardProject from "../pages/DashboardProject";
-
-import ListingPage from "../pages/Maps/ListingPage"
-// import DashboardNFT from "../pages/DashboardNFT";
+// import DashboardAnalytics from "../pages/Template/DashboardAnalytics";
+// import DashboardCrm from "../pages/Template/DashboardCrm";
+import DashboardEcommerce from "../pages/Template/DashboardEcommerce";
+// import DashboardJobs from '../pages/Template/DashboardJob'
 
 
-//Chat
-import Chat from "../pages/Chat";
-
-//Task
-import TaskDetails from "../pages/Tasks/TaskDetails";
-import TaskList from "../pages/Tasks/TaskList";
-
-
-// Support Tickets
-import ListView from '../pages/SupportTickets/ListView';
-import TicketsDetails from '../pages/SupportTickets/TicketsDetails';
-
-
-// Widgets
-import Widgets from '../pages/Widgets/Index';
-
-
-//Icon pages
-import RemixIcons from "../pages/Icons/RemixIcons/RemixIcons";
-import BoxIcons from "../pages/Icons/BoxIcons/BoxIcons";
-import MaterialDesign from "../pages/Icons/MaterialDesign/MaterialDesign";
-import FeatherIcons from "../pages/Icons/FeatherIcons/FeatherIcons";
-import LineAwesomeIcons from "../pages/Icons/LineAwesomeIcons/LineAwesomeIcons";
-import CryptoIcons from "../pages/Icons/CryptoIcons/CryptoIcons";
-
-//Maps
-// import GoogleMaps from "../pages/Maps/GoogleMaps/GoogleMaps";
-import VectorMaps from "../pages/Maps/VectorMaps/VectorMaps";
-import LeafletMaps from "../pages/Maps/LeafletMaps/LeafletMaps";
 
 //AuthenticationInner pages
 import BasicSignIn from '../pages/AuthenticationInner/Login/BasicSignIn';
@@ -52,20 +17,20 @@ import CoverSignUp from "../pages/AuthenticationInner/Register/CoverSignUp";
 import BasicPasswReset from '../pages/AuthenticationInner/PasswordReset/BasicPasswReset';
 
 //pages
-import Starter from '../pages/Pages/Starter/Starter';
-import SimplePage from '../pages/Pages/Profile/SimplePage/SimplePage';
-import Settings from '../pages/Pages/Profile/Settings/Settings';
-import Team from '../pages/Pages/Team/Team';
-import Timeline from '../pages/Pages/Timeline/Timeline';
-import Faqs from '../pages/Pages/Faqs/Faqs';
-import Pricing from '../pages/Pages/Pricing/Pricing';
-import Gallery from '../pages/Pages/Gallery/Gallery';
-import Maintenance from '../pages/Pages/Maintenance/Maintenance';
-import ComingSoon from '../pages/Pages/ComingSoon/ComingSoon';
-import SiteMap from '../pages/Pages/SiteMap/SiteMap';
-import SearchResults from '../pages/Pages/SearchResults/SearchResults';
-import PrivecyPolicy from '../pages/Pages/PrivacyPolicy.js'
-import TermsCondition from '../pages/Pages/TermsCondition'
+// import Starter from '../pages/Template/Pages/Starter/Starter';
+// import SimplePage from '../pages/Template/Pages/Profile/SimplePage/SimplePage';
+// import Settings from '../pages/Template/Pages/Profile/Settings/Settings';
+// import Team from '../pages/Template/Pages/Team/Team';
+// import Timeline from '../pages/Template/Pages/Timeline/Timeline';
+// import Faqs from '../pages/Template/Pages/Faqs/Faqs';
+// import Pricing from '../pages/Template/Pages/Pricing/Pricing';
+// import Gallery from '../pages/Template/Pages/Gallery/Gallery';
+// import Maintenance from '../pages/Template/Pages/Maintenance/Maintenance';
+// import ComingSoon from '../pages/Template/Pages/ComingSoon/ComingSoon';
+// import SiteMap from '../pages/Template/Pages/SiteMap/SiteMap';
+// import SearchResults from '../pages/Template/Pages/SearchResults/SearchResults';
+// import PrivecyPolicy from '../pages/Template/Pages/PrivacyPolicy.js'
+// import TermsCondition from '../pages/Template/Pages/TermsCondition'
 
 import CoverPasswReset from '../pages/AuthenticationInner/PasswordReset/CoverPasswReset';
 import BasicLockScreen from '../pages/AuthenticationInner/LockScreen/BasicLockScr';
@@ -94,16 +59,16 @@ import Register from "../pages/Authentication/Register";
 
 
 //Job pages
-import Statistics from "../pages/Jobs/Statistics";
-import JobList from "../pages/Jobs/JobList/List";
-import JobGrid from "../pages/Jobs/JobList/Grid";
-import JobOverview from "../pages/Jobs/JobList/Overview";
-import CandidateList from "../pages/Jobs/CandidateList/ListView";
-import CandidateGrid from "../pages/Jobs/CandidateList/GridView";
-import NewJobs from "../pages/Jobs/NewJob";
-import JobCategories from "../pages/Jobs/JobCategories";
-import Application from "../pages/Jobs/Application";
-import CompaniesList from "../pages/Jobs/CompaniesList";
+// import Statistics from "../pages/Template/Jobs/Statistics";
+// import JobList from "../pages/Template/Jobs/JobList/List";
+// import JobGrid from "../pages/Template/Jobs/JobList/Grid";
+// import JobOverview from "../pages/Template/Jobs/JobList/Overview";
+// import CandidateList from "../pages/Template/Jobs/CandidateList/ListView";
+// import CandidateGrid from "../pages/Template/Jobs/CandidateList/GridView";
+// import NewJobs from "../pages/Template/Jobs/NewJob";
+// import JobCategories from "../pages/Template/Jobs/JobCategories";
+// import Application from "../pages/Template/Jobs/Application";
+// import CompaniesList from "../pages/Template/Jobs/CompaniesList";
 
 import ApiKey from '../pages/APIKey/index'
 
@@ -111,14 +76,15 @@ import ApiKey from '../pages/APIKey/index'
 import OnePage from "../pages/Landing/OnePage";
 // import NFTLanding from "../pages/Landing/NFTLanding";
 import Dorsin from "../pages/Landing/Dorsin"
+import PDFViewerComponent from "../pages/PDF/PDFViewer.js"
 // import JobLanding from '../pages/Landing/Job'
 
 // User Profile
 import UserProfile from "../pages/Authentication/user-profile";
 
-import FileManager from "../pages/FileManager";
-import ToDoList from "../pages/ToDo";
-import ChatWindow from "../pages/ChatBot/ChatWindow";
+// import FileManager from "../pages/Template/FileManager";
+// import ToDoList from "../pages/Template/ToDo";
+// import ChatWindow from "../pages/Template/ChatBot/ChatWindow";
 
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
@@ -126,56 +92,8 @@ const authProtectedRoutes = [
   { path: "/dashboard", component: <DashboardEcommerce /> },
   { path: "/index", component: <DashboardEcommerce /> },
 
+{ path: "/pdfviewer", component: <PDFViewerComponent /> },
 
-  //Chat
-  { path: "/apps-chat", component: <Chat /> },
-  { path: "/apps-chatwindow", component: <ChatWindow /> },
-
-
-
-  //Task
-  { path: "/apps-tasks-list-view", component: <TaskList /> },
-  { path: "/apps-tasks-details", component: <TaskDetails /> },
-
-
-
-  //Supports Tickets
-  { path: "/apps-tickets-list", component: <ListView /> },
-  { path: "/apps-tickets-details", component: <TicketsDetails /> },
-
-
-
-  // Widgets
-  { path: "/widgets", component: <Widgets /> },
-
-
-
-  //Icons
-  { path: "/icons-remix", component: <RemixIcons /> },
-  { path: "/icons-boxicons", component: <BoxIcons /> },
-  { path: "/icons-materialdesign", component: <MaterialDesign /> },
-  { path: "/icons-feather", component: <FeatherIcons /> },
-  { path: "/icons-lineawesome", component: <LineAwesomeIcons /> },
-  { path: "/icons-crypto", component: <CryptoIcons /> },
-
-  //Maps
-  // { path: "/maps-google", component: <GoogleMaps /> },
-  { path: "/maps-vector", component: <VectorMaps /> },
-  { path: "/maps-leaflet", component: <LeafletMaps /> },
-
-  //Pages
-  { path: "/pages-starter", component: <ListingPage /> },
-  { path: "/pages-profile", component: <SimplePage /> },
-  { path: "/pages-profile-settings", component: <Settings /> },
-  { path: "/pages-team", component: <Team /> },
-  { path: "/pages-timeline", component: <Timeline /> },
-  { path: "/pages-faqs", component: <Faqs /> },
-  { path: "/pages-gallery", component: <Gallery /> },
-  { path: "/pages-pricing", component: <Pricing /> },
-  { path: "/pages-sitemap", component: <SiteMap /> },
-  { path: "/pages-search-results", component: <SearchResults /> },
-  { path: "/pages-privecy-policy", component: <PrivecyPolicy /> },
-  { path: "/pages-terms-condition", component: <TermsCondition /> },
 
   //User Profile
   { path: "/profile", component: <UserProfile /> },
@@ -185,17 +103,7 @@ const authProtectedRoutes = [
 
   { path: "*", component: <Navigate to="/dashboard" /> },
 
-  //Job pages
-  { path: "/apps-job-statistics", component: <Statistics /> },
-  { path: "/apps-job-lists", component: <JobList /> },
-  { path: "/apps-job-grid-lists", component: <JobGrid /> },
-  { path: "/apps-job-details", component: <JobOverview /> },
-  { path: "/apps-job-candidate-lists", component: <CandidateList /> },
-  { path: "/apps-job-candidate-grid", component: <CandidateGrid /> },
-  { path: "/apps-job-application", component: <Application /> },
-  { path: "/apps-job-new", component: <NewJobs /> },
-  { path: "/apps-job-companies-lists", component: <CompaniesList /> },
-  { path: "/apps-job-categories", component: <JobCategories /> },
+
 
   //APIkey
   { path: "/apps-api-key", component: <ApiKey /> },
@@ -233,8 +141,8 @@ const publicRoutes = [
   { path: "/auth-404-cover", component: <Cover404 /> },
   { path: "/auth-404-alt", component: <Alt404 /> },
   { path: "/auth-500", component: <Error500 /> },
-  { path: "/pages-maintenance", component: <Maintenance /> },
-  { path: "/pages-coming-soon", component: <ComingSoon /> },
+  // { path: "/pages-maintenance", component: <Maintenance /> },
+  // { path: "/pages-coming-soon", component: <ComingSoon /> },
 
   { path: "/landing", component: <Dorsin /> },
   // { path: "/landingtest", component: <Dorsin /> },
@@ -249,6 +157,104 @@ const publicRoutes = [
 
 export { authProtectedRoutes, publicRoutes };
 
+  // //Chat
+  // { path: "/apps-chat", component: <Chat /> },
+  // { path: "/apps-chatwindow", component: <ChatWindow /> },
+  //
+  //
+  //
+  // //Task
+  // { path: "/apps-tasks-list-view", component: <TaskList /> },
+  // { path: "/apps-tasks-details", component: <TaskDetails /> },
+  //
+  //
+  //
+  // //Supports Tickets
+  // { path: "/apps-tickets-list", component: <ListView /> },
+  // { path: "/apps-tickets-details", component: <TicketsDetails /> },
+  //
+  //
+  //
+  // // Widgets
+  // { path: "/widgets", component: <Widgets /> },
+  //
+  //
+  //
+  // //Icons
+  // { path: "/icons-remix", component: <RemixIcons /> },
+  // { path: "/icons-boxicons", component: <BoxIcons /> },
+  // { path: "/icons-materialdesign", component: <MaterialDesign /> },
+  // { path: "/icons-feather", component: <FeatherIcons /> },
+  // { path: "/icons-lineawesome", component: <LineAwesomeIcons /> },
+  // { path: "/icons-crypto", component: <CryptoIcons /> },
+  //
+  // //Maps
+  // // { path: "/maps-google", component: <GoogleMaps /> },
+  // { path: "/maps-vector", component: <VectorMaps /> },
+  // { path: "/maps-leaflet", component: <LeafletMaps /> },
+  //
+  // //Pages
+  // { path: "/pages-starter", component: <ListingPage /> },
+  // { path: "/pages-profile", component: <SimplePage /> },
+  // { path: "/pages-profile-settings", component: <Settings /> },
+  // { path: "/pages-team", component: <Team /> },
+  // { path: "/pages-timeline", component: <Timeline /> },
+  // { path: "/pages-faqs", component: <Faqs /> },
+  // { path: "/pages-gallery", component: <Gallery /> },
+  // { path: "/pages-pricing", component: <Pricing /> },
+  // { path: "/pages-sitemap", component: <SiteMap /> },
+  // { path: "/pages-search-results", component: <SearchResults /> },
+  // { path: "/pages-privecy-policy", component: <PrivecyPolicy /> },
+  // { path: "/pages-terms-condition", component: <TermsCondition /> },
+  // //Job pages
+  // { path: "/apps-job-statistics", component: <Statistics /> },
+  // { path: "/apps-job-lists", component: <JobList /> },
+  // { path: "/apps-job-grid-lists", component: <JobGrid /> },
+  // { path: "/apps-job-details", component: <JobOverview /> },
+  // { path: "/apps-job-candidate-lists", component: <CandidateList /> },
+  // { path: "/apps-job-candidate-grid", component: <CandidateGrid /> },
+  // { path: "/apps-job-application", component: <Application /> },
+  // { path: "/apps-job-new", component: <NewJobs /> },
+  // { path: "/apps-job-companies-lists", component: <CompaniesList /> },
+  // { path: "/apps-job-categories", component: <JobCategories /> },
+
+
+// import DashboardCrypto from "../pages/Template/DashboardCrypto";
+// import DashboardProject from "../pages/Template/DashboardProject";
+//
+// import ListingPage from "../pages/Template/Maps/ListingPage"
+// import DashboardNFT from "../pages/DashboardNFT";
+
+
+//Chat
+// import Chat from "../pages/Template/Chat";
+//
+// //Task
+// import TaskDetails from "../pages/Template/Tasks/TaskDetails";
+// import TaskList from "../pages/Template/Tasks/TaskList";
+//
+//
+// // Support Tickets
+// import ListView from '../pages/Template/SupportTickets/ListView';
+// import TicketsDetails from '../pages/Template/SupportTickets/TicketsDetails';
+//
+//
+// // Widgets
+// import Widgets from '../pages/Template/Widgets/Index';
+
+
+//Icon pages
+// import RemixIcons from "../pages/Template/Icons/RemixIcons/RemixIcons";
+// import BoxIcons from "../pages/Template/Icons/BoxIcons/BoxIcons";
+// import MaterialDesign from "../pages/Template/Icons/MaterialDesign/MaterialDesign";
+// import FeatherIcons from "../pages/Template/Icons/FeatherIcons/FeatherIcons";
+// import LineAwesomeIcons from "../pages/Template/Icons/LineAwesomeIcons/LineAwesomeIcons";
+// import CryptoIcons from "../pages/Template/Icons/CryptoIcons/CryptoIcons";
+//
+// //Maps
+// // import GoogleMaps from "../pages/Maps/GoogleMaps/GoogleMaps";
+// import VectorMaps from "../pages/Template/Maps/VectorMaps/VectorMaps";
+// import LeafletMaps from "../pages/Template/Maps/LeafletMaps/LeafletMaps";
 //Charts
 // import LineCharts from "../pages/Charts/ApexCharts/LineCharts";
 // import AreaCharts from "../pages/Charts/ApexCharts/AreaCharts";

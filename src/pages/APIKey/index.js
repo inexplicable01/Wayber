@@ -22,7 +22,7 @@ import BreadCrumb from "../../Components/Common/BreadCrumb";
 import Widgets from "./Widgets";
 import TableContainer from "../../Components/Common/TableContainer";
 import { APIKeys, CreatedBy, ExpiryDate, Name, Status } from "./APIKeyCol";
-import { CreateDate } from "../SupportTickets/ListView/TicketCol";
+import { CreateDate } from "../Template/SupportTickets/ListView/TicketCol";
 import { useDispatch, useSelector } from "react-redux";
 import { getAPIKey } from "../../store/actions";
 
