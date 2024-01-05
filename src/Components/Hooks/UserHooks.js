@@ -56,7 +56,7 @@ const useProfile = () => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [dispatch]);
 
   return { userProfile, authChecked  };
 };

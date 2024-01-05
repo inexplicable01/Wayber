@@ -19,7 +19,7 @@
         "../scss/_blog.scss",
         "../scss/_contact.scss",
         "../scss/_footer.scss",
-        "../scss/_authentication.scss",
+        "../scss/pages/_authentication.scss",
         "../scss/_switcher.scss",
         "../scss/_responsive.scss"
     ],

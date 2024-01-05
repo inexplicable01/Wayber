@@ -17,7 +17,7 @@ import { userForgetPassword } from "../../store/actions";
 // import images
 // import profile from "../../assets/images/bg.png";
 import logoLight from "../../assets/images/logo-light.png";
-import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
+import ParticlesAuth from "../Template/AuthenticationInner/ParticlesAuth";
 import withRouter from "../../Components/Common/withRouter";
 
 const ForgetPasswordPage = props => {

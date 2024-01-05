@@ -20,7 +20,7 @@ import {Link, useNavigate} from "react-router-dom";
 
 //import images 
 import logoLight from "../../assets/images/logo-light.png";
-import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
+import ParticlesAuth from "../Template/AuthenticationInner/ParticlesAuth";
 
 const Register = () => {
     const history = useNavigate();
@@ -109,7 +109,7 @@ const Register = () => {
 
     useEffect(() => {
         generateRandomValues();
-    }, []);
+    }, );
 
     useEffect(() => {
         if (success) {
