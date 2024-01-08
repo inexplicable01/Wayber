@@ -14,7 +14,7 @@ const AuthProtected = (props) => {
     // if (userProfile && !loading) {
     //   setAuthorization(token);
     // } else
-    console.log('activated',userProfile,', authchecks', authChecked)
+    // console.log('activated',userProfile,', authchecks', authChecked)
     if (!userProfile && authChecked ) {
       dispatch(logoutUser());
     }
@@ -23,9 +23,9 @@ const AuthProtected = (props) => {
   /*
     Navigate is un-auth access protected routes via url
     */
-console.log('Right Before navc, activated',userProfile,', authchecks', authChecked)
+// console.log('Right Before navc, activated',userProfile,', authchecks', authChecked)
   if (!userProfile && authChecked ) {
-    console.log('WHY', userProfile)
+    // console.log('WHY', userProfile)
     return (
 
       <Navigate to={{ pathname: "/landing", state: { from: props.location } }} />

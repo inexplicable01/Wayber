@@ -1,14 +1,14 @@
 import { all, fork } from "redux-saga/effects";
 //layout
-import LayoutSaga from "./storage/layouts/saga";
+import LayoutSaga from "./layouts/saga";
 //Auth
 import registerSaga from "./auth/register/saga";
 import AuthSaga from "./auth/login/saga";
 import ForgetSaga from "./auth/forgetpwd/saga";
 import ProfileSaga from "./auth/profile/saga";
 
-// //calendar
-// import calendarSaga from "./calendar/saga";
+// //quotes
+import watchQuotesSaga from "./quotes/saga";
 // //chat
 // import chatSaga from "./chat/saga";
 // //ecommerce
@@ -67,10 +67,11 @@ export default function* rootSaga() {
   yield all([
     //public
     fork(LayoutSaga),
-    fork(registerSaga),
-    fork(AuthSaga),
-    fork(ForgetSaga),
-    fork(ProfileSaga),
+    // fork(registerSaga),
+    // fork(AuthSaga),
+    // fork(ForgetSaga),
+    // fork(ProfileSaga),
+    // fork(watchQuotesSaga),
     // fork(chatSaga),
     // fork(projectSaga),
     // fork(taskSaga),
@@ -91,6 +92,6 @@ export default function* rootSaga() {
     // fork(fileManager),
     // fork(todos),
     // fork(jobSaga),
-    fork(APIKeysaga)
+    // fork(APIKeysaga)
   ]);
 }

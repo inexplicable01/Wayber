@@ -1,14 +1,15 @@
 import { combineReducers } from "redux";
 
 // Front
-import Layout from "./storage/layouts/reducer";
+import Layout from "./layouts/reducer";
 
 // Authentication
 import Login from "./auth/login/reducer";
 import Registration from "./auth/register/reducer";
 import ForgetPassword from "./auth/forgetpwd/reducer";
 import Profile from "./auth/profile/reducer";
-
+// Authentication
+import quoteReducer from "./quotes/reducer";
 //Calendar
 // import Calendar from "./calendar/reducer";
 // //Chat
@@ -72,34 +73,13 @@ import Profile from "./auth/profile/reducer";
 import APIKey from "./apikey/reducer";
 
 const rootReducer = combineReducers({
-    // public
     Layout,
-    Login,
-    Registration,
-    ForgetPassword,
-    Profile,
-    // Calendar,
-    // chat,
-    // Projects,
-    // Ecommerce,
-    // Tasks,
-    // changeNumber,
-    // Crypto,
-    // Tickets,
-    // Crm,
-    // Invoice,
-    // Mailbox,
-    // DashboardAnalytics,
-    // DashboardCRM,
-    // DashboardEcommerce,
-    // DashboardCrypto,
-    // DashboardProject,
-    // DashboardNFT,
-    // Team,
-    // FileManager,
-    // Todos,
-    // Jobs,
-    APIKey
+    // Login,
+    // Registration,
+    // ForgetPassword,
+    // // Profile,
+    // // quoteReducer,
+    // APIKey
 });
 
 export default rootReducer;

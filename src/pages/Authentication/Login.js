@@ -27,13 +27,13 @@ import withRouter from '../../Components/Common/withRouter';
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const { user, errorMsg, loading, error } = useSelector(state => ({
-        user: state.Profile.user,
+    const {  errorMsg, loading, error } = useSelector(state => ({
+        // user: state.Profile.user,
         errorMsg: state.Login.errorMsg,
         loading: state.Login.loading,
         error: state.Login.error,
     }));
-
+ const user = null
 
     const [userLogin, setUserLogin] = useState([]);
     const [passwordShow, setPasswordShow] = useState(false);

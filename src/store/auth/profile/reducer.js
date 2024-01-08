@@ -13,19 +13,6 @@ const dummyuser = {
     role: 'Buyer',
   }
 
-  const resetuser = {
-    email:'',
-    confirm_password:'',
-    first_name:'',
-    last_name:'',
-    age: null,
-    current_address:'',
-    phone_number: null,
-    property_type: '',
-    budget:null,
-    role: '',
-  }
-
 const initialState = {
   error: "",
   success: "",
@@ -60,6 +47,7 @@ const profile = (state = initialState, action) => {
       state = {
         ...state,
         // usersignedIn: true,
+        // uid : action.payload._delegate.uid,
         user: {...state.user,
           ...action.payload},
       };

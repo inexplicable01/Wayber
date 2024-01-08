@@ -26,7 +26,7 @@ import {
   leftSidebarImageTypes,
   preloaderTypes,
   sidebarVisibilitytypes
-} from "../../../Components/constants/layout";
+} from "../../Components/constants/layout";
 
 const INIT_STATE = {
   layoutType: layoutTypes.SEMIBOX,
