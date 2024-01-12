@@ -56,7 +56,8 @@ import ForgetPasswordPage from "../pages/Authentication/ForgetPassword";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 
-
+//PDF Edits
+import Form21A from "../pages/PDF/Form21A"
 
 //Job pages
 // import Statistics from "../pages/Template/Jobs/Statistics";
@@ -77,23 +78,31 @@ import OnePage from "../pages/Landing/OnePage";
 // import NFTLanding from "../pages/Landing/NFTLanding";
 import Dorsin from "../pages/Landing/Dorsin"
 import PDFViewerComponent from "../pages/PDF/PDFViewer.js"
+import PDFViewerComponent2 from "../pages/PDF/PDFViewer2.js"
+
 // import JobLanding from '../pages/Landing/Job'
 
 // User Profile
 import UserProfile from "../pages/Authentication/user-profile";
-
-// import FileManager from "../pages/Template/FileManager";
-// import ToDoList from "../pages/Template/ToDo";
-// import ChatWindow from "../pages/Template/ChatBot/ChatWindow";
-
+//
+import ProjectGroupsComponent from "../pages/ProjectGroups/ProjectGroup";
+import CreateGroup from "../pages/ProjectGroups/CreateGroup";
+import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
-  { path: "/dashboard", component: <DashboardMain /> },
-  { path: "/index", component: <DashboardMain /> },
+  { path: "/dashboard", component: <ProjectGroupsComponent /> },
+  { path: "/index", component: <ProjectGroupsComponent /> },
 
 { path: "/pdfviewer", component: <PDFViewerComponent /> },
+    { path: "/form21a", component: <Form21A /> },
 
+
+    //ProjectGroups
+{ path: "/project_group", component: <ProjectGroupsComponent /> },
+    { path: "/create-group", component: <CreateGroup /> },
+    { path: "/project_details/:projectGroupID", component: <ProjectDetails /> },
+    { path: "/project_details/:projectGroupID/form/:form", component: <PDFViewerComponent2 /> },
 
   //User Profile
   { path: "/profile", component: <UserProfile /> },

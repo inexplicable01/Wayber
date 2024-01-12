@@ -9,5 +9,11 @@ module.exports = {
   },
   api: {
     API_URL: "https://api-node.themesbrand.website",
+  },
+  documentnames:{
+    FORM21:'21_ResidentialPSA.pdf',
+    FORM22A: '22A_Financing.pdf',
+    FORM22AC: '22AC_LoanLenderChange.pdf',
+    FORM22AD: '22AD_IncreasedDownPayment.pdf'
   }
 };

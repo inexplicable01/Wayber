@@ -9,6 +9,7 @@ import * as actions from './../../store/quotes/actions';
 import * as pdfactions from './../../store/PDFs/actions';
 import {documentnames} from "../../config";
 import {saveAnnotationRequest} from "./../../store/quotes/actions";
+import {getFirebaseBackend} from "./../../helpers/firebase_helper"
 
 const PDFViewerComponent = () => {
     const viewer = useRef(null);
@@ -21,25 +22,51 @@ const PDFViewerComponent = () => {
     const xfdfString = useSelector(state => state.quoteReducer.xfdfString);
     const dispatch = useDispatch();
 
+
+    function loadDocumentInViewer(url) {
+        if (viewer.current && viewer.current.instance) {
+            const {documentViewer} = viewer.current.instance.Core;
+            documentViewer.loadDocument(url);
+        }
+    }
+
+
+    // getFirebaseBackend
 // eslint-disable-next-line
     useEffect(() => {
-
-            const uploaddoc = (blob) => {
+         const firebasebackend = getFirebaseBackend()
+            const checkFirebaseAndLoadDocument = () => {
 
                 if (userProfile) {
-                    // console.log('hi')
-                    // saveAnnotationRequest = (uid, annotationData, formName)
-                    dispatch(pdfactions.uploadPdfRequest(userProfile.uid, blob, document));
-                    // setNewQuote('');
+                    const userFilePath = `${userProfile.uid}/${document}`;
+                    // const userFilePath = filepath; // Path to user-specific file
+                    const templateFilePath = `admin/${document}`; // Path to template file
+
+                    firebasebackend.getFileUrl(userFilePath)
+                        .then(loadDocumentInViewer)
+                        .catch(() => {
+                            // User-specific file not found, try loading the template file
+                            firebasebackend.getFileUrl(templateFilePath)
+                                .then(loadDocumentInViewer)
+                                .catch(error => {
+                                    // Neither file found, handle error
+                                    console.error("Error loading document:", error);
+                                });
+                        });
                 }
-                // dispatch(pdfactions.uploadPdfRequest(blob))
+            }
+            const uploaddoc = (blob) => {
+                if (userProfile) {
+                    // console.log('hi')
+                    dispatch(pdfactions.uploadPdfRequest(userProfile.uid, blob, document));
+                }
             }
             // console.log('use effected')
             if (viewer.current && !viewer.current.instance) {
                 WebViewer({
                     path: '/webviewer/lib',
                     licenseKey: process.env.PDFTRON_LICENSEKEY,
-                    initialDoc: `./NWMLS_Forms/${document}`,
+                    // initialDoc: `./NWMLS_Forms/${document}`,
                 }, viewer.current,).then((instance) => {
                     viewer.current.instance = instance;
                     // Once the instance is ready, you can access the documentViewer and annotationManager
@@ -79,6 +106,8 @@ const PDFViewerComponent = () => {
                             }
                         });
                     });
+
+                    checkFirebaseAndLoadDocument();
                 })
             } else if (viewer.current && viewer.current.instance) {
                 console.log('hereher?')
@@ -101,9 +130,15 @@ const PDFViewerComponent = () => {
             }
         }
         ,
-        [document, xfdfString,dispatch, userProfile]
+        [document, xfdfString, dispatch, userProfile]
     )
     ; // Re-run effect when 'document' state changes
+    // function loadDocumentInViewer(url) {
+    //     if (viewer.current && viewer.current.instance) {
+    //         const {documentViewer} = viewer.current.instance.Core;
+    //         documentViewer.loadDocument(url);
+    //     }
+    // }
 
     const handleDocumentChange = (e) => {
         setDocument(e.target.value);
@@ -165,12 +200,6 @@ const PDFViewerComponent = () => {
                             </ul>
                         </div>
                         <div className="header">React sample</div>
-                        <select onChange={handleDocumentChange} value={document}>
-                            <option value={documentnames.FORM21}>Form 1</option>
-                            <option value={documentnames.FORM22A}>Form 2</option>
-                            <option value={documentnames.FORM22AC}>Form 3</option>
-                            <option value={documentnames.FORM22AD}>Form 4</option>
-                        </select>
                         <button onClick={saveAnnotations} disabled={!anno}> Save Annotations</button>
                         {/*<button onClick={uploaddoc}> Save uploaddoc</button>*/}
                         <div className="webviewer" ref={viewer} style={{height: "100vh"}}></div>

@@ -27,13 +27,13 @@ import withRouter from '../../Components/Common/withRouter';
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const {  errorMsg, loading, error } = useSelector(state => ({
-        // user: state.Profile.user,
+    const {  user, errorMsg, loading, error } = useSelector(state => ({
+        user: state.Profile.user,
         errorMsg: state.Login.errorMsg,
         loading: state.Login.loading,
         error: state.Login.error,
     }));
- const user = null
+ // const user = null
 
     const [userLogin, setUserLogin] = useState([]);
     const [passwordShow, setPasswordShow] = useState(false);
@@ -52,8 +52,8 @@ const Login = (props) => {
         enableReinitialize: true,
 
         initialValues: {
-            email: userLogin.email || "someone@someone.com" || '',
-            password: userLogin.password || "someone" || '',
+            email: userLogin.email || process.env.REACT_APP_EMAIL|| '',
+            password: userLogin.password || process.env.REACT_APP_PASSWORD || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),

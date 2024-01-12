@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app';
 // Add the Firebase products that you want to use
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import 'firebase/compat/storage';
 import {doc, setDoc} from "firebase/firestore";
 
 class FirebaseAuthBackend {
@@ -187,22 +188,72 @@ class FirebaseAuthBackend {
         });
     };
 
+    uploadPdf = (filePath, pdfBlob) => {
+        const storage = firebase.storage();
+        const storageRef = storage.ref(filePath);
+
+        // 'blob' is the Blob object you got from PDFTron
+        storageRef.put(pdfBlob).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        }).catch((error) => {
+            console.error("Error uploading file:", error);
+        });
+    };
+
+    downloadPdf = (filePath) => {
+        return firebase.storage().ref(filePath).getDownloadURL();
+    };
+
+    getFileUrl(filePath) {
+        return firebase.storage().ref(filePath).getDownloadURL();
+    }
+
+
+    createProjectGroup = async (projectGroup) => {
+        const response = await firebase.firestore().collection('ProjectGroup').add(projectGroup);
+        return response.id; // Return the new document ID
+    };
+    
+    findProjectGroupbyID = async (projectGroupID) => {
+        const response = await firebase.firestore().collection('ProjectGroup').doc(projectGroupID).get();
+        return response; // Return the new document ID
+    };
+
+    getProjectGroup = async (email, userrole) => {
+        let field;
+        if (userrole === 'buyer') {
+            field = 'buyersEmails'
+        } else if (userrole === 'seller') {
+            field = 'sellerssEmails'
+        } else if (userrole === 'buyeragent') {
+            field = 'buyerAgentsEmails'
+        } else if (userrole === 'selleragent') {
+            field = 'sellerAgentsEmails'
+        } else {
+            field = 'buyersEmails'
+        }
+
+        const response = await firebase.firestore().collection('ProjectGroup')
+            .where(field, 'array-contains', email).get();
+        return response; // Return the project group data
+    };
+
     fetchQuotes = () => {
         return firebase.firestore().collection('quotes').get().then(querySnapshot => {
             return querySnapshot.docs.map(doc => doc.data());
         });
     };
+    fetchAnnotations = (docID) => {
+        return firebase.firestore().collection('AnnotationsCollection')
+            .doc(docID).get()
 
+    };
     // Method to add a quote
-    addQuote = (newQuote, uid) => {
-        console.log("addQuote function called with:", newQuote, uid);
+    addQuote = (uploadDoc) => {
+        console.log("addQuote function called with:", uploadDoc);
         const addPromise = firebase.firestore()
-            .collection('quotes')
-            .doc('asdfadsf')
-            .set({
-            text: newQuote,
-            userUID: uid
-        });
+            .collection('AnnotationsCollection')
+            .add(uploadDoc);
         addPromise.then(docRef => {
             console.log("Quote added with ID: ", docRef.id);
         }).catch(error => {
@@ -210,23 +261,22 @@ class FirebaseAuthBackend {
         });
         console.log("addPromise sent:", addPromise);
         return addPromise;
-
-//         const data = {
-//             text: newQuote,
-//             userUID: uid
-//         };
-//
-// // Specify the document ID for the new document
-//         const newCityId = "new-city-id";
-//         const db = firebase.firestore();
-//         setDoc(doc(db, "cities", newCityId), data)
-//             .then(() => {
-//                 console.log("Document successfully written with ID: ", newCityId);
-//             })
-//             .catch((error) => {
-//                 console.error("Error writing document: ", error);
-//             });
     };
+
+    setAnnotationDoc = (docID, newdata) => {
+        const docRef = firebase.firestore().collection('AnnotationsCollection').doc(docID);
+        // Set the data for this document (if the document does not exist, it will be created)
+        return docRef.set(newdata);
+    }
+    updateAnnotationDoc = (docId, newData) => {
+        return firebase.firestore().collection('AnnotationsCollection').doc(docId).update(newData);
+    };
+
+    checkDocExists = (collectionName, docId) => {
+        return firebase.firestore().collection(collectionName).doc(docId).get();
+    };
+
+
     onAuthStateChanged = (onUserChanged) => {
         const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
             if (user) {

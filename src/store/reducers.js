@@ -71,15 +71,19 @@ import quoteReducer from "./quotes/reducer";
 
 //API Key
 import APIKey from "./apikey/reducer";
+import PDFReducer from "./PDFs/reducer";
+import projectgroupreducer from "./projectgroup/reducer";
 
 const rootReducer = combineReducers({
     Layout,
-    // Login,
-    // Registration,
-    // ForgetPassword,
-    // // Profile,
-    // // quoteReducer,
-    // APIKey
+    Login,
+    Registration,
+    ForgetPassword,
+    Profile,
+    quoteReducer,
+    APIKey,
+    PDFReducer,
+    projectgroupreducer,
 });
 
 export default rootReducer;
