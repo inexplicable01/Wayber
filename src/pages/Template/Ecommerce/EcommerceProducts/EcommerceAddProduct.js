@@ -20,7 +20,7 @@ import {
 
 // Redux
 import { useDispatch } from "react-redux";
-import { addNewProduct as onAddNewProduct, updateProduct as onUpdateProduct } from "../../../../store/BackUp/ecommerce/action";
+import { addNewProduct as onAddNewProduct, updateProduct as onUpdateProduct } from "../../../../store/storage/ecommerce/action";
 
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";

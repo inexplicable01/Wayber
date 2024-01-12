@@ -4,17 +4,17 @@ import { Navigate } from "react-router-dom";
 //Dashboard
 // import DashboardAnalytics from "../pages/Template/DashboardAnalytics";
 // import DashboardCrm from "../pages/Template/DashboardCrm";
-import DashboardEcommerce from "../pages/Template/DashboardEcommerce";
+import DashboardMain from "../pages/DashboardMain";
 // import DashboardJobs from '../pages/Template/DashboardJob'
 
 
 
 //AuthenticationInner pages
-import BasicSignIn from '../pages/AuthenticationInner/Login/BasicSignIn';
-import CoverSignIn from '../pages/AuthenticationInner/Login/CoverSignIn';
-import BasicSignUp from '../pages/AuthenticationInner/Register/BasicSignUp';
-import CoverSignUp from "../pages/AuthenticationInner/Register/CoverSignUp";
-import BasicPasswReset from '../pages/AuthenticationInner/PasswordReset/BasicPasswReset';
+import BasicSignIn from '../pages/Template/AuthenticationInner/Login/BasicSignIn';
+import CoverSignIn from '../pages/Template/AuthenticationInner/Login/CoverSignIn';
+import BasicSignUp from '../pages/Template/AuthenticationInner/Register/BasicSignUp';
+import CoverSignUp from "../pages/Template/AuthenticationInner/Register/CoverSignUp";
+import BasicPasswReset from '../pages/Template/AuthenticationInner/PasswordReset/BasicPasswReset';
 
 //pages
 // import Starter from '../pages/Template/Pages/Starter/Starter';
@@ -32,23 +32,23 @@ import BasicPasswReset from '../pages/AuthenticationInner/PasswordReset/BasicPas
 // import PrivecyPolicy from '../pages/Template/Pages/PrivacyPolicy.js'
 // import TermsCondition from '../pages/Template/Pages/TermsCondition'
 
-import CoverPasswReset from '../pages/AuthenticationInner/PasswordReset/CoverPasswReset';
-import BasicLockScreen from '../pages/AuthenticationInner/LockScreen/BasicLockScr';
-import CoverLockScreen from '../pages/AuthenticationInner/LockScreen/CoverLockScr';
-import BasicLogout from '../pages/AuthenticationInner/Logout/BasicLogout';
-import CoverLogout from '../pages/AuthenticationInner/Logout/CoverLogout';
-import BasicSuccessMsg from '../pages/AuthenticationInner/SuccessMessage/BasicSuccessMsg';
-import CoverSuccessMsg from '../pages/AuthenticationInner/SuccessMessage/CoverSuccessMsg';
-import BasicTwosVerify from '../pages/AuthenticationInner/TwoStepVerification/BasicTwosVerify';
-import CoverTwosVerify from '../pages/AuthenticationInner/TwoStepVerification/CoverTwosVerify';
-import Basic404 from '../pages/AuthenticationInner/Errors/Basic404';
-import Cover404 from '../pages/AuthenticationInner/Errors/Cover404';
-import Alt404 from '../pages/AuthenticationInner/Errors/Alt404';
-import Error500 from '../pages/AuthenticationInner/Errors/Error500';
+import CoverPasswReset from '../pages/Template/AuthenticationInner/PasswordReset/CoverPasswReset';
+import BasicLockScreen from '../pages/Template/AuthenticationInner/LockScreen/BasicLockScr';
+import CoverLockScreen from '../pages/Template/AuthenticationInner/LockScreen/CoverLockScr';
+import BasicLogout from '../pages/Template/AuthenticationInner/Logout/BasicLogout';
+import CoverLogout from '../pages/Template/AuthenticationInner/Logout/CoverLogout';
+import BasicSuccessMsg from '../pages/Template/AuthenticationInner/SuccessMessage/BasicSuccessMsg';
+import CoverSuccessMsg from '../pages/Template/AuthenticationInner/SuccessMessage/CoverSuccessMsg';
+import BasicTwosVerify from '../pages/Template/AuthenticationInner/TwoStepVerification/BasicTwosVerify';
+import CoverTwosVerify from '../pages/Template/AuthenticationInner/TwoStepVerification/CoverTwosVerify';
+import Basic404 from '../pages/Template/AuthenticationInner/Errors/Basic404';
+import Cover404 from '../pages/Template/AuthenticationInner/Errors/Cover404';
+import Alt404 from '../pages/Template/AuthenticationInner/Errors/Alt404';
+import Error500 from '../pages/Template/AuthenticationInner/Errors/Error500';
 
-import BasicPasswCreate from "../pages/AuthenticationInner/PasswordCreate/BasicPasswCreate";
-import CoverPasswCreate from "../pages/AuthenticationInner/PasswordCreate/CoverPasswCreate";
-import Offlinepage from "../pages/AuthenticationInner/Errors/Offlinepage";
+import BasicPasswCreate from "../pages/Template/AuthenticationInner/PasswordCreate/BasicPasswCreate";
+import CoverPasswCreate from "../pages/Template/AuthenticationInner/PasswordCreate/CoverPasswCreate";
+import Offlinepage from "../pages/Template/AuthenticationInner/Errors/Offlinepage";
 
 //login
 import Login from "../pages/Authentication/Login";
@@ -56,7 +56,8 @@ import ForgetPasswordPage from "../pages/Authentication/ForgetPassword";
 import Logout from "../pages/Authentication/Logout";
 import Register from "../pages/Authentication/Register";
 
-
+//PDF Edits
+import Form21A from "../pages/PDF/Form21A"
 
 //Job pages
 // import Statistics from "../pages/Template/Jobs/Statistics";
@@ -77,23 +78,31 @@ import OnePage from "../pages/Landing/OnePage";
 // import NFTLanding from "../pages/Landing/NFTLanding";
 import Dorsin from "../pages/Landing/Dorsin"
 import PDFViewerComponent from "../pages/PDF/PDFViewer.js"
+import PDFViewerComponent2 from "../pages/PDF/PDFViewer2.js"
+
 // import JobLanding from '../pages/Landing/Job'
 
 // User Profile
 import UserProfile from "../pages/Authentication/user-profile";
-
-// import FileManager from "../pages/Template/FileManager";
-// import ToDoList from "../pages/Template/ToDo";
-// import ChatWindow from "../pages/Template/ChatBot/ChatWindow";
-
+//
+import ProjectGroupsComponent from "../pages/ProjectGroups/ProjectGroup";
+import CreateGroup from "../pages/ProjectGroups/CreateGroup";
+import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
-  { path: "/dashboard", component: <DashboardEcommerce /> },
-  { path: "/index", component: <DashboardEcommerce /> },
+  { path: "/dashboard", component: <ProjectGroupsComponent /> },
+  { path: "/index", component: <ProjectGroupsComponent /> },
 
 { path: "/pdfviewer", component: <PDFViewerComponent /> },
+    { path: "/form21a", component: <Form21A /> },
 
+
+    //ProjectGroups
+{ path: "/project_group", component: <ProjectGroupsComponent /> },
+    { path: "/create-group", component: <CreateGroup /> },
+    { path: "/project_details/:projectGroupID", component: <ProjectDetails /> },
+    { path: "/project_details/:projectGroupID/form/:form", component: <PDFViewerComponent2 /> },
 
   //User Profile
   { path: "/profile", component: <UserProfile /> },

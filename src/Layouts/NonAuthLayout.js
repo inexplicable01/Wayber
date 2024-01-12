@@ -10,7 +10,7 @@ const NonAuthLayout = ({ children }) => {
     } = useSelector(state => ({
         layoutModeType: state.Layout.layoutModeType,
     }));
-
+    // const layoutModeType ="dark"
     useEffect(() => {
         if (layoutModeType === "dark") {
             document.body.setAttribute("data-layout-mode", "dark");

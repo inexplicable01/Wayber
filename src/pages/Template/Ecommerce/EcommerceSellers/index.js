@@ -33,7 +33,7 @@ import Select from "react-select";
 import { useSelector, useDispatch } from "react-redux";
 
 //Import actions
-import { getSellers as onGetSellers } from "../../../../store/BackUp/ecommerce/action";
+import { getSellers as onGetSellers } from "../../../../store/storage/ecommerce/action";
 import SellerChats from "./SellerChats";
 
 const EcommerceSellers = () => {

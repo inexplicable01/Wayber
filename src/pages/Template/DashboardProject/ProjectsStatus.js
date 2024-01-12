@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardHeader, Col, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { useSelector, useDispatch } from "react-redux";
 import { PrjectsStatusCharts } from './DashboardProjectCharts';
-import { getProjectStatusChartsData } from '../../../store/BackUp/dashboardProject/action';
+import { getProjectStatusChartsData } from '../../../store/storage/dashboardProject/action';
 
 const ProjectsStatus = () => {
     const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, FormFeedback, Alert, Spinner } from 'reactstrap';
-import ParticlesAuth from "../AuthenticationInner/ParticlesAuth";
+import ParticlesAuth from "../Template/AuthenticationInner/ParticlesAuth";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
@@ -27,13 +27,13 @@ import withRouter from '../../Components/Common/withRouter';
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const { user, errorMsg, loading, error } = useSelector(state => ({
+    const {  user, errorMsg, loading, error } = useSelector(state => ({
         user: state.Profile.user,
         errorMsg: state.Login.errorMsg,
         loading: state.Login.loading,
         error: state.Login.error,
     }));
-
+ // const user = null
 
     const [userLogin, setUserLogin] = useState([]);
     const [passwordShow, setPasswordShow] = useState(false);
@@ -52,8 +52,8 @@ const Login = (props) => {
         enableReinitialize: true,
 
         initialValues: {
-            email: userLogin.email || "michael.miller1@example.com" || '',
-            password: userLogin.password || "014v0hyas" || '',
+            email: userLogin.email || process.env.REACT_APP_EMAIL|| '',
+            password: userLogin.password || process.env.REACT_APP_PASSWORD || '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),

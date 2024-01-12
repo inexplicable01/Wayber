@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, Col, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { SalesForecastCharts } from './DashboardCrmCharts';
 import { useSelector, useDispatch } from "react-redux";
-import { getSalesForecastChartsData } from '../../../store/BackUp/dashboardCRM/action';
+import { getSalesForecastChartsData } from '../../../store/storage/dashboardCRM/action';
 
 const SalesForecast = () => {const dispatch = useDispatch();
 

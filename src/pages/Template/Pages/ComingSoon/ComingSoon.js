@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Container, Input, InputGroup, Row } from 'reactstrap'
-import ParticlesAuth from "../../../AuthenticationInner/ParticlesAuth";
+import ParticlesAuth from "../../AuthenticationInner/ParticlesAuth";
 import Countdown from "react-countdown"
 
 //import images

@@ -1,79 +1,178 @@
 import React from 'react';
-import {RenderPage, RenderPageProps, Viewer} from '@react-pdf-viewer/core';
-// Import the styles
-
 import {useRef, useEffect, useState} from 'react';
-// import { Worker , Viewer } from '@react-pdf-viewer/core';
-// import '@react-pdf-viewer/core/lib/styles/index.css';
 import WebViewer from '@pdftron/webviewer';
 
-// pdfjs.GlobalWorkerOptions.workerSrc = '//cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js';
-import {Worker} from '@react-pdf-viewer/core';
+import {useProfile} from "../../Components/Hooks/UserHooks";
 import {Col, Container, Row} from "reactstrap";
-
-// import {Document, Page, pdfjs} from 'react-pdf';
-
-// pdfjs.GlobalWorkerOptions.workerSrc="//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js"
+import {useSelector, useDispatch} from 'react-redux';
+import * as actions from './../../store/quotes/actions';
+import * as pdfactions from './../../store/PDFs/actions';
+import {documentnames} from "../../config";
+import {saveAnnotationRequest} from "./../../store/quotes/actions";
 
 const PDFViewerComponent = () => {
     const viewer = useRef(null);
-    const [document, setDocument] = useState('21_ResidentialPSA.pdf')
+    const [document, setDocument] = useState(documentnames.FORM21)
+    // const userUID = useSelector(state => state.Profile.uid);
+    // const userUID='blah'
+    const [anno, setAnno] = useState(null)
+    const {userProfile} = useProfile()
+    // console.log(userProfile)
+    const xfdfString = useSelector(state => state.quoteReducer.xfdfString);
+    const dispatch = useDispatch();
 
-
-    // useEffect(() => {
-    //     console.log('use effected')
-    //     WebViewer(
-    //         {
-    //             path: '/webviewer',
-    //             licenseKey: 'demo:1702961812846:7c8f70290300000000faec49c74ef715a105f1c24fb3356e71a3af3d6e',
-    //             initialDoc: `./NWMLS_Forms/${document}`,
-    //         },
-    //         viewer.current,
-    //     ).then((instance) => {
-    //         const {documentViewer} = instance.Core;
-    //         console.log(documentViewer)
-    //         // you can now call WebViewer APIs here...
-    //     });
-    // }, [document]);
-
-
+// eslint-disable-next-line
     useEffect(() => {
-        console.log('use effected')
-        if (viewer.current && !viewer.current.instance) {
-            WebViewer(
-                {
-                    path: '/webviewer',
-                    licenseKey: 'demo:1702961812846:7c8f70290300000000faec49c74ef715a105f1c24fb3356e71a3af3d6e',
+
+            const uploaddoc = (blob) => {
+
+                if (userProfile) {
+                    // console.log('hi')
+                    // saveAnnotationRequest = (uid, annotationData, formName)
+                    dispatch(pdfactions.uploadPdfRequest(userProfile.uid, blob, document));
+                    // setNewQuote('');
+                }
+                // dispatch(pdfactions.uploadPdfRequest(blob))
+            }
+            // console.log('use effected')
+            if (viewer.current && !viewer.current.instance) {
+                WebViewer({
+                    path: '/webviewer/lib',
+                    licenseKey: process.env.PDFTRON_LICENSEKEY,
                     initialDoc: `./NWMLS_Forms/${document}`,
-                },
-                viewer.current,
-            ).then((instance) => {
-                viewer.current.instance = instance;
-            });
-        } else if (viewer.current && viewer.current.instance) {
-            viewer.current.instance.loadDocument(`./NWMLS_Forms/${document}`);
+                }, viewer.current,).then((instance) => {
+                    viewer.current.instance = instance;
+                    // Once the instance is ready, you can access the documentViewer and annotationManager
+                    const {documentViewer, annotationManager, annotManager, Annotations} = instance.Core;
+                    // Add event listener for when the document is loaded
+                    documentViewer.addEventListener('documentLoaded', async () => {
+                        // const documentId = documentViewer.getDocument().getDocumentId();
+                        if (userProfile) {
+                            dispatch(actions.fetchAnnotationsRequest(document, userProfile.uid));
+                        }
+                    });
+                    annotationManager.addEventListener('annotationChanged', () => {
+                        console.log('how about here')
+                        // widgets and links will remain in the document without changing so it isn't necessary to export them
+                        annotationManager.exportAnnotations({links: false, widgets: false}).then(xfdfString => {
+                            setAnno(xfdfString);
+                            // Full samples are available at the end of this section.
+                        });
+                    })
+
+                    instance.UI.setHeaderItems(header => {
+                        header.push({
+                            type: 'actionButton',
+                            // img: 'https://via.placeholder.com/32',
+                            img: '...',
+                            onClick: async () => {
+                                const doc = documentViewer.getDocument();
+                                const xfdfString = await annotationManager.exportAnnotations();
+                                const data = await doc.getFileData({
+                                    // saves the document with annotations in it
+                                    xfdfString
+                                });
+                                const arr = new Uint8Array(data);
+                                const blob = new Blob([arr], {type: 'application/pdf'});
+
+                                uploaddoc(blob)
+                            }
+                        });
+                    });
+                })
+            } else if (viewer.current && viewer.current.instance) {
+                console.log('hereher?')
+                // viewer.current.instance.Core.documentViewer.loadDocument(`./NWMLS_Forms/${document}`);
+                // if (typeof viewer.current.instance.loadDocument === 'function') {
+                //     viewer.current.instance.Core.documentViewer.loadDocument(`./NWMLS_Forms/${document}`);
+                // } else {
+                //     console.error('loadDocument function is not available on the instance');
+                // }
+            }
+
+            if (viewer.current && viewer.current.instance && xfdfString) {
+                const {annotationManager} = viewer.current.instance.Core;
+
+                annotationManager.importAnnotations(xfdfString).then(() => {
+                    console.log("Annotations imported successfully.");
+                }).catch(error => {
+                    console.error("Error importing annotations:", error);
+                });
+            }
         }
-    }, [document]); // Re-run effect when 'document' state changes
+        ,
+        [document, xfdfString,dispatch, userProfile]
+    )
+    ; // Re-run effect when 'document' state changes
 
     const handleDocumentChange = (e) => {
         setDocument(e.target.value);
     }
 
+    // Function to save annotations to your backend or Firebase
 
+    const saveAnnotations = () => {
+        // Replace with your actual logic to save the annotations
+        console.log('Saving annotations', userProfile);
+        // e.g., send xfdfString to your backend or Firebase
+        if (userProfile) {
+            // console.log('hi')
+            // saveAnnotationRequest = (uid, annotationData, formName)
+            dispatch(actions.saveAnnotationRequest(userProfile.uid, anno, document));
+            setNewQuote('');
+        }
+
+    };
+
+    useEffect(() => {
+        dispatch(actions.fetchQuotesRequest());
+    }, [dispatch]);
+
+    // const now = new Date();
+    // const seattleTime = new Date(now.getTime() - (8 * 60 * 60 * 1000));
+    // const timestr = seattleTime.toISOString().replace('T', ' ').substring(0, 19);
+    const [newQuote, setNewQuote] = useState('');
+    const handleAddQuote = (e) => {
+        e.preventDefault();
+        if (newQuote && userProfile.uid) {
+            dispatch(actions.addQuoteRequest(newQuote, userProfile.uid));
+            setNewQuote('');
+        }
+    };
+
+// console.log('userUID', userUID)
     return (
 
         <React.Fragment>
             <div className="page-content">
                 <Container fluid>
                     <div className="MyComponent">
-
+                        <div>
+                            <form onSubmit={handleAddQuote}>
+                                <input
+                                    type="text"
+                                    value={newQuote}
+                                    onChange={e => setNewQuote(e.target.value)}
+                                    // defaultValue="4"
+                                />
+                                <button type="submit">Add Quote</button>
+                            </form>
+                            <ul>
+                                {/*/!*{quotes}*!/*/}
+                                {/*{quotes && quotes.map((quote, index) => (*/}
+                                {/*    <li key={index}>{quote.text}</li>*/}
+                                {/*))}*/}
+                            </ul>
+                        </div>
                         <div className="header">React sample</div>
                         <select onChange={handleDocumentChange} value={document}>
-                            <option value="21_ResidentialPSA.pdf">Form 1</option>
-                            <option value="22A_Financing.pdf">Form 2</option>
-                            <option value="22AC_LoanLenderChange.pdf">Form 3</option>
-                            <option value="22AD_IncreasedDownPayment.pdf">Form 4</option>
+                            <option value={documentnames.FORM21}>Form 1</option>
+                            <option value={documentnames.FORM22A}>Form 2</option>
+                            <option value={documentnames.FORM22AC}>Form 3</option>
+                            <option value={documentnames.FORM22AD}>Form 4</option>
                         </select>
+                        <button onClick={saveAnnotations} disabled={!anno}> Save Annotations</button>
+                        {/*<button onClick={uploaddoc}> Save uploaddoc</button>*/}
                         <div className="webviewer" ref={viewer} style={{height: "100vh"}}></div>
                     </div>
                 </Container>

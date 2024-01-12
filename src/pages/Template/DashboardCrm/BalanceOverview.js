@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardHeader, Col, DropdownItem, DropdownMenu, DropdownToggle, UncontrolledDropdown } from 'reactstrap';
 import { useSelector, useDispatch } from "react-redux";
 import { BalanceOverviewCharts } from "./DashboardCrmCharts";
-import { getBalanceOverviewChartsData } from '../../../store/BackUp/dashboardCRM/action';
+import { getBalanceOverviewChartsData } from '../../../store/storage/dashboardCRM/action';
 
 const BalanceOverview = () => {
     const dispatch = useDispatch();

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'reactstrap';
-import ParticlesAuth from "../../../AuthenticationInner/ParticlesAuth";
+import ParticlesAuth from "../../AuthenticationInner/ParticlesAuth";
 
 //images import
 import maintenanceImg from '../../../../assets/images/maintenance.png';

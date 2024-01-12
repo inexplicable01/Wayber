@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { CountriesCharts } from './DashboardAnalyticsCharts';
 
 import Vector from './VectorMap';
-import { getCountryChartsData } from "../../../store/BackUp/dashboardAnalytics/action";
+import { getCountryChartsData } from "../../../store/storage/dashboardAnalytics/action";
 
 const LiveUsers = () => {
     const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader, Col, Row } from 'reactstrap';
 import CountUp from "react-countup";
 import { useSelector, useDispatch } from "react-redux";
 import { AudiencesCharts } from './DashboardAnalyticsCharts';
-import { getAudiencesMetricsChartsData } from "../../../store/BackUp/dashboardAnalytics/action";
+import { getAudiencesMetricsChartsData } from "../../../store/storage/dashboardAnalytics/action";
 
 const AudiencesMetrics = () => {
     const dispatch = useDispatch();

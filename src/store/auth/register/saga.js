@@ -32,7 +32,7 @@ function* registerUser({ payload: { user } }) {
           additionalInfo
       );
 
-      yield put(setProfile({...additionalInfo, email: email}));
+      yield put(setProfile({...additionalInfo, email: email, uid:response.uid}));
       yield put(registerUserSuccessful());
     }
 

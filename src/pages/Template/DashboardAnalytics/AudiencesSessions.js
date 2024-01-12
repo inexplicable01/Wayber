@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardHeader, Col, DropdownMenu, DropdownToggle, UncontrolledDropdown, DropdownItem } from 'reactstrap';
 import { useSelector, useDispatch } from "react-redux";
 import { AudiencesSessionsCharts } from './DashboardAnalyticsCharts';
-import { getAudiencesSessionsChartsData } from "../../../store/BackUp/dashboardAnalytics/action";
+import { getAudiencesSessionsChartsData } from "../../../store/storage/dashboardAnalytics/action";
 
 const AudiencesSessions = () => {
     const dispatch = useDispatch();

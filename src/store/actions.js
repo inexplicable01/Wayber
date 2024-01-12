@@ -5,47 +5,50 @@ export * from "./auth/register/actions";
 export * from "./auth/login/actions";
 export * from "./auth/forgetpwd/actions";
 export * from "./auth/profile/actions";
-//calendar
-// export * from "./BackUp/calendar/actions";
+// //calendar
+export * from "./quotes/actions";
+export * from "./PDFs/actions";
+export * from "./projectgroup/actions";
+// export * from "./calendar/actions";
 // //chat
-// export * from "./BackUp/chat/action";
-//project
-// export * from "./BackUp/projects/action";
+// export * from "./chat/action";
+// //project
+// export * from "./projects/action";
 // //ecommerce
-// export * from "./BackUp/ecommerce/action";
+// export * from "./ecommerce/action";
 // // Task
-// export * from "./BackUp/tasks/action";
+// export * from "./storage/tasks/action";
 // //Form advanced
-// export * from './BackUp/formAdvanced/action';
+// export * from './formAdvanced/action';
 // // Crypto
-// export * from "./BackUp/crypto/action";
+// export * from "./crypto/action";
 // //TicketsList
-// export * from "./BackUp/tickets/action";
+// export * from "./storage/tickets/action";
 // //crm
-// export * from "./BackUp/crm/action";
+// export * from "./crm/action";
 // //invoice
-// export * from "./BackUp/invoice/action";
+// export * from "./invoice/action";
 // //mailbox
-// export * from "./BackUp/mailbox/action";
+// export * from "./mailbox/action";
 // // Dashboard Analytics
-// export * from "./BackUp/dashboardAnalytics/action";
+// export * from "./dashboardAnalytics/action";
 // // Dashboard Analytics
-// export * from "./BackUp/dashboardCRM/action";
+// export * from "./dashboardCRM/action";
 // // Dashboard Ecommerce
-// export * from "./BackUp/dashboardEcommerce/action";
+// export * from "./dashboardEcommerce/action";
 // // Dashboard Crypto
-// export * from "./BackUp/dashboardCrypto/action";
+// export * from "./dashboardCrypto/action";
 // // Dashboard Project
-// export * from "./BackUp/dashboardProject/action";
+// export * from "./dashboardProject/action";
 // // Dashboard NFT
-// export * from "./BackUp/dashboardNFT/action";
-// Pages > Team
-// export * from "./BackUp/team/action";
-// File Manager
-export * from "./fileManager/action"
-// To do
-// export * from "./BackUp/todos/action"
+// export * from "./dashboardNFT/action";
+// // Pages > Team
+// export * from "./storage/team/action";
+// // File Manager
+// export * from "./fileManager/action"
+// // To do
+// export * from "./storage/todos/action"
 // //job
-// export * from "./BackUp/job/action";
-// //API Key
+// export * from "./job/action";
+//API Key
 export * from "./apikey/action";

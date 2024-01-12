@@ -32,7 +32,7 @@ function* loginUser({ payload: { user, history } }) {
         console.log(response.uid + "got to here.")
         const userProfile = yield call(fireBaseBackend.getUserProfile, response.uid)
         console.log(userProfile + "userProfile.")
-        yield put(setProfile({...userProfile, email: user.email}));
+        yield put(setProfile({...userProfile, email: user.email, uid:response.uid}));
 
         console.log('some')
         yield put(loginSuccess(response));
