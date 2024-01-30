@@ -88,6 +88,9 @@ import UserProfile from "../pages/Authentication/user-profile";
 import ProjectGroupsComponent from "../pages/ProjectGroups/ProjectGroup";
 import CreateGroup from "../pages/ProjectGroups/CreateGroup";
 import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
+
+// Client Profile
+import CreateClientProfile from "../pages/clientProfile/index.js";
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
@@ -106,7 +109,8 @@ const authProtectedRoutes = [
 
   //User Profile
   { path: "/profile", component: <UserProfile /> },
-
+ //create-client-profile
+ { path: "/create_client_profile", component: <CreateClientProfile /> },
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
 

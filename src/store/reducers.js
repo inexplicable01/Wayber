@@ -73,6 +73,7 @@ import quoteReducer from "./quotes/reducer";
 import APIKey from "./apikey/reducer";
 import PDFReducer from "./PDFs/reducer";
 import projectgroupreducer from "./projectgroup/reducer";
+import clientProfileReducer from "./clientProfile/reducer";
 
 const rootReducer = combineReducers({
     Layout,
@@ -84,6 +85,7 @@ const rootReducer = combineReducers({
     APIKey,
     PDFReducer,
     projectgroupreducer,
+    clientProfileReducer
 });
 
 export default rootReducer;
