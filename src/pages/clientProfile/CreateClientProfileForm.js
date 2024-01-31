@@ -15,13 +15,13 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { submitForm } from "../../store/clientProfile/actions";
 import { ToastContainer, toast } from "react-toastify";
-import {RESET_SUCCESS_STATE} from '../../store/clientProfile/actionTypes'
+import { RESET_SUCCESS_STATE } from "../../store/clientProfile/actionTypes";
 
 const CreateClientProfileForm = ({ onSubmit }) => {
   const dispatch = useDispatch();
 
   const formData = useSelector((state) => state.clientProfileReducer);
-  console.log("formData", formData);
+  //console.log("formData", formData);
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -32,6 +32,7 @@ const CreateClientProfileForm = ({ onSubmit }) => {
       estimatedAnnualIncome: "",
       currentAddress: "",
       desiredLocation: "",
+      role: "",
     },
 
     validationSchema: Yup.object({
@@ -45,14 +46,15 @@ const CreateClientProfileForm = ({ onSubmit }) => {
       ),
       currentAddress: Yup.string().required("Please Enter Current Address"),
       desiredLocation: Yup.string().required("Please Enter Desired Location"),
+      role: Yup.string().required("Please select a role"), // Validation for role
     }),
 
     onSubmit: (values) => {
+      console.log(values);
       dispatch(submitForm(values));
-      onSubmit(values);
     },
   });
-  
+
   return (
     <React.Fragment>
       <Form
@@ -151,6 +153,27 @@ const CreateClientProfileForm = ({ onSubmit }) => {
               ) : null}
             </FormGroup>
           </Col>
+          <Col md={4}>
+            <FormGroup>
+              <Label for="role">Role</Label>
+              <Input
+                id="role"
+                name="role" // Corrected the name attribute
+                type="select"
+                onChange={formik.handleChange}
+                value={formik.values.role}
+                invalid={formik.touched.role && !!formik.errors.role}
+                style={{ padding: 13 }}
+              >
+                <option value="">Select Role</option>
+                <option value="Client">Client</option>
+                <option value="User">User</option>
+              </Input>
+              {formik.touched.role && formik.errors.role ? (
+                <FormFeedback  style={{paddingTop:13}} type="invalid">{formik.errors.role}</FormFeedback>
+              ) : null}
+            </FormGroup>
+          </Col>
         </Row>
 
         <FormGroup>
@@ -221,8 +244,9 @@ const CreateClientProfileForm = ({ onSubmit }) => {
             className: "bg-success text-white",
             progress: undefined,
             toastId: "",
-            onClose:()=>{ dispatch({ type: RESET_SUCCESS_STATE });
-          }
+            onClose: () => {
+              dispatch({ type: RESET_SUCCESS_STATE });
+            },
           })}
           <ToastContainer autoClose={2000} limit={1} />
         </>

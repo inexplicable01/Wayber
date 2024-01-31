@@ -311,7 +311,7 @@ class FirebaseAuthBackend {
         const extendedProfileData = {
             ...profileData,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-            type:"Client"
+
         };
 
         return clientProfileCollection.add(extendedProfileData)

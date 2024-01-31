@@ -91,6 +91,8 @@ import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
 
 // Client Profile
 import CreateClientProfile from "../pages/clientProfile/index.js";
+// create Contract
+import CreateContact from '../pages/createContact/index.js'
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
@@ -111,6 +113,7 @@ const authProtectedRoutes = [
   { path: "/profile", component: <UserProfile /> },
  //create-client-profile
  { path: "/create_client_profile", component: <CreateClientProfile /> },
+ { path: "/create_contact", component: <CreateContact /> },
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
 
