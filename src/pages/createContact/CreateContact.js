@@ -15,19 +15,25 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
-
 import WebViewer from "@pdftron/webviewer";
 import PdfData from "../../assets/pdf/abc.pdf";
-import Styles from '../../../src/assets/scss/pages/_createClient.scss'
+import Styles from "../../../src/assets/scss/pages/_createClient.scss";
+import {
+  fetchApiDataRequest,
+  getUsersAddressRequest,
+} from "../../store/clientProfile/actions";
 
 const CreateContactForm = ({ onSubmit }) => {
   const webViewerInstance = useRef(null);
+  const dispatch = useDispatch();
 
   const [clientProfiles, setClientProfiles] = useState([]);
   const [pdfInstance, setPdfInstance] = useState(null);
   const [documentLoaded, setDocumentLoaded] = useState(false);
   const [displayPDF, setDisplayPDF] = useState(false);
   const [pdfDataString, setPDFDataString] = useState("");
+  const [address, setAddress] = useState();
+  const [zpidDeatils, setZpidDetails] = useState();
 
   const formData = useSelector((state) => state.clientProfileReducer);
   const formik = useFormik({
@@ -49,9 +55,10 @@ const CreateContactForm = ({ onSubmit }) => {
       contractEndDate: Yup.date().required("Please select an end date"),
     }),
 
-    onSubmit: (values) => {
-      // console.log(values);
+    onSubmit: async (values) => {
+      //console.log(values);
       if (pdfInstance && documentLoaded) {
+        //settest(true);
         const userDetails = {
           address: values.address,
           buyer: values.buyer,
@@ -59,6 +66,7 @@ const CreateContactForm = ({ onSubmit }) => {
           price: values.price,
           contractStartDate: values.contractStartDate,
           contractEndDate: values.contractEndDate,
+          zpidDeatils:zpidDeatils
         };
         modifyPdf(pdfInstance, userDetails);
         // modifyPdf(pdfInstance, userDetails).then(async () => {
@@ -69,10 +77,22 @@ const CreateContactForm = ({ onSubmit }) => {
         //     console.error("PDFNet is not available or not initialized.");
         //   }
         // });
-      
       }
     },
   });
+  useEffect(() => {
+    dispatch(fetchApiDataRequest());
+  }, []);
+
+  useEffect(() => {
+    if (formData?.userZPID?.success) {
+      setZpidDetails(formData.userZPID?.details);
+    }
+  }, [formData?.userZPID, formData?.userZPID?.success]);
+
+  useEffect(() => {
+    if (formData.api?.success) setAddress(formData.api.data);
+  }, [formData.api.data, formData.api.success]);
   useEffect(() => {
     const db = firebase.firestore();
     const myCollection = db.collection("ClientProfile");
@@ -98,28 +118,31 @@ const CreateContactForm = ({ onSubmit }) => {
         {
           path: "/webviewer/lib",
           initialDoc: PdfData,
-          fullAPI: true, 
+          fullAPI: true,
         },
         document.getElementById("your-webviewer-container-id")
       ).then((instance) => {
         webViewerInstance.current = instance;
-  //  console.log("instance", instance);
+        //  console.log("instance", instance);
         setPdfInstance(instance);
         instance.Core.documentViewer.addEventListener("documentLoaded", () => {
           setDocumentLoaded(true);
-          instance.PDFNet.initialize().then(() => {
-          });
+          instance.PDFNet.initialize().then(() => {});
         });
       });
     }
     return () => {
-      if (webViewerInstance.current && typeof webViewerInstance.current.dispose === 'function') {
+      if (
+        webViewerInstance.current &&
+        typeof webViewerInstance.current.dispose === "function"
+      ) {
         webViewerInstance.current.dispose();
       }
     };
   }, []);
 
   const modifyPdf = async (pdfInstance, userDetails) => {
+    //console.log(userDetails?.zpidDeatils?.address,"jnjkjjbkjbjbubjkbjbjbjbj");
     const { documentViewer, annotationManager } = pdfInstance.Core;
 
     if (documentViewer.getDocument()) {
@@ -150,16 +173,22 @@ const CreateContactForm = ({ onSubmit }) => {
       if (annotation instanceof pdfInstance.Core.Annotations.WidgetAnnotation) {
         setDisplayPDF(true);
         const field = annotation.getField();
+        //console.log(field.name)
         if (field) {
           const fieldName = field.name;
           if (fieldName === "S_Name") {
-           
             field.setValue(userDetails.seller);
             annotationManager.updateAnnotation(annotation);
             annotationManager.redrawAnnotation(annotation);
             isModified = true;
           } else if (fieldName === "B_Name") {
             field.setValue(userDetails.buyer);
+            annotationManager.updateAnnotation(annotation);
+            annotationManager.redrawAnnotation(annotation);
+            isModified = true;
+          }
+           else if (fieldName === "S_Address") {
+            field.setValue(userDetails?.zpidDeatils?.address?.city);
             annotationManager.updateAnnotation(annotation);
             annotationManager.redrawAnnotation(annotation);
             isModified = true;
@@ -190,7 +219,9 @@ const CreateContactForm = ({ onSubmit }) => {
       console.log("No modifications made to the PDF");
     }
     if (webViewerInstance.current && webViewerInstance.current.Core.PDFNet) {
-      const pdfDataString = await extractAllPdfDataAsString(webViewerInstance.current);
+      const pdfDataString = await extractAllPdfDataAsString(
+        webViewerInstance.current
+      );
       //console.log("Extracted PDF Data:", pdfDataString);
     } else {
       console.error("PDFNet is not available or not initialized.");
@@ -198,12 +229,14 @@ const CreateContactForm = ({ onSubmit }) => {
   };
 
   const extractAllPdfDataAsString = async (pdfInstance) => {
-    const { Core: { PDFNet } } = pdfInstance;
+    const {
+      Core: { PDFNet },
+    } = pdfInstance;
     await PDFNet.initialize();
 
     if (!PDFNet) {
-      console.error('PDFNet is not available.');
-      return '';
+      console.error("PDFNet is not available.");
+      return "";
     }
 
     let allPdfData = "";
@@ -232,17 +265,18 @@ const CreateContactForm = ({ onSubmit }) => {
         const fieldValue = await field.getValueAsString();
         allPdfData += `${fieldName}: ${fieldValue}\n`;
       }
-
       await doc.unlock();
     } catch (error) {
       console.error("Error extracting data from PDF:", error);
-    } 
-
-    setPDFDataString(allPdfData)
-
+    }
+    setPDFDataString(allPdfData);
     return allPdfData;
   };
-// console.log("pdfDataString", pdfDataString);
+  const handleAddressChange = (e) => {
+    const zpid = 28023940;
+    dispatch(getUsersAddressRequest(zpid));
+  };
+  //console.log("formData>>>", zpidDeatils);
   return (
     <React.Fragment>
       <Form
@@ -257,14 +291,22 @@ const CreateContactForm = ({ onSubmit }) => {
                 type="select"
                 name="address"
                 id="address"
-                onChange={formik.handleChange}
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  handleAddressChange(e);
+                }}
                 value={formik.values.address}
                 invalid={formik.touched.address && !!formik.errors.address}
                 className="p13"
               >
                 <option value="">Select Address</option>
-                <option value="address1">Address 1</option>
-                <option value="address2">Address 2</option>
+                {address?.map((property) => (
+                  <option key={property.zpid} value={property.zpid}>
+                    <div>
+                      {`${property.streetAddress}, ${property.city}, ${property.state} ${property.zipcode}`}
+                    </div>
+                  </option>
+                ))}
               </Input>
               {formik.touched.address && formik.errors.address ? (
                 <FormFeedback type="invalid">
@@ -400,7 +442,7 @@ const CreateContactForm = ({ onSubmit }) => {
             </FormGroup>
           </Col>
         </Row>
-        <Button  id="modifyPdfButton" type="submit" color="success">
+        <Button id="modifyPdfButton" type="submit" color="success">
           Generate PDF
         </Button>
         <div
