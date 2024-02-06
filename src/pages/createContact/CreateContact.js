@@ -104,7 +104,6 @@ const CreateContactForm = ({ onSubmit }) => {
         querySnapshot.forEach((doc) => {
           profiles.push({ id: doc.id, ...doc.data() });
         });
-        // console.log("profiles", profiles);
         setClientProfiles(profiles);
       })
       .catch((error) => {
@@ -123,7 +122,6 @@ const CreateContactForm = ({ onSubmit }) => {
         document.getElementById("your-webviewer-container-id")
       ).then((instance) => {
         webViewerInstance.current = instance;
-        //  console.log("instance", instance);
         setPdfInstance(instance);
         instance.Core.documentViewer.addEventListener("documentLoaded", () => {
           setDocumentLoaded(true);
@@ -153,7 +151,16 @@ const CreateContactForm = ({ onSubmit }) => {
       });
     }
   };
-
+  function formatDate(date) {
+    return new Date(date).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  }
+  
+  const myDate = new Date('2024-02-01');
+  
   const modifyPdfAnnotations = async (pdfInstance, userDetails) => {
     const { documentViewer, annotationManager } = pdfInstance.Core;
 
@@ -173,7 +180,7 @@ const CreateContactForm = ({ onSubmit }) => {
       if (annotation instanceof pdfInstance.Core.Annotations.WidgetAnnotation) {
         setDisplayPDF(true);
         const field = annotation.getField();
-        //console.log(field.name)
+
         if (field) {
           const fieldName = field.name;
           if (fieldName === "S_Name") {
@@ -187,8 +194,32 @@ const CreateContactForm = ({ onSubmit }) => {
             annotationManager.redrawAnnotation(annotation);
             isModified = true;
           }
-           else if (fieldName === "S_Address") {
-            field.setValue(userDetails?.zpidDeatils?.address?.city);
+           else if (fieldName === "PI_AgrDtLong") {
+            field.setValue(formatDate(myDate));
+            annotationManager.updateAnnotation(annotation);
+            annotationManager.redrawAnnotation(annotation);
+            isModified = true;
+          }
+           else if (fieldName === "PI_City") {
+            field.setValue(zpidDeatils?.address?.city);
+            annotationManager.updateAnnotation(annotation);
+            annotationManager.redrawAnnotation(annotation);
+            isModified = true;
+          }
+           else if (fieldName === "PI_State") {
+            field.setValue(zpidDeatils?.address?.state);
+            annotationManager.updateAnnotation(annotation);
+            annotationManager.redrawAnnotation(annotation);
+            isModified = true;
+          }
+           else if (fieldName === "PI_Zip") {
+            field.setValue(zpidDeatils?.address?.zipcode);
+            annotationManager.updateAnnotation(annotation);
+            annotationManager.redrawAnnotation(annotation);
+            isModified = true;
+          }
+           else if (fieldName === "PI_County") {
+            field.setValue(zpidDeatils?.country);
             annotationManager.updateAnnotation(annotation);
             annotationManager.redrawAnnotation(annotation);
             isModified = true;
@@ -273,10 +304,10 @@ const CreateContactForm = ({ onSubmit }) => {
     return allPdfData;
   };
   const handleAddressChange = (e) => {
-    const zpid = 28023940;
+    const zpid = e.target.value;
     dispatch(getUsersAddressRequest(zpid));
   };
-  //console.log("formData>>>", zpidDeatils);
+
   return (
     <React.Fragment>
       <Form
@@ -300,7 +331,7 @@ const CreateContactForm = ({ onSubmit }) => {
                 className="p13"
               >
                 <option value="">Select Address</option>
-                {address?.map((property) => (
+                {address?.slice(0,10)?.map((property) => (
                   <option key={property.zpid} value={property.zpid}>
                     <div>
                       {`${property.streetAddress}, ${property.city}, ${property.state} ${property.zipcode}`}

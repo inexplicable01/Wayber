@@ -43,7 +43,7 @@ function* fetchApiDataSaga() {
   }
 }
 function* getUserDetailsWithZpid(action) {
-  console.log("action called>>>>getUserDetailsWithZpid>>>", action);
+  //console.log("action called>>>>getUserDetailsWithZpid>>>", action);
   const zpid = action.payload;
   console.log("zidid", zpid);
   try {
@@ -58,7 +58,7 @@ function* getUserDetailsWithZpid(action) {
       },
     };
     const response = yield call(axios.request, options);
-    console.log(response, "from the ZPID");
+    //console.log(response, "from the ZPID");
 
     yield put(actions.getUsersAddressSuccess(response));
   } catch (error) {
