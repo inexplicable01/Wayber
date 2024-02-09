@@ -88,6 +88,7 @@ import UserProfile from "../pages/Authentication/user-profile";
 import ProjectGroupsComponent from "../pages/ProjectGroups/ProjectGroup";
 import CreateGroup from "../pages/ProjectGroups/CreateGroup";
 import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
+import TextExtractionExample from "../pages/PDF/TextExtractionExample"
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
@@ -96,8 +97,8 @@ const authProtectedRoutes = [
 
 { path: "/pdfviewer", component: <PDFViewerComponent /> },
     { path: "/form21a", component: <Form21A /> },
-
-
+// TextExtractionExample
+    { path: "/TextExtractionExample", component: <TextExtractionExample /> },
     //ProjectGroups
 { path: "/project_group", component: <ProjectGroupsComponent /> },
     { path: "/create-group", component: <CreateGroup /> },

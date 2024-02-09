@@ -198,9 +198,9 @@ const Navdata = () => {
                     parentId: "nwmls_forms",
                 },
                                 {
-                    id: "form_22ac",
-                    label: "Starter",
-                    link: "/form_22ac",
+                    id: "textextractionexample",
+                    label: "Text Extraction Example",
+                    link: "/TextExtractionExample",
                     parentId: "nwmls_forms",
                 },
                                 {

@@ -14,6 +14,7 @@ import {useParams} from "react-router-dom";
 import {getFirebaseBackend} from "../../helpers/firebase_helper";
 import ProjectDetailCard from "../ProjectGroups/ProjectDetailCard";
 import projectgroupreducer from "../../store/projectgroup/reducer";
+import RealEstateBotAIDiscussion from "../RealEstateAIBot/RealEstateBotAIDiscussion";
 // import {useNavigate, useParams, Link} from 'react-router-dom';
 import axios from 'axios';
 
@@ -27,13 +28,6 @@ const PDFViewerComponent = () => {
     const xfdfString = useSelector(state => state.quoteReducer.xfdfString);
     const projectGroup = useSelector(state => state.projectgroupreducer.projectGroup);
     const dispatch = useDispatch();
-
-    const [analysis, setAnalysis] = useState('oigyfdfgyhjiokjhguiokjhgijk');
-    const [isLoading, setIsLoading] = useState(false);
-    const [pdftext, setPdftext] = useState('')
-
-    const textToAnalyze = 'Your text to analyze goes here';
-
 
     function loadDocumentInViewer(url) {
         if (viewer.current && viewer.current.instance) {
@@ -102,7 +96,7 @@ const PDFViewerComponent = () => {
                             }
 
                             console.log("Full document text:", fullText);
-                            setPdftext(fullText)
+                            // setPdftext(fullText)
                             // // Now you can use `fullText` for further processing or analysis
                         });
                         annotationManager.addEventListener('annotationChanged', (annotations, action, {imported}) => {
@@ -199,28 +193,9 @@ const PDFViewerComponent = () => {
                 //     console.error('loadDocument function is not available on the instance');
                 // }
             }
-            // return () => {
-            //     // Cleanup logic
-            //     if (currentViewer && currentViewer.instance) {
-            //         // Dispose of the current WebViewer instance
-            //         if (currentViewer.instance.dispose){
-            //             currentViewer.instance.dispose();
-            //         }
-            //         currentViewer.instance = null;
-            //     }
-            // };
-            // if (viewer.current && viewer.current.instance && xfdfString) {
-            //     const {annotationManager} = viewer.current.instance.Core;
-            //
-            //     annotationManager.importAnnotations(xfdfString).then(() => {
-            //         console.log("Annotations imported successfully.");
-            //     }).catch(error => {
-            //         console.error("Error importing annotations:", error);
-            //     });
-            // }
         }
         ,
-        [document, dispatch, userProfile, form, projectGroupID]
+        [document, dispatch, userProfile,projectGroupID]//, F, projectGroupID]
     )
 
 
@@ -262,54 +237,6 @@ const PDFViewerComponent = () => {
         }
     };
 
-    const analyzeTextWithChatGPT = async () => {
-        const data = JSON.stringify({
-            "model": "gpt-3.5-turbo",
-            "messages": [
-                {
-                    "role": "system",
-                    "content": "You are a real estate expert. Knowledgable in real estate transactions. The content you will be receiving concerns the contracts involved."
-                },
-                {
-                    "role": "user",
-                    "content": pdftext
-                }
-            ],
-            "temperature": 0.5,
-            "max_tokens": 1000
-        });
-
-        const config = {
-            method: 'post',
-            url: 'https://api.openai.com/v1/chat/completions',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer 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`
-            },
-            data: data
-        };
-
-        try {
-            const response = await axios.request(config);
-            return response.choices[0].message.content
-        } catch (error) {
-            console.error('Error calling OpenAI API:', error);
-            throw error;
-        }
-    };
-
-    const handleAnalyzeClick = async () => {
-        setIsLoading(true);
-        try {
-            const analysisResult = await analyzeTextWithChatGPT(textToAnalyze);
-            setAnalysis(analysisResult);
-        } catch (error) {
-            console.error('Error analyzing text:', error);
-            setAnalysis('Error analyzing text.');
-        } finally {
-            setIsLoading(false);
-        }
-    };
     return (
 
         <React.Fragment>
@@ -319,27 +246,9 @@ const PDFViewerComponent = () => {
                         {/*<h1>{projectGroupID}</h1>*/}
                         <h1>{form}</h1>
                         {projectGroup ? (<ProjectDetailCard projectGroup={projectGroup}/>) : <h2>k</h2>}
-
-                        {/*<h1>Chris Brown Buyer gr</h1>*/}
-                        {/*<h1>Jane Seller red</h1>*/}
-                        {/*<h1>Michael Brown buyer agent blue</h1>*/}
-                        {/*                        selleragent: new Annotations.Color(255, 0, 0), // Red*/}
-                        {/*buyer: new Annotations.Color(0, 255, 0), // Green*/}
-                        {/*buyeragent: new Annotations.Color(0, 0, 255), // Blue*/}
-                        {/*<div className="header">React sample</div>*/}
-                        {/*<button onClick={saveAnnotations} disabled={!anno}> Save Annotations</button>*/}
-                        {/*<button onClick={uploaddoc}> Save uploaddoc</button>*/}
                         <div className="webviewer" ref={viewer} style={{height: "100vh"}}></div>
                     </div>
-                    <div>
-                        <button onClick={handleAnalyzeClick} disabled={isLoading}>
-                            {isLoading ? 'Analyzing...' : 'Analyze Text'}
-                        </button>
-                        <div>
-                            <h3>Analysis Result:</h3>
-                            <p>{analysis}</p>
-                        </div>
-                    </div>
+                    <RealEstateBotAIDiscussion/>
                 </Container>
             </div>
         </React.Fragment>
