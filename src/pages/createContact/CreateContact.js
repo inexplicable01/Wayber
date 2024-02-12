@@ -129,7 +129,7 @@ const CreateContactForm = ({ onSubmit }) => {
   });
   useEffect(() => {
     dispatch(fetchApiDataRequest());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (formData?.userZPID?.success) {
