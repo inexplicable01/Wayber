@@ -41,6 +41,7 @@ const CreateContactForm = ({ onSubmit }) => {
   const [modalContent, setModalContent] = useState("");
   const [uploadDocument, setUploadDocument] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [extractedData, setExtractedData] = useState("");
 
   // Function to toggle modal visibility
   const toggleModal = () => setModalOpen(!modalOpen);
@@ -171,9 +172,20 @@ const CreateContactForm = ({ onSubmit }) => {
       ).then((instance) => {
         webViewerInstance.current = instance;
         setPdfInstance(instance);
+
         instance.Core.documentViewer.addEventListener("documentLoaded", () => {
           setDocumentLoaded(true);
-          instance.PDFNet.initialize().then(() => {});
+
+          instance.UI.setToolMode(instance.UI.ToolModes.TextSelect);
+
+          instance.Core.documentViewer.addEventListener(
+            "textSelected",
+            async () => {
+              const selectedText =
+                await instance.Core.documentViewer.getSelectedText();
+              //console.log("Selected text:", selectedText);
+            }
+          );
         });
       });
     }
@@ -403,263 +415,304 @@ const CreateContactForm = ({ onSubmit }) => {
       setLoading(false);
     }
   };
+
+  const handleTextSelection = async () => {
+    const {
+      Core: { PDFNet },
+    } = pdfInstance;
+
+    await PDFNet.initialize();
+    const doc = await pdfInstance.Core.documentViewer.getDocument().getPDFDoc();
+    await doc.lock();
+
+    let textData = "";
+    const fieldIterator = await doc.getFieldIteratorBegin();
+    for (; await fieldIterator.hasNext(); fieldIterator.next()) {
+      const field = await fieldIterator.current();
+      const fieldName = await field.getName();
+      const fieldValue = await field.getValueAsString();
+      textData += `${fieldName}: ${fieldValue}\n`;
+    }
+
+    const selectedText =
+      await pdfInstance.Core.documentViewer.getSelectedText();
+    const keyValueRegex = /:\s*[\w\s]{0,40}(\n|$)/;
+    const hasKeyValuePair = keyValueRegex.test(selectedText);
+
+    if (!hasKeyValuePair && selectedText.trim() !== "") {
+      textData += selectedText; 
+    } else if (hasKeyValuePair) {
+      //console.log("Key-value pair detected, text not logged.");
+    }
+
+    setExtractedData(textData);
+    GptTextUploader(textData)
+    //console.log("textData", textData);
+    await doc.unlock();
+  };
+
   return (
     <React.Fragment>
-    
-        <Form
-          onSubmit={formik.handleSubmit}
-          className="fontFamily_Roboto_sans_serif"
-        >
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="address">Address</Label>
-                <Input
-                  type="select"
-                  name="address"
-                  id="address"
-                  onChange={(e) => {
-                    formik.handleChange(e);
-                    handleAddressChange(e);
-                  }}
-                  value={formik.values.address}
-                  invalid={formik.touched.address && !!formik.errors.address}
-                  className="p13"
-                >
-                  <option value="">Select Address</option>
-                  {address?.slice(0, 10)?.map((property) => (
-                    <option key={property.zpid} value={property.zpid}>
-                      <div>
-                        {`${property.streetAddress}, ${property.city}, ${property.state} ${property.zipcode}`}
-                      </div>
-                    </option>
-                  ))}
-                </Input>
-                {formik.touched.address && formik.errors.address ? (
-                  <FormFeedback type="invalid">
-                    {formik.errors.address}
+      <Form
+        onSubmit={formik.handleSubmit}
+        className="fontFamily_Roboto_sans_serif"
+      >
+        <Row>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="address">Address</Label>
+              <Input
+                type="select"
+                name="address"
+                id="address"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                  handleAddressChange(e);
+                }}
+                value={formik.values.address}
+                invalid={formik.touched.address && !!formik.errors.address}
+                className="p13"
+              >
+                <option value="">Select Address</option>
+                {address?.slice(0, 10)?.map((property) => (
+                  <option key={property.zpid} value={property.zpid}>
+                    <div>
+                      {`${property.streetAddress}, ${property.city}, ${property.state} ${property.zipcode}`}
+                    </div>
+                  </option>
+                ))}
+              </Input>
+              {formik.touched.address && formik.errors.address ? (
+                <FormFeedback type="invalid">
+                  {formik.errors.address}
+                </FormFeedback>
+              ) : null}
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="buyer">Buyer</Label>
+              <Input
+                type="select"
+                name="buyer"
+                id="buyer"
+                onChange={formik.handleChange}
+                value={formik.values.buyer}
+                invalid={formik.touched.buyer && !!formik.errors.buyer}
+                className="p13"
+              >
+                <option value="">Select Buyer</option>
+                {clientProfiles.map((profile, i) => {
+                  if (profile.role === "Buyer") {
+                    return (
+                      <option
+                        key={i}
+                        value={profile.firstName + " " + profile.lastName}
+                      >
+                        {profile.firstName + " " + profile.lastName}
+                      </option>
+                    );
+                  }
+                  return null;
+                })}
+              </Input>
+              {formik.touched.buyer && formik.errors.buyer && (
+                <FormFeedback>{formik.errors.buyer}</FormFeedback>
+              )}
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="seller">Seller</Label>
+              <Input
+                type="select"
+                name="seller"
+                id="seller"
+                onChange={formik.handleChange}
+                value={formik.values.seller}
+                invalid={formik.touched.seller && !!formik.errors.seller}
+                className="p13"
+              >
+                <option value="">Select Seller</option>
+                {clientProfiles.map((profile, i) => {
+                  if (profile.role === "Seller") {
+                    return (
+                      <option
+                        key={i}
+                        value={profile.firstName + " " + profile.lastName}
+                      >
+                        {profile.firstName + " " + profile.lastName}
+                      </option>
+                    );
+                  }
+                  return null;
+                })}
+              </Input>
+              {formik.touched.seller && formik.errors.seller && (
+                <FormFeedback>{formik.errors.seller}</FormFeedback>
+              )}
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="closingAgent">Closing Agent</Label>
+              <Input
+                type="select"
+                name="closingAgent"
+                id="closingAgent"
+                onChange={formik.handleChange}
+                value={formik.values.closingAgent}
+                invalid={
+                  formik.touched.closingAgent && !!formik.errors.closingAgent
+                }
+                className="p13"
+              >
+                <option value="">Select Closing Agent</option>
+                {clientProfiles.map((profile, index) => {
+                  if (profile.role === "Closing Agent") {
+                    return (
+                      <option
+                        key={index}
+                        value={profile.firstName + " " + profile.lastName}
+                      >
+                        {profile.firstName + " " + profile.lastName}
+                      </option>
+                    );
+                  }
+                  return null;
+                })}
+              </Input>
+              {formik.touched.closingAgent && formik.errors.closingAgent && (
+                <FormFeedback type="invalid">
+                  {formik.errors.closingAgent}
+                </FormFeedback>
+              )}
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="offerExpirationDate">Offer Expiration Date</Label>
+              <Input
+                id="offerExpirationDate"
+                name="offerExpirationDate"
+                type="date"
+                onChange={formik.handleChange}
+                value={formik.values.offerExpirationDate}
+                invalid={
+                  formik.touched.offerExpirationDate &&
+                  !!formik.errors.offerExpirationDate
+                }
+                className="p13"
+              />
+              {formik.touched.offerExpirationDate &&
+                formik.errors.offerExpirationDate && (
+                  <FormFeedback>
+                    {formik.errors.offerExpirationDate}
                   </FormFeedback>
-                ) : null}
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="buyer">Buyer</Label>
-                <Input
-                  type="select"
-                  name="buyer"
-                  id="buyer"
-                  onChange={formik.handleChange}
-                  value={formik.values.buyer}
-                  invalid={formik.touched.buyer && !!formik.errors.buyer}
-                  className="p13"
-                >
-                  <option value="">Select Buyer</option>
-                  {clientProfiles.map((profile, i) => {
-                    if (profile.role === "Buyer") {
-                      return (
-                        <option
-                          key={i}
-                          value={profile.firstName + " " + profile.lastName}
-                        >
-                          {profile.firstName + " " + profile.lastName}
-                        </option>
-                      );
-                    }
-                    return null;
-                  })}
-                </Input>
-                {formik.touched.buyer && formik.errors.buyer && (
-                  <FormFeedback>{formik.errors.buyer}</FormFeedback>
                 )}
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="seller">Seller</Label>
-                <Input
-                  type="select"
-                  name="seller"
-                  id="seller"
-                  onChange={formik.handleChange}
-                  value={formik.values.seller}
-                  invalid={formik.touched.seller && !!formik.errors.seller}
-                  className="p13"
-                >
-                  <option value="">Select Seller</option>
-                  {clientProfiles.map((profile, i) => {
-                    if (profile.role === "Seller") {
-                      return (
-                        <option
-                          key={i}
-                          value={profile.firstName + " " + profile.lastName}
-                        >
-                          {profile.firstName + " " + profile.lastName}
-                        </option>
-                      );
-                    }
-                    return null;
-                  })}
-                </Input>
-                {formik.touched.seller && formik.errors.seller && (
-                  <FormFeedback>{formik.errors.seller}</FormFeedback>
-                )}
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="closingAgent">Closing Agent</Label>
-                <Input
-                  type="select"
-                  name="closingAgent"
-                  id="closingAgent"
-                  onChange={formik.handleChange}
-                  value={formik.values.closingAgent}
-                  invalid={
-                    formik.touched.closingAgent && !!formik.errors.closingAgent
-                  }
-                  className="p13"
-                >
-                  <option value="">Select Closing Agent</option>
-                  {clientProfiles.map((profile, index) => {
-                    if (profile.role === "Closing Agent") {
-                      return (
-                        <option
-                          key={index}
-                          value={profile.firstName + " " + profile.lastName}
-                        >
-                          {profile.firstName + " " + profile.lastName}
-                        </option>
-                      );
-                    }
-                    return null;
-                  })}
-                </Input>
-                {formik.touched.closingAgent && formik.errors.closingAgent && (
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="closingDate">Closing Date</Label>
+              <Input
+                id="closingDate"
+                name="closingDate"
+                type="date"
+                onChange={formik.handleChange}
+                value={formik.values.closingDate}
+                invalid={
+                  formik.touched.closingDate && !!formik.errors.closingDate
+                }
+                className="p13"
+              />
+              {formik.touched.closingDate && formik.errors.closingDate && (
+                <FormFeedback>{formik.errors.closingDate}</FormFeedback>
+              )}
+            </FormGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="titleInsuranceCompany">Title Insurance Company</Label>
+              <Input
+                id="titleInsuranceCompany"
+                name="titleInsuranceCompany"
+                type="text"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.titleInsuranceCompany}
+                invalid={
+                  formik.touched.titleInsuranceCompany &&
+                  !!formik.errors.titleInsuranceCompany
+                }
+                className="p13"
+              />
+              {formik.touched.titleInsuranceCompany &&
+                formik.errors.titleInsuranceCompany && (
                   <FormFeedback type="invalid">
-                    {formik.errors.closingAgent}
+                    {formik.errors.titleInsuranceCompany}
                   </FormFeedback>
                 )}
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="offerExpirationDate">Offer Expiration Date</Label>
-                <Input
-                  id="offerExpirationDate"
-                  name="offerExpirationDate"
-                  type="date"
-                  onChange={formik.handleChange}
-                  value={formik.values.offerExpirationDate}
-                  invalid={
-                    formik.touched.offerExpirationDate &&
-                    !!formik.errors.offerExpirationDate
-                  }
-                  className="p13"
-                />
-                {formik.touched.offerExpirationDate &&
-                  formik.errors.offerExpirationDate && (
-                    <FormFeedback>
-                      {formik.errors.offerExpirationDate}
-                    </FormFeedback>
-                  )}
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="closingDate">Closing Date</Label>
-                <Input
-                  id="closingDate"
-                  name="closingDate"
-                  type="date"
-                  onChange={formik.handleChange}
-                  value={formik.values.closingDate}
-                  invalid={
-                    formik.touched.closingDate && !!formik.errors.closingDate
-                  }
-                  className="p13"
-                />
-                {formik.touched.closingDate && formik.errors.closingDate && (
-                  <FormFeedback>{formik.errors.closingDate}</FormFeedback>
-                )}
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="titleInsuranceCompany">
-                  Title Insurance Company
-                </Label>
-                <Input
-                  id="titleInsuranceCompany"
-                  name="titleInsuranceCompany"
-                  type="text"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.titleInsuranceCompany}
-                  invalid={
-                    formik.touched.titleInsuranceCompany &&
-                    !!formik.errors.titleInsuranceCompany
-                  }
-                  className="p13"
-                />
-                {formik.touched.titleInsuranceCompany &&
-                  formik.errors.titleInsuranceCompany && (
-                    <FormFeedback type="invalid">
-                      {formik.errors.titleInsuranceCompany}
-                    </FormFeedback>
-                  )}
-              </FormGroup>
-            </Col>
-            <Col md={6}>
-              <FormGroup>
-                <Label for="price">Price</Label>
-                <Input
-                  id="price"
-                  name="price"
-                  type="number"
-                  onChange={formik.handleChange}
-                  value={formik.values.price}
-                  invalid={formik.touched.price && !!formik.errors.price}
-                />
-                {formik.touched.price && formik.errors.price && (
-                  <FormFeedback>{formik.errors.price}</FormFeedback>
-                )}
-              </FormGroup>
-            </Col>
-          </Row>
+            </FormGroup>
+          </Col>
+          <Col md={6}>
+            <FormGroup>
+              <Label for="price">Price</Label>
+              <Input
+                id="price"
+                name="price"
+                type="number"
+                onChange={formik.handleChange}
+                value={formik.values.price}
+                invalid={formik.touched.price && !!formik.errors.price}
+              />
+              {formik.touched.price && formik.errors.price && (
+                <FormFeedback>{formik.errors.price}</FormFeedback>
+              )}
+            </FormGroup>
+          </Col>
+        </Row>
 
-          <Button id="modifyPdfButton" type="submit" color="success">
-            Generate PDF
-          </Button>
-          <div
-            className={displayPDF ? "display_block" : "display_none"}
-            id="your-webviewer-container-id"
-            style={{ height: "600px" }}
-          ></div>
-          {uploadDocument && (
-            <Button
-              disabled={loading}
-              onClick={() => GptTextUploader(pdfDataString)}
-              color="success"
-            >
-              Upload
-            </Button>
-          )}
-          <OpenAIResponse
-            isOpen={modalOpen}
-            toggle={toggleModal}
-            title="API Response"
-            content={modalContent}
-            setUploadDocument={setUploadDocument}
-          />
-        </Form>
-   
+        <Button id="modifyPdfButton" type="submit" color="success">
+          Generate PDF
+        </Button>
+        <div
+          className={displayPDF ? "display_block" : "display_none"}
+          id="your-webviewer-container-id"
+          style={{ height: "100dvh" }}
+        ></div>
+        {uploadDocument &&
+        
+            <div className="uploadButtonsContainer">
+              {loading ? <div className="loaderContainer"> <Loader/> </div>:  <>
+              <Button
+                onClick={() => GptTextUploader(pdfDataString)}
+                color="success"
+              >
+                Upload
+              </Button>
+              <Button onClick={handleTextSelection}>
+                Upload selected text
+              </Button>
+              </> }
+            
+            </div>
+        }
+
+        <OpenAIResponse
+          isOpen={modalOpen}
+          toggle={toggleModal}
+          title="API Response"
+          content={modalContent}
+          setUploadDocument={setUploadDocument}
+        />
+      </Form>
     </React.Fragment>
   );
 };
