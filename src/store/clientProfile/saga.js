@@ -28,7 +28,7 @@ function* fetchApiDataSaga() {
     const options = {
       method: "GET",
       url: "https://zillow56.p.rapidapi.com/search",
-      params: { location: "houston, tx" },
+      params: { location: "Seattle, WA" },
       headers: {
         "X-RapidAPI-Key": "0f1a70c877msh63c2699008fda33p17811djsn4ef183cca70a",
         "X-RapidAPI-Host": "zillow56.p.rapidapi.com",
