@@ -1,0 +1,27 @@
+
+.display_block{
+    display: block;
+}
+.display_none{
+    display: none;
+}
+.p13{
+    padding: 13px;
+}
+.fontFamily_Roboto_sans_serif{
+    font-family: 'Roboto', sans-serif;
+}
+
+.uploadButtonsContainer{
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    align-items: flex-start;
+}
+
+.loaderContainer{
+    background: #19BC9C;
+    padding: 10px;
+    border-radius: 9px;
+    width: 200px;
+}

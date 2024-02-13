@@ -11,7 +11,7 @@ import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 import { DisplayHeadingExample, HeadingsExample, BlockquotesExample, BlockquoteColorExample, BlockquoteBorderColorExample, InlineTextExample, UnstyleListExample, InlineListExample, DescriptionListExample, TextWrappingExample, FontSizeExample, WordBreakExample, FontWeightExample, LineHeightExample, TextTransformExample, TextDecrationExample, TextTruncationExample, VisibilityExample, ClearfixExample } from './UiTypographyCode';
 
 const UiTypography = () => {
-    document.title="Typography | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Typography | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

@@ -1,0 +1,30 @@
+// Action types for form interactions
+export const SUBMIT_FORM = 'SUBMIT_FORM';
+export const SUBMIT_FORM_SUCCESS = 'SUBMIT_FORM_SUCCESS';
+export const SUBMIT_FORM_FAILURE = 'SUBMIT_FORM_FAILURE';
+
+
+// Action types for validation
+export const VALIDATE_FORM_FIELD = 'VALIDATE_FORM_FIELD';
+export const VALIDATE_FORM_SUCCESS = 'VALIDATE_FORM_SUCCESS';
+export const VALIDATE_FORM_FAILURE = 'VALIDATE_FORM_FAILURE';
+
+// Action types for async form submission
+export const INITIATE_FORM_SUBMISSION = 'INITIATE_FORM_SUBMISSION';
+export const FORM_SUBMISSION_IN_PROGRESS = 'FORM_SUBMISSION_IN_PROGRESS';
+export const FORM_SUBMISSION_COMPLETED = 'FORM_SUBMISSION_COMPLETED';
+export const FORM_SUBMISSION_ERROR = 'FORM_SUBMISSION_ERROR';
+
+// Action types for resetting the form
+export const RESET_FORM_FIELDS = 'RESET_FORM_FIELDS';
+// actionTypes.js
+export const RESET_SUCCESS_STATE = "RESET_SUCCESS_STATE";
+
+// Action types for API request to fetch data
+export const FETCH_API_DATA_REQUEST = 'FETCH_API_DATA_REQUEST';
+export const FETCH_API_DATA_SUCCESS = 'FETCH_API_DATA_SUCCESS';
+export const FETCH_API_DATA_FAILURE = 'FETCH_API_DATA_FAILURE';
+
+export const GET_USER_DETAILS_REQUEST = 'GET_USER_DETAILS_REQUEST';
+export const GET_USER_DETAILS_SUCCESS = 'GET_USER_DETAILS_SUCCESS';
+export const GET_USER_DETAILS_FAILURE = 'GET_USER_DETAILS_FAILURE';

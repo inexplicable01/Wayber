@@ -6,7 +6,7 @@ import Summary from './Summary';
 import TimeTracking from "./TimeTracking";
 
 const TaskDetails = () => {
-    document.title="Tasks Details | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Tasks Details | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

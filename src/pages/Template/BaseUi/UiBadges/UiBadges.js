@@ -25,7 +25,7 @@ import {
 } from './UiBadgesCode';
 
 const UiBadges = () => {
-    document.title = "Badges | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Badges | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

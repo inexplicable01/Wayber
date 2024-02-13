@@ -6,7 +6,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 import { BasicTable, ScrollVertical, ScrollHorizontal, AlternativePagination, FixedHeaderDatatables, ModalDataDatatables, AjaxDatatables } from './datatableCom';
 
 const DataTables = () => {
-    document.title = "Datatables | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Datatables | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">

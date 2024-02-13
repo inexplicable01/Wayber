@@ -38,7 +38,7 @@ const PDFViewerComponent = () => {
             if (viewer.current && !viewer.current.instance) {
                 WebViewer({
                     path: '/webviewer/lib',
-                    licenseKey: process.env.PDFTRON_LICENSEKEY,
+                    licenseKey: process.env.REACT_APP_PDFTRON_LICENSEKEY,
                     initialDoc: `./NWMLS_Forms/${document}`,
                 }, viewer.current,).then((instance) => {
                     viewer.current.instance = instance;

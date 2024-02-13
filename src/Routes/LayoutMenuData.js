@@ -212,6 +212,20 @@ const Navdata = () => {
 
       ],
         },
+        {
+            id: "client_profile",
+            label: "Create Client Profile",
+            link: "/create_client_profile",
+            parentId: "",
+            icon: "las la-pager",
+        },
+        {
+            id: "client_contact",
+            label: "Create Contact",
+            link: "/create_contact",
+            parentId: "",
+            icon: "las la-pager",
+        },
 
     ];
     return <React.Fragment>{menuItems}</React.Fragment>;

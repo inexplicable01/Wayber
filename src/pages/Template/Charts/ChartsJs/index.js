@@ -5,7 +5,7 @@ import { LineChart ,BarChart,PieChart,DonutChart,PolarChart,RadarChart} from './
 
 
 const ChartsJs = () => {
-  document.title="Charts Js | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Charts Js | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <div className="page-content">

@@ -96,6 +96,7 @@ class NavbarPage extends Component {
                                             </NavItem>
                                         ))}
                                     </Nav>
+                                    <button onClick={this.props.toggleInspectorMode}>Toggle Inspector Mode</button>
                                     <div className="nav-button ms-auto">
                                         <Nav navbar className="navbar-end">
                                             <li>

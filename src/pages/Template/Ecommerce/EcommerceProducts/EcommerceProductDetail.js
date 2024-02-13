@@ -41,7 +41,7 @@ import { Link } from "react-router-dom";
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
 const ProductReview = (props) => {
-  document.title="Product Details | Velzon - React Admin & Dashboard Template";
+  document.title="Product Details | Wayber - React Admin & Dashboard Template";
 
   return (
     <React.Fragment>

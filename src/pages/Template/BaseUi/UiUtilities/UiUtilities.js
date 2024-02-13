@@ -16,7 +16,7 @@ import img2 from "../../../../assets/images/small/img-2.jpg";
 import { StacksVerticalExample, StacksHorizontalExample, TextSelectionExample, PointerEventsExample, OverflowExample, PositionExample, ShadowsExample, WidthExample, HeightExample } from './UiUtilitiesCode';
 
 const UiUtilities = () => {
-    document.title = "Utilities | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Utilities | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

@@ -8,7 +8,7 @@ import { getOrderList } from "../../../../store/actions";
 
 
 const CryproOrder = () => {
-    document.title = "Orders | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Orders | Wayber - " + process.env.APPNAME_TITLE;
     const dispatch = useDispatch();
 
     const { orderList } = useSelector((state) => ({

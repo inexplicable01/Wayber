@@ -17,7 +17,7 @@ import {
 } from "./ColumnCharts";
 
 const ColumnCharts = () => {
-    document.title="Column Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Column Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">            

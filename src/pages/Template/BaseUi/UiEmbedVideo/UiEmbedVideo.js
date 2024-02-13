@@ -10,7 +10,7 @@ import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 import { Ratio169Example, Ratio219Example, Ratio43Example, Ratio11Example, CustomRationExample } from './UiEmbedVideoCode';
 
 const UiEmbedVideo = () => {
-    document.title="Embed Video | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Embed Video | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

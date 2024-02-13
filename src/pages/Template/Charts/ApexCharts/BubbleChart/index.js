@@ -7,7 +7,7 @@ import {
 } from './BubbleChart';
 
 const BubbleChart = () => {
-    document.title="Bubble Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Bubble Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment> 
             <div className="page-content">                

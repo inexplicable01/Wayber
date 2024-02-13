@@ -74,7 +74,7 @@ import Form21A from "../pages/PDF/Form21A"
 import ApiKey from '../pages/APIKey/index'
 
 // Landing Index
-import OnePage from "../pages/Landing/OnePage";
+import Inspection_Demo from "../pages/Landing/Inspection_Demo";
 // import NFTLanding from "../pages/Landing/NFTLanding";
 import Dorsin from "../pages/Landing/Dorsin"
 import PDFViewerComponent from "../pages/PDF/PDFViewer.js"
@@ -88,7 +88,11 @@ import UserProfile from "../pages/Authentication/user-profile";
 import ProjectGroupsComponent from "../pages/ProjectGroups/ProjectGroup";
 import CreateGroup from "../pages/ProjectGroups/CreateGroup";
 import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
-import TextExtractionExample from "../pages/PDF/TextExtractionExample"
+
+// Client Profile
+import CreateClientProfile from "../pages/clientProfile/index.js";
+// create Contract
+import CreateContact from '../pages/createContact/index.js'
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
@@ -97,8 +101,8 @@ const authProtectedRoutes = [
 
 { path: "/pdfviewer", component: <PDFViewerComponent /> },
     { path: "/form21a", component: <Form21A /> },
-// TextExtractionExample
-    { path: "/TextExtractionExample", component: <TextExtractionExample /> },
+
+
     //ProjectGroups
 { path: "/project_group", component: <ProjectGroupsComponent /> },
     { path: "/create-group", component: <CreateGroup /> },
@@ -107,7 +111,9 @@ const authProtectedRoutes = [
 
   //User Profile
   { path: "/profile", component: <UserProfile /> },
-
+ //create-client-profile
+ { path: "/create_client_profile", component: <CreateClientProfile /> },
+ { path: "/create_contact", component: <CreateContact /> },
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
 
@@ -155,6 +161,7 @@ const publicRoutes = [
   // { path: "/pages-coming-soon", component: <ComingSoon /> },
 
   { path: "/landing", component: <Dorsin /> },
+  { path: "/inspection_demo", component: <Inspection_Demo /> },
   // { path: "/landingtest", component: <Dorsin /> },
   // { path: "/nft-landing", component: <NFTLanding /> },
   // { path: "/job-landing", component: <OnePage /> },

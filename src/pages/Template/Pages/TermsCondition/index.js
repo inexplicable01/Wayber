@@ -5,7 +5,7 @@ import BreadCrumb from "../../../../Components/Common/BreadCrumb";
 
 const TermsCondition = () => {
   document.title =
-    "Terms & Condition | Velzon - " + process.env.APPNAME_TITLE;
+    "Terms & Condition | Wayber - " + process.env.APPNAME_TITLE;
   return (
     <React.Fragment>
       <div className="page-content">
@@ -50,7 +50,7 @@ const TermsCondition = () => {
                 </div>
                 <CardBody className="card-body p-4">
                   <div>
-                    <h5>Welcome to Velzon!</h5>
+                    <h5>Welcome to Wayber!</h5>
                     <p className="text-muted">
                       These terms and conditions outline the rules and
                       regulations for the use of Company Name's Website, located

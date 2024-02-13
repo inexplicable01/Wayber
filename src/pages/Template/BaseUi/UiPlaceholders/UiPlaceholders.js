@@ -15,7 +15,7 @@ import img2 from "../../../../assets/images/small/img-2.jpg";
 import { DefaultPlaceholderExample, WidthExample, SizingExample, ColorExample } from './UiPlaceholdersCode';
 
 const UiPlaceholders = () => {
-    document.title="Placeholders | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Placeholders | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

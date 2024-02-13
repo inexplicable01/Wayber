@@ -17,7 +17,7 @@ import paymentImg from "../../../../assets/images/modals/success-payment.png";
 import authbg from "../../../../assets/images/auth-one-bg.jpg";
 
 const UiModals = () => {
-    document.title = "Modals | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Modals | Wayber - " + process.env.APPNAME_TITLE;
 
     const [modal_standard, setmodal_standard] = useState(false);
     function tog_standard() {

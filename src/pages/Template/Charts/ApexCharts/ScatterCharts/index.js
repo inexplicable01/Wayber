@@ -9,7 +9,7 @@ import {
 } from "./ScatterCharts";
 
 const ScatterCharts = () => {
-    document.title="Scatter Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Scatter Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">                

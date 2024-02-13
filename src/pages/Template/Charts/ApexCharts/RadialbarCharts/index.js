@@ -4,7 +4,7 @@ import BreadCrumb from '../../../../../Components/Common/BreadCrumb';
 import { SimpleRadialbar, MultipleRadialbar, CircleRadialbar, GradientCircleRadialbar, StrokedCircleRadial, SemiCircularRadial, ImageRadialbar } from './RadialbarCharts';
 
 const RadialbarCharts = () => {
-    document.title = "Radialbar Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Radialbar Charts | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <div className="page-content">

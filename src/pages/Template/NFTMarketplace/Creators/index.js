@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { creatorsData, creatorsListData } from "../../../../common/data";
 
 const Creators = () => {
-    document.title = "Creators | Velzon - React Admin & Dashboard Template";
+    document.title = "Creators | Wayber - React Admin & Dashboard Template";
     return (
         <React.Fragment>
             <div className="page-content">

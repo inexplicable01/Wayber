@@ -4,7 +4,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 import Select from "react-select";
 
 const Select2 = () => {
-    document.title = "Select2 | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Select2 | Wayber - " + process.env.APPNAME_TITLE;
 
     const [sortBy, setsortBy] = useState(null);
     const [selectMulti, setselectMulti] = useState(null);

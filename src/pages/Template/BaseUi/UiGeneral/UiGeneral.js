@@ -10,7 +10,7 @@ import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 import { PopoversExample, TooltipsExample, BreadcrumbExample, PaginationExample, SpinnersExample } from './UiGeneralCode';
 import { Link } from 'react-router-dom';
 const UiGeneral = () => {
-    document.title="General | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="General | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

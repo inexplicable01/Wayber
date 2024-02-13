@@ -6,7 +6,7 @@ import BreadCrumb from "../../../../../Components/Common/BreadCrumb";
 
 const CandidateGrid = () => {
   document.title =
-    "Candidates Grid View | Velzon -  Admin & Dashboard Template";
+    "Candidates Grid View | Wayber -  Admin & Dashboard Template";
   return (
     <React.Fragment>
       <div className="page-content">

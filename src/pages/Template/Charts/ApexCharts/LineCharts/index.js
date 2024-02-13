@@ -20,7 +20,7 @@ import {
 
 
 const LineCharts = () => {
-    document.title="Line Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Line Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">                

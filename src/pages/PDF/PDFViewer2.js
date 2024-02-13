@@ -70,7 +70,7 @@ const PDFViewerComponent = () => {
             if (viewer.current && !viewer.current.instance) {
                 WebViewer({
                     path: '/webviewer/lib',
-                    licenseKey: process.env.PDFTRON_LICENSEKEY,
+                    licenseKey: process.env.REACT_APP_PDFTRON_LICENSEKEY,
                 }, viewer.current,).then((instance) => {
                         viewer.current.instance = instance;
                         // Once the instance is ready, you can access the documentViewer and annotationManager

@@ -4,7 +4,7 @@ import BreadCrumb from '../../../../../Components/Common/BreadCrumb';
 import {BasicTreemap,MultiTreemap,DiffColorTreemap,ColorRangeTreemap} from './TreemapCharts'
 
 const TreemapCharts = () => {
-  document.title="Treemap Charts | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Treemap Charts | Wayber - " + process.env.APPNAME_TITLE;
   return (
     <React.Fragment>
             <div className="page-content">

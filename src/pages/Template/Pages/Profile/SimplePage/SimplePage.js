@@ -45,7 +45,7 @@ const SimplePage = () => {
         }
     };
 
-    document.title = "Profile | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Profile | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">
@@ -886,7 +886,7 @@ const SimplePage = () => {
                                                                                                     className="flex-grow-1 ms-3">
                                                                                                     <h6
                                                                                                         className="fs-14 mb-1">
-                                                                                                        Velzon admin
+                                                                                                        Wayber admin
                                                                                                         dashboard
                                                                                                         templates layout
                                                                                                         upload</h6>

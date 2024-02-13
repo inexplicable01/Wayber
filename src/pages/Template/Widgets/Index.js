@@ -12,14 +12,14 @@ import EcommerceWidgets from './EcommerceWidgets';
 import CreditCard from './CreaditCard';
 
 const Widgets = () => {
-    document.title="Widgets | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Widgets | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>
             <div className="page-content">
              
                 <Container fluid>
-                    <BreadCrumb title="Widgets" pageTitle="Velzon" />
+                    <BreadCrumb title="Widgets" pageTitle="Wayber" />
                     {/* Tile Boxs Widgets */}
                     <TileBoxs />
 

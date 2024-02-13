@@ -11,7 +11,7 @@ import {
 } from "./MixedCharts";
 
 const MixedCharts = () => {
-    document.title="Mixed Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Mixed Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">               

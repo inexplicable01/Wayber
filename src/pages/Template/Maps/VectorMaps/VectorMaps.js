@@ -8,7 +8,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 
 
 const VectorMaps = () => {
-  document.title="How to Buy a Home Step by Step | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="How to Buy a Home Step by Step | Wayber - " + process.env.APPNAME_TITLE;
   const steps = [
     'Research and prepare',
     'Arrange financing',

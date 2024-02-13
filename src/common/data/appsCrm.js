@@ -534,7 +534,7 @@ const deals = [
                 id: 5,
                 isRibbon: true,
                 img: avatar2,
-                title: "Velzon - Admin Dashboard",
+                title: "Wayber - Admin Dashboard",
                 price: "$126.7k",
                 date: "30 Dec, 2021",
                 subTitle: "Themesbrand",

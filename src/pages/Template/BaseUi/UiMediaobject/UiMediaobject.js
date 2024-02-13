@@ -17,7 +17,7 @@ import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 import { DefultExample, NestingExample, MediaExample } from './UiMediaobjectCode';
 
 const UiMediaobject = () => {
-    document.title="Media object | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Media object | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

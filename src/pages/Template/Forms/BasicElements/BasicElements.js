@@ -9,7 +9,7 @@ import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 
 
 const BasicElements = () => {
-    document.title="Basic Elements | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Basic Elements | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

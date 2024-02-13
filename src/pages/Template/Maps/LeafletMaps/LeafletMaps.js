@@ -13,7 +13,7 @@ import LayerGroup from "./MapsLeaflet/LayerGroup";
 import MapLayerControl from "./MapsLeaflet/MapLayerControl";
 
 const LeafletMaps = () => {
-  document.title="Leaflet Maps | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Leaflet Maps | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>            

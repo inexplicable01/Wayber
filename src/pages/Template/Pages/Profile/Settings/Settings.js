@@ -9,7 +9,7 @@ import progileBg from '../../../../../assets/images/profile-bg.jpg';
 import avatar1 from '../../../../../assets/images/users/avatar-1.jpg';
 
 const Settings = () => {
-    document.title = "Profile Settings | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Profile Settings | Wayber - " + process.env.APPNAME_TITLE;
 
     const [activeTab, setActiveTab] = useState("1");
     const [jobdescription, setJobdescription] = useState("You always want to make sure that your fonts work well together and try to limit the number of fonts you use to three or less. Experiment and play around with the fonts that you already have in the software you're working with reputable font websites.")

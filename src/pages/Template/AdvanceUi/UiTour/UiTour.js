@@ -31,7 +31,7 @@ function Autton() {
 }
 
 const UiTour = () => {
-    document.title="Tour | Velzon - React Admin & Dashboard Template";
+    document.title="Tour | Wayber - React Admin & Dashboard Template";
     return (
         <React.Fragment>
             <div className="page-content">
@@ -85,7 +85,7 @@ const UiTour = () => {
                                                                         </div>
                                                                     </div>
                                                                     <h5>Free register</h5>
-                                                                    <p className="text-muted mb-0">Get your Free Velzon account now.</p>
+                                                                    <p className="text-muted mb-0">Get your Free Wayber account now.</p>
                                                                 </CardBody>
                                                             </Card>
                                                         </Col>
@@ -100,7 +100,7 @@ const UiTour = () => {
                                                                         </div>
                                                                     </div>
                                                                     <h5>Log in account</h5>
-                                                                    <p className="text-muted mb-0">Sign in to continue to Velzon.</p>
+                                                                    <p className="text-muted mb-0">Sign in to continue to Wayber.</p>
                                                                 </CardBody>
                                                             </Card>
                                                         </Col>
@@ -115,7 +115,7 @@ const UiTour = () => {
                                                                         </div>
                                                                     </div>
                                                                     <h5>Get Product</h5>
-                                                                    <p className="text-muted mb-0">Sign in to continue to Velzon.</p>
+                                                                    <p className="text-muted mb-0">Sign in to continue to Wayber.</p>
                                                                 </CardBody>
                                                             </Card>
                                                         </Col>

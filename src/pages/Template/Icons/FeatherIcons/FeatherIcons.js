@@ -5,7 +5,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 
 
 const FeatherIcons = () => {
-  document.title="Feather Icons | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Feather Icons | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

@@ -4,7 +4,7 @@ import BreadCrumb from '../../../../../Components/Common/BreadCrumb';
 import {SimpleRadar,MultipleRadar,PolygonRadar} from './RadarCharts';
 
 const RadarCharts = () => {
-    document.title="Radar Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Radar Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <div className="page-content">
             <Container fluid>                
