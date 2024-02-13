@@ -9,7 +9,7 @@ import {
 } from "./BoxplotCharts";
 
 const BoxplotCharts = () => {
-    document.title="Boxplot Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Boxplot Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">

@@ -14,7 +14,7 @@ import { DefaultAccordionExample, FlushAccordionExample, IconAccordionExample, W
 
 const UiAccordions = () => {
 
-    document.title="Accordian & Collapse | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Accordian & Collapse | Wayber - " + process.env.APPNAME_TITLE;
 
     // Default Accordion
     const [col1, setcol1] = useState(true);

@@ -44,7 +44,7 @@ const steps = [
       },
     ],
     title: "Register your account",
-    text: "Get your Free Velzon account now.",
+    text: "Get your Free Wayber account now.",
   },
   {
     id: "intro2",
@@ -66,7 +66,7 @@ const steps = [
       },
     ],
     title: "Login your account",
-    text: "Sign in to continue to Velzon.",
+    text: "Sign in to continue to Wayber.",
   },
   {
     id: "intro3",
@@ -88,7 +88,7 @@ const steps = [
       },
     ],
     title: "Get yout Product",
-    text: "Sign in to continue to Velzon.",
+    text: "Sign in to continue to Wayber.",
   },
   {
     id: "intro4",
@@ -110,7 +110,7 @@ const steps = [
       },
     ],
     title: "Thank you !",
-    text: "Sign in to continue to Velzon.",
+    text: "Sign in to continue to Wayber.",
   },
 ];
 

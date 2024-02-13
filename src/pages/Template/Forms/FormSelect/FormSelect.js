@@ -106,7 +106,7 @@ const options = [
 ];
 
 const FormSelect = () => {
-    document.title="Form Select | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Form Select | Wayber - " + process.env.APPNAME_TITLE;
 
     const [selectedSingle, setSelectedSingle] = useState(null);
     const [selectedGroup, setSelectedGroup] = useState(null);

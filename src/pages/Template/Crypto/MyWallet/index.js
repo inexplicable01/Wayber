@@ -8,7 +8,7 @@ import Widgets from './Widgets';
 import RecentTransaction from './RecentTransaction';
 
 const MyWallet = () => {
-    document.title="My Wallet | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="My Wallet | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">             

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component , useState} from 'react';
 
 import NavbarPageWithRouter from "./Navbar_Page";
 import Section from './section';
@@ -30,8 +30,14 @@ class Index extends Component {
                 { id: 7 , idnm : "contact", navheading: "Contact" }
 
             ],
-            navClass : ""
+            navClass : "",
+            inspectorMode:false
         };
+    }
+    toggleInspectorMode = () => {
+        this.setState(prevState => ({
+            inspectorMode: !prevState.inspectorMode
+        }));
     }
 
     render() {
@@ -39,47 +45,16 @@ class Index extends Component {
             <React.Fragment>
 
                 {/* Importing Navbar */}
-                <NavbarPageWithRouter navItems={this.state.navItems} navClass={this.state.navClass} />
+                <NavbarPageWithRouter navItems={this.state.navItems}
+                                      navClass={this.state.navClass}
+                toggleInspectorMode={this.toggleInspectorMode} />
 
-                {/* section */}
                 <Section/>
-7
-                {/* services */}
                 <Service  sectionClass="pt-5"/>
-
-                {/*/!* about us *!/*/}
-                {/*<AboutUs/>*/}
-
-
-                {/* website description */}
-                {/*<WebsiteDesc/>*/}
-
-                {/* pricing */}
                 <Pricing sectionClass="pt-5"/>
-
-
-
-                {/* process*/}
-                {/*<Process/>*/}
-
-                 {/*testimonial*/}
-                {/*<Testimonials/>*/}
-
-                {/* get started */}
-                {/*<GetStart/>*/}
-
-                {/* blog */}
                 <Blog/>
-
-                {/*/!* contact *!/*/}
                  <Team/>
                 <Contact/>
-
-                {/* social */}
-                {/*<Social />*/}
-
-                {/*/!* footer *!/*/}
-                {/*<Footer/>*/}
             </React.Fragment>
         );
     }

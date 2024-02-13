@@ -6,7 +6,7 @@ import FeedbackAction from "./FeedbackAction";
 import RatingTemplate from "./RatingTemplate";
 
 const index = () => {
-    document.title = "Invoice Action | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Invoice Action | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">

@@ -11,7 +11,7 @@ import {
 } from "./CandlestickChart";
 
 const CandlestickChart = () => {
-    document.title="Candlestick Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Candlestick Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">               

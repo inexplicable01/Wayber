@@ -17,7 +17,7 @@ import SlideDark from './CarouselTypes/slideDark';
 import { SlideOnlyExample, WithControlExample, WithIndicatorExample, WithCaptionExample, CrossFadeExample, InduvidualIntervalExample, DisableTouchExample, DarkVariantExample } from './UiCarouselCode';
 
 const UiCarousel = () => {
-    document.title="Carousel | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Carousel | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

@@ -7,7 +7,7 @@ import UiContent from '../../../../Components/Common/UiContent';
 import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 
 const UiColors = () => {
-    document.title = "Colors | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Colors | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

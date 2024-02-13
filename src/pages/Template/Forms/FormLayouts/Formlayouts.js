@@ -12,7 +12,7 @@ import { FormGrid, Gutters, VerticalForm, HorizontalForm, HorizontalFormLabelSiz
 import Flatpickr from "react-flatpickr";
 
 const Formlayouts = () => {
-  document.title="Form Layouts | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Form Layouts | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

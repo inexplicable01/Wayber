@@ -5,7 +5,7 @@ import KYC from './KYCVerification';
 
 
 const KYCVerification = () => {
-    document.title="KYC Application | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="KYC Application | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">            

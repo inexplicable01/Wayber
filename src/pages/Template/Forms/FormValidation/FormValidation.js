@@ -23,7 +23,7 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 
 const FormValidations = () => {
-  document.title="Validation | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Validation | Wayber - " + process.env.APPNAME_TITLE;
 
   // Form validation
   const validation = useFormik({

@@ -15,7 +15,7 @@ import BreadCrumb from "../../../../Components/Common/BreadCrumb";
 import img6 from "../../../../assets/images/companies/img-6.png";
 import { jobCompanies } from "../../../../common/data/appsJobs";
 const CompaniesList = () => {
-  document.title = "Companies | Velzon - " + process.env.APPNAME_TITLE;
+  document.title = "Companies | Wayber - " + process.env.APPNAME_TITLE;
 
   return (
     <React.Fragment>

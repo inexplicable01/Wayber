@@ -7,7 +7,7 @@ import ParticlesAuth from "../../AuthenticationInner/ParticlesAuth";
 import maintenanceImg from '../../../../assets/images/maintenance.png';
 
 const Maintenance = () => {
-  document.title="Maintenance | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Maintenance | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>            
             <ParticlesAuth>

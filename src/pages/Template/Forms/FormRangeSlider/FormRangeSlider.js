@@ -9,7 +9,7 @@ import "react-rangeslider/lib/index.css";
 
 const FormRangeSlider = () => {
   
-  document.title="Range Slider | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Range Slider | Wayber - " + process.env.APPNAME_TITLE;
 
   const formatkg = (value) => "$ " + value;
   const formatdollar = (value) => value + " kg";

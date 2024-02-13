@@ -8,7 +8,7 @@ const CandidateList = () => {
 
   const [isBookmarkClick, setIsBookmarkClick] = useState(false);
 
-  document.title = "Candidate List View | Velzon -  Admin & Dashboard Template";
+  document.title = "Candidate List View | Wayber -  Admin & Dashboard Template";
   return (
     <React.Fragment>
       <div className="page-content">

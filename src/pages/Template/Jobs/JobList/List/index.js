@@ -8,7 +8,7 @@ import img7 from "../../../../../assets/images/companies/img-7.png";
 import AppSummaryChart from "./AppSummary";
 
 const JobList = () => {
-  document.title = "Job Lists | Velzon -  Admin & Dashboard Template";
+  document.title = "Job Lists | Wayber -  Admin & Dashboard Template";
 
   return (
     <React.Fragment>

@@ -13,7 +13,7 @@ const mapStyles = {
 const LoadingContainer = () => <div>Loading...</div>
 
 const GoogleMaps = (props) => {
-  document.title="Google Maps | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Google Maps | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>                

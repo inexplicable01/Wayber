@@ -61,7 +61,7 @@ const Features = () => {
                     <Row className="align-items-center gy-4">
                         <Col className="col-sm">
                             <div>
-                                <h4 className="text-white mb-0 fw-semibold">Build your web App/SaaS with Velzon dashboard</h4>
+                                <h4 className="text-white mb-0 fw-semibold">Build your web App/SaaS with Wayber dashboard</h4>
                             </div>
                         </Col>
                         <Col className="col-sm-auto">

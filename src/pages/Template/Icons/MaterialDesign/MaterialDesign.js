@@ -5,7 +5,7 @@ import { Card, CardBody, Col, Container, Row } from "reactstrap";
 import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 
 const Materialdesign = () => {
-  document.title = "Material Design Icons | Velzon - " + process.env.APPNAME_TITLE;
+  document.title = "Material Design Icons | Wayber - " + process.env.APPNAME_TITLE;
   return (
     <React.Fragment>
       <div className="page-content">

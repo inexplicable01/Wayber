@@ -37,7 +37,7 @@ import { getSellers as onGetSellers } from "../../../../store/storage/ecommerce/
 import SellerChats from "./SellerChats";
 
 const EcommerceSellers = () => {
-  document.title = "Sellers | Velzon - React Admin & Dashboard Template";
+  document.title = "Sellers | Wayber - React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
   const [sellerList, setSellerList] = useState([]);

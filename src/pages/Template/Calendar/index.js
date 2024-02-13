@@ -49,7 +49,7 @@ import {
 } from "../../../store/actions";
 
 const Calender = () => {
-  document.title = "Calendar | Velzon - " + process.env.APPNAME_TITLE;
+  document.title = "Calendar | Wayber - " + process.env.APPNAME_TITLE;
 
   const dispatch = useDispatch();
   const [event, setEvent] = useState({});

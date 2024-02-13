@@ -106,7 +106,7 @@ const Login = (props) => {
         }
     }, [dispatch, error]);
 
-    document.title = "Basic SignIn | Velzon - React Admin & Dashboard Template";
+    document.title = "Basic SignIn | Wayber - React Admin & Dashboard Template";
     return (
         <React.Fragment>
             <ParticlesAuth>
@@ -131,7 +131,7 @@ const Login = (props) => {
                                     <CardBody className="p-4">
                                         <div className="text-center mt-2">
                                             <h5 className="text-primary">Welcome Back !</h5>
-                                            <p className="text-muted">Sign in to continue to Velzon.</p>
+                                            <p className="text-muted">Sign in to continue to Wayber.</p>
                                         </div>
                                         {/*{console.log('error:'+errorMsg)}*/}
                                         {errorMsg && errorMsg ? (<Alert color="danger"> {errorMsg} </Alert>) : null}

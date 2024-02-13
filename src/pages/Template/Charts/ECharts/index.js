@@ -7,7 +7,7 @@ import {LineChart,StackedLineChart,AreaChart,StackedAreaChart,StepLineChart,Line
         } from './ECharts'
 
 const Echarts = () => {
-  document.title="E Charts | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="E Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <div className="page-content">
             <Container fluid>                

@@ -6,7 +6,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 import { BaseExample, CardTableExample, PaginationExample, SearchExample, SortingExample, LoadingStateExample, FixedHeaderExample, HiddenColumnsExample } from './GridTablesData';
 
 const GridTables = () => {
-  document.title="Grid Js | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Grid Js | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

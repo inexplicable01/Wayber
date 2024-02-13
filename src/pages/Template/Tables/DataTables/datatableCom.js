@@ -410,7 +410,7 @@ const ScrollVertical = () => {
         },
         {
             ScrVerId: "VLZ-458",
-            project: "Velzon v1.6.0",
+            project: "Wayber v1.6.0",
             task: "Add datatables",
             clientName: "James Morris",
             assigned: [avatar4, avatar5],
@@ -430,7 +430,7 @@ const ScrollVertical = () => {
         },
         {
             ScrVerId: "VLZ-461",
-            project: "Velzon v1.0.0",
+            project: "Wayber v1.0.0",
             task: "Form submit issue",
             clientName: "Grace Coles",
             assigned: [avatar5, avatar10, avatar9],

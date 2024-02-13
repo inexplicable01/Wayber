@@ -11,7 +11,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 const BasicSignUp = () => {
-    document.title = "Basic SignUp | Velzon - React Admin & Dashboard Template";
+    document.title = "Basic SignUp | Wayber - React Admin & Dashboard Template";
 
     const [passwordShow, setPasswordShow] = useState(false);
 
@@ -103,7 +103,7 @@ const BasicSignUp = () => {
                                                 </div>
 
                                                 <div className="mb-4">
-                                                    <p className="mb-0 fs-12 text-muted fst-italic">By registering you agree to the Velzon
+                                                    <p className="mb-0 fs-12 text-muted fst-italic">By registering you agree to the Wayber
                                                         <Link to="#" className="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</Link></p>
                                                 </div>
 

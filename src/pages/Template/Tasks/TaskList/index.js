@@ -6,7 +6,7 @@ import Widgets from './Widgets';
 
 
 const TaskList = () => {
-    document.title="Tasks List | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Tasks List | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>
