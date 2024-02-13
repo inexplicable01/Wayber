@@ -195,7 +195,7 @@ const PDFViewerComponent = () => {
             }
         }
         ,
-        [document, dispatch, userProfile,projectGroupID]//, F, projectGroupID]
+        [document, dispatch, userProfile,projectGroupID, form]//, F, projectGroupID]
     )
 
 

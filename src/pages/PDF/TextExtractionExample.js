@@ -311,7 +311,7 @@ const textData = await txt.getAsText();
             }
         }
         ,
-        [dispatch, document]
+        [dispatch, document, userProfile]
     )
 
 
