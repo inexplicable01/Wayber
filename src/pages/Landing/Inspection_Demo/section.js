@@ -81,27 +81,27 @@ const Section = () => {
   const contractor = {
     index: 1,
     name: 'Best Way Construction',
-    category: 'Roofing Contractors, Home Builders, Building Contractors-Commercial & Industrial',
+    category: 'Roofing Contractors, Home Builders, Building Contractors',
     phone: '(206) 783-3639',
     area: '98105',
     yearsInBusiness: 34,
-    imageUrl: contract1, // Replace with actual path to image
+    imageUrl: contract2, // Replace with actual path to image
      streetaddress:  '903NW 50th St',
       cityaddress:  'Seattle, WA98107'
   };
     const contractor2 = {
-    index: 1,
+    index: 2,
     name: 'Pete and Pete Plumber',
     category: 'Indoor, Outdoor Plumbing, Sewage Line Install, Heating',
     phone: '(206) 556-9841',
     area: '98105',
     yearsInBusiness: 10,
-    imageUrl: contract2, // Replace with actual path to image
+    imageUrl: contract1, // Replace with actual path to image
              streetaddress:  '4819 Phinney Ave',
       cityaddress:  'Seattle, WA98105'
   };
       const contractor3 = {
-    index: 1,
+    index: 3,
     name: 'Special Foundation LLC',
     category: 'Ranch Foundation, Duplex, Concrete, Crawl Space',
     phone: '(409) 888-4723',
