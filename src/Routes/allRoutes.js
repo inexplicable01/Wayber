@@ -94,7 +94,7 @@ import CreateClientProfile from "../pages/clientProfile/index.js";
 // create Contract
 import ContractView from '../pages/createContract/ContractView.js'
 import CreateContract from '../pages/createContract/index.js'
-import TextExtractionExample from "../pages/PDF/TextExtractionExample"
+// import TextExtractionExample from "../pages/PDF/TextExtractionExample"
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
