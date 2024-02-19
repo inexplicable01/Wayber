@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import Flatpickr from "react-flatpickr";
 import BreadCrumb from "../../../../Components/Common/BreadCrumb";
-import img6 from "../../../../assets/images/companies/img-6.png";
+import img6 from "../../../../assets/images/archive/companies/img-6.png";
 import { jobCompanies } from "../../../../common/data/appsJobs";
 const CompaniesList = () => {
   document.title = "Companies | Wayber - " + process.env.APPNAME_TITLE;

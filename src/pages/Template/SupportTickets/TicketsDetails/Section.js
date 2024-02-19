@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, CardBody, Col, DropdownItem, DropdownMenu, DropdownToggle, Row, UncontrolledDropdown } from 'reactstrap';
-import img from "../../../../assets/images/companies/img-4.png";
+import img from "../../../../assets/images/archive/companies/img-4.png";
 
 const Section = () => {
     return (

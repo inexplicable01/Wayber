@@ -10,10 +10,10 @@ import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 import { DefaultModalExample, CenteredModalExample, GridsModalExample, StaticBackdropModalExample, TogglebetweenExample, TooltipModalExample, ScrollableModalExample, VaryingModalExample, OptionalModalExample, FullscreenResponsiveExample, AnimationModalExample, PositionModalExample } from './UiModalCode';
 
 // Import Images
-import loginImg from "../../../../assets/images/modals/login.png";
-import signupImg from "../../../../assets/images/modals/signup.png";
-import subscribeImg from "../../../../assets/images/modals/subscribe.png";
-import paymentImg from "../../../../assets/images/modals/success-payment.png";
+import loginImg from "../../../../assets/images/archive/modals/login.png";
+import signupImg from "../../../../assets/images/archive/modals/signup.png";
+import subscribeImg from "../../../../assets/images/archive/modals/subscribe.png";
+import paymentImg from "../../../../assets/images/archive/modals/success-payment.png";
 import authbg from "../../../../assets/images/auth-one-bg.jpg";
 
 const UiModals = () => {

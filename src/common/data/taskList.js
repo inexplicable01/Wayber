@@ -9,8 +9,8 @@ import avatar7 from "../../assets/images/users/avatar-7.jpg";
 import avatar8 from "../../assets/images/users/avatar-8.jpg";
 import avatar9 from "../../assets/images/users/avatar-9.jpg";
 import avatar10 from "../../assets/images/users/avatar-10.jpg";
-import bgImage1 from "../../assets/images/small/img-7.jpg";
-import bgImage2 from "../../assets/images/small/img-4.jpg";
+import bgImage1 from "../../assets/images/archive/small/img-7.jpg";
+import bgImage2 from "../../assets/images/archive/small/img-4.jpg";
 
 const taskWidgets = [
     {

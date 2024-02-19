@@ -16,10 +16,10 @@ import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 import avatar10 from "../../../../assets/images/users/avatar-10.jpg";
 
 
-import img2 from "../../../../assets/images/small/img-2.jpg";
-import img3 from "../../../../assets/images/small/img-3.jpg";
-import img4 from "../../../../assets/images/small/img-4.jpg";
-import img5 from "../../../../assets/images/small/img-5.jpg";
+import img2 from "../../../../assets/images/archive/small/img-2.jpg";
+import img3 from "../../../../assets/images/archive/small/img-3.jpg";
+import img4 from "../../../../assets/images/archive/small/img-4.jpg";
+import img5 from "../../../../assets/images/archive/small/img-5.jpg";
 import { Link } from 'react-router-dom';
 
 import { ImgRoundedCircleExample, ImgThumbnailsExample, ImgSizesExample, AvatarExample, AvatarGroupExample, FiguresExample, ResponsiveExample } from './UiImagesCode';

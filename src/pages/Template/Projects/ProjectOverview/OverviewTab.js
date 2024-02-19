@@ -10,8 +10,8 @@ import avatar2 from "../../../../assets/images/users/avatar-2.jpg";
 import avatar3 from "../../../../assets/images/users/avatar-3.jpg";
 import avatar4 from "../../../../assets/images/users/avatar-4.jpg";
 import avatar7 from "../../../../assets/images/users/avatar-7.jpg";
-import image4 from "../../../../assets/images/small/img-4.jpg";
-import image5 from "../../../../assets/images/small/img-5.jpg";
+import image4 from "../../../../assets/images/archive/small/img-4.jpg";
+import image5 from "../../../../assets/images/archive/small/img-5.jpg";
 
 //SimpleBar
 import SimpleBar from "simplebar-react";

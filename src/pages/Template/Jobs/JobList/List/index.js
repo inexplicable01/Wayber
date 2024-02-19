@@ -3,8 +3,8 @@ import { Link, NavLink } from "react-router-dom";
 import { Card, CardBody, CardHeader, Col, Row } from "reactstrap";
 import { jobList } from "../../../../../common/data/appsJobs";
 import BreadCrumb from "../../../../../Components/Common/BreadCrumb";
-import img10 from "../../../../../assets/images/small/img-10.jpg";
-import img7 from "../../../../../assets/images/companies/img-7.png";
+import img10 from "../../../../../assets/images/archive/small/img-10.jpg";
+import img7 from "../../../../../assets/images/archive/companies/img-7.png";
 import AppSummaryChart from "./AppSummary";
 
 const JobList = () => {

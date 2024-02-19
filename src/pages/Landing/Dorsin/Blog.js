@@ -7,12 +7,12 @@ import BlogBox from "./BlogBox";
 import BlogCarousel from "./BlogCarousel";
 import BlogDisplay from './BlogDisplay';
 
-import image from '../../../assets/images/blog/img-1.jpg'
-import image2 from '../../../assets/images/blog/img-2.jpg'
-import image3 from '../../../assets/images/blog/img-3.jpg'
-import image4 from '../../../assets/images/blog/img-1.jpg'
-import image5 from '../../../assets/images/blog/img-2.jpg'
-import image6 from '../../../assets/images/blog/img-3.jpg'
+import image from '../../../assets/images/archive/blog/img-1.jpg'
+import image2 from '../../../assets/images/archive/blog/img-2.jpg'
+import image3 from '../../../assets/images/archive/blog/img-3.jpg'
+import image4 from '../../../assets/images/archive/blog/img-1.jpg'
+import image5 from '../../../assets/images/archive/blog/img-2.jpg'
+import image6 from '../../../assets/images/archive/blog/img-3.jpg'
 
 
 class Blog extends Component {

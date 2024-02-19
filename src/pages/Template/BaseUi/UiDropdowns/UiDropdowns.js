@@ -15,7 +15,7 @@ import avatar3 from "../../../../assets/images/users/avatar-3.jpg";
 import avatar6 from "../../../../assets/images/users/avatar-6.jpg";
 import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 
-import bell from "../../../../assets/images/svg/bell.svg";
+import bell from "../../../../assets/images/archive/svg/bell.svg";
 
 
 import { SingleButtonDropdownExample, ColorDropdownExample, SplitButtonDropdownExample, SizingDropdownExample, DarkDropdownExample, AlignDropdownExample, OptionDropdownExample, AutoCloseDropdownExample, MenuItemDropdownExample, MenuContentDropdownExample, NotificationDropdownExample } from './UiDropdownsCode';

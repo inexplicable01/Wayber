@@ -4,7 +4,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useNavigate} from "react-router-dom";
 import {logoutUser} from "../../store/actions";
 //import images
-import avatar1 from "../../assets/images/users/avatar-1.jpg";
+import avatar1 from "../../assets/images/users/user-dummy-img.jpg";
 
 const ProfileDropdown = () => {
 
@@ -24,6 +24,7 @@ const ProfileDropdown = () => {
     //         );
     //     }
     // }, [email, user]);
+    console.log(user)
     const handleLogout = () => {
         // Dispatch the logout action
         dispatch(logoutUser());
@@ -65,15 +66,15 @@ const ProfileDropdown = () => {
                     <DropdownItem onClick={navtoprofile}><i
                         className="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                         <span className="align-middle">Profile</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/apps-chat"}><i
-                        className="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span
-                        className="align-middle">Messages</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "#"}><i
-                        className="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span
-                        className="align-middle">Taskboard</span></DropdownItem>
-                    <DropdownItem href={process.env.PUBLIC_URL + "/pages-faqs"}><i
-                        className="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span
-                        className="align-middle">Help</span></DropdownItem>
+                    {/*<DropdownItem href={process.env.PUBLIC_URL + "/apps-chat"}><i*/}
+                    {/*    className="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span*/}
+                    {/*    className="align-middle">Messages</span></DropdownItem>*/}
+                    {/*<DropdownItem href={process.env.PUBLIC_URL + "#"}><i*/}
+                    {/*    className="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span*/}
+                    {/*    className="align-middle">Taskboard</span></DropdownItem>*/}
+                    {/*<DropdownItem href={process.env.PUBLIC_URL + "/pages-faqs"}><i*/}
+                    {/*    className="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span*/}
+                    {/*    className="align-middle">Help</span></DropdownItem>*/}
                     <div className="dropdown-divider"></div>
                     {/*<DropdownItem href={process.env.PUBLIC_URL + "/pages-profile"}><i*/}
                     {/*    className="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span*/}

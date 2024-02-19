@@ -1,17 +1,17 @@
 // Import Images
-import dribble from "../../assets/images/brands/dribbble.png";
-import bitbucket from "../../assets/images/brands/bitbucket.png";
-import dropbox from "../../assets/images/brands/dropbox.png";
-import mail_chimp from "../../assets/images/brands/mail_chimp.png";
-import slack from "../../assets/images/brands/slack.png";
-import github from "../../assets/images/brands/github.png";
+import dribble from "../../assets/images/archive/brands/dribbble.png";
+import bitbucket from "../../assets/images/archive/brands/bitbucket.png";
+import dropbox from "../../assets/images/archive/brands/dropbox.png";
+import mail_chimp from "../../assets/images/archive/brands/mail_chimp.png";
+import slack from "../../assets/images/archive/brands/slack.png";
+import github from "../../assets/images/archive/brands/github.png";
 
-import company1 from "../../assets/images/companies/img-1.png";
-import company3 from "../../assets/images/companies/img-3.png";
-import company4 from "../../assets/images/companies/img-4.png";
-import company5 from "../../assets/images/companies/img-5.png";
-import company6 from "../../assets/images/companies/img-6.png";
-import company8 from "../../assets/images/companies/img-8.png";
+import company1 from "../../assets/images/archive/companies/img-1.png";
+import company3 from "../../assets/images/archive/companies/img-3.png";
+import company4 from "../../assets/images/archive/companies/img-4.png";
+import company5 from "../../assets/images/archive/companies/img-5.png";
+import company6 from "../../assets/images/archive/companies/img-6.png";
+import company8 from "../../assets/images/archive/companies/img-8.png";
 
 import avatar1 from "../../assets/images/users/avatar-1.jpg";
 import avatar2 from "../../assets/images/users/avatar-2.jpg";

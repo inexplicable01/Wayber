@@ -1,8 +1,8 @@
 // Import Images
-import slack from "../../assets/images/brands/slack.png";
-import dribbble from "../../assets/images/brands/dribbble.png";
-import mailChimp from "../../assets/images/brands/mail_chimp.png";
-import dropbox from "../../assets/images/brands/dropbox.png";
+import slack from "../../assets/images/archive/brands/slack.png";
+import dribbble from "../../assets/images/archive/brands/dribbble.png";
+import mailChimp from "../../assets/images/archive/brands/mail_chimp.png";
+import dropbox from "../../assets/images/archive/brands/dropbox.png";
 import avatar2 from "../../assets/images/users/avatar-2.jpg";
 import avatar3 from "../../assets/images/users/avatar-3.jpg";
 import avatar4 from "../../assets/images/users/avatar-4.jpg";

@@ -3,7 +3,7 @@ import ReactApexChart from "react-apexcharts";
 
 // Import Images
 import comingSoon from "../../../../../assets/images/comingsoon.png";
-import Img4 from "../../../../../assets/images/small/img-4.jpg";
+import Img4 from "../../../../../assets/images/archive/small/img-4.jpg";
 
 import getChartColorsArray from "../../../../../Components/Common/ChartsDynamicColor";
 

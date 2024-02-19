@@ -289,7 +289,7 @@ const StepOneForm = ({
           Generate PDF
         </Button>
 
-        {currentStep == 1 && (
+        {currentStep === 1 && (
           <Button
             color="primary"
             onClick={nextStep}

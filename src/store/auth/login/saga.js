@@ -17,50 +17,54 @@ import {
 
 const fireBaseBackend = getFirebaseBackend();
 
-function* loginUser({ payload: { user, history } }) {
+function* loginUser({ payload: { usersignininfo } }) {
   try {
 
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       // console.log('okay')
       const response = yield call(
         fireBaseBackend.loginUser,
-        user.email,
-        user.password
+        usersignininfo.email,
+        usersignininfo.password
       );
 
       if (response) {
         console.log(response.uid + "got to here.")
         const userProfile = yield call(fireBaseBackend.getUserProfile, response.uid)
-        console.log(userProfile + "userProfile.")
-        yield put(setProfile({...userProfile, email: user.email, uid:response.uid}));
+        console.log("userProfile",userProfile)
+        console.log('email',usersignininfo.email)
+        console.log(response.uid + "uid.")
+        yield put(setProfile({...userProfile,email : usersignininfo.email, uid:response.uid}));
 
         console.log('some')
         yield put(loginSuccess(response));
-        history('/dashboard')
       } else {
         // console.log('caughterror?')
         yield put(apiError(response));
       }
     } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
       const response = yield call(postJwtLogin, {
-        email: user.email,
-        password: user.password,
+        email: usersignininfo.email,
+        password: usersignininfo.password,
       });
+      console.log('Sethere1')
       sessionStorage.setItem("authUser", JSON.stringify(response));
       if (response) {
         yield put(loginSuccess(response));
-        history('/dashboard')
+        // history('/dashboard')
       } else {
         yield put(apiError(response));
       }
     } else if (process.env.REACT_APP_API_URL) {
       const response = yield call(postFakeLogin, {
-        email: user.email,
-        password: user.password,
+        email: usersignininfo.email,
+        password: usersignininfo.password,
       });
       if (response.status === "success") {
         yield put(loginSuccess(response));
-        history('/dashboard')
+        // history('/dashboard')
+
+     console.log('Sethere2')
         sessionStorage.setItem("authUser", JSON.stringify(response));
       } else {
         yield put(apiError(response));
@@ -98,10 +102,12 @@ function* socialLogin({ payload: { data, history, type } }) {
         data,
         type,
       );
+      console.log('Sethere3')
       sessionStorage.setItem("authUser", JSON.stringify(response));
       yield put(loginSuccess(response));
     } else {
       const response = yield call(postSocialLogin, data);
+      console.log('Sethere4')
       sessionStorage.setItem("authUser", JSON.stringify(response));
       yield put(loginSuccess(response));
     }

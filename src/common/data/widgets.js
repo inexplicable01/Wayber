@@ -8,15 +8,15 @@ import avatar6 from "../../assets/images/users/avatar-6.jpg";
 import avatar7 from "../../assets/images/users/avatar-7.jpg";
 import avatar8 from "../../assets/images/users/avatar-8.jpg";
 
-import btcCoin from "../../assets/images/svg/crypto-icons/btc.svg";
-import ltcCoin from "../../assets/images/svg/crypto-icons/ltc.svg";
-import ethCoin from "../../assets/images/svg/crypto-icons/eth.svg";
-import dashCoin from "../../assets/images/svg/crypto-icons/dash.svg";
+import btcCoin from "../../assets/images/archive/svg/crypto-icons/btc.svg";
+import ltcCoin from "../../assets/images/archive/svg/crypto-icons/ltc.svg";
+import ethCoin from "../../assets/images/archive/svg/crypto-icons/eth.svg";
+import dashCoin from "../../assets/images/archive/svg/crypto-icons/dash.svg";
 
-import image3 from "../../assets/images/companies/img-3.png";
-import image4 from "../../assets/images/companies/img-4.png";
-import image6 from "../../assets/images/companies/img-6.png";
-import image8 from "../../assets/images/companies/img-8.png";
+import image3 from "../../assets/images/archive/companies/img-3.png";
+import image4 from "../../assets/images/archive/companies/img-4.png";
+import image6 from "../../assets/images/archive/companies/img-6.png";
+import image8 from "../../assets/images/archive/companies/img-8.png";
 
 const tileBoxs1 = [
     {

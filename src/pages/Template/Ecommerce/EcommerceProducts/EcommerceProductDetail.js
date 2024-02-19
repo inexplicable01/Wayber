@@ -20,9 +20,9 @@ import SimpleBar from "simplebar-react";
 
 import BreadCrumb from "../../../../Components/Common/BreadCrumb";
 
-import product1 from "../../../../assets/images/products/img-1.png";
-import product6 from "../../../../assets/images/products/img-6.png";
-import product8 from "../../../../assets/images/products/img-8.png";
+import product1 from "../../../../assets/images/archive/products/img-1.png";
+import product6 from "../../../../assets/images/archive/products/img-6.png";
+import product8 from "../../../../assets/images/archive/products/img-8.png";
 
 import { productDetailsWidgets, reviews } from "../../../../common/data/ecommerce";
 

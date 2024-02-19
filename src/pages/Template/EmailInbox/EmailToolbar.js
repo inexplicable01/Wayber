@@ -17,8 +17,8 @@ import Rating from "react-rating";
 // Import Images
 import avatar1 from "../../../assets/images/users/avatar-1.jpg";
 
-import img2 from "../../../assets/images/small/img-2.jpg";
-import img6 from "../../../assets/images/small/img-6.jpg";
+import img2 from "../../../assets/images/archive/small/img-2.jpg";
+import img6 from "../../../assets/images/archive/small/img-6.jpg";
 
 import image2 from "../../../assets/images/users/avatar-2.jpg";
 import image4 from "../../../assets/images/users/avatar-4.jpg";

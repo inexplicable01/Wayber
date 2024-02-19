@@ -22,7 +22,7 @@ class Index extends Component {
         this.state = {
             navItems : [
                 { id: 1 , idnm : "home", navheading: "Home" },
-                { id: 2 , idnm : "services", navheading: "Services" },
+                // { id: 2 , idnm : "services", navheading: "Services" },
                 // { id: 3 , idnm : "features", navheading: "Features" },
                 { id: 4 , idnm : "pricing", navheading: "Pricing" },
                 { id: 5 , idnm : "team", navheading: "Team" },
@@ -50,7 +50,7 @@ class Index extends Component {
                 toggleInspectorMode={this.toggleInspectorMode} />
 
                 <Section/>
-                <Service  sectionClass="pt-5"/>
+                {/*<Service  sectionClass="pt-5"/>*/}
                 <Pricing sectionClass="pt-5"/>
                 <Blog/>
                  <Team/>

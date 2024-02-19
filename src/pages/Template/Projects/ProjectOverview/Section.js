@@ -3,7 +3,7 @@ import { Card, CardBody, Col, Nav, NavItem, NavLink, Row, TabContent, TabPane } 
 import classnames from 'classnames';
 
 //import images
-import slack from '../../../../assets/images/brands/slack.png';
+import slack from '../../../../assets/images/archive/brands/slack.png';
 import OverviewTab from './OverviewTab';
 import DocumentsTab from './DocumentsTab';
 import ActivitiesTab from './ActivitiesTab';

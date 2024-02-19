@@ -8,8 +8,8 @@ import avatar6 from "../../assets/images/users/avatar-6.jpg";
 import avatar7 from "../../assets/images/users/avatar-7.jpg";
 import avatar8 from "../../assets/images/users/avatar-8.jpg";
 
-import img1 from "../../assets/images/small/img-1.jpg";
-import img2 from "../../assets/images/small/img-2.jpg";
+import img1 from "../../assets/images/archive/small/img-1.jpg";
+import img2 from "../../assets/images/archive/small/img-2.jpg";
 
 const projectsWidgets = [
     {
