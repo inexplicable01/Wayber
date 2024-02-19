@@ -2,9 +2,9 @@ import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 import Loader from "../../Components/Common/Loader";
-import CreateContactForm from "./CreateContact";
+import CreateContractForm from "./CreateContract";
 
-const CreateContact = () => {
+const CreateContract = () => {
   const data = useSelector((state) => state.clientProfileReducer);
   
 
@@ -15,8 +15,10 @@ const CreateContact = () => {
           <div>
             {data?.loading ? (
               <Loader />
-            ) : (
-              <CreateContactForm  />
+            ) : ( data.contractinfoready?
+                    (<CreateContractForm  />):
+                    (<CreateContractForm  />)
+
             )}
           </div>
         </Container>
@@ -25,4 +27,4 @@ const CreateContact = () => {
   );
 };
 
-export default CreateContact;
+export default CreateContract;

@@ -180,6 +180,8 @@ const CreateClientProfileForm = ({ onSubmit }) => {
                 <option value="">Select Role</option>
                 <option value="Buyer">Buyer</option>
                 <option value="Seller">Seller</option>
+                <option value="Buyer Agent">Buyer Agent</option>
+                <option value="Seller Agent">Seller Agent</option>
                 <option value="Closing Agent">Closing Agent</option>
               </Input>
               {formik.touched.role && formik.errors.role ? (

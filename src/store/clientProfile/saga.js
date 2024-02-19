@@ -23,7 +23,7 @@ function* handleClientProfileSubmission(action) {
 }
 
 function* fetchApiDataSaga() {
-  // console.log("action callled>>>>>>>");
+  console.log("action callled>>>>>>>", process.env.REACT_APP_RAPIDAPI_ZILLOWKEY);
   try {
     const options = {
       method: "GET",
@@ -34,8 +34,9 @@ function* fetchApiDataSaga() {
         "X-RapidAPI-Host": "zillow56.p.rapidapi.com",
       },
     };
+
     const response = yield call(axios.request, options);
-    //console.log(response);
+    console.log(response);
     yield put(actions.fetchApiDataSuccess(response.results));
   } catch (error) {
     console.error("Error in API data fetch::::::::::::", error);

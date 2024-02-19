@@ -13,6 +13,7 @@ const initialState = {
   loading: false,
   error: null,
   success: null,
+  contractinfoready: false,
   api: {
     data: null,
     loading: false,

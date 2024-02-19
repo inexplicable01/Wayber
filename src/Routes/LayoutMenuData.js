@@ -221,8 +221,8 @@ const Navdata = () => {
         },
         {
             id: "client_contact",
-            label: "Create Contact",
-            link: "/create_contact",
+            label: "Create Contract",
+            link: "/create_contract",
             parentId: "",
             icon: "las la-pager",
         },
