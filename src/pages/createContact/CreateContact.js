@@ -17,6 +17,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import WebViewer from "@pdftron/webviewer";
 import PdfData from "../../assets/pdf/abc.pdf";
+import { uploadTextRequest } from "../../store/uploadDocument/actions";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import {
   fetchApiDataRequest,
@@ -47,6 +48,10 @@ const CreateContactForm = ({ onSubmit }) => {
   const toggleModal = () => setModalOpen(!modalOpen);
 
   const formData = useSelector((state) => state.clientProfileReducer);
+  const uploadedtextToChatgptApi = useSelector(
+    (state) => state.textUploadReducer
+  );
+  console.log(uploadedtextToChatgptApi, "data");
   const formik = useFormik({
     initialValues: {
       address: "",
@@ -381,40 +386,53 @@ const CreateContactForm = ({ onSubmit }) => {
     dispatch(getUsersAddressRequest(zpid));
   };
   const GptTextUploader = async (allPdfData) => {
+    console.log("callled ufnction");
     const lines = allPdfData.split("\n");
     const filteredLines = lines.filter((line) => !line.trim().match(/^\d+$/));
     const data = filteredLines.join("\n");
     setLoading(true);
+    setModalContent("");
+    dispatch(uploadTextRequest(data));
 
-    try {
-      const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-      const response = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: "gpt-4",
-          messages: [
-            {
-              role: "user",
-              content: data,
-            },
-          ],
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
-        }
-      );
-      console.log(response?.choices[0].message.content, "response");
-      setModalContent(response?.choices[0].message.content);
-      toggleModal();
-      setLoading(false);
-    } catch (error) {
-      console.error("Error:", error);
-      setLoading(false);
-    }
+    // try {
+    //   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+    //   const response = await axios.post(
+    //     "https://api.openai.com/v1/chat/completions",
+    //     {
+    //       model: "gpt-4",
+    //       messages: [
+    //         {
+    //           role: "user",
+    //           content: data,
+    //         },
+    //       ],
+    //     },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${apiKey}`,
+    //       },
+    //     }
+    //   );
+    //   console.log(response?.choices[0].message.content, "response");
+    //   setModalContent(response?.choices[0].message.content);
+    //   toggleModal();
+    //   setLoading(false);
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   setLoading(false);
+    // }
   };
+  useEffect(() => {
+    if (uploadedtextToChatgptApi?.success && modalContent === "" && !uploadedtextToChatgptApi?.loading) {
+      setLoading(false);
+      setUploadDocument(false);
+      setModalContent(uploadedtextToChatgptApi?.data);
+    } else if(uploadedtextToChatgptApi?.error){
+      setLoading(false);
+      setModalContent(uploadedtextToChatgptApi?.error);
+    }
+  }, [uploadedtextToChatgptApi]);
 
   const handleTextSelection = async () => {
     const {
@@ -440,13 +458,13 @@ const CreateContactForm = ({ onSubmit }) => {
     const hasKeyValuePair = keyValueRegex.test(selectedText);
 
     if (!hasKeyValuePair && selectedText.trim() !== "") {
-      textData += selectedText; 
+      textData += selectedText;
     } else if (hasKeyValuePair) {
       //console.log("Key-value pair detected, text not logged.");
     }
 
     setExtractedData(textData);
-    GptTextUploader(textData)
+    GptTextUploader(textData);
     //console.log("textData", textData);
     await doc.unlock();
   };
@@ -679,39 +697,56 @@ const CreateContactForm = ({ onSubmit }) => {
           </Col>
         </Row>
 
-        <Button id="modifyPdfButton" type="submit" color="success">
+        <Button
+          onClick={() => setModalContent("")}
+          id="modifyPdfButton"
+          type="submit"
+          color="success"
+        >
           Generate PDF
         </Button>
-        <div
-          className={displayPDF ? "display_block" : "display_none"}
-          id="your-webviewer-container-id"
-          style={{ height: "100dvh" }}
-        ></div>
-        {uploadDocument &&
-        
-            <div className="uploadButtonsContainer">
-              {loading ? <div className="loaderContainer"> <Loader/> </div>:  <>
-              <Button
-                onClick={() => GptTextUploader(pdfDataString)}
-                color="success"
-              >
-                Upload
-              </Button>
-              <Button onClick={handleTextSelection}>
-                Upload selected text
-              </Button>
-              </> }
-            
+        <div className="conatiner">
+          <div
+            className={displayPDF ? "display_block" : "display_none"}
+            id="your-webviewer-container-id"
+          ></div>
+          {displayPDF && (
+            <div className="apiResponseContainer">
+              <p className="apiResponseHeading">API Response:</p>
+              <p>{modalContent ? modalContent : "Upload document"}</p>
             </div>
-        }
+          )}
+        </div>
 
-        <OpenAIResponse
+        {uploadDocument && (
+          <div className="uploadButtonsContainer">
+            {loading ? (
+              <div className="loaderContainer">
+                <Loader />{" "}
+              </div>
+            ) : (
+              <>
+                <Button
+                  onClick={() => GptTextUploader(pdfDataString)}
+                  color="success"
+                >
+                  Upload
+                </Button>
+                <Button onClick={handleTextSelection}>
+                  Upload selected text
+                </Button>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* <OpenAIResponse
           isOpen={modalOpen}
           toggle={toggleModal}
           title="API Response"
           content={modalContent}
           setUploadDocument={setUploadDocument}
-        />
+        /> */}
       </Form>
     </React.Fragment>
   );

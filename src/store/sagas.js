@@ -15,6 +15,7 @@ import APIKeysaga from "./apikey/saga";
 import watchPDFSaga from "./PDFs/saga";
 import watchProjectGroupSaga from "./projectgroup/saga";
 import watchFormSubmission from "./clientProfile/saga";
+import watchUploadText from './uploadDocument/saga';
 
 export default function* rootSaga() {
   yield all([
@@ -28,6 +29,7 @@ export default function* rootSaga() {
     fork(watchPDFSaga),
     fork(watchProjectGroupSaga),
     fork(APIKeysaga),
-    fork(watchFormSubmission)
+    fork(watchFormSubmission),
+    fork(watchUploadText)
   ]);
 }

@@ -1,27 +1,48 @@
-
-.display_block{
-    display: block;
+.display_block {
+  display: block;
+  width: 60%;
 }
-.display_none{
-    display: none;
+.display_none {
+  display: none;
 }
-.p13{
-    padding: 13px;
+.p13 {
+  padding: 13px;
 }
-.fontFamily_Roboto_sans_serif{
-    font-family: 'Roboto', sans-serif;
-}
-
-.uploadButtonsContainer{
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
-    align-items: flex-start;
+.fontFamily_Roboto_sans_serif {
+  font-family: "Roboto", sans-serif;
 }
 
-.loaderContainer{
-    background: #19BC9C;
-    padding: 10px;
-    border-radius: 9px;
-    width: 200px;
+.uploadButtonsContainer {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  align-items: flex-start;
+}
+
+.loaderContainer {
+  background: #19bc9c;
+  padding: 10px;
+  border-radius: 9px;
+  width: 200px;
+}
+.conatiner{
+display: flex;
+height: 100vh;
+width: 100%;
+}
+.apiResponseContainer {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.apiResponseHeading{
+    font-size: 24px;
+    font-weight: 500;
 }
