@@ -17,7 +17,11 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import WebViewer from "@pdftron/webviewer";
 import PdfData from "../../assets/pdf/abc.pdf";
-import { uploadTextRequest } from "../../store/uploadDocument/actions";
+import {
+  uploadTextRequest,
+  setUserDetails,
+  fetchProfilesStart,
+} from "../../store/uploadDocument/actions";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import {
   fetchApiDataRequest,
@@ -48,10 +52,7 @@ const CreateContactForm = ({ onSubmit }) => {
   const toggleModal = () => setModalOpen(!modalOpen);
 
   const formData = useSelector((state) => state.clientProfileReducer);
-  const uploadedtextToChatgptApi = useSelector(
-    (state) => state.textUploadReducer
-  );
-  console.log(uploadedtextToChatgptApi, "data");
+  const userDetailsData = useSelector((state) => state.textUploadReducer);
   const formik = useFormik({
     initialValues: {
       address: "",
@@ -78,7 +79,7 @@ const CreateContactForm = ({ onSubmit }) => {
     }),
 
     onSubmit: async (values) => {
-      console.log(values);
+      // console.log(values);
       const buyerFullName = values.buyer;
       const sellerFullName = values.seller;
 
@@ -128,42 +129,27 @@ const CreateContactForm = ({ onSubmit }) => {
           sellerEmail: sellerEmail,
           buyerEmail: buyerEmail,
         };
-        modifyPdf(pdfInstance, userDetails);
+        dispatch(setUserDetails(userDetails));
       }
     },
   });
   useEffect(() => {
     dispatch(fetchApiDataRequest());
+    dispatch(fetchProfilesStart());
   }, []);
 
   useEffect(() => {
     if (formData?.userZPID?.success) {
       setZpidDetails(formData.userZPID?.details);
-      // console.log(formData.userZPID?.details?.resoFacts?.appliances,"suc cess");
+    }
+    if (userDetailsData?.firebase?.profiles) {
+      setClientProfiles(userDetailsData?.firebase?.profiles);
     }
   }, [formData?.userZPID, formData?.userZPID?.success]);
 
   useEffect(() => {
     if (formData.api?.success) setAddress(formData.api.data);
   }, [formData.api.data, formData.api.success]);
-  useEffect(() => {
-    const db = firebase.firestore();
-    const myCollection = db.collection("ClientProfile");
-
-    myCollection
-      .get()
-      .then((querySnapshot) => {
-        const profiles = [];
-        querySnapshot.forEach((doc) => {
-          profiles.push({ id: doc.id, ...doc.data() });
-        });
-        //console.log("profiles", profiles);
-        setClientProfiles(profiles);
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
-  }, []);
 
   useEffect(() => {
     if (!webViewerInstance.current) {
@@ -203,9 +189,17 @@ const CreateContactForm = ({ onSubmit }) => {
       }
     };
   }, []);
+  console.log(userDetailsData?.firebase?.profiles, "Uploaded text to chatgpt");
+
+  useEffect(() => {
+    if (userDetailsData?.userDetails && pdfInstance) {
+      modifyPdf(pdfInstance, userDetailsData?.userDetails);
+    }
+  }, [userDetailsData?.userDetails]);
 
   const modifyPdf = async (pdfInstance, userDetails) => {
-    // console.log(userDetails?.zpidDeatils?.address,"jnjkjjbkjbjbubjkbjbjbjbj");
+    //console.log(userDetailsData, "data");
+
     const { documentViewer, annotationManager } = pdfInstance.Core;
 
     if (documentViewer.getDocument()) {
@@ -386,7 +380,6 @@ const CreateContactForm = ({ onSubmit }) => {
     dispatch(getUsersAddressRequest(zpid));
   };
   const GptTextUploader = async (allPdfData) => {
-    console.log("callled ufnction");
     const lines = allPdfData.split("\n");
     const filteredLines = lines.filter((line) => !line.trim().match(/^\d+$/));
     const data = filteredLines.join("\n");
@@ -424,15 +417,19 @@ const CreateContactForm = ({ onSubmit }) => {
     // }
   };
   useEffect(() => {
-    if (uploadedtextToChatgptApi?.success && modalContent === "" && !uploadedtextToChatgptApi?.loading) {
+    if (
+      userDetailsData?.success &&
+      modalContent === "" &&
+      !userDetailsData?.loading
+    ) {
       setLoading(false);
       setUploadDocument(false);
-      setModalContent(uploadedtextToChatgptApi?.data);
-    } else if(uploadedtextToChatgptApi?.error){
+      setModalContent(userDetailsData?.data);
+    } else if (userDetailsData?.error) {
       setLoading(false);
-      setModalContent(uploadedtextToChatgptApi?.error);
+      setModalContent(userDetailsData?.error);
     }
-  }, [uploadedtextToChatgptApi]);
+  }, [userDetailsData]);
 
   const handleTextSelection = async () => {
     const {

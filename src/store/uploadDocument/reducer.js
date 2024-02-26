@@ -6,6 +6,12 @@ const initialState = {
   data: null,
   error: null,
   success: false,
+  userDetails: {},
+  firebase: {
+    profiles: [],
+    loading: false,
+    error: null,
+  },
 };
 
 const textUploadReducer = (state = initialState, action) => {
@@ -14,7 +20,7 @@ const textUploadReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-        error: null,
+        error: false,
         success: false,
       };
     case actionTypes.UPLOAD_TEXT_SUCCESS:
@@ -31,6 +37,39 @@ const textUploadReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
         success: false,
+      };
+    case actionTypes.SET_USER_DETAILS:
+      return {
+        ...state,
+        userDetails: action.payload,
+      };
+    case actionTypes.FETCH_PROFILES_START:
+      return {
+        ...state,
+        firebase: {
+          ...state.firebase,
+          loading: true,
+          error: null,
+        },
+      };
+    case actionTypes.FETCH_PROFILES_SUCCESS:
+      return {
+        ...state,
+        firebase: {
+          ...state.firebase,
+          loading: false,
+          profiles: action.payload,
+          error: null,
+        },
+      };
+    case actionTypes.FETCH_PROFILES_FAILURE:
+      return {
+        ...state,
+        firebase: {
+          ...state.firebase,
+          loading: false,
+          error: action.payload,
+        },
       };
     default:
       return state;

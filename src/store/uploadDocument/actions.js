@@ -1,6 +1,4 @@
-import * as actionTypes from './actionTypes';
-
-
+import * as actionTypes from "./actionTypes";
 
 // actions.js
 
@@ -19,4 +17,23 @@ export const uploadTextFailure = (error) => ({
   payload: error,
 });
 
+export const setUserDetails = (userDetails) => {
+  return {
+    type: actionTypes.SET_USER_DETAILS,
+    payload: userDetails,
+  };
+};
 
+export const fetchProfilesStart = () => ({
+  type: actionTypes.FETCH_PROFILES_START,
+});
+
+export const fetchProfilesSuccess = profiles => ({
+  type: actionTypes.FETCH_PROFILES_SUCCESS,
+  payload: profiles,
+});
+
+export const fetchProfilesFailure = error => ({
+  type: actionTypes.FETCH_PROFILES_FAILURE,
+  payload: error,
+});
