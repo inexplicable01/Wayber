@@ -21,7 +21,7 @@ import ParticlesAuth from "../Template/AuthenticationInner/ParticlesAuth";
 import withRouter from "../../Components/Common/withRouter";
 
 const ForgetPasswordPage = props => {
-  document.title="Reset Password | Velzon - React Admin & Dashboard Template";
+  document.title="Reset Password | Wayber - React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 

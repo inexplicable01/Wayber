@@ -4,7 +4,7 @@ import Section from './Section';
 
 
 const ProjectOverview = () => {
-  document.title="Project Overview | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Project Overview | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

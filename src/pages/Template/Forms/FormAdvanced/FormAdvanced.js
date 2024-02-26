@@ -14,7 +14,7 @@ import BreadCrumb from "../../../../Components/Common/BreadCrumb";
 import DualListbox from './DualListbox';
 
 const FormAdvanced = () => {
-  document.title="File Advanced | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="File Advanced | Wayber - " + process.env.APPNAME_TITLE;
 
   const [defaultCounter, setdefaultCounter] = useState(5);
   const [lightCounter, setlightCounter] = useState(5);

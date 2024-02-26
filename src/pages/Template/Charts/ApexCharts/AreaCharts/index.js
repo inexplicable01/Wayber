@@ -17,7 +17,7 @@ import {
 import { Link } from 'react-router-dom';
 
 const AreaCharts = () => {
-    document.title="Area Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Area Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">                

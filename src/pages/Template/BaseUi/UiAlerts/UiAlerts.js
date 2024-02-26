@@ -13,7 +13,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 import { DefaultAlertsExample, BorderlessExample, DismissingExample, LinkColorExample, LiveExample, OutlineAlertsExample, LeftBorderAlertsExample, LabelIconAlertsExample, TopBarAlertsExample, LabelIconArrowAlertsExample, RoundedLabelIconAlertsExample, AdditionalContentAlertsExample, SolidAlertsExample } from './UiAlertsCode';
 
 const UiAlerts = () => {
-    document.title = "Alerts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Alerts | Wayber - " + process.env.APPNAME_TITLE;
     const [show, setShow] = useState(false);
     return (
         <React.Fragment>

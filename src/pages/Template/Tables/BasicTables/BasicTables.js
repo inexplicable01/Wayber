@@ -35,7 +35,7 @@ import avtarImage6 from '../../../../assets/images/users/avatar-6.jpg';
 
 
 const BasicTables = () => {
-    document.title = "Basic Tables | Velzon - " + process.env.APPNAME_TITLE;
+    document.title = "Basic Tables | Wayber - " + process.env.APPNAME_TITLE;
 
     return (
         <React.Fragment>

@@ -9,7 +9,7 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 import { VerticalStartExample, VerticalCenterExample, VerticalEndExample, AlignSelfExample, HorizontalAlignExample } from "./UiGridCode";
 
 const UiGrid = () => {
-    document.title="Grid | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="Grid | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <UiContent />

@@ -50,7 +50,7 @@ import PerfectScrollbar from "react-perfect-scrollbar";
 import "react-perfect-scrollbar/dist/css/styles.css";
 
 const Chat = () => {
-  document.title = "Chat | Velzon - " + process.env.APPNAME_TITLE;
+  document.title = "Chat | Wayber - " + process.env.APPNAME_TITLE;
 
   const [customActiveTab, setcustomActiveTab] = useState("1");
   const toggleCustom = (tab) => {

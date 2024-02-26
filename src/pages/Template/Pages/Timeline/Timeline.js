@@ -28,7 +28,7 @@ import small9 from "../../../../assets/images/small/img-9.jpg";
 
 
 const Timeline = () => {
-  document.title="Timeline | Velzon - " + process.env.APPNAME_TITLE;
+  document.title="Timeline | Wayber - " + process.env.APPNAME_TITLE;
     
     SwiperCore.use([FreeMode, Navigation, Thumbs]);
   const [thumbsSwiper] = useState(null);
@@ -148,7 +148,7 @@ const Timeline = () => {
                                         <i className="icon ri-user-smile-line"></i>
                                         <div className="date">10 Feb 2021</div>
                                         <div className="content">
-                                            <h5>Velzon admin dashboard templates layout upload</h5>
+                                            <h5>Wayber admin dashboard templates layout upload</h5>
                                             <p className="text-muted">Powerful, clean & modern responsive bootstrap 5 admin template. The maximum file size for uploads in this demo :</p>
                                             <Row className="border border-dashed rounded gx-2 p-2">
                                                 <Col xs={3}>
@@ -259,7 +259,7 @@ const Timeline = () => {
                                             <Col xs={12}>
                                                 <div className="timeline-box">
                                                     <div className="timeline-text">
-                                                        <h5>Velzon - Project Discussion</h5>
+                                                        <h5>Wayber - Project Discussion</h5>
                                                         <p className="text-muted mb-0">The purpose of the discussion is to interpret and describe the significance of your findings in light of what was already known about the research problem being investigated, and to explain any new understanding or fresh insights about the problem after you've taken the findings into consideration.</p>
                                                     </div>
                                                 </div>

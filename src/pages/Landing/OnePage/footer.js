@@ -19,7 +19,7 @@ const Footer = () => {
                                 <div className="mt-4">
                                     <p>Premium Multipurpose Admin & Dashboard Template</p>
                                     <p className="ff-secondary">You can build any type of web application like eCommerce, CRM, CMS, Project
-                                        management apps, Admin Panels, etc using Velzon.</p>
+                                        management apps, Admin Panels, etc using Wayber.</p>
                                 </div>
                             </div>
                         </Col>
@@ -68,7 +68,7 @@ const Footer = () => {
 
                             <div>
                                 <p className="copy-rights mb-0">
-                                    {new Date().getFullYear()} © Velzon - Themesbrand
+                                    {new Date().getFullYear()} © Wayber - Themesbrand
                                 </p>
                             </div>
                         </Col>

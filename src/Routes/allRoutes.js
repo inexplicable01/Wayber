@@ -74,7 +74,7 @@ import Form21A from "../pages/PDF/Form21A"
 import ApiKey from '../pages/APIKey/index'
 
 // Landing Index
-import OnePage from "../pages/Landing/OnePage";
+import Inspection_Demo from "../pages/Landing/Inspection_Demo";
 // import NFTLanding from "../pages/Landing/NFTLanding";
 import Dorsin from "../pages/Landing/Dorsin"
 import PDFViewerComponent from "../pages/PDF/PDFViewer.js"
@@ -161,6 +161,7 @@ const publicRoutes = [
   // { path: "/pages-coming-soon", component: <ComingSoon /> },
 
   { path: "/landing", component: <Dorsin /> },
+  { path: "/inspection_demo", component: <Inspection_Demo /> },
   // { path: "/landingtest", component: <Dorsin /> },
   // { path: "/nft-landing", component: <NFTLanding /> },
   // { path: "/job-landing", component: <OnePage /> },

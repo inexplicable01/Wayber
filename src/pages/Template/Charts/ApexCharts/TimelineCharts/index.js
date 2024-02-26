@@ -11,7 +11,7 @@ import {
 } from "./TimelineCharts";
 
 const TimelineCharts = () => {
-    document.title="TimeLine Charts | Velzon - " + process.env.APPNAME_TITLE;
+    document.title="TimeLine Charts | Wayber - " + process.env.APPNAME_TITLE;
     return (
         <React.Fragment>
             <div className="page-content">                

@@ -36,7 +36,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const InvoiceList = () => {
-  document.title = "Invoice List  | Velzon - " + process.env.APPNAME_TITLE;
+  document.title = "Invoice List  | Wayber - " + process.env.APPNAME_TITLE;
 
   const dispatch = useDispatch();
 

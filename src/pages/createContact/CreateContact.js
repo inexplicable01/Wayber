@@ -157,6 +157,7 @@ const CreateContactForm = ({ onSubmit }) => {
         {
           path: "/webviewer/lib",
           initialDoc: PdfData,
+          licenseKey:process.env.REACT_APP_PDFTRON_LICENSEKEY,
           fullAPI: true,
         },
         document.getElementById("your-webviewer-container-id")

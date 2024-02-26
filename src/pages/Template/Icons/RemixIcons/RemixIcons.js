@@ -8,7 +8,7 @@ icons = JSON.parse(icons);
 var iconData = "";
 
 const RemixIcons = () => {
-  document.title="Remix Icons | Velzon - React Admin & Dashboard Template";
+  document.title="Remix Icons | Wayber - React Admin & Dashboard Template";
 
   useEffect(() => {
     Object.keys(icons).forEach(function (key) {
