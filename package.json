@@ -46,6 +46,7 @@
     "react-dual-listbox": "^5.0.2",
     "react-filepond": "^7.1.2",
     "react-flatpickr": "^3.10.13",
+    "react-form-stepper": "^2.0.3",
     "react-i18next": "^12.2.0",
     "react-jvectormap": "^0.0.16",
     "react-leaflet": "^4.2.0",
