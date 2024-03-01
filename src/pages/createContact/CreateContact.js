@@ -31,6 +31,9 @@ import axios from "axios";
 import OpenAIResponse from "./Model";
 import Loader from "../../Components/Common/Loader";
 import { Stepper } from "react-form-stepper";
+import StepOneForm from "./StepOneForm";
+import FinancialContingencyForm from "./FinancialContingencyForm";
+import InspectionContingencyForm from "./InspectionContingencyForm";
 
 const CreateContactForm = ({ onSubmit }) => {
   const webViewerInstance = useRef(null);
@@ -65,7 +68,6 @@ const CreateContactForm = ({ onSubmit }) => {
     }
   };
 
- 
   const toggleModal = () => setModalOpen(!modalOpen);
 
   const formData = useSelector((state) => state.clientProfileReducer);
@@ -525,553 +527,43 @@ const CreateContactForm = ({ onSubmit }) => {
     switch (currentStep) {
       case 1:
         return (
-          <Form
-            onSubmit={formik.handleSubmit}
-            className="fontFamily_Roboto_sans_serif"
-          >
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="address">Address</Label>
-                  <Input
-                    type="select"
-                    name="address"
-                    id="address"
-                    onChange={(e) => {
-                      formik.handleChange(e);
-                      handleAddressChange(e);
-                    }}
-                    value={formik.values.address}
-                    invalid={formik.touched.address && !!formik.errors.address}
-                    className="p13"
-                  >
-                    <option value="">Select Address</option>
-                    {address?.slice(0, 10)?.map((property) => (
-                      <option key={property.zpid} value={property.zpid}>
-                        <div>
-                          {`${property.streetAddress}, ${property.city}, ${property.state} ${property.zipcode}`}
-                        </div>
-                      </option>
-                    ))}
-                  </Input>
-                  {formik.touched.address && formik.errors.address ? (
-                    <FormFeedback type="invalid">
-                      {formik.errors.address}
-                    </FormFeedback>
-                  ) : null}
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="buyer">Buyer</Label>
-                  <Input
-                    type="select"
-                    name="buyer"
-                    id="buyer"
-                    onChange={formik.handleChange}
-                    value={formik.values.buyer}
-                    invalid={formik.touched.buyer && !!formik.errors.buyer}
-                    className="p13"
-                  >
-                    <option value="">Select Buyer</option>
-                    {clientProfiles.map((profile, i) => {
-                      if (profile.role === "Buyer") {
-                        return (
-                          <option
-                            key={i}
-                            value={profile.firstName + " " + profile.lastName}
-                          >
-                            {profile.firstName + " " + profile.lastName}
-                          </option>
-                        );
-                      }
-                      return null;
-                    })}
-                  </Input>
-                  {formik.touched.buyer && formik.errors.buyer && (
-                    <FormFeedback>{formik.errors.buyer}</FormFeedback>
-                  )}
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="seller">Seller</Label>
-                  <Input
-                    type="select"
-                    name="seller"
-                    id="seller"
-                    onChange={formik.handleChange}
-                    value={formik.values.seller}
-                    invalid={formik.touched.seller && !!formik.errors.seller}
-                    className="p13"
-                  >
-                    <option value="">Select Seller</option>
-                    {clientProfiles.map((profile, i) => {
-                      if (profile.role === "Seller") {
-                        return (
-                          <option
-                            key={i}
-                            value={profile.firstName + " " + profile.lastName}
-                          >
-                            {profile.firstName + " " + profile.lastName}
-                          </option>
-                        );
-                      }
-                      return null;
-                    })}
-                  </Input>
-                  {formik.touched.seller && formik.errors.seller && (
-                    <FormFeedback>{formik.errors.seller}</FormFeedback>
-                  )}
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="closingAgent">Closing Agent</Label>
-                  <Input
-                    type="select"
-                    name="closingAgent"
-                    id="closingAgent"
-                    onChange={formik.handleChange}
-                    value={formik.values.closingAgent}
-                    invalid={
-                      formik.touched.closingAgent &&
-                      !!formik.errors.closingAgent
-                    }
-                    className="p13"
-                  >
-                    <option value="">Select Closing Agent</option>
-                    {clientProfiles.map((profile, index) => {
-                      if (profile.role === "Closing Agent") {
-                        return (
-                          <option
-                            key={index}
-                            value={profile.firstName + " " + profile.lastName}
-                          >
-                            {profile.firstName + " " + profile.lastName}
-                          </option>
-                        );
-                      }
-                      return null;
-                    })}
-                  </Input>
-                  {formik.touched.closingAgent &&
-                    formik.errors.closingAgent && (
-                      <FormFeedback type="invalid">
-                        {formik.errors.closingAgent}
-                      </FormFeedback>
-                    )}
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="offerExpirationDate">Offer Expiration Date</Label>
-                  <Input
-                    id="offerExpirationDate"
-                    name="offerExpirationDate"
-                    type="date"
-                    onChange={formik.handleChange}
-                    value={formik.values.offerExpirationDate}
-                    invalid={
-                      formik.touched.offerExpirationDate &&
-                      !!formik.errors.offerExpirationDate
-                    }
-                    className="p13"
-                  />
-                  {formik.touched.offerExpirationDate &&
-                    formik.errors.offerExpirationDate && (
-                      <FormFeedback>
-                        {formik.errors.offerExpirationDate}
-                      </FormFeedback>
-                    )}
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="closingDate">Closing Date</Label>
-                  <Input
-                    id="closingDate"
-                    name="closingDate"
-                    type="date"
-                    onChange={formik.handleChange}
-                    value={formik.values.closingDate}
-                    invalid={
-                      formik.touched.closingDate && !!formik.errors.closingDate
-                    }
-                    className="p13"
-                  />
-                  {formik.touched.closingDate && formik.errors.closingDate && (
-                    <FormFeedback>{formik.errors.closingDate}</FormFeedback>
-                  )}
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="titleInsuranceCompany">
-                    Title Insurance Company
-                  </Label>
-                  <Input
-                    id="titleInsuranceCompany"
-                    name="titleInsuranceCompany"
-                    type="text"
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.titleInsuranceCompany}
-                    invalid={
-                      formik.touched.titleInsuranceCompany &&
-                      !!formik.errors.titleInsuranceCompany
-                    }
-                    className="p13"
-                  />
-                  {formik.touched.titleInsuranceCompany &&
-                    formik.errors.titleInsuranceCompany && (
-                      <FormFeedback type="invalid">
-                        {formik.errors.titleInsuranceCompany}
-                      </FormFeedback>
-                    )}
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="price">Price</Label>
-                  <Input
-                    id="price"
-                    name="price"
-                    type="number"
-                    onChange={formik.handleChange}
-                    value={formik.values.price}
-                    invalid={formik.touched.price && !!formik.errors.price}
-                  />
-                  {formik.touched.price && formik.errors.price && (
-                    <FormFeedback>{formik.errors.price}</FormFeedback>
-                  )}
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="closingDate">Possession Date</Label>
-                  <Input
-                    id="possessionDate"
-                    name="possessionDate"
-                    type="date"
-                    onChange={formik.handleChange}
-                    value={formik.values.possessionDate}
-                    invalid={
-                      formik.touched.closingDate && !!formik.errors.closingDate
-                    }
-                    className="p13"
-                  />
-                  {formik.touched.possessionDate &&
-                    formik.errors.possessionDate && (
-                      <FormFeedback>
-                        {formik.errors.possessionDate}
-                      </FormFeedback>
-                    )}
-                </FormGroup>
-              </Col>
-            </Row>
-
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <Button
-                onClick={() => setModalContent("")}
-                id="modifyPdfButton"
-                type="submit"
-                color="success"
-              >
-                Generate PDF
-              </Button>
-
-              {currentStep == 1 && (
-                <Button color="primary" onClick={nextStep}>
-                  Next
-                </Button>
-              )}
-            </div>
-
-            <div className="conatiner">
-              <div
-                className={displayPDF ? "display_block" : "display_none"}
-                id="your-webviewer-container-id"
-              ></div>
-              {displayPDF && (
-                <div className="apiResponseContainer">
-                  <p className="apiResponseHeading">API Response:</p>
-                  <p>{modalContent ? modalContent : "Upload document"}</p>
-                </div>
-              )}
-            </div>
-
-            {uploadDocument && (
-              <div className="uploadButtonsContainer">
-                {loading ? (
-                  <div className="loaderContainer">
-                    <Loader />{" "}
-                  </div>
-                ) : (
-                  <>
-                    <Button
-                      onClick={() => GptTextUploader(pdfDataString)}
-                      color="success"
-                    >
-                      Upload
-                    </Button>
-                    <Button onClick={handleTextSelection}>
-                      Upload selected text
-                    </Button>
-                  </>
-                )}
-              </div>
-            )}
-
-            {/* <OpenAIResponse
-            isOpen={modalOpen}
-            toggle={toggleModal}
-            title="API Response"
-            content={modalContent}
-            setUploadDocument={setUploadDocument}
-          /> */}
-          </Form>
+          <StepOneForm
+            formik={formik}
+            handleAddressChange={handleAddressChange}
+            clientProfiles={clientProfiles}
+            address={address}
+            nextStep={nextStep}
+            displayPDF={displayPDF}
+            modalContent={modalContent}
+            uploadDocument={uploadDocument}
+            loading={loading}
+            pdfDataString={pdfDataString}
+            GptTextUploader={GptTextUploader}
+            handleTextSelection={handleTextSelection}
+            setModalContent={setModalContent}
+            currentStep={currentStep}
+            Loader={Loader}
+          />
         );
       case 2:
         return (
-          <Form
-            onSubmit={formik.handleSubmit}
-            className="fontFamily_Roboto_sans_serif"
-          >
-            <FormGroup>
-              <Label
-                for="loanType"
-                style={{ fontSize: "20px", fontWeight: "700" }}
-              >
-                Loan Type
-              </Label>
-              <div>
-                {[
-                  "Conventional First",
-                  "Conventional Second",
-                  "Bridge",
-                  "VA",
-                  "FHA",
-                  "USDA",
-                  "Home Equity",
-                  "Line of Credit",
-                  "Other",
-                ].map((type, index) => (
-                  <FormGroup check key={index}>
-                    <Label check>
-                      <Input
-                        type="checkbox"
-                        name="loanType"
-                        value={type}
-                        onChange={(e) => {
-                          const { checked, value } = e.target;
-                          formik.setFieldValue(
-                            "loanType",
-                            checked ? value : ""
-                          );
-                        }}
-                        checked={formik.values.loanType === type}
-                      />{" "}
-                      {type}
-                    </Label>
-                  </FormGroup>
-                ))}
-              </div>
-              {formik.values.loanType === "Other" && (
-                <Input
-                  type="text"
-                  name="loanTypeOtherText"
-                  placeholder="Specify other loan type"
-                  onChange={formik.handleChange}
-                  value={formik.values.loanTypeOtherText}
-                />
-              )}
-              {formik.touched.loanType && formik.errors.loanType && (
-                <FormFeedback type="invalid">
-                  {formik.errors.loanType}
-                </FormFeedback>
-              )}
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="downPayment">Down Payment</Label>
-              <Input
-                type="number"
-                name="downPayment"
-                id="downPayment"
-                onChange={formik.handleChange}
-                value={formik.values.downPayment}
-                invalid={
-                  formik.touched.downPayment && !!formik.errors.downPayment
-                }
-              />
-              {formik.touched.downPayment && formik.errors.downPayment && (
-                <FormFeedback>{formik.errors.downPayment}</FormFeedback>
-              )}
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="applicationKickStart">
-                Application Kick Start TimeFrame
-              </Label>
-              <Input
-                type="number"
-                name="applicationKickStart"
-                id="applicationKickStart"
-                onChange={formik.handleChange}
-                value={formik.values.applicationKickStart || 5}
-                invalid={
-                  formik.touched.applicationKickStart &&
-                  !!formik.errors.applicationKickStart
-                }
-              />
-              {formik.touched.applicationKickStart &&
-                formik.errors.applicationKickStart && (
-                  <FormFeedback>
-                    {formik.errors.applicationKickStart}
-                  </FormFeedback>
-                )}
-            </FormGroup>
-            <FormGroup>
-              <Label for="loanCostProvisions">Loan Cost Provisions</Label>
-              <Input
-                type="number"
-                name="loanCostProvisions"
-                id="loanCostProvisions"
-                onChange={formik.handleChange}
-                value={formik.values.loanCostProvisions}
-               
-              />
-              {formik.touched.loanCostProvisions &&
-                formik.errors.loanCostProvisions && (
-                  <FormFeedback>
-                    {formik.errors.loanCostProvisions}
-                  </FormFeedback>
-                )}
-            </FormGroup>
-          </Form>
+          <FinancialContingencyForm
+            formik={formik}
+            prevStep={prevStep}
+            nextStep={nextStep}
+            FormFeedback={FormFeedback}
+          />
         );
       case 3:
         return (
-          <Form
-            onSubmit={formik.handleSubmit}
-            className="fontFamily_Roboto_sans_serif"
-          >
-            <Row form>
-              <Col>
-                <FormGroup>
-                  <Label for="buyersNotice">Buyer’s Notice</Label>
-                  <Input
-                    type="number"
-                    name="buyersNotice"
-                    id="buyersNotice"
-                    onChange={formik.handleChange}
-                    value={formik.values.buyersNotice || "10"}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="additionalTimeForInspections">
-                    Additional Time for Inspections
-                  </Label>
-                  <Input
-                    type="number"
-                    name="additionalTimeForInspections"
-                    id="additionalTimeForInspections"
-                    onChange={formik.handleChange}
-                    value={formik.values.additionalTimeForInspections || "5"}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="sellersResponseTime">
-                    Seller’s Response Time
-                  </Label>
-                  <Input
-                    type="number"
-                    name="sellersResponseTime"
-                    id="sellersResponseTime"
-                    onChange={formik.handleChange}
-                    value={formik.values.sellersResponseTime || "3"}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="buyersReplyTime">Buyer’s Reply</Label>
-                  <Input
-                    type="number"
-                    name="buyersReplyTime"
-                    id="buyersReplyTime"
-                    onChange={formik.handleChange}
-                    value={formik.values.buyersReplyTime || "3"}
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="repairCompletionDate">
-                    Repair Completion Date
-                  </Label>
-                  <Input
-                    type="number"
-                    name="repairCompletionDate"
-                    id="repairCompletionDate"
-                    onChange={formik.handleChange}
-                    value={formik.values.repairCompletionDate || "3"}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
-            <FormGroup check className="mb-3">
-              <Label check>
-                <Input
-                  type="checkbox"
-                  name="neighborhoodReviewContingency"
-                  id="neighborhoodReviewContingency"
-                  onChange={formik.handleChange}
-                  checked={formik.values.neighborhoodReviewContingency}
-                />
-                Neighborhood Review Contingency
-              </Label>
-              {formik.values.neighborhoodReviewContingency && (
-                <Input
-                  type="number"
-                  name="neighborhoodReviewDays"
-                  id="neighborhoodReviewDays"
-                  placeholder="Enter number of days"
-                  onChange={formik.handleChange}
-                  value={formik.values.neighborhoodReviewDays || "3"}
-                />
-              )}
-            </FormGroup>
-            <Col md={6}>
-              <FormGroup check className="mb-3">
-                <Label check>
-                  <Input
-                    type="checkbox"
-                    name="includeSewerInspection"
-                    id="includeSewerInspection"
-                    onChange={formik.handleChange}
-                    checked={formik.values.includeSewerInspection}
-                  />
-                  Include Sewer Inspection
-                </Label>
-              </FormGroup>
-            </Col>
-          </Form>
+          <InspectionContingencyForm
+            formik={formik}
+            prevStep={prevStep}
+            FormFeedback={FormFeedback}
+            onSubmit={() => {
+              console.log("Final form values", formik.values);
+            }}
+          />
         );
       default:
         return <div>Step not found</div>;
