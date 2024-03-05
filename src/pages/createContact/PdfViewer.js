@@ -1,16 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import WebViewer from "@pdftron/webviewer";
 import PdfData from "../../assets/pdf/abc.pdf";
+import InspectPdf from "../../assets/pdf/inspection.pdf";
+import financingPdf from "../../assets/pdf/financing.pdf";
 
 function PdfViewer() {
   const [selectedPdfIndex, setSelectedPdfIndex] = useState(0);
   const webViewerInstance = useRef(null);
 
-  const pdfUrls = [
-    PdfData,
-    "path/to/your/second/pdf/document.pdf",
-    "path/to/your/third/pdf/document.pdf",
-  ];
+  const pdfUrls = [PdfData, InspectPdf, financingPdf];
 
   useEffect(() => {
     if (!webViewerInstance.current) {
@@ -37,29 +35,31 @@ function PdfViewer() {
 
   const pdfViewerContainerStyle = {
     padding: "120px 20px 20px 10px",
-  
+
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
   };
 
   const pdfSelectionContainerStyle = {
     display: "flex",
     justifyContent: "flex-start",
-    marginBottom: "20px", 
-    gap:"15px"
+    marginBottom: "20px",
+    gap: "15px",
   };
 
   const pdfPreviewStyle = (index) => ({
-    
     padding: "20px",
     cursor: "pointer",
     // border: selectedPdfIndex === index ? "2px solid blue" : "2px solid gray",
     marginRight: "10px",
     transition: "transform 0.2s ease-in-out",
     transform: selectedPdfIndex === index ? "scale(1.05)" : "scale(1)",
-    boxShadow: selectedPdfIndex === index ? "0 6px 10px rgba(0, 0, 255, 0.2)" : "0 4px 8px rgba(0, 0, 255, 0.2)",
-    width:"150px",
-    height:"200px",
-    borderRadius:"6px"
+    boxShadow:
+      selectedPdfIndex === index
+        ? "0 6px 10px rgba(0, 0, 255, 0.2)"
+        : "0 4px 8px rgba(0, 0, 255, 0.2)",
+    width: "150px",
+    height: "200px",
+    borderRadius: "6px",
   });
 
   const generateButtonStyle = {

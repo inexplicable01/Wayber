@@ -93,6 +93,7 @@ import ProjectDetails from "../pages/ProjectGroups/ProjectDetails"
 import CreateClientProfile from "../pages/clientProfile/index.js";
 // create Contract
 import CreateContact from '../pages/createContact/index.js'
+import PdfViewer from "../pages/createContact/PdfViewer.js";
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
@@ -114,6 +115,8 @@ const authProtectedRoutes = [
  //create-client-profile
  { path: "/create_client_profile", component: <CreateClientProfile /> },
  { path: "/create_contact", component: <CreateContact /> },
+ { path: "/pdf_viewer", component: <PdfViewer /> },
+ 
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
 

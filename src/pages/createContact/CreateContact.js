@@ -34,6 +34,7 @@ import { Stepper } from "react-form-stepper";
 import StepOneForm from "./StepOneForm";
 import FinancialContingencyForm from "./FinancialContingencyForm";
 import InspectionContingencyForm from "./InspectionContingencyForm";
+import { useNavigate } from "react-router-dom";
 
 const CreateContactForm = ({ onSubmit }) => {
   const webViewerInstance = useRef(null);
@@ -54,6 +55,7 @@ const CreateContactForm = ({ onSubmit }) => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
+  const navigate = useNavigate();
 
   const useStepFieldValidator = (formik, currentStep) => {
     const getCurrentStepFields = (step) => {
@@ -642,7 +644,10 @@ const CreateContactForm = ({ onSubmit }) => {
               <Button
                 color="success"
                 type="submit"
-                onClick={formik.handleSubmit}
+                onClick={() => {
+                  formik.handleSubmit()
+                  navigate(`/pdf_viewer`);
+                }}
               >
                 Submit
               </Button>
