@@ -165,11 +165,11 @@ const CreateContactForm = ({ onSubmit }) => {
       possessionDate: Yup.date().required("Please select an possesion date"),
       buyersNotice: Yup.number().required("Required").min(0),
       includeSewerInspection: Yup.boolean(),
-      loanType: Yup.string().required("Please loantype"),
+      // loanType: Yup.string().required("Please loantype"),
       additionalTimeForInspections: Yup.number().required("Required").min(0),
-      loanCostProvisions: Yup.number().required(
-        "Loan cost provisions are required"
-      ),
+      // loanCostProvisions: Yup.number().required(
+      //   "Loan cost provisions are required"
+      // ),
       sellersResponseTime: Yup.number().required("Required").min(0),
       buyersReplyTime: Yup.number().required("Required").min(0),
       repairCompletionDate: Yup.number().required("Required").min(0),
