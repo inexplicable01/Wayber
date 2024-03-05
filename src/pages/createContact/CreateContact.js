@@ -55,16 +55,65 @@ const CreateContactForm = ({ onSubmit }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
 
-  const nextStep = () => {
+  const useStepFieldValidator = (formik, currentStep) => {
+    const getCurrentStepFields = (step) => {
+      switch (step) {
+        case 1:
+          return [
+            "address",
+            "buyer",
+            "seller",
+            "price",
+            "offerExpirationDate",
+            "closingDate",
+            "titleInsuranceCompany",
+            "closingAgent",
+            "possessionDate",
+          ];
+        case 2:
+          return [
+            "financialContingency",
+            "loanType",
+            "downPayment",
+            "loanCostProvisions",
+            "applicationKickStart",
+          ];
+        case 3:
+          return [
+            "inspectionContingency",
+            "buyersNotice",
+            "includeSewerInspection",
+            "additionalTimeForInspections",
+            "sellersResponseTime",
+            "buyersReplyTime",
+            "repairCompletionDate",
+            "neighborhoodReviewContingency",
+            "neighborhoodReviewDays",
+          ];
+        default:
+          return [];
+      }
+    };
+
+    const fieldsToValidate = getCurrentStepFields(currentStep);
+
+    const areFieldsValid = fieldsToValidate.every((field) => {
+      const value = formik.values[field];
+      return value !== undefined && value !== "";
+    });
+
+    return areFieldsValid;
+  };
+
+  const nextStep = async () => {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1);
-      formik.handleSubmit();
     }
   };
 
   const prevStep = () => {
     if (currentStep > 1) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep((prevState) => prevState - 1);
     }
   };
 
@@ -83,13 +132,14 @@ const CreateContactForm = ({ onSubmit }) => {
       titleInsuranceCompany: "",
       closingAgent: "",
       possessionDate: "",
-      loanType: [],
+      loanType: "",
       loanTypeOtherText: "",
       downPayment: "",
       loanCostProvisions: "",
-      financingContingency: "",
+      financialContingency: false,
       applicationKickStart: "",
       buyersNotice: "10",
+      inspectionContingency: false,
       includeSewerInspection: true,
       additionalTimeForInspections: "5",
       sellersResponseTime: "3",
@@ -110,16 +160,13 @@ const CreateContactForm = ({ onSubmit }) => {
         "Please enter the title insurance company"
       ),
       closingAgent: Yup.string().required("Please select a closing agent"),
-      possessionDate: Yup.date().required("Please select an end date"),
+      possessionDate: Yup.date().required("Please select an possesion date"),
       buyersNotice: Yup.number().required("Required").min(0),
       includeSewerInspection: Yup.boolean(),
-      loanType: Yup.array().min(1, "Please select at least one loan type"),
+      loanType: Yup.string().required("Please loantype"),
       additionalTimeForInspections: Yup.number().required("Required").min(0),
       loanCostProvisions: Yup.number().required(
         "Loan cost provisions are required"
-      ),
-      financingContingency: Yup.string().required(
-        "Financing contingency is required"
       ),
       sellersResponseTime: Yup.number().required("Required").min(0),
       buyersReplyTime: Yup.number().required("Required").min(0),
@@ -135,7 +182,6 @@ const CreateContactForm = ({ onSubmit }) => {
     }),
 
     onSubmit: async (values) => {
-      console.log(values, "values");
       const buyerFullName = values.buyer;
       const sellerFullName = values.seller;
 
@@ -148,7 +194,6 @@ const CreateContactForm = ({ onSubmit }) => {
           profile.firstName + " " + profile.lastName === sellerFullName
       );
 
-      // Extracting address and contact details for both buyer and seller
       const buyerAddress = buyerProfile ? buyerProfile.currentAddress : "";
       const sellerAddress = sellerProfile ? sellerProfile.currentAddress : "";
 
@@ -184,6 +229,22 @@ const CreateContactForm = ({ onSubmit }) => {
           buyerPhoneNo: buyerPhoneNo,
           sellerEmail: sellerEmail,
           buyerEmail: buyerEmail,
+          possessionDate: values.possessionDate,
+          loanType: values.loanType,
+          loanTypeOtherText: values.loanTypeOtherText,
+          downPayment: values.downPayment,
+          loanCostProvisions: values.loanCostProvisions,
+          financialContingency: values.financialContingency,
+          applicationKickStart: values.applicationKickStart,
+          buyersNotice: values.buyersNotice,
+          inspectionContingency: values.inspectionContingency,
+          includeSewerInspection: values.includeSewerInspection,
+          additionalTimeForInspections: values.additionalTimeForInspections,
+          sellersResponseTime: values.sellersResponseTime,
+          buyersReplyTime: values.buyersReplyTime,
+          repairCompletionDate: values.repairCompletionDate,
+          neighborhoodReviewContingency: values.neighborhoodReviewContingency,
+          neighborhoodReviewDays: values.neighborhoodReviewDays,
         };
         dispatch(setUserDetails(userDetails));
       }
@@ -231,7 +292,6 @@ const CreateContactForm = ({ onSubmit }) => {
             async () => {
               const selectedText =
                 await instance.Core.documentViewer.getSelectedText();
-              //console.log("Selected text:", selectedText);
             }
           );
         });
@@ -246,7 +306,11 @@ const CreateContactForm = ({ onSubmit }) => {
       }
     };
   }, []);
-  console.log(userDetailsData?.firebase?.profiles, "Uploaded text to chatgpt");
+  console.log(
+    userDetailsData?.firebase?.profiles,
+    "Uploaded text to chatgpt",
+    userDetailsData?.userDetails
+  );
 
   useEffect(() => {
     if (userDetailsData?.userDetails && pdfInstance) {
@@ -255,10 +319,8 @@ const CreateContactForm = ({ onSubmit }) => {
   }, [userDetailsData?.userDetails]);
 
   const modifyPdf = async (pdfInstance, userDetails) => {
-    //console.log(userDetailsData, "data");
-
     const { documentViewer, annotationManager } = pdfInstance.Core;
-
+    console.log("documentViewer", documentViewer);
     if (documentViewer.getDocument()) {
       await modifyPdfAnnotations(pdfInstance, userDetails);
     } else {
@@ -274,6 +336,7 @@ const CreateContactForm = ({ onSubmit }) => {
       day: "numeric",
     });
   }
+  console.log("hhh==", userDetailsData, pdfInstance, formik.errors);
 
   const myDate = new Date("2024-02-01");
 
@@ -290,7 +353,6 @@ const CreateContactForm = ({ onSubmit }) => {
     const annotationsList = annotationManager.getAnnotationsList();
     let isModified = false;
     const appliances = zpidDeatils?.resoFacts?.appliances || [];
-    console.log("appliances", appliances);
 
     const fieldValueSetters = {
       S_Name: () => userDetails.seller,
@@ -405,7 +467,6 @@ const CreateContactForm = ({ onSubmit }) => {
         .getPDFDoc();
       await doc.lock();
 
-      // Extract textual content
       const textExtractor = await PDFNet.TextExtractor.create();
       const pageCount = await doc.getPageCount();
       for (let i = 1; i <= pageCount; i++) {
@@ -443,35 +504,6 @@ const CreateContactForm = ({ onSubmit }) => {
     setLoading(true);
     setModalContent("");
     dispatch(uploadTextRequest(data));
-
-    // try {
-    //   const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-    //   const response = await axios.post(
-    //     "https://api.openai.com/v1/chat/completions",
-    //     {
-    //       model: "gpt-4",
-    //       messages: [
-    //         {
-    //           role: "user",
-    //           content: data,
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${apiKey}`,
-    //       },
-    //     }
-    //   );
-    //   console.log(response?.choices[0].message.content, "response");
-    //   setModalContent(response?.choices[0].message.content);
-    //   toggleModal();
-    //   setLoading(false);
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   setLoading(false);
-    // }
   };
   useEffect(() => {
     if (
@@ -523,7 +555,12 @@ const CreateContactForm = ({ onSubmit }) => {
     await doc.unlock();
   };
 
-  const renderStep = () => {
+  const areFieldsValidForCurrentStep = useStepFieldValidator(
+    formik,
+    currentStep
+  );
+
+  const renderStep = ({ currentStep }) => {
     switch (currentStep) {
       case 1:
         return (
@@ -543,6 +580,7 @@ const CreateContactForm = ({ onSubmit }) => {
             setModalContent={setModalContent}
             currentStep={currentStep}
             Loader={Loader}
+            useStepFieldValidator={useStepFieldValidator}
           />
         );
       case 2:
@@ -579,15 +617,9 @@ const CreateContactForm = ({ onSubmit }) => {
           { label: "Inspection Contingency" },
         ]}
         activeStep={currentStep}
-        inactiveBgColor="#ffffff"
-        completedBgColor="#ffffff"
       />
-      <Form
-        onSubmit={formik.handleSubmit}
-        className="fontFamily_Roboto_sans_serif"
-      >
-        {renderStep()}
-      </Form>
+      <>{renderStep({ currentStep: currentStep })}</>
+
       <Row>
         <Col md={6}>
           {currentStep > 1 && (
@@ -598,14 +630,19 @@ const CreateContactForm = ({ onSubmit }) => {
         </Col>
         <Col md={6} style={{ display: "flex", justifyContent: "flex-end" }}>
           {currentStep < totalSteps && currentStep !== 1 ? (
-            <Button color="primary" onClick={nextStep}>
+            <Button
+              color="primary"
+              onClick={nextStep}
+              disabled={!areFieldsValidForCurrentStep}
+            >
               Next
             </Button>
           ) : (
             currentStep !== 1 && (
               <Button
                 color="success"
-                onClick={() => console.log("formik", formik.values)}
+                type="submit"
+                onClick={formik.handleSubmit}
               >
                 Submit
               </Button>
