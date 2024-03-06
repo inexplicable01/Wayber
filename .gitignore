@@ -10,6 +10,9 @@
 
 # production
 /build
+/public/webviewer
+
+WebApp.iml
 
 # misc
 .DS_Store
