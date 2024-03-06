@@ -277,7 +277,7 @@ const StepOneForm = ({
       </Row>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <Button
+        {/* <Button
          onClick={()=>{
         
           setModalContent("")
@@ -287,7 +287,7 @@ const StepOneForm = ({
           color="success"
         >
           Generate PDF
-        </Button>
+        </Button> */}
 
         {currentStep == 1 && (
           <Button
@@ -305,15 +305,15 @@ const StepOneForm = ({
           className={displayPDF ? "display_block" : "display_none"}
           id="your-webviewer-container-id"
         ></div>
-        {displayPDF && (
+        {/* {displayPDF && (
           <div className="apiResponseContainer">
             <p className="apiResponseHeading">API Response:</p>
             <p>{modalContent ? modalContent : "Upload document"}</p>
           </div>
-        )}
+        )} */}
       </div>
 
-      {uploadDocument && (
+      {/* {uploadDocument && (
         <div className="uploadButtonsContainer">
           {loading ? (
             <div className="loaderContainer">
@@ -333,7 +333,7 @@ const StepOneForm = ({
             </>
           )}
         </div>
-      )}
+      )} */}
 
       {/* <OpenAIResponse
             isOpen={modalOpen}

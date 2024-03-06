@@ -408,6 +408,7 @@ const CreateContactForm = ({ onSubmit }) => {
         setDisplayPDF(true);
         const field = annotation.getField();
         if (
+          
           field &&
           Object.prototype.hasOwnProperty.call(fieldValueSetters, field.name)
         ) {
