@@ -12,6 +12,18 @@ const initialState = {
     loading: false,
     error: null,
   },
+  api: {
+    data: null,
+    loading: false,
+    error: null,
+    success: null,
+  },
+  userZPID: {
+    details: null,
+    loading: false,
+    error: false,
+    success: false,
+  },
 };
 
 const textUploadReducer = (state = initialState, action) => {
@@ -71,6 +83,59 @@ const textUploadReducer = (state = initialState, action) => {
           error: action.payload,
         },
       };
+    case actionTypes.FETCH_API_DATA_REQUEST:
+      return {
+        ...state,
+        api: {
+          ...state.api,
+          loading: true,
+          error: null,
+          success: false,
+        },
+      };
+    case actionTypes.FETCH_API_DATA_SUCCESS:
+      return {
+        ...state,
+        api: {
+          ...state.api,
+          loading: false,
+          data: action.payload,
+          success: true,
+          error: false,
+        },
+      };
+    case actionTypes.FETCH_API_DATA_FAILURE:
+      return {
+        ...state,
+        api: {
+          ...state.api,
+          loading: false,
+          error: true,
+          success: false,
+        },
+      };
+    case actionTypes.GET_USER_DETAILS_REQUEST:
+      return {
+        ...state,
+        userZPID: {
+          ...state.userZPID,
+          loading: true,
+          error: false,
+          success: false,
+        },
+      };
+    case actionTypes.GET_USER_DETAILS_SUCCESS:
+      return {
+        ...state,
+        userZPID: {
+          ...state.userZPID,
+          loading: false,
+          details: action.payload,
+          error: false,
+          success: true,
+        },
+      };
+    case actionTypes.GET_USER_DETAILS_FAILURE:
     default:
       return state;
   }

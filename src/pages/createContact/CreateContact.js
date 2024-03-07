@@ -21,12 +21,12 @@ import {
   uploadTextRequest,
   setUserDetails,
   fetchProfilesStart,
-} from "../../store/uploadDocument/actions";
+} from "../../store/createContact/actions";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import {
   fetchApiDataRequest,
   getUsersAddressRequest,
-} from "../../store/clientProfile/actions";
+} from "../../store/createContact/actions";
 import axios from "axios";
 import OpenAIResponse from "./Model";
 import Loader from "../../Components/Common/Loader";
@@ -121,7 +121,7 @@ const CreateContactForm = ({ onSubmit }) => {
 
   const toggleModal = () => setModalOpen(!modalOpen);
 
-  const formData = useSelector((state) => state.clientProfileReducer);
+  const formData = useSelector((state) => state.textUploadReducer);
   const userDetailsData = useSelector((state) => state.textUploadReducer);
   const formik = useFormik({
     initialValues: {

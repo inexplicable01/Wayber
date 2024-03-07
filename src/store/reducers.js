@@ -74,7 +74,7 @@ import APIKey from "./apikey/reducer";
 import PDFReducer from "./PDFs/reducer";
 import projectgroupreducer from "./projectgroup/reducer";
 import clientProfileReducer from "./clientProfile/reducer";
-import textUploadReducer from "./uploadDocument/reducer";
+import textUploadReducer from "./createContact/reducer";
 
 const rootReducer = combineReducers({
     Layout,
