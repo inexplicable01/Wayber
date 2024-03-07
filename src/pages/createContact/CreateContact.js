@@ -78,7 +78,7 @@ const CreateContactForm = ({ onSubmit }) => {
             "loanType",
             "downPayment",
             "loanCostProvisions",
-            "applicationKickStart",
+            // "applicationKickStart",
           ];
         case 3:
           return [
@@ -139,7 +139,7 @@ const CreateContactForm = ({ onSubmit }) => {
       downPayment: "",
       loanCostProvisions: "",
       financialContingency: false,
-      applicationKickStart: "",
+      applicationKickStart: "5",
       buyersNotice: "10",
       inspectionContingency: false,
       includeSewerInspection: true,
@@ -167,6 +167,8 @@ const CreateContactForm = ({ onSubmit }) => {
       includeSewerInspection: Yup.boolean(),
       // loanType: Yup.string().required("Please loantype"),
       additionalTimeForInspections: Yup.number().required("Required").min(0),
+      applicationKickStart: Yup.number().min(5, 'Minimum select is five').required("Required")
+      ,
       // loanCostProvisions: Yup.number().required(
       //   "Loan cost provisions are required"
       // ),
@@ -636,8 +638,8 @@ const CreateContactForm = ({ onSubmit }) => {
             <Button
               color="primary"
               onClick={nextStep}
-              disabled={!areFieldsValidForCurrentStep}
-            >
+              disabled={!areFieldsValidForCurrentStep || Object.keys(formik.errors).length > 0}
+              >
               Next
             </Button>
           ) : (

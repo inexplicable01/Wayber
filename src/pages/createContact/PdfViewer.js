@@ -3,12 +3,20 @@ import WebViewer from "@pdftron/webviewer";
 import PdfData from "../../assets/pdf/abc.pdf";
 import InspectPdf from "../../assets/pdf/inspection.pdf";
 import financingPdf from "../../assets/pdf/financing.pdf";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import Styles from "../../../src/assets/scss/pages/_createClient.scss";
+import { uploadTextRequest } from "../../store/createContact/actions";
+import { Button } from "reactstrap";
 function PdfViewer() {
   const [selectedPdfIndex, setSelectedPdfIndex] = useState(0);
   const webViewerInstance = useRef(null);
   const [pdfInstance, setPdfInstance] = useState(null);
+  const [pdfDataString, setPDFDataString] = useState("");
+  const [uploadDocument, setUploadDocument] = useState(false);
+  const [modalContent, setModalContent] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
 
   const pdfUrls = [PdfData, financingPdf, InspectPdf];
   const pdfName = ["PdfData", "financingPdf", "InspectPdf"];
@@ -41,7 +49,7 @@ function PdfViewer() {
       return;
     }
 
-    documentViewer.addEventListener("annotationsLoaded", () => {
+    documentViewer.addEventListener("annotationsLoaded", async () => {
       const annotationsList = annotationManager.getAnnotationsList();
       let isModified = false;
       const appliances = zpidDeatils?.resoFacts?.appliances || [];
@@ -113,20 +121,16 @@ function PdfViewer() {
         IC5: () => userDetails?.buyersReplyTime,
         IC6: () => userDetails?.repairCompletionDate,
         NRC1: () => userDetails?.neighborhoodReviewDays && "Yes",
-        NRC2: () => userDetails?.neighborhoodReviewDays
-
-
-
-
+        NRC2: () => userDetails?.neighborhoodReviewDays,
       };
 
-      console.log("===", annotationsList, userDetails);
+      // console.log("===", annotationsList, userDetails);
       annotationsList.forEach((annotation) => {
         if (
           annotation instanceof pdfInstance.Core.Annotations.WidgetAnnotation
         ) {
           const field = annotation.getField();
-          console.log("truee", field.name);
+          // console.log("truee", field.name);
           if (
             field &&
             Object.prototype.hasOwnProperty.call(fieldValueSetters, field.name)
@@ -138,40 +142,108 @@ function PdfViewer() {
             isModified = true;
           }
         }
-        console.log("jjjjj");
       });
 
-      // if (isModified) {
-      //   const xfdf = await annotationManager.exportAnnotations();
-      //   const data = await documentViewer
-      //     .getDocument()
-      //     .getFileData({ xfdfString: xfdf });
+      if (isModified) {
+        const xfdf = await annotationManager.exportAnnotations();
+        const data = await documentViewer
+          .getDocument()
+          .getFileData({ xfdfString: xfdf });
 
-      //   const blob = new Blob([new Uint8Array(data)], {
-      //     type: "application/pdf",
-      //   });
-      //   const url = URL.createObjectURL(blob);
-      //   const downloadLink = document.createElement("a");
-      //   downloadLink.href = url;
-      //   downloadLink.download = "UpdatedDocument.pdf";
-      //   document.body.appendChild(downloadLink);
-      //   //downloadLink.click();
-      //   downloadLink.remove();
-      //   URL.revokeObjectURL(url);
-      // } else {
-      //   console.log("No modifications made to the PDF");
-      // }
+        const blob = new Blob([new Uint8Array(data)], {
+          type: "application/pdf",
+        });
+        const url = URL.createObjectURL(blob);
+        const downloadLink = document.createElement("a");
+        downloadLink.href = url;
+        downloadLink.download = "UpdatedDocument.pdf";
+        document.body.appendChild(downloadLink);
+        //downloadLink.click();
+        downloadLink.remove();
+        URL.revokeObjectURL(url);
+      } else {
+        console.log("No modifications made to the PDF");
+      }
 
-      // if (webViewerInstance.current && webViewerInstance.current.Core.PDFNet) {
-      //   //   const pdfDataString = await extractAllPdfDataAsString(
-      //   //     webViewerInstance.current
-      //   //   );
-      // } else {
-      //   console.error("PDFNet is not available or not initialized.");
-      // }
+      if (webViewerInstance.current && webViewerInstance.current.Core.PDFNet) {
+        const pdfDataString = await extractAllPdfDataAsString(
+          webViewerInstance.current
+        );
+      } else {
+        console.error("PDFNet is not available or not initialized.");
+      }
     });
   };
 
+  const extractAllPdfDataAsString = async (pdfInstance) => {
+    const {
+      Core: { PDFNet },
+    } = pdfInstance;
+    await PDFNet.initialize();
+
+    if (!PDFNet) {
+      console.error("PDFNet is not available.");
+      return "";
+    }
+
+    let allPdfData = "";
+
+    try {
+      const doc = await pdfInstance.Core.documentViewer
+        .getDocument()
+        .getPDFDoc();
+      await doc.lock();
+
+      // Extract textual content
+      const textExtractor = await PDFNet.TextExtractor.create();
+      const pageCount = await doc.getPageCount();
+      for (let i = 1; i <= pageCount; i++) {
+        const page = await doc.getPage(i);
+        textExtractor.begin(page);
+        const pageText = await textExtractor.getAsText();
+        allPdfData += pageText + "\n";
+      }
+
+      // Extract form field data
+      const fieldIterator = await doc.getFieldIteratorBegin();
+      for (; await fieldIterator.hasNext(); fieldIterator.next()) {
+        const field = await fieldIterator.current();
+        const fieldName = await field.getName();
+        const fieldValue = await field.getValueAsString();
+        allPdfData += `${fieldName}: ${fieldValue}\n`;
+      }
+      await doc.unlock();
+    } catch (error) {
+      console.error("Error extracting data from PDF:", error);
+    }
+    setPDFDataString(allPdfData);
+    setUploadDocument(true);
+    return allPdfData;
+  };
+
+  const GptTextUploader = async (allPdfData) => {
+    const lines = allPdfData.split("\n");
+    const filteredLines = lines.filter((line) => !line.trim().match(/^\d+$/));
+    const data = filteredLines.join("\n");
+    console.log(data);
+    setLoading(true);
+    setModalContent("");
+    dispatch(uploadTextRequest(data));
+  };
+  useEffect(() => {
+    if (
+      userDetailsData?.success &&
+      modalContent === "" &&
+      !userDetailsData?.loading
+    ) {
+      setLoading(false);
+      setUploadDocument(false);
+      setModalContent(userDetailsData?.data);
+    } else if (userDetailsData?.error) {
+      setLoading(false);
+      setModalContent(userDetailsData?.error);
+    }
+  }, [userDetailsData]);
   useEffect(() => {
     if (!webViewerInstance.current) {
       WebViewer(
@@ -190,6 +262,7 @@ function PdfViewer() {
   }, []);
 
   const handleGenerate = () => {
+    setModalContent("");
     userDetailsData && modifyPdf(pdfInstance, userDetailsData?.userDetails);
     if (webViewerInstance.current && pdfUrls[selectedPdfIndex]) {
       const { documentViewer } = webViewerInstance.current.Core;
@@ -240,7 +313,7 @@ function PdfViewer() {
   };
 
   const pdfDisplayStyle = {
-    height: "500px",
+    width: "60%",
     border: "1px solid #ccc",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
   };
@@ -261,7 +334,17 @@ function PdfViewer() {
       <button onClick={handleGenerate} style={generateButtonStyle}>
         Generate
       </button>
-      <div id="pdfViewer" style={pdfDisplayStyle}></div>
+      <Button onClick={() => GptTextUploader(pdfDataString)} color="success">
+        Upload
+      </Button>
+      <div className="conatiner">
+        <div id="pdfViewer" style={pdfDisplayStyle}></div>
+
+        <div className="apiResponseContainer">
+          <p className="apiResponseHeading">API Response:</p>
+          <p>{modalContent ? modalContent : "Upload document"}</p>
+        </div>
+      </div>
     </div>
   );
 }

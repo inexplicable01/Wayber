@@ -7,6 +7,10 @@ const FinancialContingencyForm = ({
   nextStep,
   FormFeedback,
 }) => {
+  console.log(
+    "formik.errors.applicationKickStart",
+    formik.errors.applicationKickStart
+  );
   const isFinancialContingency = formik.values.financialContingency;
   return (
     <>
@@ -18,8 +22,8 @@ const FinancialContingencyForm = ({
           <Input
             type="checkbox"
             name="financialContingency"
-            onChange={formik.handleChange} 
-            value={isFinancialContingency} 
+            onChange={formik.handleChange}
+            value={isFinancialContingency}
             checked={isFinancialContingency}
           />
           Are you enacting a Financial Contingency?
@@ -112,12 +116,9 @@ const FinancialContingencyForm = ({
                 !!formik.errors.applicationKickStart
               }
             />
-            {formik.touched.applicationKickStart &&
-              formik.errors.applicationKickStart && (
-                <FormFeedback>
-                  {formik.errors.applicationKickStart}
-                </FormFeedback>
-              )}
+            <p style={{ color: "red" }}>
+              {formik.errors.applicationKickStart}
+            </p>
           </FormGroup>
           <FormGroup>
             <Label for="loanCostProvisions">Loan Cost Provisions</Label>
