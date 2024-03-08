@@ -21,12 +21,12 @@ import {
   uploadTextRequest,
   setUserDetails,
   fetchProfilesStart,
-} from "../../store/uploadDocument/actions";
+} from "../../store/createContact/actions";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import {
   fetchApiDataRequest,
   getUsersAddressRequest,
-} from "../../store/clientProfile/actions";
+} from "../../store/createContact/actions";
 import axios from "axios";
 import OpenAIResponse from "./Model";
 import Loader from "../../Components/Common/Loader";
@@ -78,7 +78,7 @@ const CreateContactForm = ({ onSubmit }) => {
             "loanType",
             "downPayment",
             "loanCostProvisions",
-            "applicationKickStart",
+            // "applicationKickStart",
           ];
         case 3:
           return [
@@ -121,7 +121,7 @@ const CreateContactForm = ({ onSubmit }) => {
 
   const toggleModal = () => setModalOpen(!modalOpen);
 
-  const formData = useSelector((state) => state.clientProfileReducer);
+  const formData = useSelector((state) => state.textUploadReducer);
   const userDetailsData = useSelector((state) => state.textUploadReducer);
   const formik = useFormik({
     initialValues: {
@@ -139,7 +139,7 @@ const CreateContactForm = ({ onSubmit }) => {
       downPayment: "",
       loanCostProvisions: "",
       financialContingency: false,
-      applicationKickStart: "",
+      applicationKickStart: "5",
       buyersNotice: "10",
       inspectionContingency: false,
       includeSewerInspection: true,
@@ -167,6 +167,8 @@ const CreateContactForm = ({ onSubmit }) => {
       includeSewerInspection: Yup.boolean(),
       // loanType: Yup.string().required("Please loantype"),
       additionalTimeForInspections: Yup.number().required("Required").min(0),
+      applicationKickStart: Yup.number().min(5, 'Minimum select is five').required("Required")
+      ,
       // loanCostProvisions: Yup.number().required(
       //   "Loan cost provisions are required"
       // ),
@@ -408,6 +410,7 @@ const CreateContactForm = ({ onSubmit }) => {
         setDisplayPDF(true);
         const field = annotation.getField();
         if (
+          
           field &&
           Object.prototype.hasOwnProperty.call(fieldValueSetters, field.name)
         ) {
@@ -635,8 +638,8 @@ const CreateContactForm = ({ onSubmit }) => {
             <Button
               color="primary"
               onClick={nextStep}
-              disabled={!areFieldsValidForCurrentStep}
-            >
+              disabled={!areFieldsValidForCurrentStep || Object.keys(formik.errors).length > 0}
+              >
               Next
             </Button>
           ) : (
