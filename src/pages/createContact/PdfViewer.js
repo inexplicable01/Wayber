@@ -26,6 +26,10 @@ function PdfViewer() {
   const zpidDeatils = formData.userZPID?.details;
 
   const modifyPdf = async (pdfInstance, userDetails) => {
+    if (!webViewerInstance.current) {
+      console.error("WebViewer not initialized.");
+      return;
+    }
     const { documentViewer, annotationManager } = pdfInstance.Core;
 
     documentViewer.addEventListener("documentLoaded", async () => {
@@ -101,15 +105,15 @@ function PdfViewer() {
         other: () => "Other Appliance",
         LAOther: () => userDetails?.loanTypeOtherText,
         LA1: () =>
-          userDetails?.loanType.includes("Conventional First") ? "Yes" : "No",
+          userDetails?.loanType?.includes("Conventional First") ? "Yes" : "No",
         LA2: () =>
-          userDetails?.loanType.includes("Conventional Second") ? "Yes" : "No",
-        LA3: () => (userDetails?.loanType.includes("Bridge") ? "Yes" : "No"),
-        LA4: () => (userDetails?.loanType.includes("VA") ? "Yes" : "No"),
-        LA5: () => (userDetails?.loanType.includes("FHA") ? "Yes" : "No"),
-        LA6: () => (userDetails?.loanType.includes("USDA") ? "Yes" : "No"),
+          userDetails?.loanType?.includes("Conventional Second") ? "Yes" : "No",
+        LA3: () => (userDetails?.loanType?.includes("Bridge") ? "Yes" : "No"),
+        LA4: () => (userDetails?.loanType?.includes("VA") ? "Yes" : "No"),
+        LA5: () => (userDetails?.loanType?.includes("FHA") ? "Yes" : "No"),
+        LA6: () => (userDetails?.loanType?.includes("USDA") ? "Yes" : "No"),
         LA7: () =>
-          userDetails?.loanType.includes("Home Equity Line of Credit")
+          userDetails?.loanType?.includes("Home Equity Line of Credit")
             ? "Yes"
             : "No",
         LAPP3: () => userDetails?.applicationKickStart,
@@ -260,86 +264,44 @@ function PdfViewer() {
       });
     }
   }, []);
+  useEffect(() => {
+    if (pdfInstance) {
+      handleGenerate(selectedPdfIndex);
+    }
+  }, [pdfInstance, selectedPdfIndex]);
 
-  const handleGenerate = () => {
+  const handleGenerate = (index) => {
+    console.log(index, selectedPdfIndex,"generate");
     setModalContent("");
     userDetailsData && modifyPdf(pdfInstance, userDetailsData?.userDetails);
-    if (webViewerInstance.current && pdfUrls[selectedPdfIndex]) {
+    if (webViewerInstance.current && pdfUrls[index]) {
       const { documentViewer } = webViewerInstance.current.Core;
-      documentViewer.loadDocument(pdfUrls[selectedPdfIndex]);
+      documentViewer.loadDocument(pdfUrls[index]);
     }
   };
 
-  const pdfViewerContainerStyle = {
-    padding: "120px 20px 20px 10px",
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-  };
-
-  const pdfSelectionContainerStyle = {
-    display: "flex",
-    justifyContent: "flex-start",
-    marginBottom: "20px",
-    gap: "15px",
-  };
-
-  const pdfPreviewStyle = (index) => ({
-    padding: "20px",
-    cursor: "pointer",
-    backgroundColor:
-      selectedPdfIndex === index ? "rgba(255, 255, 255, 0.8);" : "white",
-    marginRight: "10px",
-    transition: "transform 0.2s ease-in-out",
-    transform: selectedPdfIndex === index ? "scale(1.05)" : "scale(1)",
-    boxShadow:
-      selectedPdfIndex === index
-        ? "0 6px 10px rgba(0, 0, 255, 0.2)"
-        : "0 4px 8px rgba(0, 0, 255, 0.2)",
-    width: "150px",
-    height: "200px",
-    borderRadius: "6px",
-    fontWeight: 600,
-    fontSize: "14px",
-  });
-
-  const generateButtonStyle = {
-    padding: "10px 20px",
-    marginBottom: "20px",
-    cursor: "pointer",
-    backgroundColor: "#007bff",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    transition: "background-color 0.2s ease",
-  };
-
-  const pdfDisplayStyle = {
-    width: "60%",
-    border: "1px solid #ccc",
-    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-  };
-
   return (
-    <div style={pdfViewerContainerStyle}>
-      <div style={pdfSelectionContainerStyle}>
+    <div className="pdfViewerContainerStyle">
+      <div  className="pdfSelectionContainerStyle">
         {pdfName.map((name, index) => (
           <div
             key={index}
-            onClick={() => setSelectedPdfIndex(index)}
-            style={pdfPreviewStyle(index)}
+            onClick={() =>{ handleGenerate(index); setSelectedPdfIndex(index)}}
+            className={`pdfPreview ${selectedPdfIndex === index ? 'selectedPdf' : 'unselectedPdf'}`}
+
           >
             {name}.pdf
           </div>
         ))}
       </div>
-      <button onClick={handleGenerate} style={generateButtonStyle}>
+      {/* <button onClick={()=>handleGenerate(selectedPdfIndex)} className="generateButtonStyle">
         Generate
-      </button>
+      </button> */}
       <Button onClick={() => GptTextUploader(pdfDataString)} color="success">
         Upload
       </Button>
       <div className="conatiner">
-        <div id="pdfViewer" style={pdfDisplayStyle}></div>
-
+        <div id="pdfViewer" className="pdfDisplayStyle"></div>
         <div className="apiResponseContainer">
           <p className="apiResponseHeading">API Response:</p>
           <p>{modalContent ? modalContent : "Upload document"}</p>

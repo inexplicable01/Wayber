@@ -9,7 +9,7 @@
   padding: 13px;
 }
 .fontFamily_Roboto_sans_serif {
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .uploadButtonsContainer {
@@ -45,4 +45,75 @@ width: 100%;
 .apiResponseHeading{
     font-size: 24px;
     font-weight: 500;
+}
+
+.pdfDisplayStyle{
+  width: 60%;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.generateButtonStyle{
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+.pdfSelectionContainerStyle{
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  gap: 15px;
+}
+.pdfViewerContainerStyle{
+  padding: 120px 20px 20px 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.pdfPreview {
+  cursor: pointer;
+  padding: 20px; /* Adjust padding as needed */
+  margin: 5px;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions for both properties */
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow, adjust as needed */
+
+}
+
+.selectedPdf {
+  border: 2px solid #017bfe;
+}
+
+.unselectedPdf {
+   border: 2px solid rgb(233, 232, 232);
+}
+
+.activeStep {
+  background-color: blue; /* Or use border-color, color, etc., depending on your design */
+}
+
+.stepperClassName .stepClassName.activeStep {
+  background-color: blue !important;
+}
+.StepButton-d0-0-2-6.completed{
+background-color: #017bfe !important;
+}
+.StepButton-d2-0-2-12.active{
+background-color: #9ac2ed !important;
+}
+
+.StepButton-d2-0-2-12.completed{
+  background-color: #017bfe !important;
+
+}
+.StepButton-d4-0-2-20.active{
+  background-color: #9ac2ed !important;
+ 
+}
+.StepButton-d4-0-2-20.completed{
+  background-color: #017bfe !important;
+
 }
