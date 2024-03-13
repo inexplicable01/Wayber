@@ -94,6 +94,7 @@ import CreateClientProfile from "../pages/clientProfile/index.js";
 // create Contract
 import CreateContact from '../pages/createContact/index.js'
 import PdfViewer from "../pages/createContact/PdfViewer.js";
+import UploadPdf from "../pages/createContact/upload pdf";
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
   // { path: "/dashboard-crm", component: <DashboardCrm /> },
@@ -116,6 +117,7 @@ const authProtectedRoutes = [
  { path: "/create_client_profile", component: <CreateClientProfile /> },
  { path: "/create_contact", component: <CreateContact /> },
  { path: "/pdf_viewer", component: <PdfViewer /> },
+ { path: "/upload_pdf", component: <UploadPdf /> },
  
   // this route should be at the end of all other routes
   // eslint-disable-next-line react/display-name
