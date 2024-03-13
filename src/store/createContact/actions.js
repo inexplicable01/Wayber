@@ -71,3 +71,9 @@ export const getUsersAddressFailure = (error) => ({
   type: actionTypes.GET_USER_DETAILS_FAILURE,
   payload: error,
 });
+
+export const clearModalContentAction = () => {
+  return {
+    type: 'CLEAR_MODAL_CONTENT',
+  };
+};

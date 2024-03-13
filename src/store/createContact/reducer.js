@@ -136,6 +136,22 @@ const textUploadReducer = (state = initialState, action) => {
         },
       };
     case actionTypes.GET_USER_DETAILS_FAILURE:
+      return {
+        ...state,
+        userZPID: {
+          ...state.userZPID,
+          loading: false,
+          details: action.payload,
+          error: true,
+          success: false,
+        },
+      };
+    case "CLEAR_MODAL_CONTENT":
+      return {
+        ...state,
+
+        data: null,
+      };
     default:
       return state;
   }

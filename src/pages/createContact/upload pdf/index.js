@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Button } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { uploadTextRequest } from "../../../store/createContact/actions";
+import { uploadTextRequest, clearModalContentAction} from "../../../store/createContact/actions";
 import * as pdfjsLib from "pdfjs-dist/webpack.mjs";
 import Loader from "../../../../src/Components/Common/Loader";
-
-// Assuming Styles is being used somewhere else or remove if not used
 import Styles from "../../../../src/assets/scss/pages/_createClient.scss";
 
 const UploadPdf = () => {
@@ -13,32 +11,35 @@ const UploadPdf = () => {
   const [extractedText, setExtractedText] = useState("");
   const [dropdownValue, setDropdownValue] = useState("");
   const [modalContent, setModalContent] = useState("");
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();
   const userDetailsData = useSelector((state) => state.textUploadReducer);
+console.log("userDetailsData",userDetailsData?.data)
+  useEffect(()=>{
+console.log("Upload");
+dispatch(clearModalContentAction())
+  },[])
 
   useEffect(() => {
     if (
+      userDetailsData &&
       userDetailsData?.success &&
-      modalContent === "" &&
       !userDetailsData?.loading
     ) {
-      setLoading(false);
+      console.log("render userdetails data");
+
       setModalContent(userDetailsData?.data);
     } else if (userDetailsData?.error) {
-      setLoading(false);
       setModalContent(userDetailsData?.error);
     }
-  }, [userDetailsData]);
+  }, [userDetailsData, dispatch]);
 
- 
   const handleFileChange = async (event) => {
     const file = event.target.files[0];
     if (file) {
       setFile(file);
-      setError(""); // Reset error message
+      setError("");
 
       const reader = new FileReader();
       reader.readAsArrayBuffer(file);
@@ -75,13 +76,10 @@ const UploadPdf = () => {
       );
       return;
     }
-    setLoading(true); // Start loading
-    setError(""); // Reset error message
+    setError("");
     const finalText = `${dropdownValue} ${extractedText}`;
     dispatch(uploadTextRequest(finalText));
   };
-
-  console.log("modalContent",modalContent);
 
   return (
     <React.Fragment>
@@ -97,7 +95,9 @@ const UploadPdf = () => {
                 className="uploadInputField"
               />
               {error && (
-                <div style={{ color: "red", marginTop: "8px" }}>{error}</div>
+                <div
+                  style={{ color: "red", marginTop: "8px", fontSize: "13px" }}
+                >{`*${error}`}</div>
               )}
             </label>
             <div>
@@ -113,7 +113,7 @@ const UploadPdf = () => {
               </select>
             </div>
             <div>
-              <Button type="submit" disabled={loading}>
+              <Button type="submit" disabled={userDetailsData.loading}>
                 {userDetailsData.loading ? <Loader /> : "Upload PDF"}
               </Button>
             </div>
