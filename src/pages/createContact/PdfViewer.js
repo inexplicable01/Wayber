@@ -7,14 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import { uploadTextRequest } from "../../store/createContact/actions";
 import { Button } from "reactstrap";
+import Loader from '../../../src/Components/Common/Loader'
 function PdfViewer() {
   const [selectedPdfIndex, setSelectedPdfIndex] = useState(0);
   const webViewerInstance = useRef(null);
   const [pdfInstance, setPdfInstance] = useState(null);
   const [pdfDataString, setPDFDataString] = useState("");
-  const [uploadDocument, setUploadDocument] = useState(false);
   const [modalContent, setModalContent] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -128,18 +127,15 @@ function PdfViewer() {
         NRC2: () => userDetails?.neighborhoodReviewDays,
       };
 
-      // console.log("===", annotationsList, userDetails);
       annotationsList.forEach((annotation) => {
         if (
           annotation instanceof pdfInstance.Core.Annotations.WidgetAnnotation
         ) {
           const field = annotation.getField();
-          // console.log("truee", field.name);
           if (
             field &&
             Object.prototype.hasOwnProperty.call(fieldValueSetters, field.name)
           ) {
-            //   console.log("truees");
             field.setValue(fieldValueSetters[field.name]());
             annotationManager.updateAnnotation(annotation);
             annotationManager.redrawAnnotation(annotation);
@@ -221,7 +217,6 @@ function PdfViewer() {
       console.error("Error extracting data from PDF:", error);
     }
     setPDFDataString(allPdfData);
-    setUploadDocument(true);
     return allPdfData;
   };
 
@@ -230,7 +225,6 @@ function PdfViewer() {
     const filteredLines = lines.filter((line) => !line.trim().match(/^\d+$/));
     const data = filteredLines.join("\n");
     console.log(data);
-    setLoading(true);
     setModalContent("");
     dispatch(uploadTextRequest(data));
   };
@@ -240,11 +234,8 @@ function PdfViewer() {
       modalContent === "" &&
       !userDetailsData?.loading
     ) {
-      setLoading(false);
-      setUploadDocument(false);
       setModalContent(userDetailsData?.data);
     } else if (userDetailsData?.error) {
-      setLoading(false);
       setModalContent(userDetailsData?.error);
     }
   }, [userDetailsData]);
@@ -271,7 +262,6 @@ function PdfViewer() {
   }, [pdfInstance, selectedPdfIndex]);
 
   const handleGenerate = (index) => {
-    console.log(index, selectedPdfIndex,"generate");
     setModalContent("");
     userDetailsData && modifyPdf(pdfInstance, userDetailsData?.userDetails);
     if (webViewerInstance.current && pdfUrls[index]) {
@@ -298,13 +288,13 @@ function PdfViewer() {
         Generate
       </button> */}
       <Button onClick={() => GptTextUploader(pdfDataString)} color="success">
-        Upload
+        {userDetailsData?.loading ? <Loader/>  : "Upload"}
       </Button>
       <div className="conatiner">
         <div id="pdfViewer" className="pdfDisplayStyle"></div>
         <div className="apiResponseContainer">
           <p className="apiResponseHeading">API Response:</p>
-          <p>{modalContent ? modalContent : "Upload document"}</p>
+          <p>{userDetailsData?.loading ? <Loader/>  : modalContent ? modalContent : "Upload document"}</p>
         </div>
       </div>
     </div>

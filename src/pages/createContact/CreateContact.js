@@ -262,45 +262,6 @@ const CreateContactForm = ({ onSubmit }) => {
     if (formData.api?.success) setAddress(formData.api.data);
   }, [formData.api.data, formData.api.success]);
 
-  // useEffect(() => {
-  //   if (!webViewerInstance.current) {
-  //     WebViewer(
-  //       {
-  //         path: "/webviewer/lib",
-  //         initialDoc: PdfData,
-  //         licenseKey: process.env.REACT_APP_PDFTRON_LICENSEKEY,
-  //         fullAPI: true,
-  //       },
-  //       document.getElementById("your-webviewer-container-id")
-  //     ).then((instance) => {
-  //       webViewerInstance.current = instance;
-  //       setPdfInstance(instance);
-
-  //       instance.Core.documentViewer.addEventListener("documentLoaded", () => {
-  //         setDocumentLoaded(true);
-
-  //         instance.UI.setToolMode(instance.UI.ToolModes.TextSelect);
-
-  //         instance.Core.documentViewer.addEventListener(
-  //           "textSelected",
-  //           async () => {
-  //             const selectedText =
-  //               await instance.Core.documentViewer.getSelectedText();
-  //           }
-  //         );
-  //       });
-  //     });
-  //   }
-  //   return () => {
-  //     if (
-  //       webViewerInstance.current &&
-  //       typeof webViewerInstance.current.dispose === "function"
-  //     ) {
-  //       webViewerInstance.current.dispose();
-  //     }
-  //   };
-  // }, []);
-
   const handleAddressChange = (e) => {
     const zpid = e.target.value;
     dispatch(getUsersAddressRequest(zpid));
