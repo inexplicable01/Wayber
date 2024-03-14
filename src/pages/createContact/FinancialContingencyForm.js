@@ -3,8 +3,6 @@ import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 
 const FinancialContingencyForm = ({
   formik,
-  prevStep,
-  nextStep,
   FormFeedback,
 }) => {
   console.log(

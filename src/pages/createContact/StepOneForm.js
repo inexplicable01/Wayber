@@ -10,7 +10,6 @@ import {
   FormFeedback,
 } from "reactstrap";
 
-
 const StepOneForm = ({
   formik,
   handleAddressChange,
@@ -18,15 +17,7 @@ const StepOneForm = ({
   address,
   nextStep,
   displayPDF,
-  modalContent,
-  uploadDocument,
-  loading,
-  pdfDataString,
-  GptTextUploader,
-  handleTextSelection,
-  setModalContent,
   currentStep,
-  Loader,
   useStepFieldValidator,
 
 }) => {
@@ -277,18 +268,6 @@ const StepOneForm = ({
       </Row>
 
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        {/* <Button
-         onClick={()=>{
-        
-          setModalContent("")
-         }}
-          id="modifyPdfButton"
-          type="submit"
-          color="success"
-        >
-          Generate PDF
-        </Button> */}
-
         {currentStep == 1 && (
           <Button
             color="primary"
@@ -305,43 +284,7 @@ const StepOneForm = ({
           className={displayPDF ? "display_block" : "display_none"}
           id="your-webviewer-container-id"
         ></div>
-        {/* {displayPDF && (
-          <div className="apiResponseContainer">
-            <p className="apiResponseHeading">API Response:</p>
-            <p>{modalContent ? modalContent : "Upload document"}</p>
-          </div>
-        )} */}
       </div>
-
-      {/* {uploadDocument && (
-        <div className="uploadButtonsContainer">
-          {loading ? (
-            <div className="loaderContainer">
-              <Loader />{" "}
-            </div>
-          ) : (
-            <>
-              <Button
-                onClick={() => GptTextUploader(pdfDataString)}
-                color="success"
-              >
-                Upload
-              </Button>
-              <Button onClick={handleTextSelection}>
-                Upload selected text
-              </Button>
-            </>
-          )}
-        </div>
-      )} */}
-
-      {/* <OpenAIResponse
-            isOpen={modalOpen}
-            toggle={toggleModal}
-            title="API Response"
-            content={modalContent}
-            setUploadDocument={setUploadDocument}
-          /> */}
     </Form>
   );
 };
