@@ -325,6 +325,25 @@ class FirebaseAuthBackend {
             });
     };
 
+    submitClientInformation = (clientData) => {
+        const clientProfileCollection = firebase.firestore().collection("ClientInformation");
+        const extendedProfileData = {
+            ...clientData,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+
+        };
+
+        return clientProfileCollection.add(extendedProfileData)
+            .then(docRef => {
+                console.log("Client profile submitted with ID:", docRef.id);
+                return { id: docRef.id, ...extendedProfileData };
+            })
+            .catch(error => {
+                console.error("Error submitting client profile:", error);
+                throw new Error(error.message); 
+            });
+    };
+
     setLoggeedInUser = user => {
         sessionStorage.setItem("authUser", JSON.stringify(user));
     };

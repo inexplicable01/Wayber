@@ -226,6 +226,20 @@ const Navdata = () => {
             parentId: "",
             icon: "las la-pager",
         },
+        {
+            id: "upload_pdf",
+            label: "Upload PDF",
+            link: "/upload_pdf",
+            parentId: "",
+            icon: "las la-pager",
+        },
+        {
+            id: "client_information",
+            label: "Client Information ",
+            link: "/client_information",
+            parentId: "",
+            icon: "las la-pager",
+        },
 
     ];
     return <React.Fragment>{menuItems}</React.Fragment>;
