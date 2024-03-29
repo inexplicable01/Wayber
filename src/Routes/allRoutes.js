@@ -76,7 +76,7 @@ import ApiKey from '../pages/APIKey/index'
 // Landing Index
 import InspectionDemo from "../pages/Landing/InspectionDemo";
 // import NFTLanding from "../pages/Landing/NFTLanding";
-import Dorsin from "../pages/Landing/Dorsin"
+import Dorsin from "../pages/Landing/Wayber"
 import PDFViewerComponent from "../pages/PDF/PDFViewer.js"
 import PDFViewerComponent2 from "../pages/PDF/PDFViewer2.js"
 

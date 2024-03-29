@@ -257,7 +257,7 @@ const CreateContactForm = ({ onSubmit }) => {
   useEffect(() => {
     dispatch(fetchApiDataRequest());
     dispatch(fetchProfilesStart());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (formData?.userZPID?.success) {
@@ -266,7 +266,7 @@ const CreateContactForm = ({ onSubmit }) => {
     if (userDetailsData?.firebase?.profiles) {
       setClientProfiles(userDetailsData?.firebase?.profiles);
     }
-  }, [formData?.userZPID, formData?.userZPID?.success]);
+  }, [formData?.userZPID, formData?.userZPID?.success,userDetailsData?.firebase?.profiles]);
 
   useEffect(() => {
     if (formData.api?.success) setAddress(formData.api.data);
@@ -320,7 +320,7 @@ const CreateContactForm = ({ onSubmit }) => {
     if (userDetailsData?.userDetails && pdfInstance) {
       modifyPdf(pdfInstance, userDetailsData?.userDetails);
     }
-  }, [userDetailsData?.userDetails]);
+  }, [userDetailsData?.userDetails,pdfInstance]);
 
   const modifyPdf = async (pdfInstance, userDetails) => {
     const { documentViewer, annotationManager } = pdfInstance.Core;
