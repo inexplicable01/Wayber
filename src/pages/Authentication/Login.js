@@ -31,7 +31,7 @@ import {useFormik} from "formik";
 // actions
 import {loginUser, socialLogin, resetLoginFlag} from "../../store/actions";
 
-import logoLight from "../../assets/images/logo-light.png";
+import logoLight from "../../assets/images/logo/Wayber.png";
 //Import config
 import {facebook, google} from "../../config";
 import withRouter from '../../Components/Common/withRouter';
@@ -129,7 +129,7 @@ const Login = (props) => {
         }
     }, [dispatch, error]);
 
-    document.title = "Basic SignIn | Wayber - React Admin & Dashboard Template";
+    document.title = "SignIn | Wayber ";
     return (
         <React.Fragment>
             <ParticlesAuth>
@@ -143,7 +143,7 @@ const Login = (props) => {
                                             <img src={logoLight} alt="" height="20"/>
                                         </Link>
                                     </div>
-                                    <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
+                                    <p className="mt-3 fs-15 fw-medium">Sign In for All Our Real Estate Tools</p>
                                 </div>
                             </Col>
                         </Row>
