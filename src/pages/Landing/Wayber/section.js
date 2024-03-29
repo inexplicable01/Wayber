@@ -26,8 +26,8 @@ class Section extends Component {
     closeModal = () => {
         this.setState({isOpen: false})
     };
-                   // {/*"C:\Users\waich\velzon\React\Saga\modern\src\assets\images\prettyhomes\pexels-binyamin-mellish-106399.jpg"*/}
-                   //
+    // {/*"C:\Users\waich\velzon\React\Saga\modern\src\assets\images\prettyhomes\pexels-binyamin-mellish-106399.jpg"*/}
+    //
 
     render() {
         return (
@@ -37,7 +37,7 @@ class Section extends Component {
                     id="home"
                     // style={{backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/bg-home.jpg)`}}
                     // data-image-src="images/prettyhomes/pexels-binyamin-mellish-106399.jpg"
-     >
+                >
                     <div className="bg-overlay"></div>
                     <div className="display-table">
                         <div className="display-table-cell">
@@ -48,19 +48,25 @@ class Section extends Component {
                                         className="col-lg-8  text-white text-center"
                                     >
                                         <h1 className="home-title">
-                                            Data Driven Real Estate Transactions
+                                            Data Driven Real Estate
                                         </h1>
                                         <p className="offset-lg-2 home-desc">
-                                            Your Buying and Selling Experience Made Smarter and Cheaper
+                                            For Engineers by Engineers
                                         </p>
+                                        <br/>
+                                        <br/>
+
                                         <p className="play-shadow mt-4">
                                             <Link
                                                 to="#"
                                                 onClick={this.callModal}
                                                 className="play-btn video-play-icon play-icon-grey"
                                             >
-                                                <i className="mdi mdi-play text-center play-icon-grey" ></i>
+                                                <i className="mdi mdi-play text-center play-icon-grey"></i>
                                             </Link>
+                                        </p>
+                                        <p className="offset-lg-2 home-desc">
+                                            Find out how we provide better service
                                         </p>
                                     </Col>
                                 </Row>
@@ -75,7 +81,7 @@ class Section extends Component {
                                     backgroundImage: `url(${wave1})`,
                                 }}
                             ></div>
-{/*<div style={{ backgroundColor: 'black', width: '100%', height: '100%' }}></div>*/}
+                            {/*<div style={{ backgroundColor: 'black', width: '100%', height: '100%' }}></div>*/}
 
 
                         </div>
