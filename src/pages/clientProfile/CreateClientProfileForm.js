@@ -170,7 +170,7 @@ const CreateClientProfileForm = ({ onSubmit }) => {
               <Label for="role">Role</Label>
               <Input
                 id="role"
-                name="role" // Corrected the name attribute
+                name="role"
                 type="select"
                 onChange={formik.handleChange}
                 value={formik.values.role}

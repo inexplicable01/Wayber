@@ -19,15 +19,21 @@ const StepOneForm = ({
   displayPDF,
   currentStep,
   useStepFieldValidator,
-
 }) => {
+  const areFieldsValidForCurrentStep = useStepFieldValidator(
+    formik,
+    currentStep
+  );
+  const formatNumberInput = (value) => {
+    const numbersOnly = value.replace(/\D/g, "");
+    return numbersOnly.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
-  const areFieldsValidForCurrentStep = useStepFieldValidator(formik, currentStep);
   return (
-     <Form
-    onSubmit={formik.handleSubmit}
-    className="fontFamily_Roboto_sans_serif"
-  >
+    <Form
+      onSubmit={formik.handleSubmit}
+      className="fontFamily_Roboto_sans_serif"
+    >
       <Row>
         <Col md={6}>
           <FormGroup>
@@ -73,7 +79,7 @@ const StepOneForm = ({
               className="p13"
             >
               <option value="">Select Buyer</option>
-              {clientProfiles.map((profile, i) => {
+              {clientProfiles?.firebase?.profiles.map((profile, i) => {
                 if (profile.role === "Buyer") {
                   return (
                     <option
@@ -107,7 +113,7 @@ const StepOneForm = ({
               className="p13"
             >
               <option value="">Select Seller</option>
-              {clientProfiles.map((profile, i) => {
+              {clientProfiles?.firebase?.profiles.map((profile, i) => {
                 if (profile.role === "Seller") {
                   return (
                     <option
@@ -130,9 +136,9 @@ const StepOneForm = ({
           <FormGroup>
             <Label for="closingAgent">Closing Agent</Label>
             <Input
-              type="select"
-              name="closingAgent"
               id="closingAgent"
+              name="closingAgent"
+              type="select"
               onChange={formik.handleChange}
               value={formik.values.closingAgent}
               invalid={
@@ -141,19 +147,13 @@ const StepOneForm = ({
               className="p13"
             >
               <option value="">Select Closing Agent</option>
-              {clientProfiles.map((profile, index) => {
-                if (profile.role === "Closing Agent") {
-                  return (
-                    <option
-                      key={index}
-                      value={profile.firstName + " " + profile.lastName}
-                    >
-                      {profile.firstName + " " + profile.lastName}
-                    </option>
-                  );
-                }
-                return null;
-              })}
+              {clientProfiles?.vendorDetails?.data
+                ?.filter((vendor) => vendor.role === "EscrowOfficers")
+                .map((agent, index) => (
+                  <option key={index} value={agent.name}>
+                    {agent.name}
+                  </option>
+                ))}
             </Input>
             {formik.touched.closingAgent && formik.errors.closingAgent && (
               <FormFeedback type="invalid">
@@ -164,27 +164,6 @@ const StepOneForm = ({
         </Col>
       </Row>
       <Row>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="offerExpirationDate">Offer Expiration Date</Label>
-            <Input
-              id="offerExpirationDate"
-              name="offerExpirationDate"
-              type="date"
-              onChange={formik.handleChange}
-              value={formik.values.offerExpirationDate}
-              invalid={
-                formik.touched.offerExpirationDate &&
-                !!formik.errors.offerExpirationDate
-              }
-              className="p13"
-            />
-            {formik.touched.offerExpirationDate &&
-              formik.errors.offerExpirationDate && (
-                <FormFeedback>{formik.errors.offerExpirationDate}</FormFeedback>
-              )}
-          </FormGroup>
-        </Col>
         <Col md={6}>
           <FormGroup>
             <Label for="closingDate">Closing Date</Label>
@@ -204,15 +183,13 @@ const StepOneForm = ({
             )}
           </FormGroup>
         </Col>
-      </Row>
-      <Row>
         <Col md={6}>
           <FormGroup>
             <Label for="titleInsuranceCompany">Title Insurance Company</Label>
             <Input
               id="titleInsuranceCompany"
               name="titleInsuranceCompany"
-              type="text"
+              type="select"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.titleInsuranceCompany}
@@ -221,7 +198,20 @@ const StepOneForm = ({
                 !!formik.errors.titleInsuranceCompany
               }
               className="p13"
-            />
+            >
+              <option value="">Select a company</option>
+              {clientProfiles?.vendorDetails?.data
+                ?.filter(
+                  (vendor) =>
+                    vendor.role === "titlecompany" ||
+                    vendor.role === "TitleCompany"
+                )
+                .map((company, index) => (
+                  <option key={index} value={company.name}>
+                    {company.name}
+                  </option>
+                ))}
+            </Input>
             {formik.touched.titleInsuranceCompany &&
               formik.errors.titleInsuranceCompany && (
                 <FormFeedback type="invalid">
@@ -230,38 +220,30 @@ const StepOneForm = ({
               )}
           </FormGroup>
         </Col>
+      </Row>
+      <Row>
         <Col md={6}>
           <FormGroup>
             <Label for="price">Price</Label>
             <Input
               id="price"
               name="price"
-              type="number"
-              onChange={formik.handleChange}
-              value={formik.values.price}
+              type="text"
+              onChange={(e) => {
+                const formattedValue = formatNumberInput(e.target.value);
+                e.target.value = formattedValue;
+                formik.setFieldValue("price", formattedValue.replace(/,/g, ""));
+              }}
+              onBlur={formik.handleBlur}
+              value={
+                formik.values.price
+                  ? formatNumberInput(formik.values.price.toString())
+                  : ""
+              }
               invalid={formik.touched.price && !!formik.errors.price}
             />
             {formik.touched.price && formik.errors.price && (
               <FormFeedback>{formik.errors.price}</FormFeedback>
-            )}
-          </FormGroup>
-        </Col>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="closingDate">Possession Date</Label>
-            <Input
-              id="possessionDate"
-              name="possessionDate"
-              type="date"
-              onChange={formik.handleChange}
-              value={formik.values.possessionDate}
-              invalid={
-                formik.touched.closingDate && !!formik.errors.closingDate
-              }
-              className="p13"
-            />
-            {formik.touched.possessionDate && formik.errors.possessionDate && (
-              <FormFeedback>{formik.errors.possessionDate}</FormFeedback>
             )}
           </FormGroup>
         </Col>

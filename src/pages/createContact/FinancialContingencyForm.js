@@ -83,13 +83,14 @@ const FinancialContingencyForm = ({
           </FormGroup>
 
           <FormGroup>
-            <Label for="downPayment">Down Payment</Label>
+            <Label for="downPayment">Down Payment (%)</Label>
             <Input
               type="number"
               name="downPayment"
               id="downPayment"
               onChange={formik.handleChange}
               value={formik.values.downPayment}
+              placeholder="Please enter amount in Percentage (20%)"
               invalid={
                 formik.touched.downPayment && !!formik.errors.downPayment
               }

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import { uploadTextRequest } from "../../store/createContact/actions";
 import { Button } from "reactstrap";
-import Loader from '../../../src/Components/Common/Loader'
+import Loader from "../../../src/Components/Common/Loader";
 function PdfViewer() {
   const [selectedPdfIndex, setSelectedPdfIndex] = useState(0);
   const webViewerInstance = useRef(null);
@@ -65,7 +65,10 @@ function PdfViewer() {
         PI_State: () => zpidDeatils?.address?.state,
         PI_Zip: () => zpidDeatils?.address?.zipcode,
         PI_County: () => zpidDeatils?.country,
-        OfferExpire: () => userDetails?.offerExpirationDate,
+        OfferExpire: () =>
+          new Date(new Date().setDate(new Date().getDate() + 5))
+            .toISOString()
+            .split("T")[0],
         TitleCompany: () => userDetails?.titleInsuranceCompany,
         PI_SellPrice: () => userDetails?.price,
         ClosingAgent1: () => userDetails?.closingAgent,
@@ -239,6 +242,7 @@ function PdfViewer() {
       setModalContent(userDetailsData?.error);
     }
   }, [userDetailsData]);
+
   useEffect(() => {
     if (!webViewerInstance.current) {
       WebViewer(
@@ -270,31 +274,85 @@ function PdfViewer() {
     }
   };
 
+  const handleTextSelection = async () => {
+    const {
+      Core: { PDFNet },
+    } = pdfInstance;
+
+    await PDFNet.initialize();
+    const doc = await pdfInstance.Core.documentViewer.getDocument().getPDFDoc();
+    await doc.lock();
+
+    let textData = "";
+    const fieldIterator = await doc.getFieldIteratorBegin();
+    for (; await fieldIterator.hasNext(); fieldIterator.next()) {
+      const field = await fieldIterator.current();
+      const fieldName = await field.getName();
+      const fieldValue = await field.getValueAsString();
+      textData += `${fieldName}: ${fieldValue}\n`;
+    }
+
+    const selectedText =
+      await pdfInstance.Core.documentViewer.getSelectedText();
+    const keyValueRegex = /:\s*[\w\s]{0,40}(\n|$)/;
+    const hasKeyValuePair = keyValueRegex.test(selectedText);
+
+    if (!hasKeyValuePair && selectedText.trim() !== "") {
+      textData += selectedText;
+    } else if (hasKeyValuePair) {
+      //console.log("Key-value pair detected, text not logged.");
+    }
+    //setExtractedData(textData);
+    GptTextUploader(textData);
+    await doc.unlock();
+  };
+
   return (
     <div className="pdfViewerContainerStyle">
-      <div  className="pdfSelectionContainerStyle">
+      <div className="pdfSelectionContainerStyle">
         {pdfName.map((name, index) => (
           <div
             key={index}
-            onClick={() =>{ handleGenerate(index); setSelectedPdfIndex(index)}}
-            className={`pdfPreview ${selectedPdfIndex === index ? 'selectedPdf' : 'unselectedPdf'}`}
-
+            onClick={() => {
+              handleGenerate(index);
+              setSelectedPdfIndex(index);
+            }}
+            className={`pdfPreview ${
+              selectedPdfIndex === index ? "selectedPdf" : "unselectedPdf"
+            }`}
           >
             {name}.pdf
           </div>
         ))}
       </div>
-      {/* <button onClick={()=>handleGenerate(selectedPdfIndex)} className="generateButtonStyle">
-        Generate
-      </button> */}
-      <Button onClick={() => GptTextUploader(pdfDataString)} color="success">
-        {userDetailsData?.loading ? <Loader/>  : "Upload"}
-      </Button>
+      {userDetailsData?.loading ? (
+        <Loader />
+      ) : (
+        <div style={{display:'flex', gap:20}}>
+          <Button onClick={handleTextSelection} >
+            Upload Selected text
+          </Button>
+          <Button
+            onClick={() => GptTextUploader(pdfDataString)}
+            color="success"
+          >
+            Upload
+          </Button>
+        </div>
+      )}
       <div className="conatiner">
         <div id="pdfViewer" className="pdfDisplayStyle"></div>
         <div className="apiResponseContainer">
           <p className="apiResponseHeading">API Response:</p>
-          <p>{userDetailsData?.loading ? <Loader/>  : modalContent ? modalContent : "Upload document"}</p>
+          <p>
+            {userDetailsData?.loading ? (
+              <Loader />
+            ) : modalContent ? (
+              modalContent
+            ) : (
+              "Upload document"
+            )}
+          </p>
         </div>
       </div>
     </div>

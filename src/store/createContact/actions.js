@@ -38,6 +38,20 @@ export const fetchProfilesFailure = error => ({
   payload: error,
 });
 
+export const getVendorProfileRequest = () => ({
+  type: actionTypes.FETCH_VENDORPROFILES_REQUEST,
+});
+
+export const getVendorProfileSuccess = profiles => ({
+  type: actionTypes.FETCH_VENDORPROFILES_SUCCESS,
+  payload: profiles,
+});
+
+export const getVendorProfileFailure = error => ({
+  type: actionTypes.FETCH_VENDORPROFILES_FAILURE,
+  payload: error,
+});
+
 
 export const fetchApiDataRequest = () => ({
   type: actionTypes.FETCH_API_DATA_REQUEST,

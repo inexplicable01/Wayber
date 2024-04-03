@@ -1,33 +1,19 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  Col,
-  Row,
-  FormFeedback,
-  Alert,
-} from "reactstrap";
+import { Button, Col, Row, FormFeedback } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import firebase from "firebase/compat/app";
-import "firebase/compat/firestore";
-import WebViewer from "@pdftron/webviewer";
-import PdfData from "../../assets/pdf/abc.pdf";
+
 import {
-  uploadTextRequest,
   setUserDetails,
   fetchProfilesStart,
+  getVendorProfileRequest,
 } from "../../store/createContact/actions";
 import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import {
   fetchApiDataRequest,
   getUsersAddressRequest,
 } from "../../store/createContact/actions";
-import Loader from "../../Components/Common/Loader";
 import { Stepper } from "react-form-stepper";
 import StepOneForm from "./StepOneForm";
 import FinancialContingencyForm from "./FinancialContingencyForm";
@@ -35,16 +21,12 @@ import InspectionContingencyForm from "./InspectionContingencyForm";
 import { useNavigate } from "react-router-dom";
 
 const CreateContactForm = ({ onSubmit }) => {
-  const webViewerInstance = useRef(null);
   const dispatch = useDispatch();
 
   const [clientProfiles, setClientProfiles] = useState([]);
-  const [pdfInstance, setPdfInstance] = useState(null);
-  const [documentLoaded, setDocumentLoaded] = useState(false);
   const [displayPDF, setDisplayPDF] = useState(false);
   const [address, setAddress] = useState();
   const [zpidDeatils, setZpidDetails] = useState();
-  const [modalContent, setModalContent] = useState("");
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
@@ -59,11 +41,9 @@ const CreateContactForm = ({ onSubmit }) => {
             "buyer",
             "seller",
             "price",
-            "offerExpirationDate",
             "closingDate",
             "titleInsuranceCompany",
             "closingAgent",
-            "possessionDate",
           ];
         case 2:
           return [
@@ -112,19 +92,17 @@ const CreateContactForm = ({ onSubmit }) => {
     }
   };
 
-  const formData = useSelector((state) => state.textUploadReducer);
   const userDetailsData = useSelector((state) => state.textUploadReducer);
+
   const formik = useFormik({
     initialValues: {
       address: "",
       buyer: "",
       seller: "",
       price: "",
-      offerExpirationDate: "",
       closingDate: "",
       titleInsuranceCompany: "",
       closingAgent: "",
-      possessionDate: "",
       loanType: "",
       loanTypeOtherText: "",
       downPayment: "",
@@ -147,23 +125,17 @@ const CreateContactForm = ({ onSubmit }) => {
       buyer: Yup.string().required("Please select a buyer"),
       seller: Yup.string().required("Please select a seller"),
       price: Yup.number().required("Please enter a price"),
-      offerExpirationDate: Yup.date().required("Please select a start date"),
       closingDate: Yup.date().required("Please select an end date"),
       titleInsuranceCompany: Yup.string().required(
         "Please enter the title insurance company"
       ),
       closingAgent: Yup.string().required("Please select a closing agent"),
-      possessionDate: Yup.date().required("Please select an possesion date"),
       buyersNotice: Yup.number().required("Required").min(0),
       includeSewerInspection: Yup.boolean(),
-      // loanType: Yup.string().required("Please loantype"),
       additionalTimeForInspections: Yup.number().required("Required").min(0),
       applicationKickStart: Yup.number()
         .min(5, "Minimum select is five")
         .required("Required"),
-      // loanCostProvisions: Yup.number().required(
-      //   "Loan cost provisions are required"
-      // ),
       sellersResponseTime: Yup.number().required("Required").min(0),
       buyersReplyTime: Yup.number().required("Required").min(0),
       repairCompletionDate: Yup.number().required("Required").min(0),
@@ -181,11 +153,11 @@ const CreateContactForm = ({ onSubmit }) => {
       const buyerFullName = values.buyer;
       const sellerFullName = values.seller;
 
-      const buyerProfile = clientProfiles.find(
+      const buyerProfile = clientProfiles?.firebase?.profiles?.find(
         (profile) =>
           profile.firstName + " " + profile.lastName === buyerFullName
       );
-      const sellerProfile = clientProfiles.find(
+      const sellerProfile = clientProfiles?.firebase?.profiles?.find(
         (profile) =>
           profile.firstName + " " + profile.lastName === sellerFullName
       );
@@ -211,7 +183,6 @@ const CreateContactForm = ({ onSubmit }) => {
         buyer: values.buyer,
         seller: values.seller,
         price: values.price,
-        offerExpirationDate: values.offerExpirationDate,
         closingDate: values.closingDate,
         titleInsuranceCompany: values.titleInsuranceCompany,
         closingAgent: values.closingAgent,
@@ -224,7 +195,6 @@ const CreateContactForm = ({ onSubmit }) => {
         buyerPhoneNo: buyerPhoneNo,
         sellerEmail: sellerEmail,
         buyerEmail: buyerEmail,
-        possessionDate: values.possessionDate,
         loanType: values.loanType,
         loanTypeOtherText: values.loanTypeOtherText,
         downPayment: values.downPayment,
@@ -241,26 +211,29 @@ const CreateContactForm = ({ onSubmit }) => {
         neighborhoodReviewContingency: values.neighborhoodReviewContingency,
         neighborhoodReviewDays: values.neighborhoodReviewDays,
       };
+      console.log("Calling the redux API");
       dispatch(setUserDetails(userDetails));
+      navigate(`/pdf_viewer`);
     },
   });
   useEffect(() => {
     dispatch(fetchApiDataRequest());
     dispatch(fetchProfilesStart());
+    dispatch(getVendorProfileRequest());
   }, []);
 
   useEffect(() => {
-    if (formData?.userZPID?.success) {
-      setZpidDetails(formData.userZPID?.details);
+    if (userDetailsData?.userZPID?.success) {
+      setZpidDetails(userDetailsData.userZPID?.details);
     }
     if (userDetailsData?.firebase?.profiles) {
-      setClientProfiles(userDetailsData?.firebase?.profiles);
+      setClientProfiles(userDetailsData);
     }
-  }, [formData?.userZPID, formData?.userZPID?.success]);
+  }, [userDetailsData?.userZPID, userDetailsData?.userZPID?.success]);
 
   useEffect(() => {
-    if (formData.api?.success) setAddress(formData.api.data);
-  }, [formData.api.data, formData.api.success]);
+    if (userDetailsData.api?.success) setAddress(userDetailsData.api.data);
+  }, [userDetailsData.api.data, userDetailsData.api.success]);
 
   const handleAddressChange = (e) => {
     const zpid = e.target.value;
@@ -340,7 +313,6 @@ const CreateContactForm = ({ onSubmit }) => {
                 type="submit"
                 onClick={() => {
                   formik.handleSubmit();
-                  navigate(`/pdf_viewer`);
                 }}
               >
                 Submit
