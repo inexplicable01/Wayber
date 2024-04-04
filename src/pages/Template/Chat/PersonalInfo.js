@@ -10,7 +10,7 @@ import {
   DropdownItem,
   UncontrolledDropdown
 } from "reactstrap";
-import Img9 from "../../../assets/images/small/img-9.jpg";
+import Img9 from "../../../assets/images/archive/small/img-9.jpg";
 import dummyImage from "../../../assets/images/users/user-dummy-img.jpg";
 import { attachements } from "../../../common/data/chat";
 

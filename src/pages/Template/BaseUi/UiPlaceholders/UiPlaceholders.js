@@ -9,8 +9,8 @@ import BreadCrumb from '../../../../Components/Common/BreadCrumb';
 import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 
 // Import Images
-import img1 from "../../../../assets/images/small/img-1.jpg";
-import img2 from "../../../../assets/images/small/img-2.jpg";
+import img1 from "../../../../assets/images/archive/small/img-1.jpg";
+import img2 from "../../../../assets/images/archive/small/img-2.jpg";
 
 import { DefaultPlaceholderExample, WidthExample, SizingExample, ColorExample } from './UiPlaceholdersCode';
 

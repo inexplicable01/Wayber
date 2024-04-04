@@ -14,15 +14,15 @@ import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 import avatar9 from "../../../../assets/images/users/avatar-9.jpg";
 import avatar10 from "../../../../assets/images/users/avatar-10.jpg";
 
-import btc from "../../../../assets/images/svg/crypto-icons/btc.svg";
-import eth from "../../../../assets/images/svg/crypto-icons/eth.svg";
-import ltc from "../../../../assets/images/svg/crypto-icons/ltc.svg";
-import xmr from "../../../../assets/images/svg/crypto-icons/xmr.svg";
-import ant from "../../../../assets/images/svg/crypto-icons/ant.svg";
-import sol from "../../../../assets/images/svg/crypto-icons/sol.svg";
-import fil from "../../../../assets/images/svg/crypto-icons/fil.svg";
-import aave from "../../../../assets/images/svg/crypto-icons/aave.svg";
-import ada from "../../../../assets/images/svg/crypto-icons/ada.svg";
+import btc from "../../../../assets/images/archive/svg/crypto-icons/btc.svg";
+import eth from "../../../../assets/images/archive/svg/crypto-icons/eth.svg";
+import ltc from "../../../../assets/images/archive/svg/crypto-icons/ltc.svg";
+import xmr from "../../../../assets/images/archive/svg/crypto-icons/xmr.svg";
+import ant from "../../../../assets/images/archive/svg/crypto-icons/ant.svg";
+import sol from "../../../../assets/images/archive/svg/crypto-icons/sol.svg";
+import fil from "../../../../assets/images/archive/svg/crypto-icons/fil.svg";
+import aave from "../../../../assets/images/archive/svg/crypto-icons/aave.svg";
+import ada from "../../../../assets/images/archive/svg/crypto-icons/ada.svg";
 
 const BasicTable = () => {
 

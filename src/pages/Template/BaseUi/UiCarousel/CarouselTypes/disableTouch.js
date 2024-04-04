@@ -2,9 +2,9 @@ import React from "react";
 import { UncontrolledCarousel } from "reactstrap";
 
 // Carousel images
-import img7 from "../../../../../assets/images/small/img-7.jpg";
-import img8 from "../../../../../assets/images/small/img-8.jpg";
-import img9 from "../../../../../assets/images/small/img-9.jpg";
+import img7 from "../../../../../assets/images/archive/small/img-7.jpg";
+import img8 from "../../../../../assets/images/archive/small/img-8.jpg";
+import img9 from "../../../../../assets/images/archive/small/img-9.jpg";
 
 const DisableTouch = () => {
     return (

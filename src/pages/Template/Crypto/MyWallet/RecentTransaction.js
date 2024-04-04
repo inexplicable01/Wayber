@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, CardBody, CardHeader } from 'reactstrap';
 
 //import images
-import btc from "../../../../assets/images/svg/crypto-icons/btc.svg";
-import ltc from "../../../../assets/images/svg/crypto-icons/ltc.svg";
-import xmr from "../../../../assets/images/svg/crypto-icons/xmr.svg";
-import fil from "../../../../assets/images/svg/crypto-icons/fil.svg";
-import dot from "../../../../assets/images/svg/crypto-icons/dot.svg";
+import btc from "../../../../assets/images/archive/svg/crypto-icons/btc.svg";
+import ltc from "../../../../assets/images/archive/svg/crypto-icons/ltc.svg";
+import xmr from "../../../../assets/images/archive/svg/crypto-icons/xmr.svg";
+import fil from "../../../../assets/images/archive/svg/crypto-icons/fil.svg";
+import dot from "../../../../assets/images/archive/svg/crypto-icons/dot.svg";
 import { Link } from 'react-router-dom';
 
 const RecentTransaction = () => {

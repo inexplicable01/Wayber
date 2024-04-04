@@ -43,10 +43,10 @@ import SimpleBar from "simplebar-react";
 import classnames from "classnames";
 
 //import Images
-import img01 from "../../assets/images/sidebar/img-1.jpg";
-import img02 from "../../assets/images/sidebar/img-2.jpg";
-import img03 from "../../assets/images/sidebar/img-3.jpg";
-import img04 from "../../assets/images/sidebar/img-4.jpg";
+import img01 from "../../assets/images/archive/sidebar/img-1.jpg";
+import img02 from "../../assets/images/archive/sidebar/img-2.jpg";
+import img03 from "../../assets/images/archive/sidebar/img-3.jpg";
+import img04 from "../../assets/images/archive/sidebar/img-4.jpg";
 
 const RightSidebar = () => {
     const dispatch = useDispatch();

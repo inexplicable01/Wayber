@@ -86,20 +86,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                                 </Link>
                             </div>
 
-                            {/*<button*/}
-                            {/*    onClick={toogleMenuBtn}*/}
-                            {/*    type="button"*/}
-                            {/*    className="btn btn-sm px-3 fs-16 header-item vertical-menu-btn topnav-hamburger"*/}
-                            {/*    id="topnav-hamburger-icon">*/}
-                            {/*    <span className="hamburger-icon">*/}
-                            {/*        <span></span>*/}
-                            {/*        <span></span>*/}
-                            {/*        <span></span>*/}
-                            {/*    </span>*/}
-                            {/*</button>*/}
 
-
-                            <SearchOption />
                         </div>
 
                         <div className="d-flex align-items-center">
@@ -123,7 +110,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                             </Dropdown>
 
                             {/* LanguageDropdown */}
-                            <LanguageDropdown />
+                            {/*<LanguageDropdown />*/}
 
                             {/* WebAppsDropdown */}
                             {/*<WebAppsDropdown />*/}
@@ -141,7 +128,7 @@ const Header = ({ onChangeLayoutMode, layoutModeType, headerClass }) => {
                             {/*/>*/}
 
                             {/* NotificationDropdown */}
-                            <NotificationDropdown />
+                            {/*<NotificationDropdown />*/}
 
                             {/* ProfileDropdown */}
                             <ProfileDropdown />

@@ -16,13 +16,13 @@ import avatar6 from '../../../../../assets/images/users/avatar-6.jpg';
 import avatar7 from '../../../../../assets/images/users/avatar-7.jpg';
 import avatar8 from '../../../../../assets/images/users/avatar-8.jpg';
 
-import smallImage2 from '../../../../../assets/images/small/img-2.jpg';
-import smallImage3 from '../../../../../assets/images/small/img-3.jpg';
-import smallImage4 from '../../../../../assets/images/small/img-4.jpg';
-import smallImage5 from '../../../../../assets/images/small/img-5.jpg';
-import smallImage6 from '../../../../../assets/images/small/img-6.jpg';
-import smallImage7 from '../../../../../assets/images/small/img-7.jpg';
-import smallImage9 from '../../../../../assets/images/small/img-9.jpg';
+import smallImage2 from '../../../../../assets/images/archive/small/img-2.jpg';
+import smallImage3 from '../../../../../assets/images/archive/small/img-3.jpg';
+import smallImage4 from '../../../../../assets/images/archive/small/img-4.jpg';
+import smallImage5 from '../../../../../assets/images/archive/small/img-5.jpg';
+import smallImage6 from '../../../../../assets/images/archive/small/img-6.jpg';
+import smallImage7 from '../../../../../assets/images/archive/small/img-7.jpg';
+import smallImage9 from '../../../../../assets/images/archive/small/img-9.jpg';
 
 import { projects, document } from '../../../../../common/data';
 

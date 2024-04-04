@@ -1,19 +1,19 @@
 // Import Images
-import btcCoin from "../../assets/images/svg/crypto-icons/btc.svg";
-import ltcCoin from "../../assets/images/svg/crypto-icons/ltc.svg";
-import ethCoin from "../../assets/images/svg/crypto-icons/eth.svg";
-import etcCoin from "../../assets/images/svg/crypto-icons/etc.svg";
-import bnbCoin from "../../assets/images/svg/crypto-icons/bnb.svg";
-import usdtCoin from "../../assets/images/svg/crypto-icons/usdt.svg";
-import dashCoin from "../../assets/images/svg/crypto-icons/dash.svg";
-import neoCoin from "../../assets/images/svg/crypto-icons/neo.svg";
-import dogeCoin from "../../assets/images/svg/crypto-icons/doge.svg";
-import aaveCoin from "../../assets/images/svg/crypto-icons/aave.svg";
+import btcCoin from "../../assets/images/archive/svg/crypto-icons/btc.svg";
+import ltcCoin from "../../assets/images/archive/svg/crypto-icons/ltc.svg";
+import ethCoin from "../../assets/images/archive/svg/crypto-icons/eth.svg";
+import etcCoin from "../../assets/images/archive/svg/crypto-icons/etc.svg";
+import bnbCoin from "../../assets/images/archive/svg/crypto-icons/bnb.svg";
+import usdtCoin from "../../assets/images/archive/svg/crypto-icons/usdt.svg";
+import dashCoin from "../../assets/images/archive/svg/crypto-icons/dash.svg";
+import neoCoin from "../../assets/images/archive/svg/crypto-icons/neo.svg";
+import dogeCoin from "../../assets/images/archive/svg/crypto-icons/doge.svg";
+import aaveCoin from "../../assets/images/archive/svg/crypto-icons/aave.svg";
 
-import img1 from "../../assets/images/small/img-1.jpg";
-import img2 from "../../assets/images/small/img-2.jpg";
-import img3 from "../../assets/images/small/img-3.jpg";
-import img6 from "../../assets/images/small/img-6.jpg";
+import img1 from "../../assets/images/archive/small/img-1.jpg";
+import img2 from "../../assets/images/archive/small/img-2.jpg";
+import img3 from "../../assets/images/archive/small/img-3.jpg";
+import img6 from "../../assets/images/archive/small/img-6.jpg";
 
 const cyptoWidgets = [
     {

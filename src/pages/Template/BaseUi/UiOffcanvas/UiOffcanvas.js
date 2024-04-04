@@ -19,13 +19,13 @@ import avatar6 from "../../../../assets/images/users/avatar-6.jpg";
 import avatar7 from "../../../../assets/images/users/avatar-7.jpg";
 import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 
-import img2 from "../../../../assets/images/small/img-2.jpg";
-import img3 from "../../../../assets/images/small/img-3.jpg";
-import img4 from "../../../../assets/images/small/img-4.jpg";
-import img9 from "../../../../assets/images/small/img-9.jpg";
-import img10 from "../../../../assets/images/small/img-10.jpg";
-import img11 from "../../../../assets/images/small/img-11.jpg";
-import img12 from "../../../../assets/images/small/img-12.jpg";
+import img2 from "../../../../assets/images/archive/small/img-2.jpg";
+import img3 from "../../../../assets/images/archive/small/img-3.jpg";
+import img4 from "../../../../assets/images/archive/small/img-4.jpg";
+import img9 from "../../../../assets/images/archive/small/img-9.jpg";
+import img10 from "../../../../assets/images/archive/small/img-10.jpg";
+import img11 from "../../../../assets/images/archive/small/img-11.jpg";
+import img12 from "../../../../assets/images/archive/small/img-12.jpg";
 
 const UiOffcanvas = () => {
     document.title = "Offcanvas | Wayber - " + process.env.APPNAME_TITLE;

@@ -120,7 +120,7 @@ function PdfViewer() {
             : "No",
         LAPP3: () => userDetails?.applicationKickStart,
         IC11: () => userDetails?.includeSewerInspection && "Yes",
-        IC112: () => userDetails?.includeSewerInspection == false && "Yes",
+        IC112: () => userDetails?.includeSewerInspection === false && "Yes",
         IC2: () => userDetails?.buyersNotice,
         IC3: () => userDetails?.additionalTimeForInspections,
         IC4: () => userDetails?.sellersResponseTime,
@@ -243,6 +243,8 @@ function PdfViewer() {
     }
   }, [userDetailsData]);
 
+
+  
   useEffect(() => {
     if (!webViewerInstance.current) {
       WebViewer(
@@ -258,7 +260,7 @@ function PdfViewer() {
         setPdfInstance(instance);
       });
     }
-  }, []);
+  }, );
   useEffect(() => {
     if (pdfInstance) {
       handleGenerate(selectedPdfIndex);

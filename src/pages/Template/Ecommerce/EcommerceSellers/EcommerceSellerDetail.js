@@ -16,7 +16,7 @@ import {
 //Import Breadcrumb
 import BreadCrumb from "../../../../Components/Common/BreadCrumb";
 
-import Img2 from "../../../../assets/images/companies/img-2.png";
+import Img2 from "../../../../assets/images/archive/companies/img-2.png";
 import ReviewSlider from "../../../../Components/Common/ReviewSlider";
 import TableContainer from "../../../../Components/Common/TableContainer";
 //Import actions

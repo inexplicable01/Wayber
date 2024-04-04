@@ -1459,9 +1459,13 @@ iframe {
   text-align: center;
 }
 
+.play-icon-grey {
+    color: grey; /* Ensures only this icon turns black */
+}
+
 .play-shadow {
   border-radius: 50%;
-  border: 1px solid transparent;
+  border: 1px solid;
   width: 82px;
   height: 82px;
   margin: 20px auto;
@@ -1469,7 +1473,7 @@ iframe {
 
 .home-desc {
   color: rgba(255, 255, 255, 0.7);
-  font-size: 15px;
+  font-size: 24px;
   max-width: 600px;
   margin: 0 auto;
 }

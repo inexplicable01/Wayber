@@ -1,39 +1,52 @@
-import React, { useEffect, useState } from 'react';
-import { Card, CardBody, Col, Container, Input, Label, Row, Button, Form, FormFeedback, Alert, Spinner } from 'reactstrap';
+import React, {useEffect, useState} from 'react';
+import {
+    Card,
+    CardBody,
+    Col,
+    Container,
+    Input,
+    Label,
+    Row,
+    Button,
+    Form,
+    FormFeedback,
+    Alert,
+    Spinner
+} from 'reactstrap';
 import ParticlesAuth from "../Template/AuthenticationInner/ParticlesAuth";
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 // Formik validation
 import * as Yup from "yup";
-import { useFormik } from "formik";
+import {useFormik} from "formik";
 
 //Social Media Imports
 // import { GoogleLogin } from "react-google-login";
 // import TwitterLogin from "react-twitter-auth"
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 // actions
-import { loginUser, socialLogin, resetLoginFlag } from "../../store/actions";
+import {loginUser, socialLogin, resetLoginFlag} from "../../store/actions";
 
 import logoLight from "../../assets/images/logo-light.png";
 //Import config
-import { facebook, google } from "../../config";
+import {facebook, google} from "../../config";
 import withRouter from '../../Components/Common/withRouter';
 
 //import images
 
 const Login = (props) => {
     const dispatch = useDispatch();
-    const {  user, errorMsg, loading, error } = useSelector(state => ({
+    const {user, errorMsg, loading, error} = useSelector(state => ({
         user: state.Profile.user,
         errorMsg: state.Login.errorMsg,
         loading: state.Login.loading,
         error: state.Login.error,
     }));
- // const user = null
+    // const user = null
 
     const [userLogin, setUserLogin] = useState([]);
     const [passwordShow, setPasswordShow] = useState(false);
@@ -47,12 +60,22 @@ const Login = (props) => {
         }
     }, [user]);
 
+    useEffect(() => {
+        if (user) { // assuming `auth` is your state slice with login information
+            props.router.navigate('/dashboard');
+                    // history('/dashboard')
+        } else  {
+            console.log('Login Errr ' ,errorMsg)
+            // Handle login failure (e.g., show an error message)
+        }
+    }, [user,errorMsg,props.router]);
+
     const validation = useFormik({
         // enableReinitialize : use this flag when initial values needs to be changed
         enableReinitialize: true,
 
         initialValues: {
-            email: userLogin.email || process.env.REACT_APP_EMAIL|| '',
+            email: userLogin.email || process.env.REACT_APP_EMAIL || '',
             password: userLogin.password || process.env.REACT_APP_PASSWORD || '',
         },
         validationSchema: Yup.object({
@@ -61,7 +84,7 @@ const Login = (props) => {
         }),
         onSubmit: (values) => {
             console.log(values)
-            dispatch(loginUser(values, props.router.navigate));
+            dispatch(loginUser(values));
         }
     });
 
@@ -117,7 +140,7 @@ const Login = (props) => {
                                 <div className="text-center mt-sm-5 mb-4 text-white-50">
                                     <div>
                                         <Link to="/" className="d-inline-block auth-logo">
-                                            <img src={logoLight} alt="" height="20" />
+                                            <img src={logoLight} alt="" height="20"/>
                                         </Link>
                                     </div>
                                     <p className="mt-3 fs-15 fw-medium">Premium Admin & Dashboard Template</p>
@@ -159,15 +182,18 @@ const Login = (props) => {
                                                         }
                                                     />
                                                     {validation.touched.email && validation.errors.email ? (
-                                                        <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                                                        <FormFeedback
+                                                            type="invalid">{validation.errors.email}</FormFeedback>
                                                     ) : null}
                                                 </div>
 
                                                 <div className="mb-3">
                                                     <div className="float-end">
-                                                        <Link to="/forgot-password" className="text-muted">Forgot password?</Link>
+                                                        <Link to="/forgot-password" className="text-muted">Forgot
+                                                            password?</Link>
                                                     </div>
-                                                    <Label className="form-label" htmlFor="password-input">Password</Label>
+                                                    <Label className="form-label"
+                                                           htmlFor="password-input">Password</Label>
                                                     <div className="position-relative auth-pass-inputgroup mb-3">
                                                         <Input
                                                             name="password"
@@ -182,20 +208,30 @@ const Login = (props) => {
                                                             }
                                                         />
                                                         {validation.touched.password && validation.errors.password ? (
-                                                            <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
+                                                            <FormFeedback
+                                                                type="invalid">{validation.errors.password}</FormFeedback>
                                                         ) : null}
-                                                        <button className="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon" onClick={() => setPasswordShow(!passwordShow)}><i className="ri-eye-fill align-middle"></i></button>
+                                                        <button
+                                                            className="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted"
+                                                            type="button" id="password-addon"
+                                                            onClick={() => setPasswordShow(!passwordShow)}><i
+                                                            className="ri-eye-fill align-middle"></i></button>
                                                     </div>
                                                 </div>
 
                                                 <div className="form-check">
-                                                    <Input className="form-check-input" type="checkbox" value="" id="auth-remember-check" />
-                                                    <Label className="form-check-label" htmlFor="auth-remember-check">Remember me</Label>
+                                                    <Input className="form-check-input" type="checkbox" value=""
+                                                           id="auth-remember-check"/>
+                                                    <Label className="form-check-label" htmlFor="auth-remember-check">Remember
+                                                        me</Label>
                                                 </div>
 
                                                 <div className="mt-4">
-                                                    <Button color="success" disabled={error ? null : loading ? true : false} className="btn btn-success w-100" type="submit">
-                                                        {error ? null : loading ? <Spinner size="sm" className='me-2'> Loading... </Spinner> : null}
+                                                    <Button color="success"
+                                                            disabled={error ? null : loading ? true : false}
+                                                            className="btn btn-success w-100" type="submit">
+                                                        {error ? null : loading ? <Spinner size="sm"
+                                                                                           className='me-2'> Loading... </Spinner> : null}
                                                         Sign In
                                                     </Button>
                                                 </div>
@@ -246,7 +282,9 @@ const Login = (props) => {
                                 </Card>
 
                                 <div className="mt-4 text-center">
-                                    <p className="mb-0">Don't have an account ? <Link to="/register" className="fw-semibold text-primary text-decoration-underline"> Signup </Link> </p>
+                                    <p className="mb-0">Don't have an account ? <Link to="/register"
+                                                                                      className="fw-semibold text-primary text-decoration-underline"> Signup </Link>
+                                    </p>
                                 </div>
 
                             </Col>

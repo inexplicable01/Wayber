@@ -12,7 +12,7 @@ import PreviewCardHeader from '../../../../Components/Common/PreviewCardHeader';
 import avatar1 from "../../../../assets/images/users/avatar-1.jpg";
 import avatar2 from "../../../../assets/images/users/avatar-2.jpg";
 
-import img2 from "../../../../assets/images/small/img-2.jpg";
+import img2 from "../../../../assets/images/archive/small/img-2.jpg";
 import { StacksVerticalExample, StacksHorizontalExample, TextSelectionExample, PointerEventsExample, OverflowExample, PositionExample, ShadowsExample, WidthExample, HeightExample } from './UiUtilitiesCode';
 
 const UiUtilities = () => {

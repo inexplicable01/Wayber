@@ -13,11 +13,11 @@ import { Autoplay, Mousewheel } from 'swiper';
 import SimpleBar from "simplebar-react";
 
 //import images
-import img3 from "../../../assets/images/products/img-3.png";
-import img4 from "../../../assets/images/products/img-4.png";
-import img5 from "../../../assets/images/products/img-5.png";
-import img6 from "../../../assets/images/products/img-6.png";
-import img8 from "../../../assets/images/products/img-8.png";
+import img3 from "../../../assets/images/archive/products/img-3.png";
+import img4 from "../../../assets/images/archive/products/img-4.png";
+import img5 from "../../../assets/images/archive/products/img-5.png";
+import img6 from "../../../assets/images/archive/products/img-6.png";
+import img8 from "../../../assets/images/archive/products/img-8.png";
 
 import avatar1 from "../../../assets/images/users/avatar-1.jpg";
 import avatar2 from "../../../assets/images/users/avatar-2.jpg";

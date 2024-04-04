@@ -6,9 +6,9 @@ import SimpleBar from 'simplebar-react';
 
 // Import Images
 
-import product2 from "../../../assets/images/products/img-2.png";
-import product8 from "../../../assets/images/products/img-8.png";
-import product10 from "../../../assets/images/products/img-10.png";
+import product2 from "../../../assets/images/archive/products/img-2.png";
+import product8 from "../../../assets/images/archive/products/img-8.png";
+import product10 from "../../../assets/images/archive/products/img-10.png";
 
 import avatar2 from "../../../assets/images/users/avatar-2.jpg";
 import avatar3 from "../../../assets/images/users/avatar-3.jpg";

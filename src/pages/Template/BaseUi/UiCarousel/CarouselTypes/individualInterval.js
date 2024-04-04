@@ -2,9 +2,9 @@ import React from "react";
 import { UncontrolledCarousel } from "reactstrap";
 
 // Carousel images
-import img10 from "../../../../../assets/images/small/img-10.jpg";
-import img11 from "../../../../../assets/images/small/img-11.jpg";
-import img12 from "../../../../../assets/images/small/img-12.jpg";
+import img10 from "../../../../../assets/images/archive/small/img-10.jpg";
+import img11 from "../../../../../assets/images/archive/small/img-11.jpg";
+import img12 from "../../../../../assets/images/archive/small/img-12.jpg";
 
 const IndividualInterval = () => {
   return (

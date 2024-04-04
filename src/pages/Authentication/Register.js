@@ -21,7 +21,39 @@ import {Link, useNavigate} from "react-router-dom";
 //import images 
 import logoLight from "../../assets/images/logo-light.png";
 import ParticlesAuth from "../Template/AuthenticationInner/ParticlesAuth";
+import withRouter from "../../Components/Common/withRouter";
 
+const generateRandomValues = () => {
+    const firstNames = ["John", "Jane", "Michael", "Sarah", "David", "Emily", "Chris", "Emma"];
+    const lastNames = ["Smith", "Johnson", "Brown", "Jones", "Taylor", "Williams", "Miller", "Davis"];
+
+    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+    const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+    const randomEmail = `${randomFirstName}.${randomLastName}${Math.floor(Math.random() * 100)}@example.com`;
+    const randomPhoneNumber = `555${Math.floor(1000000 + Math.random() * 9000000)}`;
+
+    const propertyTypes = ['House', 'Apartment', 'Condo'];
+    const roles = ['Buyer', 'Seller'];
+    const pw = Math.random().toString(36).substring(2, 11);
+
+    return {
+        email: randomEmail,
+        first_name: randomFirstName,
+        last_name: randomLastName,
+        age: Math.floor(Math.random() * 100) + 1,
+        current_address: Math.random().toString(36).substring(2, 11),
+        phone_number: randomPhoneNumber,
+        property_type: propertyTypes[Math.floor(Math.random() * propertyTypes.length)],
+        budget: Math.floor(Math.random() * 1000000) + 1000,
+        role: roles[Math.floor(Math.random() * roles.length)],
+        password: pw,
+        confirm_password: pw,
+    };
+};
+
+// const randomValues = generateRandomValues();
+const isDevelopment = process.env.NODE_ENV === 'development';
+const randomValues = isDevelopment ? generateRandomValues() : {};
 const Register = () => {
     const history = useNavigate();
     const dispatch = useDispatch();
@@ -31,17 +63,17 @@ const Register = () => {
         enableReinitialize: true,
 
         initialValues: {
-            email: '',
-            first_name: '',
-            last_name: '',
-            age: '',
-            current_address: '',
-            phone_number: '',
-            property_type: '',
-            budget: '',
-            role: '',
-            password: '',
-            confirm_password: ''
+            email: isDevelopment ? randomValues.email : '',
+            first_name: isDevelopment ? randomValues.first_name : '',
+            last_name: isDevelopment ? randomValues.last_name : '',
+            age: isDevelopment ? randomValues.age : '',
+            current_address: isDevelopment ? randomValues.current_address : '',
+            phone_number: isDevelopment ? randomValues.phone_number : '',
+            property_type: isDevelopment ? randomValues.property_type : '',
+            budget: isDevelopment ? randomValues.budget : '',
+            role: isDevelopment ? randomValues.role : '',
+            password: isDevelopment ? randomValues.password : '',
+            confirm_password: isDevelopment ? randomValues.confirm_password : '',
         },
         validationSchema: Yup.object({
             email: Yup.string().required("Please Enter Your Email"),
@@ -75,41 +107,10 @@ const Register = () => {
         error: state.Registration.error
     }));
 
-    const generateRandomValues = () => {
-        const firstNames = ["John", "Jane", "Michael", "Sarah", "David", "Emily", "Chris", "Emma"];
-        const lastNames = ["Smith", "Johnson", "Brown", "Jones", "Taylor", "Williams", "Miller", "Davis"];
-
-        const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-        const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-        const randomEmail = `${randomFirstName}.${randomLastName}${Math.floor(Math.random() * 100)}@example.com`;
-        const randomPhoneNumber = `555${Math.floor(1000000 + Math.random() * 9000000)}`;
-        validation.setFieldValue("first_name", randomFirstName);
-        validation.setFieldValue("last_name", randomLastName);
-        validation.setFieldValue("email", randomEmail);
-        validation.setFieldValue('age', Math.floor(Math.random() * 100) + 1);
-        validation.setFieldValue('current_address', Math.random().toString(36).substring(2, 11));
-        validation.setFieldValue('phone_number', randomPhoneNumber);
-
-        const propertyTypes = ['House', 'Apartment', 'Condo'];
-        validation.setFieldValue('property_type', propertyTypes[Math.floor(Math.random() * propertyTypes.length)]);
-
-        validation.setFieldValue('budget', Math.floor(Math.random() * 1000000) + 1000);
-
-        const roles = ['Buyer', 'Seller'];
-        validation.setFieldValue('role', roles[Math.floor(Math.random() * roles.length)]);
-
-        const pw = Math.random().toString(36).substring(2, 11)
-        validation.setFieldValue('password', pw);
-        validation.setFieldValue('confirm_password', pw);
-    }
 
     useEffect(() => {
         dispatch(apiError(""));
     }, [dispatch]);
-
-    useEffect(() => {
-        generateRandomValues();
-    }, );
 
     useEffect(() => {
         if (success) {
@@ -121,8 +122,7 @@ const Register = () => {
         }, 30000);
 
     }, [dispatch, success, error, history]);
-
-    document.title = "SignUp | " + process.env.APPNAME_TITLE;
+    document.title = "SignUp | " + process.env.REACT_APP_APPNAME_TITLE;
 
     return (
         <React.Fragment>
@@ -365,4 +365,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default withRouter(Register);

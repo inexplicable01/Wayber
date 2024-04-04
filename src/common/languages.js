@@ -1,11 +1,11 @@
-import flagus from "../assets/images/flags/us.svg";
-import flagspain from "../assets/images/flags/spain.svg";
-import flaggermany from "../assets/images/flags/germany.svg";
-import flagitaly from "../assets/images/flags/italy.svg";
-import flagrussia from "../assets/images/flags/russia.svg";
-import flagchina from "../assets/images/flags/china.svg";
-import flagfrench from "../assets/images/flags/french.svg";
-import flagarabic from "../assets/images/flags/ar.svg"
+import flagus from "../assets/images/archive/flags/us.svg";
+import flagspain from "../assets/images/archive/flags/spain.svg";
+import flaggermany from "../assets/images/archive/flags/germany.svg";
+import flagitaly from "../assets/images/archive/flags/italy.svg";
+import flagrussia from "../assets/images/archive/flags/russia.svg";
+import flagchina from "../assets/images/archive/flags/china.svg";
+import flagfrench from "../assets/images/archive/flags/french.svg";
+import flagarabic from "../assets/images/archive/flags/ar.svg"
 
 const languages = {
   sp: {

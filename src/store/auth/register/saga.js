@@ -19,7 +19,7 @@ const fireBaseBackend = getFirebaseBackend();
 function* registerUser({ payload: { user } }) {
   try {
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      console.log('saga reached')
+      // console.log('saga reached')
       const { email, password, ...additionalInfo } = user;
 
       //This register both creates the auth account and the document at the same time

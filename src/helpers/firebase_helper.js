@@ -13,6 +13,7 @@ class FirebaseAuthBackend {
             firebase.initializeApp(firebaseConfig);
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
+                    // console.log('Sethere5')
                     sessionStorage.setItem("authUser", JSON.stringify(user));
                 } else {
                     sessionStorage.removeItem("authUser");
@@ -33,7 +34,7 @@ class FirebaseAuthBackend {
                     const uid = result.user.uid;
 
                     // Save additional information in Firestore
-                    firebase.firestore().collection('users').doc(uid).set(additionalInfo)
+                    firebase.firestore().collection('users').doc(uid).set({...additionalInfo,email:email})
                         .then(() => {
                             resolve({success: true, user: additionalInfo});
                         })

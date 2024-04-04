@@ -4,10 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPortfolioChartsData } from '../../../store/actions';
 
 //import Images
-import btc from "../../../assets/images/svg/crypto-icons/btc.svg";
-import eth from "../../../assets/images/svg/crypto-icons/eth.svg";
-import ltc from "../../../assets/images/svg/crypto-icons/ltc.svg";
-import dash from "../../../assets/images/svg/crypto-icons/dash.svg";
+import btc from "../../../assets/images/archive/svg/crypto-icons/btc.svg";
+import eth from "../../../assets/images/archive/svg/crypto-icons/eth.svg";
+import ltc from "../../../assets/images/archive/svg/crypto-icons/ltc.svg";
+import dash from "../../../assets/images/archive/svg/crypto-icons/dash.svg";
 
 import { PortfolioCharts } from './DashboardCryptoCharts';
 

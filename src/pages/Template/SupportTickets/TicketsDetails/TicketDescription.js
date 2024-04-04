@@ -8,8 +8,8 @@ import SimpleBar from "simplebar-react";
 import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 import avatar10 from "../../../../assets/images/users/avatar-10.jpg";
 import avatar6 from "../../../../assets/images/users/avatar-6.jpg";
-import image4 from "../../../../assets/images/small/img-4.jpg";
-import image5 from "../../../../assets/images/small/img-5.jpg";
+import image4 from "../../../../assets/images/archive/small/img-4.jpg";
+import image5 from "../../../../assets/images/archive/small/img-5.jpg";
 import { Link } from 'react-router-dom';
 import TicketCodeExample from './TicketsDetailsCode';
 

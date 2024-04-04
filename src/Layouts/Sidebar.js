@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SimpleBar from "simplebar-react";
 //import logo
-import logoSm from "../assets/images/logo-sm.png";
-import logoDark from "../assets/images/logo-dark.png";
-import logoLight from "../assets/images/Logo_S.png";
+import logoSm from "../assets/images/logo/wayberlogo.svg";
+import logoDark from "../assets/images/logo/Wayber.png";
+import logoLight from "../assets/images/logo/Wayber.png";
 
 //Import Components
 import VerticalLayout from "./VerticalLayouts";
@@ -42,7 +42,7 @@ const Sidebar = ({ layoutType }) => {
               <img src={logoSm} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src={logoDark} alt="" height="17" />
+              <img src={logoDark} alt="" height="30" />
             </span>
           </Link>
 
@@ -51,7 +51,7 @@ const Sidebar = ({ layoutType }) => {
               <img src={logoSm} alt="" height="22" />
             </span>
             <span className="logo-lg">
-              <img src={logoLight} alt="" height="34" />
+              <img src={logoLight} alt="" height="30" />
             </span>
           </Link>
           <button

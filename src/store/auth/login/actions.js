@@ -8,10 +8,10 @@ import {
   RESET_LOGIN_FLAG
 } from "./actionTypes";
 
-export const loginUser = (user, history) => {
+export const loginUser = (usersignininfo) => {
   return {
     type: LOGIN_USER,
-    payload: { user, history },
+    payload: { usersignininfo },
   };
 };
 

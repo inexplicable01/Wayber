@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactApexChart from "react-apexcharts";
-import user from "../../../../../assets/images/small/img-4.jpg";
+import user from "../../../../../assets/images/archive/small/img-4.jpg";
 
 import getChartColorsArray from "../../../../../Components/Common/ChartsDynamicColor";
 

@@ -20,9 +20,9 @@ import avatar3 from "../../../../assets/images/users/avatar-3.jpg";
 import avatar5 from "../../../../assets/images/users/avatar-5.jpg";
 import avatar8 from "../../../../assets/images/users/avatar-8.jpg";
 
-import SImg10 from "../../../../assets/images/small/img-10.jpg";
-import SImg11 from "../../../../assets/images/small/img-11.jpg";
-import SImg12 from "../../../../assets/images/small/img-12.jpg";
+import SImg10 from "../../../../assets/images/archive/small/img-10.jpg";
+import SImg11 from "../../../../assets/images/archive/small/img-11.jpg";
+import SImg12 from "../../../../assets/images/archive/small/img-12.jpg";
 
 //SimpleBar
 import SimpleBar from "simplebar-react";
