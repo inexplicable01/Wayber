@@ -39,7 +39,7 @@ const CreateContactForm = ({ onSubmit }) => {
           return [
             "address",
             "buyer",
-            "seller",
+            // "seller",
             "price",
             "closingDate",
             "titleInsuranceCompany",
@@ -123,7 +123,7 @@ const CreateContactForm = ({ onSubmit }) => {
     validationSchema: Yup.object({
       address: Yup.string().required("Please select an address"),
       buyer: Yup.string().required("Please select a buyer"),
-      seller: Yup.string().required("Please select a seller"),
+      // seller: Yup.string().required("Please select a seller"),
       price: Yup.number().required("Please enter a price"),
       closingDate: Yup.date().required("Please select an end date"),
       titleInsuranceCompany: Yup.string().required(
