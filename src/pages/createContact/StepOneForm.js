@@ -108,24 +108,26 @@ const StepOneForm = ({
               name="seller"
               id="seller"
               onChange={formik.handleChange}
-              value={formik.values.seller}
+              value={
+                clientProfiles?.userZPID?.details?.listing_agent
+                  ?.display_name || formik.values.seller
+              }
               invalid={formik.touched.seller && !!formik.errors.seller}
               className="p13"
             >
               <option value="">Select Seller</option>
-              {clientProfiles?.firebase?.profiles.map((profile, i) => {
-                if (profile.role === "Seller") {
-                  return (
-                    <option
-                      key={i}
-                      value={profile.firstName + " " + profile.lastName}
-                    >
-                      {profile.firstName + " " + profile.lastName}
-                    </option>
-                  );
-                }
-                return null;
-              })}
+              {clientProfiles?.userZPID?.details?.listing_agent
+                ?.display_name && (
+                <option
+                  value={
+                    clientProfiles.userZPID.details.listing_agent.display_name
+                  }
+                  disabled={true}
+                  selected={true}
+                >
+                  {clientProfiles.userZPID.details.listing_agent.display_name}
+                </option>
+              )}
             </Input>
             {formik.touched.seller && formik.errors.seller && (
               <FormFeedback>{formik.errors.seller}</FormFeedback>
