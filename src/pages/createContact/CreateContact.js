@@ -224,6 +224,13 @@ const CreateContactForm = ({ onSubmit }) => {
         ]}
         activeStep={currentStep}
       />
+      {clientProfiles?.userZPID?.details?.desktopWebHdpImageLink && (
+        <div className="imageContainer">
+          <img
+            src={clientProfiles?.userZPID?.details?.desktopWebHdpImageLink}
+          />
+        </div>
+      )}
       <>{renderStep({ currentStep: currentStep })}</>
 
       <Row>

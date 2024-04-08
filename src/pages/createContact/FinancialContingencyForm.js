@@ -5,10 +5,7 @@ const FinancialContingencyForm = ({
   formik,
   FormFeedback,
 }) => {
-  console.log(
-    "formik.errors.applicationKickStart",
-    formik.errors.applicationKickStart
-  );
+ 
   const isFinancialContingency = formik.values.financialContingency;
   return (
     <>
