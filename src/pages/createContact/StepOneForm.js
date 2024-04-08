@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   Button,
   Form,
@@ -28,7 +28,12 @@ const StepOneForm = ({
     const numbersOnly = value.replace(/\D/g, "");
     return numbersOnly.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
+useEffect(() => {
+  const listingAgentName = clientProfiles?.userZPID?.details?.listing_agent?.display_name;
+  if (listingAgentName && listingAgentName !== formik.values.seller) {
+    formik.setFieldValue('seller', listingAgentName);
+  }
+}, [clientProfiles, formik.values.seller, formik.setFieldValue]);
   return (
     <Form
       onSubmit={formik.handleSubmit}

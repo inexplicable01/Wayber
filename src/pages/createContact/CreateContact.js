@@ -2,7 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, Col, Row, FormFeedback } from "reactstrap";
-import { useSelector, useDispatch } from "react-redux";
+import useReduxData from "./hooks/useReduxData";
+
+import useStepFieldValidator from "./hooks/useStepFieldValidator";
 
 import {
   setUserDetails,
@@ -18,67 +20,21 @@ import { Stepper } from "react-form-stepper";
 import StepOneForm from "./StepOneForm";
 import FinancialContingencyForm from "./FinancialContingencyForm";
 import InspectionContingencyForm from "./InspectionContingencyForm";
-import { useNavigate } from "react-router-dom";
 
 const CreateContactForm = ({ onSubmit }) => {
-  const dispatch = useDispatch();
+  const {
+    userDetailsData,
+    clientProfiles,
+    address,
+    dispatch,
+    navigate,
+    zpidDeatils,
+  } = useReduxData();
 
-  const [clientProfiles, setClientProfiles] = useState([]);
   const [displayPDF, setDisplayPDF] = useState(false);
-  const [address, setAddress] = useState();
-  const [zpidDeatils, setZpidDetails] = useState();
 
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
-  const navigate = useNavigate();
-
-  const useStepFieldValidator = (formik, currentStep) => {
-    const getCurrentStepFields = (step) => {
-      switch (step) {
-        case 1:
-          return [
-            "address",
-            "buyer",
-            // "seller",
-            "price",
-            "closingDate",
-            "titleInsuranceCompany",
-            "closingAgent",
-          ];
-        case 2:
-          return [
-            "financialContingency",
-            "loanType",
-            "downPayment",
-            "loanCostProvisions",
-            // "applicationKickStart",
-          ];
-        case 3:
-          return [
-            "inspectionContingency",
-            "buyersNotice",
-            "includeSewerInspection",
-            "additionalTimeForInspections",
-            "sellersResponseTime",
-            "buyersReplyTime",
-            "repairCompletionDate",
-            "neighborhoodReviewContingency",
-            "neighborhoodReviewDays",
-          ];
-        default:
-          return [];
-      }
-    };
-
-    const fieldsToValidate = getCurrentStepFields(currentStep);
-
-    const areFieldsValid = fieldsToValidate.every((field) => {
-      const value = formik.values[field];
-      return value !== undefined && value !== "";
-    });
-
-    return areFieldsValid;
-  };
 
   const nextStep = async () => {
     if (currentStep < totalSteps) {
@@ -91,8 +47,6 @@ const CreateContactForm = ({ onSubmit }) => {
       setCurrentStep((prevState) => prevState - 1);
     }
   };
-
-  const userDetailsData = useSelector((state) => state.textUploadReducer);
 
   const formik = useFormik({
     initialValues: {
@@ -211,7 +165,6 @@ const CreateContactForm = ({ onSubmit }) => {
         neighborhoodReviewContingency: values.neighborhoodReviewContingency,
         neighborhoodReviewDays: values.neighborhoodReviewDays,
       };
-      console.log("Calling the redux API");
       dispatch(setUserDetails(userDetails));
       navigate(`/pdf_viewer`);
     },
@@ -221,19 +174,6 @@ const CreateContactForm = ({ onSubmit }) => {
     dispatch(fetchProfilesStart());
     dispatch(getVendorProfileRequest());
   }, []);
-
-  useEffect(() => {
-    if (userDetailsData?.userZPID?.success) {
-      setZpidDetails(userDetailsData.userZPID?.details);
-    }
-    if (userDetailsData?.firebase?.profiles) {
-      setClientProfiles(userDetailsData);
-    }
-  }, [userDetailsData?.userZPID, userDetailsData?.userZPID?.success]);
-
-  useEffect(() => {
-    if (userDetailsData.api?.success) setAddress(userDetailsData.api.data);
-  }, [userDetailsData.api.data, userDetailsData.api.success]);
 
   const handleAddressChange = (e) => {
     const zpid = e.target.value;
