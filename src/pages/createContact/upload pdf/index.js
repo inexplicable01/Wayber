@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as pdfjsLib from "pdfjs-dist/webpack";
 import Loader from "../../../../src/Components/Common/Loader";
 import axios from "axios";
+import ContactForm from "./SendEmail";
 
 const UploadPdf = () => {
   const [file, setFile] = useState(null);
@@ -160,6 +161,7 @@ const UploadPdf = () => {
           </div>
         </div>
       </div>
+      <ContactForm/>
     </React.Fragment>
   );
 };

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@pdftron/webviewer": "^10.6.0",
     "aos": "^2.3.4",
     "axios": "^0.26.0",
