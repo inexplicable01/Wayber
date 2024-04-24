@@ -106,7 +106,7 @@ useEffect(() => {
       </Row>
       <Row>
         <Col md={6}>
-          <FormGroup>
+          {/* <FormGroup>
             <Label for="seller">Seller</Label>
             <Input
               type="select"
@@ -137,7 +137,27 @@ useEffect(() => {
             {formik.touched.seller && formik.errors.seller && (
               <FormFeedback>{formik.errors.seller}</FormFeedback>
             )}
-          </FormGroup>
+          </FormGroup> */}
+          <FormGroup>
+  <Label for="seller">Seller</Label>
+  <Input
+    type="text" // Change type to text
+    name="seller"
+    id="seller"
+    value={
+      clientProfiles?.userZPID?.details?.listing_agent?.display_name || 
+      formik.values.seller
+    }
+    readOnly // Add readOnly attribute to make it read-only
+    invalid={formik.touched.seller && !!formik.errors.seller}
+    className="p13"
+    placeholder="Seller"
+  />
+  {formik.touched.seller && formik.errors.seller && (
+    <FormFeedback>{formik.errors.seller}</FormFeedback>
+  )}
+</FormGroup>
+
         </Col>
         <Col md={6}>
           <FormGroup>
