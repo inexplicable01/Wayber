@@ -46,10 +46,7 @@ const UploadPdf = () => {
         ...prevContent,
         response?.choices[0].message.content,
       ]);
-      console.log(
-        response?.choices[0].message.content,
-        "response--------------------------------"
-      );
+     
     } catch (error) {
       console.error("Error:", error);
     }
@@ -161,7 +158,7 @@ const UploadPdf = () => {
           </div>
         </div>
       </div>
-      <ContactForm/>
+      {/* <ContactForm/> */}
     </React.Fragment>
   );
 };

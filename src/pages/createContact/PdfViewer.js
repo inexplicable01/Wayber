@@ -3,6 +3,7 @@ import Styles from "../../../src/assets/scss/pages/_createClient.scss";
 import { Button } from "reactstrap";
 import Loader from "../../../src/Components/Common/Loader";
 import usePdfViewer from "./hooks/usePdfViewer";
+import { getFirebaseBackend } from "../../helpers/firebase_helper";
 function PdfViewer() {
   const [selectedPdfIndex, setSelectedPdfIndex] = useState(0);
   const {
@@ -14,6 +15,7 @@ function PdfViewer() {
     pdfName,
     handleGenerate,
     pdfInstance,
+    uploadPdf
   } = usePdfViewer(selectedPdfIndex);
 
   useEffect(() => {
@@ -21,6 +23,7 @@ function PdfViewer() {
       handleGenerate(selectedPdfIndex);
     }
   }, [pdfInstance, selectedPdfIndex]);
+
 
   return (
     <div className="pdfViewerContainerStyle">
@@ -53,6 +56,7 @@ function PdfViewer() {
           </Button>
         </div>
       )}
+      <Button onClick={uploadPdf}>upload</Button>
       <div className="conatiner">
         <div id="pdfViewer" className="pdfDisplayStyle"></div>
         <div className="apiResponseContainer">

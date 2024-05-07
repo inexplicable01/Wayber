@@ -6,7 +6,8 @@ import financingPdf from "../../../assets/pdf/financing.pdf";
 import { useSelector, useDispatch } from "react-redux";
 import Styles from "../../../../src/assets/scss/pages/_createClient.scss";
 import { uploadTextRequest } from "../../../store/createContact/actions";
-import { Button } from "reactstrap";
+import { getFirebaseBackend } from "../../../helpers/firebase_helper";
+
 function usePdfViewer({ selectedPdfIndex }) {
   const webViewerInstance = useRef(null);
   const [pdfInstance, setPdfInstance] = useState(null);
@@ -253,6 +254,8 @@ function usePdfViewer({ selectedPdfIndex }) {
         document.getElementById("pdfViewer")
       ).then((instance) => {
         webViewerInstance.current = instance;
+        console.log("Document fully loaded and ready");
+
         setPdfInstance(instance);
       });
     }
@@ -300,7 +303,85 @@ function usePdfViewer({ selectedPdfIndex }) {
     GptTextUploader(textData);
     await doc.unlock();
   };
+  // const uploadPdf = async () => {
+  //   const firebaseBackend = getFirebaseBackend();
+  //   console.log(pdfInstance, "dwedw");
+  //   if (!pdfInstance) {
+  //     console.error("PDF Viewer is not initialized.");
+  //     return;
+  //   }
+  //   if (!pdfInstance.Core.documentViewer.getDocument()) {
+  //     console.error("No document is loaded in the viewer.");
+  //     return;
+  //   }
+  //   const { documentViewer, annotationManager } = pdfInstance.Core;
 
+  //   try {
+  //     const xfdfString =
+  //     await annotationManager.exportAnnotations();
+  //     const options = { xfdfString };
+  //     const data = await documentViewer.getDocument().getFileData(options);
+  //     const blob = new Blob([data], { type: "application/pdf" });
+  //     const documentId = String(Math.random()); // Generate or define as needed
+
+  //     await firebaseBackend
+  //       .uploadPdfToFirebase(blob, documentId)
+  //       .then((downloadURL) => {
+  //         console.log("PDF uploaded successfully:", downloadURL);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error uploading PDF:", error);
+  //       });
+  //   } catch (error) {
+  //     console.error(
+  //       "Error exporting annotations or generating file data:",
+  //       error
+  //     );
+  //   }
+  // };
+  const uploadPdf = async () => {
+    const firebaseBackend = getFirebaseBackend();
+
+    if (!pdfInstance || !pdfInstance.Core || !pdfInstance.Core.documentViewer.getDocument()) {
+        console.error("PDF Viewer is not initialized or no document is loaded.");
+        return;
+    }
+
+    const { documentViewer, annotationManager } = pdfInstance.Core;
+
+    try {
+        // Export annotations including links and widgets (form fields and signatures)
+        const xfdfString = await annotationManager.exportAnnotations({ links: true, widgets: true });
+
+        // Log the XFDF to see what is being exported
+        console.log("Exported XFDF:", xfdfString);
+
+        // Prepare options for getting file data; 'flatten' set to false to keep annotations editable
+        const options = {
+            xfdfString,
+            flatten: false
+        };
+
+        // Retrieve the document file data with annotations included
+        const data = await documentViewer.getDocument().getFileData(options);
+        const blob = new Blob([data], { type: "application/pdf" });
+        const documentId = `doc_${Date.now()}`;
+
+        // Upload the PDF to Firebase and log the URL upon success
+        await firebaseBackend.uploadPdfToFirebase(blob, documentId)
+            .then(downloadURL => {
+                console.log("PDF uploaded successfully:", downloadURL);
+            })
+            .catch(error => {
+                console.error("Error uploading PDF:", error);
+            });
+    } catch (error) {
+        console.error("Error exporting annotations or generating file data:", error);
+    }
+};
+
+
+  
   return {
     modalContent,
     userDetailsData,
@@ -310,6 +391,7 @@ function usePdfViewer({ selectedPdfIndex }) {
     pdfName,
     handleGenerate,
     pdfInstance,
+    uploadPdf,
   };
 }
 

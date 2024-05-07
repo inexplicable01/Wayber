@@ -30,6 +30,7 @@ import {useFormik} from "formik";
 // import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 // actions
 import {loginUser, socialLogin, resetLoginFlag} from "../../store/actions";
+import SignInWithGoogle from './SignInWithGoogle';
 
 import logoLight from "../../assets/images/logo-light.png";
 //Import config
@@ -289,6 +290,10 @@ const Login = (props) => {
 
                             </Col>
                         </Row>
+                        <Row>
+<div className=" text-center">
+<SignInWithGoogle/></div>
+            </Row>
                     </Container>
                 </div>
             </ParticlesAuth>
