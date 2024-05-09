@@ -15,7 +15,8 @@ function PdfViewer() {
     pdfName,
     handleGenerate,
     pdfInstance,
-    uploadPdf
+    uploadPdf,
+    addSignatureField
   } = usePdfViewer(selectedPdfIndex);
 
   useEffect(() => {
@@ -57,6 +58,7 @@ function PdfViewer() {
         </div>
       )}
       <Button onClick={uploadPdf}>upload</Button>
+      <Button onClick={addSignatureField}>addSignatureField</Button>
       <div className="conatiner">
         <div id="pdfViewer" className="pdfDisplayStyle"></div>
         <div className="apiResponseContainer">

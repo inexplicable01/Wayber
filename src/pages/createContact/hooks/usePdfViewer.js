@@ -303,42 +303,7 @@ function usePdfViewer({ selectedPdfIndex }) {
     GptTextUploader(textData);
     await doc.unlock();
   };
-  // const uploadPdf = async () => {
-  //   const firebaseBackend = getFirebaseBackend();
-  //   console.log(pdfInstance, "dwedw");
-  //   if (!pdfInstance) {
-  //     console.error("PDF Viewer is not initialized.");
-  //     return;
-  //   }
-  //   if (!pdfInstance.Core.documentViewer.getDocument()) {
-  //     console.error("No document is loaded in the viewer.");
-  //     return;
-  //   }
-  //   const { documentViewer, annotationManager } = pdfInstance.Core;
-
-  //   try {
-  //     const xfdfString =
-  //     await annotationManager.exportAnnotations();
-  //     const options = { xfdfString };
-  //     const data = await documentViewer.getDocument().getFileData(options);
-  //     const blob = new Blob([data], { type: "application/pdf" });
-  //     const documentId = String(Math.random()); // Generate or define as needed
-
-  //     await firebaseBackend
-  //       .uploadPdfToFirebase(blob, documentId)
-  //       .then((downloadURL) => {
-  //         console.log("PDF uploaded successfully:", downloadURL);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error uploading PDF:", error);
-  //       });
-  //   } catch (error) {
-  //     console.error(
-  //       "Error exporting annotations or generating file data:",
-  //       error
-  //     );
-  //   }
-  // };
+  //doc_1715148233488
   const uploadPdf = async () => {
     const firebaseBackend = getFirebaseBackend();
 
@@ -350,24 +315,18 @@ function usePdfViewer({ selectedPdfIndex }) {
     const { documentViewer, annotationManager } = pdfInstance.Core;
 
     try {
-        // Export annotations including links and widgets (form fields and signatures)
         const xfdfString = await annotationManager.exportAnnotations({ links: true, widgets: true });
+        console.log("XFDF Data:", xfdfString);  // Debug log
 
-        // Log the XFDF to see what is being exported
-        console.log("Exported XFDF:", xfdfString);
-
-        // Prepare options for getting file data; 'flatten' set to false to keep annotations editable
-        const options = {
+        const data = await documentViewer.getDocument().getFileData({
             xfdfString,
             flatten: false
-        };
+        });
 
-        // Retrieve the document file data with annotations included
-        const data = await documentViewer.getDocument().getFileData(options);
-        const blob = new Blob([data], { type: "application/pdf" });
+        const blob = new Blob([new Uint8Array(data)], { type: 'application/pdf' });
+
         const documentId = `doc_${Date.now()}`;
 
-        // Upload the PDF to Firebase and log the URL upon success
         await firebaseBackend.uploadPdfToFirebase(blob, documentId)
             .then(downloadURL => {
                 console.log("PDF uploaded successfully:", downloadURL);
@@ -376,11 +335,45 @@ function usePdfViewer({ selectedPdfIndex }) {
                 console.error("Error uploading PDF:", error);
             });
     } catch (error) {
-        console.error("Error exporting annotations or generating file data:", error);
+        console.error("Error preparing or uploading PDF:", error);
     }
 };
 
 
+const addSignatureField = () => {
+  if (!pdfInstance || !pdfInstance.Core || !pdfInstance.Core.documentViewer) {
+    console.error("PDF Viewer or document viewer is not initialized.");
+    return;
+  }
+  const { documentViewer, Annotations } = pdfInstance.Core;
+  if (!documentViewer.getDocument()) {
+    console.error("No document loaded in PDF Viewer.");
+    return;
+  }
+  const annotationManager = documentViewer.getAnnotationManager();
+  const pageWidth = documentViewer.getPageWidth(1); // Assuming page 1
+  const pageHeight = documentViewer.getPageHeight(1);
+  // Signature dimensions
+  const signatureWidth = 200;
+  const signatureHeight = 50;
+  // Calculate position for bottom right corner
+  const xPosition = pageWidth - signatureWidth - 20; // 20 pixels padding from the right edge
+  const yPosition = pageHeight - signatureHeight - 20; // 20 pixels padding from the bottom edge
+  const formField = new Annotations.Forms.Field("signatureField", {
+    type: "Sig",
+    flags: ["Required"],
+  });
+  const signatureWidget = new Annotations.SignatureWidgetAnnotation(formField);
+  signatureWidget.PageNumber = 1;
+  signatureWidget.X = xPosition;
+  signatureWidget.Y = yPosition;
+  signatureWidget.Width = signatureWidth;
+  signatureWidget.Height = signatureHeight;
+  signatureWidget.StrokeColor = new Annotations.Color(0, 0, 0); // Black or any color for visibility
+  annotationManager.addAnnotation(signatureWidget);
+  annotationManager.drawAnnotationsFromList([signatureWidget]);
+  console.log("Signature widget added at X:", signatureWidget.X, " Y:", signatureWidget.Y);
+};
   
   return {
     modalContent,
@@ -392,6 +385,7 @@ function usePdfViewer({ selectedPdfIndex }) {
     handleGenerate,
     pdfInstance,
     uploadPdf,
+    addSignatureField
   };
 }
 
