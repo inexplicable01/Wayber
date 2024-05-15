@@ -17,6 +17,7 @@ import watchProjectGroupSaga from "./projectgroup/saga";
 import watchFormSubmission from "./clientProfile/saga";
 import watchUploadText from './createContact/saga';
 import watchClientInformation from "./clientInformation/saga";
+import  watchFirebaseUser  from "./firebaseStore/saga";
 
 export default function* rootSaga() {
   yield all([
@@ -32,6 +33,7 @@ export default function* rootSaga() {
     fork(APIKeysaga),
     fork(watchFormSubmission),
     fork(watchUploadText),
-    fork(watchClientInformation)
+    fork(watchClientInformation),
+    fork(watchFirebaseUser)
   ]);
 }

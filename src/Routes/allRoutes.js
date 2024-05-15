@@ -95,6 +95,8 @@ import ClientInformation from '../pages/clientInformation/index.js'
 // create Contract
 import CreateContact from '../pages/createContact/index.js'
 import PdfViewer from "../pages/createContact/PdfViewer.js";
+import DocToSignOrReview from "../pages/docs/DocToSignOrReview.js";
+import SignDocument from "../pages/docs/SignDocument.js";
 import UploadPdf from "../pages/createContact/upload pdf";
 const authProtectedRoutes = [
   // { path: "/dashboard-analytics", component: <DashboardAnalytics /> },
@@ -118,6 +120,8 @@ const authProtectedRoutes = [
  { path: "/create_client_profile", component: <CreateClientProfile /> },
  { path: "/create_contact", component: <CreateContact /> },
  { path: "/pdf_viewer", component: <PdfViewer /> },
+ { path: "/doc_signReview", component: <DocToSignOrReview /> },
+ { path: "/sign_document", component: <SignDocument /> },
  { path: "/upload_pdf", component: <UploadPdf /> },
  { path: "/client_information", component: <ClientInformation /> },
  

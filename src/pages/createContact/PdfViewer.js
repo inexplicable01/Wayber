@@ -14,6 +14,10 @@ function PdfViewer() {
     pdfName,
     handleGenerate,
     pdfInstance,
+    dragEnd,
+    dragStart,
+    addField,
+    applyFields,
   } = usePdfViewer(selectedPdfIndex);
 
   useEffect(() => {
@@ -53,6 +57,33 @@ function PdfViewer() {
           </Button>
         </div>
       )}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      ></div>
+      <div
+        draggable
+        onDragStart={(e) => dragStart(e)}
+        onDragEnd={(e) => dragEnd(e, "SIGNATURE")}
+      >
+        <Button
+          accessibilityLabel="add text"
+          onClick={() => addField("SIGNATURE")}
+        >
+          Add signature
+        </Button>
+      </div>
+      <Button
+        onClick={applyFields}
+        accessibilityLabel="Send for signing"
+        text="Send"
+        iconEnd="send"
+      >
+        Send
+      </Button>
       <div className="conatiner">
         <div id="pdfViewer" className="pdfDisplayStyle"></div>
         <div className="apiResponseContainer">

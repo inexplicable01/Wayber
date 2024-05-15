@@ -22,7 +22,7 @@ const useProfile = () => {
           // console.log("Fetched user profile:", userProfile); // Log fetched user profile
           dispatch(setProfile({ ...authUser, ...userProfile,uid:authUser.uid }));
           setAuthChecked(true);
-        });
+        }); 
       } else {
         // console.log("No authUser"); // Log when there's no authUser
         dispatch(resetProfileFlag());

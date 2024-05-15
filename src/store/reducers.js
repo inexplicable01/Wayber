@@ -76,6 +76,7 @@ import projectgroupreducer from "./projectgroup/reducer";
 import clientProfileReducer from "./clientProfile/reducer";
 import textUploadReducer from "./createContact/reducer";
 import clientInformationReducer from "./clientInformation/reducer";
+import firebaseReducer from "./firebaseStore/reducer";
 
 const rootReducer = combineReducers({
     Layout,
@@ -89,7 +90,8 @@ const rootReducer = combineReducers({
     projectgroupreducer,
     clientProfileReducer,
     textUploadReducer,
-    clientInformationReducer
+    clientInformationReducer,
+    firebaseReducer
 });
 
 export default rootReducer;
