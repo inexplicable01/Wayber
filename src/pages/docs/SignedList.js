@@ -3,6 +3,7 @@ import { getFirebaseBackend } from "../../helpers/firebase_helper";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Table, Text, Spinner } from 'gestalt';
 import 'gestalt/dist/gestalt.css';
+import { useNavigate } from "react-router-dom";
 
 const SignedList = () => {
     const [docs, setDocs] = useState([]);
@@ -10,7 +11,8 @@ const SignedList = () => {
   const { user } = useSelector((state) => ({
     user: state.Profile.user,
   }));
-
+  const dispatch = useDispatch();
+ const navigate = useNavigate()
   const { searchForDocumentsSigned } = getFirebaseBackend();
   console.log(searchForDocumentsSigned("email@example.com"), user?.email);
   useEffect(() => {
@@ -23,8 +25,7 @@ const SignedList = () => {
     setTimeout(getDocs, 1000);
   }, [user?.email]);
   return <div className="page-content">
-
-<div>
+ <div>
       {show ? (
         <Spinner show={show} accessibilityLabel="spinner" />
       ) : (
@@ -45,19 +46,21 @@ const SignedList = () => {
                 {docs.map(doc => (
                   <Table.Row key={doc.docRef}>
                     <Table.Cell>
-                      <Text>{doc.email}</Text>
+                      {doc.emails.map(email => (
+                        <Text key={email}>{email}</Text>
+                      ))}
                     </Table.Cell>
                     <Table.Cell>
-                      <Text>{doc.requestedTime ? new Date(doc.requestedTime.seconds*1000).toDateString() : ''}</Text>
+                      <Text>{doc.signedTime ? new Date(doc.signedTime.seconds*1000).toDateString() : ''}</Text>
                     </Table.Cell>
                     <Table.Cell>
                       <Button
-                        // onClick={event => {
-                        //   const { docRef, docId } = doc;
-                        //   dispatch(setDocToSign({ docRef, docId }));
-                        //   navigate(`/signDocument`);
-                        // }}
-                        text="Sign"
+                        onClick={event => {
+                          const { docRef, docId } = doc;
+                          dispatch(setDocToView({ docRef, docId }));
+                          navigate(`/view_document`);
+                        }}
+                        text="View"
                         color="blue"
                         inline
                       />
@@ -67,7 +70,7 @@ const SignedList = () => {
               </Table.Body>
             </Table>
           ) : (
-            'You do not have any documents to sign'
+            'You do not have any documents to review'
           )}
         </div>
       )}

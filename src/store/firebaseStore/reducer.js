@@ -1,6 +1,8 @@
 // reducers.js
 const initialState = {
   docToSign: null,
+  docToView: null
+
 };
 
 const firebaseReducer = (state = initialState, action) => {
@@ -9,6 +11,17 @@ const firebaseReducer = (state = initialState, action) => {
       return { ...state, docToSign: action.payload };
     case 'RESET_DOC_TO_SIGN_SUCCESS':
       return { ...state, docToSign: null };
+
+      case 'SET_DOC_TO_VIEW':
+      return {
+        ...state,
+        docToView: action.payload
+      };
+    case 'RESET_DOC_TO_VIEW':
+      return {
+        ...state,
+        docToView: null
+      };
     default:
       return state;
   }
