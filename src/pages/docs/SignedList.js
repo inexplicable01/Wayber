@@ -57,7 +57,7 @@ const SignedList = () => {
                       <Button
                         onClick={event => {
                           const { docRef, docId } = doc;
-                          dispatch(setDocToView({ docRef, docId }));
+                          // dispatch(setDocToView({ docRef, docId }));
                           navigate(`/view_document`);
                         }}
                         text="View"
