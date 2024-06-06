@@ -6,7 +6,8 @@ import financingPdf from "../../../assets/pdf/financing.pdf";
 import { useSelector, useDispatch } from "react-redux";
 import Styles from "../../../../src/assets/scss/pages/_createClient.scss";
 import { uploadTextRequest } from "../../../store/createContact/actions";
-import { Button } from "reactstrap";
+import { getFirebaseBackend } from "../../../helpers/firebase_helper";
+
 function usePdfViewer({ selectedPdfIndex }) {
   const webViewerInstance = useRef(null);
   const [pdfInstance, setPdfInstance] = useState(null);
@@ -253,6 +254,8 @@ function usePdfViewer({ selectedPdfIndex }) {
         document.getElementById("pdfViewer")
       ).then((instance) => {
         webViewerInstance.current = instance;
+        console.log("Document fully loaded and ready");
+
         setPdfInstance(instance);
       });
     }
@@ -300,7 +303,78 @@ function usePdfViewer({ selectedPdfIndex }) {
     GptTextUploader(textData);
     await doc.unlock();
   };
+  //doc_1715148233488
+  const uploadPdf = async () => {
+    const firebaseBackend = getFirebaseBackend();
 
+    if (!pdfInstance || !pdfInstance.Core || !pdfInstance.Core.documentViewer.getDocument()) {
+        console.error("PDF Viewer is not initialized or no document is loaded.");
+        return;
+    }
+
+    const { documentViewer, annotationManager } = pdfInstance.Core;
+
+    try {
+        const xfdfString = await annotationManager.exportAnnotations({ links: true, widgets: true });
+        console.log("XFDF Data:", xfdfString);  // Debug log
+
+        const data = await documentViewer.getDocument().getFileData({
+            xfdfString,
+            flatten: false
+        });
+
+        const blob = new Blob([new Uint8Array(data)], { type: 'application/pdf' });
+
+        const documentId = `doc_${Date.now()}`;
+
+        await firebaseBackend.uploadPdfToFirebase(blob, documentId)
+            .then(downloadURL => {
+                console.log("PDF uploaded successfully:", downloadURL);
+            })
+            .catch(error => {
+                console.error("Error uploading PDF:", error);
+            });
+    } catch (error) {
+        console.error("Error preparing or uploading PDF:", error);
+    }
+};
+
+
+const addSignatureField = () => {
+  if (!pdfInstance || !pdfInstance.Core || !pdfInstance.Core.documentViewer) {
+    console.error("PDF Viewer or document viewer is not initialized.");
+    return;
+  }
+  const { documentViewer, Annotations } = pdfInstance.Core;
+  if (!documentViewer.getDocument()) {
+    console.error("No document loaded in PDF Viewer.");
+    return;
+  }
+  const annotationManager = documentViewer.getAnnotationManager();
+  const pageWidth = documentViewer.getPageWidth(1); // Assuming page 1
+  const pageHeight = documentViewer.getPageHeight(1);
+  // Signature dimensions
+  const signatureWidth = 200;
+  const signatureHeight = 50;
+  // Calculate position for bottom right corner
+  const xPosition = pageWidth - signatureWidth - 20; // 20 pixels padding from the right edge
+  const yPosition = pageHeight - signatureHeight - 20; // 20 pixels padding from the bottom edge
+  const formField = new Annotations.Forms.Field("signatureField", {
+    type: "Sig",
+    flags: ["Required"],
+  });
+  const signatureWidget = new Annotations.SignatureWidgetAnnotation(formField);
+  signatureWidget.PageNumber = 1;
+  signatureWidget.X = xPosition;
+  signatureWidget.Y = yPosition;
+  signatureWidget.Width = signatureWidth;
+  signatureWidget.Height = signatureHeight;
+  signatureWidget.StrokeColor = new Annotations.Color(0, 0, 0); // Black or any color for visibility
+  annotationManager.addAnnotation(signatureWidget);
+  annotationManager.drawAnnotationsFromList([signatureWidget]);
+  console.log("Signature widget added at X:", signatureWidget.X, " Y:", signatureWidget.Y);
+};
+  
   return {
     modalContent,
     userDetailsData,
@@ -310,6 +384,8 @@ function usePdfViewer({ selectedPdfIndex }) {
     pdfName,
     handleGenerate,
     pdfInstance,
+    uploadPdf,
+    addSignatureField
   };
 }
 

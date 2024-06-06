@@ -46,10 +46,7 @@ const UploadPdf = () => {
         ...prevContent,
         response?.choices[0].message.content,
       ]);
-      console.log(
-        response?.choices[0].message.content,
-        "response--------------------------------"
-      );
+     
     } catch (error) {
       console.error("Error:", error);
     }
@@ -153,7 +150,7 @@ const UploadPdf = () => {
               <Loader />
             ) : (
               <p>
-                {modalContent.map((content, index) => (
+                {modalContent?.map((content, index) => (
                   <p key={index}>{`Chunk ${index + 1}: ${content}`}</p>
                 )) || "Upload document"}
               </p>
@@ -161,7 +158,7 @@ const UploadPdf = () => {
           </div>
         </div>
       </div>
-      <ContactForm/>
+      {/* <ContactForm/> */}
     </React.Fragment>
   );
 };

@@ -1,36 +1,30 @@
 import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
-
-// Login Redux States
-import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN} from "./actionTypes";
+import { LOGIN_USER, LOGOUT_USER, SOCIAL_LOGIN } from "./actionTypes";
 import { apiError, loginSuccess, logoutUserSuccess } from "./actions";
-import {setProfile, resetProfileFlag} from "../profile/actions";
-//Include Both Helper File with needed methods
-import firebase from "firebase/app";
-import "firebase/firestore";
-
-import { getFirebaseBackend } from "../../../helpers/firebase_helper";
+import { setProfile, resetProfileFlag } from "../profile/actions";
 import {
   postFakeLogin,
   postJwtLogin,
   postSocialLogin,
 } from "../../../helpers/fakebackend_helper";
+import { getFirebaseBackend } from "../../../helpers/firebase_helper";
 
-const fireBaseBackend = getFirebaseBackend();
 
 function* loginUser({ payload: { usersignininfo } }) {
+  const firebaseBackend = getFirebaseBackend();
   try {
 
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
       // console.log('okay')
       const response = yield call(
-        fireBaseBackend.loginUser,
+        firebaseBackend.loginUser,
         usersignininfo.email,
         usersignininfo.password
       );
 
       if (response) {
         console.log(response.uid + "got to here.")
-        const userProfile = yield call(fireBaseBackend.getUserProfile, response.uid)
+        const userProfile = yield call(firebaseBackend.getUserProfile, response.uid)
         console.log("userProfile",userProfile)
         console.log('email',usersignininfo.email)
         console.log(response.uid + "uid.")
@@ -51,7 +45,6 @@ function* loginUser({ payload: { usersignininfo } }) {
       sessionStorage.setItem("authUser", JSON.stringify(response));
       if (response) {
         yield put(loginSuccess(response));
-        // history('/dashboard')
       } else {
         yield put(apiError(response));
       }
@@ -79,11 +72,12 @@ function* loginUser({ payload: { usersignininfo } }) {
 }
 
 function* logoutUser() {
+  const firebaseBackend = getFirebaseBackend();
+
   try {
-    // sessionStorage.removeItem("authUser");
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      const response = yield call(fireBaseBackend.logout);
-      yield put(resetProfileFlag())
+      const response = yield call(firebaseBackend.logout);
+      yield put(resetProfileFlag());
       yield put(logoutUserSuccess(LOGOUT_USER, response));
     } else {
       yield put(logoutUserSuccess(LOGOUT_USER, true));
@@ -94,11 +88,12 @@ function* logoutUser() {
 }
 
 function* socialLogin({ payload: { data, history, type } }) {
+  const firebaseBackend = getFirebaseBackend();
+
   try {
     if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
-      const fireBaseBackend = getFirebaseBackend();
       const response = yield call(
-        fireBaseBackend.socialLoginUser,
+        firebaseBackend.socialLoginUser,
         data,
         type,
       );
