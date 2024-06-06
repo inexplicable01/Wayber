@@ -150,7 +150,7 @@ const UploadPdf = () => {
               <Loader />
             ) : (
               <p>
-                {modalContent.map((content, index) => (
+                {modalContent?.map((content, index) => (
                   <p key={index}>{`Chunk ${index + 1}: ${content}`}</p>
                 )) || "Upload document"}
               </p>
