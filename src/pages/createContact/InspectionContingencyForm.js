@@ -3,9 +3,6 @@ import { Button, Form, FormGroup, Label, Input, Col, Row } from "reactstrap";
 
 const InspectionContingencyForm = ({
   formik,
-  prevStep,
-  onSubmit,
-  FormFeedback,
 }) => {
   const isInspectionContingency = formik.values.inspectionContingency;
   return (

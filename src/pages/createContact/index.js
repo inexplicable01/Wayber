@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import { useSelector } from "react-redux";
 import Loader from "../../Components/Common/Loader";
-import CreateContactForm from "./CreateContact";
+import CreateContactForm from "./ContractDetails";
 
 const CreateContact = () => {
   const data = useSelector((state) => state.clientProfileReducer);

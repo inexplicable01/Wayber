@@ -38,6 +38,20 @@ export const fetchProfilesFailure = error => ({
   payload: error,
 });
 
+export const getVendorProfileRequest = () => ({
+  type: actionTypes.FETCH_VENDORPROFILES_REQUEST,
+});
+
+export const getVendorProfileSuccess = profiles => ({
+  type: actionTypes.FETCH_VENDORPROFILES_SUCCESS,
+  payload: profiles,
+});
+
+export const getVendorProfileFailure = error => ({
+  type: actionTypes.FETCH_VENDORPROFILES_FAILURE,
+  payload: error,
+});
+
 
 export const fetchApiDataRequest = () => ({
   type: actionTypes.FETCH_API_DATA_REQUEST,
@@ -71,3 +85,9 @@ export const getUsersAddressFailure = (error) => ({
   type: actionTypes.GET_USER_DETAILS_FAILURE,
   payload: error,
 });
+
+export const clearModalContentAction = () => {
+  return {
+    type: 'CLEAR_MODAL_CONTENT',
+  };
+};

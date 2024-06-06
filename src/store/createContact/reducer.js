@@ -24,6 +24,12 @@ const initialState = {
     error: false,
     success: false,
   },
+  vendorDetails:{
+    data: null,
+    loading: false,
+    error: false,
+    success: false,
+  }
 };
 
 const textUploadReducer = (state = initialState, action) => {
@@ -136,6 +142,54 @@ const textUploadReducer = (state = initialState, action) => {
         },
       };
     case actionTypes.GET_USER_DETAILS_FAILURE:
+      return {
+        ...state,
+        userZPID: {
+          ...state.userZPID,
+          loading: false,
+          details: action.payload,
+          error: true,
+          success: false,
+        },
+      };
+    case actionTypes.FETCH_VENDORPROFILES_REQUEST:
+      return {
+        ...state,
+        vendorDetails: {
+          ...state.vendorDetails,
+          loading: true,
+          error: false,
+          success: false,
+        },
+      };
+    case actionTypes.FETCH_VENDORPROFILES_SUCCESS:
+      return {
+        ...state,
+        vendorDetails: {
+          ...state.vendorDetails,
+          loading: false,
+          data: action.payload,
+          error: false,
+          success: true,
+        },
+      };
+    case actionTypes.FETCH_VENDORPROFILES_FAILURE:
+      return {
+        ...state,
+        vendorDetails: {
+          ...state.vendorDetails,
+          loading: false,
+          details: action.payload,
+          error: true,
+          success: false,
+        },
+      };
+    case "CLEAR_MODAL_CONTENT":
+      return {
+        ...state,
+
+        data: null,
+      };
     default:
       return state;
   }

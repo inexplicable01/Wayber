@@ -326,6 +326,67 @@ class FirebaseAuthBackend {
             });
     };
 
+    submitClientInformation = (clientData) => {
+        const clientProfileCollection = firebase.firestore().collection("ClientInformation");
+        const extendedProfileData = {
+            ...clientData,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+
+        };
+
+        return clientProfileCollection.add(extendedProfileData)
+            .then(docRef => {
+                console.log("Client profile submitted with ID:", docRef.id);
+                return { id: docRef.id, ...extendedProfileData };
+            })
+            .catch(error => {
+                console.error("Error submitting client profile:", error);
+                throw new Error(error.message); 
+            });
+    };
+    
+    // uploadPdfToFirebase = (pdfBlob, documentId) => {
+
+    //     const filePath = `signedDoc/${documentId}_${Date.now()}.pdf`;
+    //     const storageRef = firebase.storage().ref(filePath); // Ensure you are calling `storage()` correctly
+    
+    //     return storageRef.put(pdfBlob)
+    //         .then(snapshot => snapshot.ref.getDownloadURL())
+    //         .then(downloadURL => {
+    //             console.log("PDF uploaded and available at:", downloadURL);
+    //             return downloadURL; // This returns the URL where the PDF is stored
+    //         })
+    //         .catch(error => {
+    //             console.error("Error uploading file:", error);
+    //             throw error;
+    //         });
+    // };
+     uploadPdfToFirebase = async (pdfBlob, documentId) => {
+        console.log('Starting file upload...');
+console.log('PDF blob:', pdfBlob);
+
+        const filePath = `signedDoc/${documentId}_${Date.now()}.pdf`;
+        const storageRef = firebase.storage().ref(filePath);
+        console.log('File path:', filePath);
+
+        try {
+            let snapshot = await storageRef.put(pdfBlob);
+            let downloadURL = await snapshot.ref.getDownloadURL();
+    
+            await firebase.firestore().collection('signedDoc').doc(documentId).set({
+                file: downloadURL,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+    
+            console.log('File uploaded and Firestore updated', downloadURL);
+            return downloadURL; // Optional: return the URL for further processing
+        } catch (error) {
+            console.error('Error uploading to Firebase:', error);
+            throw error;
+        }
+    };
+    
+    
     setLoggeedInUser = user => {
         sessionStorage.setItem("authUser", JSON.stringify(user));
     };

@@ -44,8 +44,21 @@ function* fetchClientProfilesSaga() {
   }
 }
 
+function* getVendorDetails() {
+  try {
+    const db = firebase.firestore();
+    const querySnapshot = yield call(() => db.collection("Vendors").get());
+    const profiles = [];
+    querySnapshot.forEach(doc => {
+      profiles.push({ id: doc.id, ...doc.data() });
+    });
+    yield put(actions.getVendorProfileSuccess(profiles));
+  } catch (error) {
+    yield put(actions.getVendorProfileFailure(error.message));
+  }
+}
+
 function* fetchApiDataSaga() {
-  // console.log("action callled>>>>>>>");
   try {
     const options = {
       method: "GET",
@@ -97,4 +110,5 @@ export default function* watchFormSubmission() {
     actionTypes.GET_USER_DETAILS_REQUEST,
     getUserDetailsWithZpid
   );
+  yield takeLatest(actionTypes.FETCH_VENDORPROFILES_REQUEST, getVendorDetails)
 }
